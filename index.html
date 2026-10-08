@@ -2692,7 +2692,6 @@
     const metricsBase='https://counterapi.com/api';
     const metricsNamespace='rlaskadls741-debug.github.io';
     const trackedWeeks=new Set();
-    const metricVisitorId=(()=>{const key='equipmentHubVisitorId';let id=localStorage.getItem(key);if(!id){id=crypto.randomUUID?crypto.randomUUID():`visitor-${Date.now()}-${Math.random().toString(36).slice(2)}`;localStorage.setItem(key,id)}return id})();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
     async function metricRequest(action,key,options={}){
       const params=new URLSearchParams(options);
@@ -2707,10 +2706,14 @@
       try{
         if(!trackedWeeks.has(week)){
           trackedWeeks.add(week);
-          await metricRequest(`weekVisit-${week}`,'hub',{userId:metricVisitorId});
+          const visitKey=`equipmentHubVisited:${week}`;
+          if(!localStorage.getItem(visitKey)){
+            await metricRequest('weekVisit',week);
+            localStorage.setItem(visitKey,'1');
+          }
         }
         const [unique,report]=await Promise.all([
-          metricRequest(`weekVisit-${week}`,'any',{readOnly:'true',unique:'true'}),
+          metricRequest('weekVisit',week,{readOnly:'true'}),
           metricRequest(`reportOpen-${week}`,'any',{readOnly:'true'})
         ]);
         if(metricWeek(weekDate)!==week)return;
