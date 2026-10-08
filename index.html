@@ -2718,7 +2718,16 @@
         ]);
         if(metricWeek(weekDate)!==week)return;
         if(uniqueEl){uniqueEl.textContent=unique.toLocaleString('ko-KR');uniqueEl.title='선택한 주 화면을 확인한 고유 브라우저·기기 수';}
-        if(reportEl){reportEl.textContent=report.toLocaleString('ko-KR');reportEl.title='선택한 주에 포함된 리포트의 상세 열람 횟수';}
+        if(reportEl){
+          let displayReport=report;
+          try{
+            const floorKey=`equipmentHubOpenFloor:${week}`,floor=Number(sessionStorage.getItem(floorKey))||0;
+            displayReport=Math.max(report,floor);
+            if(report>=floor&&floor)sessionStorage.removeItem(floorKey);
+          }catch(error){}
+          reportEl.textContent=displayReport.toLocaleString('ko-KR');
+          reportEl.title='선택한 주에 포함된 리포트의 상세 열람 횟수';
+        }
       }catch(error){
         if(uniqueEl)uniqueEl.title='집계 서버에 연결하지 못했습니다.';
         if(reportEl)reportEl.title='집계 서버에 연결하지 못했습니다.';
@@ -2727,9 +2736,15 @@
     }
     function trackReportOpen(report){
       const week=metricWeek(report.date);
-      metricRequest(`reportOpen-${week}`,report.id).then(()=>{
-        if(metricWeek(weekDate)===week)loadWeekStats(weekDate);
-      }).catch(error=>console.warn('리포트 열람을 기록하지 못했습니다.',error));
+      const reportEl=$('[data-view-stat="report"]');
+      if(metricWeek(weekDate)===week&&reportEl){
+        const current=Number(reportEl.textContent.replace(/,/g,''))||0,next=current+1;
+        reportEl.textContent=next.toLocaleString('ko-KR');
+        try{sessionStorage.setItem(`equipmentHubOpenFloor:${week}`,String(next));}catch(error){}
+      }
+      const eventKey=`${report.id}-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+      metricRequest(`reportOpen-${week}`,eventKey)
+        .catch(error=>console.warn('리포트 열람을 기록하지 못했습니다.',error));
     }
     function dateKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
     function weekBounds(iso){const base=new Date(`${iso}T12:00:00`),start=new Date(base);start.setDate(base.getDate()-base.getDay());const end=new Date(start);end.setDate(start.getDate()+6);return{start,end}}
