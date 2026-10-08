@@ -2714,7 +2714,7 @@
         }
         const [unique,report]=await Promise.all([
           metricRequest('weekVisit',week,{readOnly:'true'}),
-          metricRequest('reportOpen',week,{readOnly:'true'})
+          metricRequest('weekVisit',`report-${week}`,{readOnly:'true'})
         ]);
         if(metricWeek(weekDate)!==week)return;
         if(uniqueEl){uniqueEl.textContent=unique.toLocaleString('ko-KR');uniqueEl.title='선택한 주 화면을 확인한 고유 브라우저·기기 수';}
@@ -2727,7 +2727,7 @@
     }
     function trackReportOpen(report){
       const week=metricWeek(report.date);
-      metricRequest('reportOpen',week).then(()=>{
+      metricRequest('weekVisit',`report-${week}`).then(()=>{
         if(metricWeek(weekDate)===week)loadWeekStats(weekDate);
       }).catch(error=>console.warn('리포트 열람을 기록하지 못했습니다.',error));
     }
