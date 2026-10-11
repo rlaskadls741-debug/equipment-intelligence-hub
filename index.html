@@ -47,7 +47,7 @@
   </header>
   <main class="shell" id="interactiveApp">
     <section class="view active" id="homeView">
-      <div class="pageHead"><div><h1>기술동향 한눈에 보기</h1><p>2026년 9월 14일~10월 12일 · 9월 19일은 발행 원본 없음</p></div><div class="count">등록 리포트 <b id="reportCount">0</b>건</div></div>
+      <div class="pageHead"><div><h1>기술동향 한눈에 보기</h1><p id="dataPeriod">2026년 9월 14일~10월 12일 · 9월 19일은 발행 원본 없음</p></div><div class="count">등록 리포트 <b id="reportCount">0</b>건</div></div>
       <div class="workspace">
         <section class="surface calendar" aria-label="월간 리포트 달력"><div class="monthHead"><h2 id="monthTitle"></h2><div class="monthControls"><button id="prevMonth" aria-label="이전 달">‹</button><button id="nextMonth" aria-label="다음 달">›</button></div></div><div class="week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="days" id="days"></div></section>
         <aside class="surface spotlight" id="spotlight"></aside>
@@ -2868,7 +2868,11 @@
     reports.forEach(r=>{const source=document.querySelector(`#static-${r.id} .staticContent`);r.content=source?source.innerHTML:''});
     document.body.classList.remove('noJs');document.body.classList.add('jsReady');
     const fallback=$('#staticFallback');if(fallback)fallback.remove();
-    let axis='전체',query='',searchScope='all',selected=reports[reports.length-1]||null,weekDate=(reports[reports.length-1]||{}).date||'2026-10-12',month=new Date(2026,9,1);
+    const latestDate=reports[reports.length-1]?.date||new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
+    const formatReportDate=iso=>{const [y,m,d]=iso.split('-').map(Number);return `${y}년 ${m}월 ${d}일`};
+    const dataPeriod=$('#dataPeriod');
+    if(dataPeriod&&reports.length)dataPeriod.textContent=`${formatReportDate(reports[0].date)}~${formatReportDate(latestDate)} · 9월 19일은 발행 원본 없음`;
+    let axis='전체',query='',searchScope='all',selected=reports[reports.length-1]||null,weekDate=latestDate,month=new Date(latestDate.slice(0,7)+'-01T12:00:00');
     const axes=['전체','설비 지능화','전기·제어','기타 자동화'];
     const missingDates=['2026-09-19'];
     const metricsBase='https://counterapi.com/api';
