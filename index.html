@@ -31,6 +31,8 @@
     }
     @media(max-width:720px){.brief p{font-size:1rem}}
     @media(max-width:390px){.shell{padding:0 10px}.brand strong{font-size:.92rem}.update span{display:none}.searchWrap{grid-template-columns:72px 1fr}.viewBtn{padding-left:7px;padding-right:7px}.axisBtn{padding-left:8px;padding-right:8px}.day{min-height:46px;padding:5px}.spotTop{padding:16px}.quickBrief{padding:15px}.reportBody{padding-left:10px;padding-right:10px}.staticFallback{padding-left:10px;padding-right:10px}}
+
+    .weeklyChanges{gap:14px}.weeklySection{padding:14px;border:1px solid #e2e9ef;border-radius:10px;background:#fafcfd}.weeklySection h3{display:flex;align-items:center;gap:8px;margin:0 0 11px;color:var(--navy);font-size:.86rem;line-height:1.5}.weeklySection .weeklyStep{flex:0 0 23px;width:23px;height:23px;font-size:.68rem}.weeklyList{list-style:none;margin:0;padding:0}.weeklyItem+.weeklyItem{margin-top:12px;padding-top:12px;border-top:1px solid #e7edf2}.weeklyReport{display:flex;align-items:flex-start;gap:8px;width:100%;padding:0;border:0;background:none;text-align:left;color:var(--navy);cursor:pointer;line-height:1.65}.weeklyReport:hover b{text-decoration:underline;text-underline-offset:3px}.weeklyReport:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:3px}.weeklyDate{flex:0 0 34px;padding-top:1px;color:var(--muted);font-size:.7rem;font-weight:700}.weeklyReport b{font-size:.81rem;font-weight:800;word-break:keep-all;overflow-wrap:anywhere}.weeklyItem p{margin:5px 0 0 42px;color:#46586a;font-size:.8rem;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}.weeklyMore{margin-top:12px}.weeklyMore summary{width:max-content;max-width:100%;color:var(--teal);font-size:.74rem;font-weight:750;cursor:pointer}.weeklyMore[open] .weeklyList{margin-top:12px}
   </style>
 </head>
 <body class="noJs">
@@ -2865,6 +2867,149 @@
     ]);
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
+    const weeklyNotes={
+      "260914": {
+        "topic": "AI로 로봇 작업 구성",
+        "change": "작업 프로그램 초안을 AI가 만들고 장비에서 검증합니다.",
+        "check": "같은 작업의 개발시간과 수정횟수를 비교합니다."
+      },
+      "260915": {
+        "topic": "로봇 공구부 통신",
+        "change": "카메라와 그리퍼를 공구 가까이 연결합니다.",
+        "check": "촬영 후 명령 지연과 통신 끊김 시 정지를 확인합니다."
+      },
+      "260916": {
+        "topic": "한 PC에서 제어와 AI 실행",
+        "change": "장비 수는 줄지만 AI가 제어 자원을 함께 사용합니다.",
+        "check": "AI 부하를 높이며 제어주기와 온도를 확인합니다."
+      },
+      "260917": {
+        "topic": "제어용 CPU 자원 분리",
+        "change": "AI 작업이 몰려도 모션 제어 자원을 확보합니다.",
+        "check": "AI와 화면을 동시에 켜고 주기 초과를 측정합니다."
+      },
+      "260918": {
+        "topic": "검사 결과로 공정 자동 보정",
+        "change": "검사값을 속도와 위치 보정까지 연결합니다.",
+        "check": "잘못된 검사값이 들어왔을 때 보정을 차단하는지 확인합니다."
+      },
+      "260920": {
+        "topic": "가상모델과 실제 설정 일치",
+        "change": "현장 변경을 모델에도 반영해 설정 차이를 줄입니다.",
+        "check": "주소와 서보 설정을 바꿔 차이 검출과 복원을 시험합니다."
+      },
+      "260921": {
+        "topic": "상태에 따라 로봇 행동 변경",
+        "change": "상태 표시에서 작업순서와 동작 변경으로 확장합니다.",
+        "check": "조건이 바뀌었을 때 계획 변경과 실패 복구를 확인합니다."
+      },
+      "260922": {
+        "topic": "휴머노이드 가상훈련",
+        "change": "가상환경에서 훈련한 작업을 실제 설비로 옮깁니다.",
+        "check": "조명과 마찰을 바꾸며 현장 작업 성공률을 측정합니다."
+      },
+      "260923": {
+        "topic": "AI의 로봇 프로그램 작성 보조",
+        "change": "반복 작성은 AI가 돕고 최종 동작은 사람이 검증합니다.",
+        "check": "수동 작성과 개발시간, 오류 수를 비교합니다."
+      },
+      "260924": {
+        "topic": "AI와 안전정지 경로 분리",
+        "change": "AI가 멈추거나 오판해도 안전정지는 독립적으로 동작합니다.",
+        "check": "AI를 강제 종료하고 안전정지 시간을 측정합니다."
+      },
+      "260925": {
+        "topic": "가상훈련과 현장 차이 검증",
+        "change": "조명과 공차 차이를 미리 시험해 현장 조정을 줄입니다.",
+        "check": "가상과 실제 작업의 위치오차와 성공률을 비교합니다."
+      },
+      "260926": {
+        "topic": "제어에 반영하지 않는 AI 시험",
+        "change": "AI 판단을 기록만 하며 기존 제어와 비교합니다.",
+        "check": "판단 일치율, 지연, 위험 누락을 측정합니다."
+      },
+      "260927": {
+        "topic": "현장에 최종 제어권 유지",
+        "change": "상위 시스템의 제안은 현장 검증을 거쳐 반영합니다.",
+        "check": "지연되거나 범위를 벗어난 명령이 거부되는지 확인합니다."
+      },
+      "260928": {
+        "topic": "명령 유효시간과 접근 권한",
+        "change": "형식이 맞아도 오래되거나 권한 없는 명령은 차단합니다.",
+        "check": "지연 명령과 무권한 요청의 차단 여부를 시험합니다."
+      },
+      "260929": {
+        "topic": "비전과 모션의 시간 맞추기",
+        "change": "촬영 시점과 축 위치를 연결해 보정 시점을 맞춥니다.",
+        "check": "라인속도를 높여 최대 지연과 영상 누락을 측정합니다."
+      },
+      "260930": {
+        "topic": "제어 통신의 시간과 의미 통일",
+        "change": "서로 다른 장비가 같은 시간기준과 데이터 규칙을 사용합니다.",
+        "check": "통신 부하가 높을 때 지연과 동기오차를 확인합니다."
+      },
+      "261001": {
+        "topic": "다른 업체 장비끼리 연결 검증",
+        "change": "표준 지원 문구를 넘어 실제 연결 가능성을 확인합니다.",
+        "check": "여러 업체 장비로 데이터 교환과 장애복구를 시험합니다."
+      },
+      "261002": {
+        "topic": "이동형 로봇의 단계별 안전정지",
+        "change": "정지 중 넘어짐까지 고려해 감속과 외부 정지를 설계합니다.",
+        "check": "속도와 하중에 따른 정지거리, 반응시간을 측정합니다."
+      },
+      "261003": {
+        "topic": "통신 기준시계 오류 감시",
+        "change": "통신이 살아 있어도 시각이 틀리면 제어를 제한합니다.",
+        "check": "기준시계를 끊고 오류 감지와 시간 복구를 확인합니다."
+      },
+      "261004": {
+        "topic": "상위 명령과 현장 제어권 분리",
+        "change": "최적화 명령을 현장 제어기가 검증한 뒤 실행합니다.",
+        "check": "중복과 범위 초과 명령의 거부, 복귀를 시험합니다."
+      },
+      "261005": {
+        "topic": "AI 모델 갱신과 기존 제어 복귀",
+        "change": "초기 정확도 외에 운전 중 성능 저하도 관리합니다.",
+        "check": "모델 오류를 넣고 감지와 기존 제어 복귀를 확인합니다."
+      },
+      "261006": {
+        "topic": "PC 제어와 응용프로그램 통합",
+        "change": "제어와 AI를 한 PC에 두되 장애 전파를 막아야 합니다.",
+        "check": "응용 부하와 재시작이 제어주기에 주는 영향을 측정합니다."
+      },
+      "261007": {
+        "topic": "제어 자원과 최대 지연 관리",
+        "change": "평균 속도보다 가장 늦게 처리되는 순간을 관리합니다.",
+        "check": "최대 부하와 온도에서 주기 초과를 장시간 기록합니다."
+      },
+      "261008": {
+        "topic": "산업 AI 답변과 카메라 통합 검증",
+        "change": "답변 정확도와 비전 버전 변경 영향을 함께 관리합니다.",
+        "check": "같은 질문을 반복하고 영상 누락과 제어 지연을 측정합니다."
+      },
+      "261009": {
+        "topic": "로봇 안에 통합된 AI 비전",
+        "change": "별도 연동 작업을 줄일 수 있지만 예외처리는 필요합니다.",
+        "check": "가림과 반사 조건에서 오인식, 복구시간을 측정합니다."
+      },
+      "261010": {
+        "topic": "비전과 모션을 같은 PC에서 실행",
+        "change": "촬영과 축 위치의 시간을 맞추되 연산 경합을 막아야 합니다.",
+        "check": "카메라 최대 부하에서 모션 주기 초과를 확인합니다."
+      },
+      "261011": {
+        "topic": "무늬가 적은 부품의 3D 인식",
+        "change": "적외선 패턴으로 깊이를 읽지만 반사 표면은 별도 검증이 필요합니다.",
+        "check": "금속과 검은 부품의 깊이 누락, 위치오차를 측정합니다."
+      },
+      "261012": {
+        "topic": "EtherCAT 서보와 장비 가까이 둔 I/O",
+        "change": "서보와 배선을 함께 설계해 장비 변경과 정비를 단순화합니다.",
+        "check": "PC 제어기 호환과 통신 끊김 시 정지, 복구를 먼저 시험합니다."
+      }
+    };
+    reports.forEach(r=>{if(!r.weekly&&weeklyNotes[r.id])r.weekly=weeklyNotes[r.id]});
     reports.forEach(r=>{const source=document.querySelector(`#static-${r.id} .staticContent`);r.content=source?source.innerHTML:''});
     document.body.classList.remove('noJs');document.body.classList.add('jsReady');
     const fallback=$('#staticFallback');if(fallback)fallback.remove();
@@ -2948,15 +3093,19 @@
     function drawAxes(){$('#axes').innerHTML=axes.map(a=>`<button class="axisBtn ${a===axis?'active':''}" data-axis="${a}">${a}</button>`).join('');$$('.axisBtn').forEach(b=>b.onclick=()=>{axis=b.dataset.axis;drawAxes();refresh()})}
     function drawCalendar(){const y=month.getFullYear(),m=month.getMonth(),first=new Date(y,m,1).getDay(),last=new Date(y,m+1,0).getDate(),prevLast=new Date(y,m,0).getDate(),bounds=weekBounds(weekDate),weekStart=dateKey(bounds.start),weekEnd=dateKey(bounds.end);$('#monthTitle').textContent=`${y}년 ${m+1}월`;let out='';for(let i=0;i<first;i++)out+=`<button class="day out" disabled><span class="dayNum">${prevLast-first+i+1}</span></button>`;for(let d=1;d<=last;d++){const iso=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,r=filtered().find(x=>x.date===iso),missing=missingDates.includes(iso),cls=r?tone(r):'',inWeek=iso>=weekStart&&iso<=weekEnd;out+=`<button class="day ${r?'has':''} ${missing?'missing':''} ${inWeek?'inWeek':''} ${r?.id===selected?.id?'selected':''}" data-date="${iso}" data-id="${r?.id||''}"><span class="dayNum">${d}</span>${r?`<span class="event ${cls}">${r.title}</span>`:missing?'<span class="event missing">미발행</span>':''}</button>`}$('#days').innerHTML=out;$$('.day:not(.out)').forEach(b=>b.onclick=()=>{weekDate=b.dataset.date;const weekReports=reportsInWeek(weekDate);selected=b.dataset.id?reports.find(r=>r.id===b.dataset.id):(weekReports[0]||null);drawCalendar();drawSpotlight()})}
     function drawSpotlight(){
-      const r=selected,{start,end}=weekBounds(weekDate),weekReports=reportsInWeek(weekDate),short=d=>`${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`,counts={};
-      weekReports.forEach(x=>{const key=group(x);counts[key]=(counts[key]||0)+1});
-      const topCategories=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([name])=>name),headline=weekReports.length?`이번 주 ${weekReports.length}건의 리포트에서 ${topCategories.join('·')} 흐름을 함께 정리했습니다.`:'이 주에는 등록된 리포트가 없습니다.';
-      const summarize=items=>items.length?items.map((text,i)=>`${i+1}) ${text}`).join(' · '):'등록된 리포트가 없습니다.';
-      const process=weekReports.length?[
-        ['금주 새로 등장한 기술',summarize(weekReports.map(x=>x.discovery))],
-        ['이전에 비해 달라진 점',summarize(weekReports.map(x=>x.summary||x.why))],
-        ['앞으로의 방향',summarize(weekReports.map(x=>x.poc))]
-      ]:[],changeItems=process.map(([label,text],i)=>`<div class="weeklyChange"><i class="weeklyStep">${i+1}</i><div class="weeklyChangeText"><em>${label}</em><span>${text}</span></div></div>`).join('');
+      const r=selected,{start,end}=weekBounds(weekDate),weekReports=reportsInWeek(weekDate),short=d=>`${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+      const headline=weekReports.length?`이번 주에 등록된 ${weekReports.length}건을 기술, 변화, 확인사항으로 정리했습니다.`:'이 주에는 등록된 리포트가 없습니다.';
+      const concise=text=>{const value=String(text||'').trim();return value.length>85?value.slice(0,84)+'…':value};
+      const weeklyItem=(x,key)=>{
+        const note=x.weekly||{},topic=note.topic||x.category||x.title;
+        const text=key==='change'?(note.change||concise(x.why)):key==='check'?(note.check||concise(x.poc)):'';
+        return `<li class="weeklyItem"><button class="weeklyReport" data-read="${x.id}" title="${esc(x.title)}"><span class="weeklyDate">${x.date.slice(5).replace('-','.')}</span><b>${esc(topic)}</b></button>${text?`<p>${esc(text)}</p>`:''}</li>`;
+      };
+      const sections=[['이번 주에 다룬 기술','topic'],['기존 방식과 달라지는 점','change'],['먼저 확인할 항목','check']];
+      const changeItems=weekReports.length?sections.map(([label,key],i)=>{
+        const visible=weekReports.slice(0,3),remaining=weekReports.slice(3);
+        return `<section class="weeklySection"><h3><i class="weeklyStep">${i+1}</i><span>${label}</span></h3><ul class="weeklyList">${visible.map(x=>weeklyItem(x,key)).join('')}</ul>${remaining.length?`<details class="weeklyMore"><summary>나머지 ${remaining.length}건 더 보기</summary><ul class="weeklyList">${remaining.map(x=>weeklyItem(x,key)).join('')}</ul></details>`:''}</section>`;
+      }).join(''):'';
       $('#spotlight').innerHTML=`<div class="weeklyPanel"><div class="weeklyHead"><b>선택한 주의 변화</b><span>${short(start)}~${short(end)}</span></div><p class="weeklyLead">${headline}</p><div class="weeklyMetrics"><div class="weeklyMetric"><strong>${weekReports.length}</strong><span>신규 리포트</span></div><div class="weeklyMetric"><strong data-view-stat="unique">–</strong><span>방문자 수</span></div><div class="weeklyMetric"><strong data-view-stat="report">–</strong><span>리포트 열람 횟수</span></div></div><div class="weeklyChanges">${changeItems}</div></div>${r?`<div class="selectedMini"><div class="selectedMiniLabel"><span>선택한 리포트</span><span>${group(r)}</span></div><h3>${r.title}</h3><button class="readBtn" data-read="${r.id}">요약과 상세 리포트 보기</button></div>`:'<div class="selectedMini"><div class="empty">이 주에는 선택할 리포트가 없습니다.</div></div>'}`;bindReaders();drawBriefs();loadWeekStats(weekDate)
     }
     function drawBriefs(){const r=selected;$('#briefs').innerHTML=r?`<article class="brief discovery"><div class="briefHead"><span class="briefNo">01</span><span><b class="briefTitle">발견 기술</b><small class="briefQuestion">무엇이 새로 나왔나</small></span></div><p>${r.discovery}</p></article><article class="brief meaning"><div class="briefHead"><span class="briefNo">02</span><span><b class="briefTitle">실무 의미</b><small class="briefQuestion">왜 업무에 중요한가</small></span></div><p>${r.why}</p></article><article class="brief verify"><div class="briefHead"><span class="briefNo">03</span><span><b class="briefTitle">사전검증</b><small class="briefQuestion">현장에서 무엇을 확인할까</small></span></div><p>${r.poc}</p></article>`:''}
