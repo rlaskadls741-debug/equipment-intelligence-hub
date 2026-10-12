@@ -69,6 +69,122 @@
       
 
 
+
+      <details class="staticReport" id="static-261013" open>
+        <summary><span class="staticDate">10.13</span><span class="staticTitle">다변수 모델예측제어를 설비 폐루프에 넣는 조건</span><span class="staticAxis">설비 지능화</span></summary>
+        <div class="staticMeta"><div class="tags"><span class="tag">모델예측제어</span><span class="tag">다변수제어</span><span class="tag">AI제어</span><span class="tag">안전경계</span></div><p>모델예측제어는 여러 공정변수와 제약조건을 동시에 계산해 설정값을 갱신하지만, AI가 목적과 조건을 바꿀 때는 허용범위·승인·기존 제어 복귀를 별도로 설계해야 합니다.</p></div>
+        <article class="reportBody staticContent"><div class="normalizedReport">
+          <section class="quickBrief" aria-label="30초 요약">
+            <div class="quickLabel">오늘의 설비 지능화 기술동향 · 10월 13일</div>
+            <p class="quickLead">최근 24시간에 PC 제어와 산업 AI의 구도를 바꿀 새 공식 발표는 확인되지 않았습니다. 대신 최근 일주일에 반복된 흐름인 ‘분석에서 폐루프 제어로의 이동’을 살펴봅니다. 핵심은 AI라는 이름보다, 다변수 모델예측제어가 계산한 목표값을 어떤 범위와 절차로 설비에 반영할지 정하는 것입니다.</p>
+            <div class="quickGrid">
+              <div><span>주요 기술</span><strong>여러 공정변수와 제약조건을 동시에 예측해 설정값을 갱신하는 모델예측제어</strong></div>
+              <div><span>선정 이유</span><strong>최근 발표에서 AI 분석을 실제 제어 동작으로 연결하는 기능이 구체적으로 제시됐습니다.</strong></div>
+              <div><span>달라지는 점</span><strong>작업자의 단일 설정값 보정에서 여러 변수와 제한조건을 함께 계산하는 방식으로 확장됩니다.</strong></div>
+              <div><span>확인 한계</span><strong>최근 발표는 예정 전시이며 배터리 양산 적용 성과나 독립 검증값은 아닙니다.</strong></div>
+              <div class="wide"><span>사전검증</span><strong>기존 데이터로 모델을 만든 뒤 그림자운전, 권고운전, 제한 폐루프 순서로 확대하며 예측오차·제약위반·복귀시간을 측정합니다.</strong></div>
+            </div>
+            <div class="quickCaution"><b>제어권한 원칙</b><span>AI는 목적이나 후보 설정값을 제안할 수 있지만, 최종 출력은 검증된 제한조건·인터록·기존 제어기가 승인하도록 구성해야 합니다.</span></div>
+          </section>
+          <nav class="reportJump" aria-label="리포트 바로가기"><a href="#analysis-261013">상세 분석</a><a href="#sources-261013">공식 근거자료</a></nav>
+          <section class="detailSection" id="analysis-261013">
+            <div class="sectionTitle"><span>DETAIL</span><h2>상세 분석</h2><p>확인된 기능, 공급사 주장과 작성자 해석을 구분했습니다.</p></div>
+            <details class="reportDetails"><summary>상세 리포트 펼쳐보기</summary><div class="detailContent">
+              <h2>오늘 전체 흐름과 선정 이유</h2>
+              <p>10월 13일 오전까지 최근 24시간의 주요 자동화 업체 공식 발표를 확인했지만 PC 제어, 산업용 컴퓨터, 실시간 통신의 방향을 새로 바꿀 만한 발표는 확인되지 않았습니다. 새 소식처럼 꾸미기보다 최근 일주일에 반복해 등장한 ‘분석 결과를 실제 제어 동작으로 연결하는 구조’를 오늘의 주제로 선정했습니다.</p>
+              <p>Rockwell Automation은 10월 5일 PACK EXPO International 전시 계획을 발표하면서 FactoryTalk Analytics Model Predictive Control이 다변수 폐루프 제어와 AI를 이용해 분석에서 동작으로 이어진다고 설명했습니다. 행사는 10월 18~21일 예정이므로 현재 확인된 것은 공급사의 전시 계획과 제품 설명이며, 현장 성과가 새로 검증됐다는 뜻은 아닙니다.</p>
+              <p>선정 이유는 단순 예지보전이나 화면 분석보다 한 단계 더 나아가 AI와 고급제어가 실제 설정값을 바꾸려 하기 때문입니다. 설비 지능화에서 가장 중요한 질문도 모델 정확도만이 아니라 ‘누가 제어권을 갖고, 어떤 범위에서 값을 바꾸며, 문제가 생기면 얼마나 빨리 기존 제어로 돌아오는가’로 이동합니다.</p>
+
+              <h2>기술 개요와 작동 과정</h2>
+              <ol>
+                <li><b>상태 수집:</b> 온도, 압력, 속도, 장력, 유량, 품질값과 현재 조작값을 같은 시간축으로 수집합니다.</li>
+                <li><b>상태 추정:</b> 직접 측정하기 어려운 품질이나 공정상태를 모델이 계산합니다. 센서 지연과 결측도 함께 처리해야 합니다.</li>
+                <li><b>미래 예측:</b> 현재 상태에서 조작값을 바꿨을 때 다음 수분, 두께, 장력 또는 품질이 어떻게 변할지 일정 구간을 예측합니다.</li>
+                <li><b>최적화:</b> 품질편차, 처리량, 에너지와 설비 제한을 목적함수와 제약조건으로 두고 가능한 조작값 순서를 계산합니다.</li>
+                <li><b>첫 동작만 반영:</b> 계산된 순서 전체를 한 번에 실행하지 않고 첫 번째 조작값만 적용한 뒤 새 측정값으로 다시 계산합니다.</li>
+                <li><b>감독과 복귀:</b> 예측오차, 제약위반, 통신지연 또는 모델 이상이 기준을 넘으면 출력을 고정하거나 기존 PID·규칙제어로 복귀합니다.</li>
+              </ol>
+              <p><b>확인된 사실:</b> Rockwell의 PavilionX는 선형·비선형 공정, 경험 데이터·물리식·운영자 지식을 조합한 모델과 제어기 성능지표를 제공한다고 설명합니다. <b>공급사 주장:</b> 품질편차 감소와 처리량 개선 수치는 공급사 사례입니다. <b>작성자 해석:</b> 배터리 설비에서는 공정 지연과 모델오차가 크므로 초기에는 최종 제어권을 주지 않는 단계적 검증이 적합합니다.</p>
+
+              <h2>기존 방식과 달라지는 점</h2>
+              <div class="table-wrap"><table><thead><tr><th>항목</th><th>기존 방식</th><th>모델예측제어 적용</th><th>우선 확인</th></tr></thead><tbody>
+                <tr><td>변수 관계</td><td>한 루프씩 개별 조정</td><td>여러 입력과 출력의 영향을 동시에 계산</td><td>변수 간 간섭과 모델 식별 가능성</td></tr>
+                <tr><td>제약 처리</td><td>알람과 상하한으로 사후 차단</td><td>최적화 계산 안에 속도·온도·품질 제한을 포함</td><td>모든 안전한계가 빠짐없이 정의됐는지</td></tr>
+                <tr><td>운전 대응</td><td>작업자가 추세를 보고 설정값 수정</td><td>예측결과에 따라 작은 조작을 반복 계산</td><td>변경폭·변경속도·승인조건</td></tr>
+                <tr><td>AI 역할</td><td>이상감지나 품질 예측 후 알림</td><td>목적값과 운전 후보를 제안해 폐루프와 연결</td><td>AI가 인터록과 현장 제어를 우회하지 않는 구조</td></tr>
+              </tbody></table></div>
+
+              <h2>장점과 한계</h2>
+              <h3>기대할 수 있는 장점</h3>
+              <ul>
+                <li>서로 영향을 주는 변수와 장비 제한을 함께 계산해 단일 PID 조정만으로 어려운 공정 편차를 줄일 수 있습니다.</li>
+                <li>현재값뿐 아니라 앞으로의 변화를 예측해 지연이 긴 건조·열처리 공정에서 선제적으로 조정할 수 있습니다.</li>
+                <li>변경 이유, 예측값, 제약 활성상태를 기록하면 작업자 경험에만 의존하던 보정을 표준화할 수 있습니다.</li>
+              </ul>
+              <h3>한계와 위험</h3>
+              <ul>
+                <li>모델이 학습하지 않은 원료, 속도, 환경조건으로 벗어나면 예측오차가 급격히 커질 수 있습니다.</li>
+                <li>센서 지연·결측과 품질 측정 지연이 크면 현재 상태를 잘못 판단해 반대 방향으로 조정할 수 있습니다.</li>
+                <li>목적함수의 가중치를 잘못 정하면 품질을 유지하면서 에너지와 수명을 희생하는 등 의도하지 않은 결과가 생길 수 있습니다.</li>
+                <li>상위 PC나 네트워크가 끊겼을 때 기존 제어가 마지막 안전 설정값을 유지하고 독립적으로 운전할 수 있어야 합니다.</li>
+                <li>AI가 제약조건을 자동 변경하도록 두면 검증범위를 벗어날 수 있으므로 안전한계와 변경 승인은 별도로 고정해야 합니다.</li>
+              </ul>
+
+              <h2>실제 적용 사례와 확인 범위</h2>
+              <p>Rockwell은 PavilionX 공식 제품 페이지에서 국제 유제품 생산업체의 건조공정에 예측모델 기반 수분 제어를 적용해 품질변동 최대 42% 감소, 처리량 6~15.8% 증가를 제시합니다. 시멘트 공정에서는 두 설비의 처리량을 각각 4.8%와 5.7% 높이고 전력소비를 줄였다고 설명합니다. 이 수치는 공급사가 공개한 사례이며 시험조건과 원자료가 모두 공개된 독립 검증값은 아닙니다.</p>
+              <p>공정 사례는 연속 공정 중심입니다. 배터리 제조에 그대로 적용할 수 있다는 근거는 아닙니다. 다만 건조로 온도·풍량·라인속도, 전극 장력·두께·도포량처럼 변수 간 간섭과 지연이 있는 구간에서 검토할 논리는 있습니다. 조립 위치결정이나 안전 모션처럼 밀리초 단위의 확정성이 필요한 루프는 기존 실시간 제어에 두는 편이 타당합니다.</p>
+
+              <h2>당사 공정·PC 제어와 연결해 볼 부분</h2>
+              <ol>
+                <li>먼저 품질에 영향을 주는 조작변수, 외란, 측정변수와 절대 변경 금지 범위를 공정·제어 담당자가 함께 정의합니다.</li>
+                <li>PC에서는 모델 계산과 권고값 생성을 담당하고, 실시간 제어기에서는 범위·변경률·인터록을 최종 검사합니다.</li>
+                <li>초기에는 실제 출력 대신 ‘적용했다면 어떤 값이 나왔는지’를 기록하는 그림자운전으로 모델오차와 제약위반을 확인합니다.</li>
+                <li>권고운전에서는 작업자 승인 후 제한된 설정값만 반영하고 승인 전후 품질편차와 조정횟수를 비교합니다.</li>
+                <li>제한 폐루프에서는 통신단절, 센서 고착, 결측, 품종 변경과 모델오차 증가를 강제로 발생시켜 기존 제어 복귀를 시험합니다.</li>
+              </ol>
+
+              <h2>국내 업체와 접촉 경로</h2>
+              <ul>
+                <li><b>Rockwell Automation Korea:</b> <a href="https://www.rockwellautomation.com/ko-kr/company/about-us/contact-us.html" target="_blank" rel="noopener noreferrer">한국 공식 문의 페이지</a>에서 PavilionX 국내 공급·기술지원, 타사 제어기 연동, 데이터 요구조건, 모델 유지보수와 시험 라이선스를 문의합니다.</li>
+                <li><b>한국지멘스 Digital Industries:</b> <a href="https://www.siemens.com/ko-kr/contact/digital-industries-south-korea/" target="_blank" rel="noopener noreferrer">국내 제품·구매 문의</a>와 <a href="https://www.siemens.com/ko-kr/contact/digital-industries-service-south-korea/" target="_blank" rel="noopener noreferrer">기술지원 페이지</a>를 사용합니다. 지원센터 전화는 02-3450-7000, 기술지원 메일은 support.korea.automation@siemens.com으로 안내돼 있습니다.</li>
+              </ul>
+              <p>문의할 때는 제품 소개보다 대상 공정의 샘플주기, 품질 측정 지연, 학습에 필요한 정상·이상 데이터 기간, 타사 EtherCAT·PC 제어와의 연결방식, 출력 제한과 장애복귀 기능을 문서로 요청하는 편이 좋습니다.</p>
+
+              <h2>사전검증 순서</h2>
+              <ol>
+                <li><b>문제 고정:</b> 줄이려는 품질편차와 조작 가능한 설정값을 각각 1~3개로 제한합니다.</li>
+                <li><b>데이터 검사:</b> 시간동기, 결측, 센서 고착, 품종변경과 작업자 개입 이력을 정리합니다.</li>
+                <li><b>오프라인 모델:</b> 학습기간과 검증기간을 분리하고 정상·변경·외란 조건별 예측오차를 확인합니다.</li>
+                <li><b>그림자운전:</b> 출력은 기록만 하며 기존 제어와 비교해 제약위반, 잘못된 방향의 조정과 계산지연을 측정합니다.</li>
+                <li><b>권고운전:</b> 작업자 승인과 변경폭 제한을 두고 품질편차, 조정횟수와 승인거부 사유를 기록합니다.</li>
+                <li><b>제한 폐루프:</b> 비안전·비핵심 설정값 한 개부터 자동 반영하고 통신·센서·모델 이상 시 즉시 기존 제어로 복귀합니다.</li>
+                <li><b>확대 판단:</b> 품질 개선뿐 아니라 제약위반 0회, 복귀시간, 모델 유지공수와 작업자 수용성을 함께 평가합니다.</li>
+              </ol>
+
+              <h2>용어 정리</h2>
+              <ul>
+                <li><b>모델예측제어:</b> 공정 모델로 미래 상태를 예측하고 제약조건 안에서 가장 적절한 조작값을 반복 계산하는 제어입니다.</li>
+                <li><b>목적함수:</b> 품질편차, 처리량, 에너지처럼 줄이거나 높이려는 목표를 숫자로 표현한 기준입니다.</li>
+                <li><b>예측구간:</b> 현재부터 앞으로 얼마만큼의 시간을 계산할지 정한 범위입니다.</li>
+                <li><b>그림자운전:</b> 모델이 값을 계산하되 실제 설비에는 쓰지 않고 기존 제어 결과와 비교하는 시험입니다.</li>
+              </ul>
+              <p><b>작성자 해석:</b> 배터리 설비에서 모델예측제어의 첫 적용은 빠른 모션 루프보다 지연이 길고 여러 변수가 얽힌 공정이 적합합니다. AI는 제약조건을 바꾸는 주체가 아니라 검증된 범위 안에서 목표와 후보값을 제안하는 역할부터 시작해야 합니다.</p>
+              <p><b>김남인 · 선행제어기술팀 미래기술파트</b></p>
+            </div></details>
+          </section>
+          <section class="detailSection" id="sources-261013">
+            <div class="sectionTitle"><span>SOURCES</span><h2>공식 근거자료</h2><p>최근 발표를 중심으로 공급사 공식 제품·기술자료를 보조 확인했습니다.</p></div>
+            <div class="sourceGrid">
+              <article class="sourceCard"><div class="sourceType">Rockwell 공식 발표 · 2026-10-05</div><h3>단계적 자율운전 전시 계획</h3><p>다변수 폐루프 모델예측제어와 AI, 작업 흐름 조정, 디지털 트윈을 함께 제시한 예정 전시입니다.</p><a class="sourceLink" href="https://www.rockwellautomation.com/en-au/company/news/press-releases/pack-expo-2026.html" target="_blank" rel="noopener noreferrer">원문 열기</a></article>
+              <article class="sourceCard"><div class="sourceType">Rockwell 공식 제품자료</div><h3>PavilionX 모델예측제어</h3><p>예측·최적화 과정, 선형·비선형 모델, 제어기 성능지표와 공급사 적용사례를 확인했습니다.</p><a class="sourceLink" href="https://www.rockwellautomation.com/en-sg/products/software/factorytalk/operationsuite/pavilionX.html" target="_blank" rel="noopener noreferrer">원문 열기</a></article>
+              <article class="sourceCard"><div class="sourceType">Siemens 공식 구조자료</div><h3>산업 AI 조정 계층</h3><p>AI 명령 충돌과 위험 명령을 차단하고 가상 시운전 후 배포하는 구조를 보조 근거로 사용했습니다.</p><a class="sourceLink" href="https://www.siemens.com/en-gb/content/architecture-hub/industrial-ai-orchestration-layer/" target="_blank" rel="noopener noreferrer">원문 열기</a></article>
+              <article class="sourceCard"><div class="sourceType">Siemens 공식 제품자료</div><h3>SIMATIC 고급공정제어</h3><p>모델예측제어, 상태추정, 실시간 최적화와 사전 모의시험 구조를 비교 확인했습니다.</p><a class="sourceLink" href="https://www.siemens.com/en-us/products/simatic/advanced-process-control/" target="_blank" rel="noopener noreferrer">원문 열기</a></article>
+            </div>
+            <p class="footer-note">조사 기준: 2026년 10월 13일 오전, 한국 시간. 최근 24시간의 주요 신규 발표는 확인되지 않아 최근 일주일의 공식 발표와 현재 제품자료를 구분해 사용했습니다.</p>
+          </section>
+        </div></article>
+      </details>
+
       <details class="staticReport" id="static-261012" open>
         <summary><span class="staticDate">10.12</span><span class="staticTitle">EtherCAT 서보와 분산 I/O로 장비 제어 구조를 바꾸는 흐름</span><span class="staticAxis">전기·제어</span></summary>
         <div class="staticMeta"><div class="tags"><span class="tag">EtherCAT</span><span class="tag">서보</span><span class="tag">분산 I/O</span><span class="tag">제어반 축소</span></div><p>최근 핵심 흐름은 서보 축과 현장 전장을 함께 표준화하는 것입니다. EtherCAT 연결과 분산 전장은 배선·시운전 단축 가능성이 있지만 PC 마스터 호환, 안전, 전원·EMC를 먼저 검증해야 합니다.</p></div>
@@ -2857,7 +2973,8 @@
       {id:'261009',date:'2026-10-09',title:'로봇 통합형 AI 비전이 시운전 구조를 바꾸는 방식',axis:'설비지능화',category:'AI·로봇 비전',tags:['AI비전','로봇','2D·3D','시운전'],summary:'KUKA의 통합 비전은 설정 공수를 줄이는 방향을 보여주지만 좌표 보정·실패 복구와 안전 경계는 별도 검증해야 합니다.',discovery:'로봇 생태계에 통합된 AI 기반 2D·3D 비전과 드래그앤드롭 작업 구성',why:'초기 통합공수를 줄일 가능성이 있으나 생산 신뢰성과 예외처리를 정량화해야 합니다.',study:'hand-eye calibration, 객체 자세, confidence, 작업영역, 좌표 유효시간, 실패 복구',companies:'KUKA Robotics Korea와 국내 공인 시스템 파트너',poc:'정상·가림·반사·혼입·위치변화에서 인식률, 오동작 차단률, 사이클타임과 복구시간을 비교합니다.',caution:'쉬운 설정은 지원 구성 안의 공급사 설명이며 모든 기존 장치 호환을 뜻하지 않습니다.',source_use:'KUKA 공식 제품 발표와 한국 법인 지원 경로',sourceCount:2},
       {id:'261010',date:'2026-10-10',title:'비전·모션·로봇을 한 실시간 PC 제어 주기에 묶는 방법',axis:'전기·제어',category:'PC·비전 제어',tags:['PC제어','실시간비전','EtherCAT','동기화'],summary:'비전을 PC 제어 런타임에 통합하면 영상·축 위치를 같은 시간축에서 처리할 수 있지만 연산량이 모션 주기를 침범하지 않도록 자원을 분리해야 합니다.',discovery:'동일 실시간 환경에서 비전 알고리즘과 모션·로봇 태스크를 동기 실행하는 PC 기반 제어',why:'촬영 시점의 축 위치를 정확히 연결하고 별도 비전 PC 간 통신을 줄일 수 있으나 단일 장애점과 자원경합이 커집니다.',study:'Distributed Clocks, 하드웨어 트리거, 태스크 우선순위, 멀티코어, job task, WCET',companies:'Beckhoff Automation Korea와 국내 머신비전·EtherCAT SI',poc:'최대 카메라·AI·로그 부하에서 EtherCAT 주기, 타임스탬프, 결과 지연과 장애 격리를 측정합니다.',caution:'공식 전시 설명은 사용자 장비의 주기 보장값이 아니며 조합별 재시험이 필요합니다.',source_use:'Beckhoff 공식 VISION 2026 및 통합 비전 기술자료',sourceCount:2},
       {id:'261011',date:'2026-10-11',title:'능동 스테레오 3D 카메라를 로봇 인식에 적용하는 조건',axis:'설비지능화',category:'3D 센싱',tags:['3D비전','능동스테레오','로봇인식','센서검증'],summary:'능동 스테레오 카메라는 무늬가 적은 물체의 깊이 인식을 보완하지만 반사 금속·검은 표면·외란광과 제어 지연을 함께 검증해야 합니다.',discovery:'적외선 패턴으로 표면 특징을 보강하는 1MP 능동 스테레오 깊이 카메라',why:'무작위 적재 부품의 위치·자세 추정에 활용할 수 있으나 표면별 깊이 결측을 먼저 확인해야 합니다.',study:'스테레오 시차, 깊이 오차, 외부표정, hand-eye calibration, 포인트클라우드, 타임스탬프',companies:'e-con Systems, KUKA Korea와 국내 3D 비전·로봇 SI',poc:'실제 시편으로 거리·각도·조명·오염을 바꾸며 결측률, 위치오차와 전체 지연을 측정합니다.',caution:'공개자료는 양산라인 반복정밀도와 반사체 성능을 보증하지 않으며 국내 지원은 별도 확인이 필요합니다.',source_use:'e-con Systems 공식 제품 발표와 전시자료',sourceCount:2},
-      {id:'261012',date:'2026-10-12',title:'EtherCAT 서보와 분산 I/O로 장비 제어 구조를 바꾸는 흐름',axis:'전기·제어',category:'PC·모션 제어',tags:['EtherCAT','서보','분산 I/O','제어반 축소'],summary:'최근 핵심 흐름은 서보 축과 현장 전장을 함께 표준화하는 것입니다. EtherCAT 연결과 분산 전장은 배선·시운전 단축 가능성이 있지만 PC 마스터 호환, 안전, 전원·EMC를 먼저 검증해야 합니다.',discovery:'EtherCAT 서보와 장비 가까이에 배치하는 전원·안전·입출력 구조',why:'축 제어와 배선 구조를 함께 검토하면 장비 변경과 정비시간을 줄일 수 있지만 상호운용성과 현장 환경 검증이 필요합니다.',study:'ESI와 CoE 객체, 동기 모드, 제어주기, 분산전원 보호, 접지·차폐, STO 안전경계',companies:'한국오므론제어기기, Rockwell Automation Korea와 국내 EtherCAT·전장 시스템 통합 업체',poc:'1축 벤치에서 제어주기·위치오차·통신단절·STO·전원복귀를 시험하고 분산 배선의 온도·전압강하·진단성을 비교합니다.',caution:'C6는 유럽 발표 제품이며 한국 공급과 제3자 PC 마스터 호환은 확인되지 않았습니다. 공수 절감률은 공급사 주장입니다.',source_use:'최근 서보 발표와 제어반 외부 분산 전장, 자율운전으로 이어지는 단계적 제어 구조',sourceCount:4,weekly:{topic:'서보와 분산 전장을 함께 설계',change:'축 제어와 현장 배선을 하나의 장비 구조로 묶습니다.',check:'1축에서 통신주기와 안전정지, 전원복귀를 시험합니다.'}}
+      {id:'261012',date:'2026-10-12',title:'EtherCAT 서보와 분산 I/O로 장비 제어 구조를 바꾸는 흐름',axis:'전기·제어',category:'PC·모션 제어',tags:['EtherCAT','서보','분산 I/O','제어반 축소'],summary:'최근 핵심 흐름은 서보 축과 현장 전장을 함께 표준화하는 것입니다. EtherCAT 연결과 분산 전장은 배선·시운전 단축 가능성이 있지만 PC 마스터 호환, 안전, 전원·EMC를 먼저 검증해야 합니다.',discovery:'EtherCAT 서보와 장비 가까이에 배치하는 전원·안전·입출력 구조',why:'축 제어와 배선 구조를 함께 검토하면 장비 변경과 정비시간을 줄일 수 있지만 상호운용성과 현장 환경 검증이 필요합니다.',study:'ESI와 CoE 객체, 동기 모드, 제어주기, 분산전원 보호, 접지·차폐, STO 안전경계',companies:'한국오므론제어기기, Rockwell Automation Korea와 국내 EtherCAT·전장 시스템 통합 업체',poc:'1축 벤치에서 제어주기·위치오차·통신단절·STO·전원복귀를 시험하고 분산 배선의 온도·전압강하·진단성을 비교합니다.',caution:'C6는 유럽 발표 제품이며 한국 공급과 제3자 PC 마스터 호환은 확인되지 않았습니다. 공수 절감률은 공급사 주장입니다.',source_use:'최근 서보 발표와 제어반 외부 분산 전장, 자율운전으로 이어지는 단계적 제어 구조',sourceCount:4,weekly:{topic:'서보와 분산 전장을 함께 설계',change:'축 제어와 현장 배선을 하나의 장비 구조로 묶습니다.',check:'1축에서 통신주기와 안전정지, 전원복귀를 시험합니다.'}},
+      {id:'261013',date:'2026-10-13',title:'다변수 모델예측제어를 설비 폐루프에 넣는 조건',axis:'설비지능화',category:'AI·고급제어',tags:['모델예측제어','다변수제어','AI제어','안전경계'],summary:'모델예측제어는 여러 공정변수와 제약조건을 동시에 계산해 설정값을 갱신하지만, AI가 목적과 조건을 바꿀 때는 허용범위·승인·기존 제어 복귀를 별도로 설계해야 합니다.',discovery:'여러 공정변수와 제약조건을 동시에 예측해 설정값을 갱신하는 고급제어',why:'AI 분석을 실제 설비 동작으로 연결하려면 예측 정확도뿐 아니라 제어권한과 안전한 복귀 구조가 필요합니다.',study:'예측모델, 제어구간, 목적함수, 제약조건, 상태추정, 모델오차, 그림자운전, 기존 제어 복귀',companies:'Rockwell Automation Korea, 한국지멘스 Digital Industries와 국내 공정제어·데이터 분석 업체',poc:'기존 운전데이터로 모델을 만들고 그림자운전, 권고운전, 제한 폐루프 순서로 확대하며 품질편차·지연·제약위반과 복귀시간을 측정합니다.',caution:'10월 5일 발표는 예정 전시 내용이며 배터리 양산 적용 성과가 아닙니다. 공개 사례 수치도 공급사 자료이므로 공정별 재검증이 필요합니다.',source_use:'최근 자율운전 발표의 모델예측제어 구조와 공급사 공식 제품·안전경계 자료',sourceCount:4,weekly:{topic:'여러 변수를 함께 보는 예측제어',change:'작업자 보정 대신 제약 안에서 설정값을 계산합니다.',check:'그림자운전에서 오차와 제약위반을 먼저 측정합니다.'}}
     ]);
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
@@ -3100,7 +3217,7 @@
     function drawBriefs(){const r=selected;$('#briefs').innerHTML=r?`<article class="brief discovery"><div class="briefHead"><span class="briefNo">01</span><span><b class="briefTitle">발견 기술</b><small class="briefQuestion">무엇이 새로 나왔나</small></span></div><p>${r.discovery}</p></article><article class="brief meaning"><div class="briefHead"><span class="briefNo">02</span><span><b class="briefTitle">실무 의미</b><small class="briefQuestion">왜 업무에 중요한가</small></span></div><p>${r.why}</p></article><article class="brief verify"><div class="briefHead"><span class="briefNo">03</span><span><b class="briefTitle">사전검증</b><small class="briefQuestion">현장에서 무엇을 확인할까</small></span></div><p>${r.poc}</p></article>`:''}
     function drawArchive(){const xs=filtered();$('#reportList').innerHTML=xs.map(r=>`<button class="reportRow" data-read="${r.id}"><span class="reportDate">${r.date.slice(2).replaceAll('-','.')}</span><span class="reportTitle">${r.title}<small class="reportSub">${r.category} · ${r.tags.join(' · ')}</small></span><span class="axisBadge ${tone(r)}">${group(r)}</span></button>`).join('')||'<div class="empty">조건에 맞는 리포트가 없습니다.</div>';$('#intCount').textContent=reports.filter(r=>group(r)==='설비 지능화').length;$('#controlCount').textContent=reports.filter(r=>group(r)==='전기·제어').length;$('#otherCount').textContent=reports.filter(r=>group(r)==='기타 자동화').length;bindReaders()}
     function drawBoard(){const xs=filtered(),groups=['설비 지능화','전기·제어','기타 자동화'];$('#techBoard').innerHTML=groups.map(g=>{const items=xs.filter(r=>group(r)===g);return `<section class="surface lane"><div class="laneTitle"><h3>${g}</h3><span>${items.length}건</span></div>${items.map(r=>`<button class="techCard" data-read="${r.id}"><b>${r.title}</b><small>${r.date.slice(5)} · ${r.category}</small></button>`).join('')||'<div class="empty">등록된 리포트가 없습니다.</div>'}</section>`}).join('');bindReaders()}
-    const evalScores={260914:[24,24,17,13,12],260915:[20,20,17,13,14],260916:[19,21,20,14,14],260917:[21,22,20,15,14],260918:[19,20,19,14,14],260920:[20,21,18,14,14],260921:[23,23,18,14,13],260922:[19,20,16,13,14],260923:[19,21,17,13,14],260924:[21,22,20,14,14],260925:[21,22,17,14,14],260926:[21,22,19,15,14],260927:[20,22,20,15,14],260928:[20,22,20,15,14],260929:[21,21,20,15,14],260930:[22,23,20,15,13],261001:[22,23,20,15,13],261002:[20,22,19,14,14],261003:[22,22,20,15,14],261004:[19,21,20,15,14],261005:[17,22,20,15,14],261006:[19,22,20,15,14],261007:[20,22,20,15,14],261008:[24,24,20,15,13],261009:[23,23,19,14,13],261010:[23,24,20,14,13],261011:[22,23,19,14,13],261012:[23,23,20,14,14]};
+    const evalScores={260914:[24,24,17,13,12],260915:[20,20,17,13,14],260916:[19,21,20,14,14],260917:[21,22,20,15,14],260918:[19,20,19,14,14],260920:[20,21,18,14,14],260921:[23,23,18,14,13],260922:[19,20,16,13,14],260923:[19,21,17,13,14],260924:[21,22,20,14,14],260925:[21,22,17,14,14],260926:[21,22,19,15,14],260927:[20,22,20,15,14],260928:[20,22,20,15,14],260929:[21,21,20,15,14],260930:[22,23,20,15,13],261001:[22,23,20,15,13],261002:[20,22,19,14,14],261003:[22,22,20,15,14],261004:[19,21,20,15,14],261005:[17,22,20,15,14],261006:[19,22,20,15,14],261007:[20,22,20,15,14],261008:[24,24,20,15,13],261009:[23,23,19,14,13],261010:[23,24,20,14,13],261011:[22,23,19,14,13],261012:[23,23,20,14,14],261013:[23,23,20,14,14]};
     function drawEvaluation(){const grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C';$('#evalRows').innerHTML=[...reports].sort((a,b)=>b.date.localeCompare(a.date)).map(r=>{const s=evalScores[r.id]||[0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('')}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
