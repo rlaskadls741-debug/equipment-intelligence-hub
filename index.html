@@ -70,6 +70,119 @@
 
 
 
+
+      <details class="staticReport" id="static-261014" open>
+        <summary><span class="staticDate">10.14</span><span class="staticTitle">배터리 생산 장비의 분산형 PC 제어와 AI 엔지니어링</span><span class="staticAxis">전기·제어</span></summary>
+        <div class="staticMeta"><div class="tags"><span class="tag">PC기반제어</span><span class="tag">분산제어</span><span class="tag">AI엔지니어링</span><span class="tag">배터리생산</span></div><p>배터리 생산 장비 전시에서 이동형 운반 시스템, 기계 부착형 분산 전장, AI 엔지니어링 보조를 함께 제시했습니다. 핵심은 AI가 제어 출력을 직접 내는 것이 아니라, PC 기반 제어 구조를 단순화하고 개발·검증 작업을 보조하는 것입니다.</p></div>
+        <article class="reportBody staticContent"><div class="normalizedReport">
+          <section class="quickBrief" aria-label="30초 요약">
+            <div class="quickLabel">오늘의 설비 지능화 기술동향 · 10월 14일</div>
+            <p class="quickLead">최근 24시간 내 Siemens가 CNC·로봇·디지털 트윈·산업 AI를 묶은 기계가공 전시를 발표했고, 10월 13~15일 열리는 Beckhoff 배터리 전시에서는 PC 제어, 기계 부착형 분산 전장, 이동 시스템과 AI 엔지니어링 보조를 함께 보여주고 있습니다. 설비 가까이 제어와 전장 기능을 배치하면서도, AI의 변경 권한은 엔지니어 검토와 시험 안에 두는 흐름을 살펴봅니다.</p>
+            <div class="quickGrid">
+              <div><span>주요 기술</span><strong>PC 제어와 분산 전장을 이동형 생산설비·AI 개발도구와 결합하는 구조</strong></div>
+              <div><span>선정 이유</span><strong>10월 13일부터 열린 배터리 전시와 당일 공개된 통합 자동화 발표가 맞물렸습니다.</strong></div>
+              <div><span>달라지는 점</span><strong>중앙 제어반 중심에서 기계 부착형 입출력·전원·구동과 엔지니어링 보조로 확장됩니다.</strong></div>
+              <div><span>확인 한계</span><strong>전시 구성과 공급사 설명이며, 당사 양산 적용 성능이나 절감 효과가 검증된 것은 아닙니다.</strong></div>
+              <div class="wide"><span>사전검증</span><strong>실제 부하를 모사해 주기시간, 통신 복구, EMC, 열, 안전정지와 AI 제안의 검토·승인 절차를 확인합니다.</strong></div>
+            </div>
+            <div class="quickCaution"><b>제어권한 원칙</b><span>AI 엔지니어링 보조는 코드·설정 초안과 점검 항목 제안에 한정하고, 자동 반영 전에는 변경 검토, 빌드, 시뮬레이션, 승인과 복구 절차를 거쳐야 합니다.</span></div>
+          </section>
+          <nav class="reportJump" aria-label="리포트 바로가기"><a href="#analysis-261014">상세 분석</a><a href="#sources-261014">공식 근거자료</a></nav>
+          <section class="detailSection" id="analysis-261014">
+            <div class="sectionTitle"><span>DETAIL</span><h2>상세 분석</h2><p>공급사 설명, 확인된 사실과 작성자 해석을 구분했습니다.</p></div>
+            <details class="reportDetails"><summary>상세 리포트 펼쳐보기</summary><div class="detailContent">
+              <h2>오늘 전체 흐름과 선정 이유</h2>
+              <p>최근 24시간에는 제품 하나보다 여러 제어 요소를 묶는 공식 발표가 확인됐습니다. Siemens는 10월 13일 이탈리아 BI-MU 전시에서 CNC, 모션, 로봇, 디지털 트윈, 산업 AI를 한 구성으로 제시하고, 64비트 SINUMERIK ONE과 기계가공 로봇의 결합을 소개했습니다. 별도로 현재 진행 중인 Beckhoff Battery Show North America(10월 13~15일)는 PC 기반 제어, 기계 부착형 분산 전장, 이동형 운반, AI 엔지니어링 보조를 배터리 생산 맥락에 함께 배치했습니다.</p>
+              <p>오늘의 주제는 PLC 단독 제품이 아니라, 설비 가까운 곳에 전원·입출력·구동을 나누고 PC 기반 제어와 엔지니어링 도구를 함께 설계하는 방식입니다. 배터리 생산처럼 장비 종류가 많고 공정 변경이 잦은 환경에서 제어반 배선과 이동체 구성이 어떻게 달라질지 살펴볼 수 있습니다.</p>
+              <p><b>확인된 사실:</b> 두 회사가 10월 13일부터 시작한 산업 전시에서 제어·로봇·디지털 기술을 함께 소개하고 있습니다. <b>공급사 주장:</b> Beckhoff의 비용·성능 수치와 생산성 표현은 공급사 설명입니다. <b>작성자 해석:</b> 전시에서 확인된 구성은 기술 검토의 출발점이지, 당사 라인의 성능 보증이나 양산 도입 실적은 아닙니다.</p>
+
+              <h2>기술 개요와 작동 과정</h2>
+              <ol>
+                <li><b>중앙 PC에서 제어 작업 구성:</b> 산업용 PC가 모션, 입출력, 시각화, 데이터 수집 등 정해진 작업을 실행합니다. 축 제어 주기와 작업 우선순위는 일반 응용 프로그램과 분리해 설정해야 합니다.</li>
+                <li><b>기계 가까이에 기능 분산:</b> 기계 장착형 모듈에 전원, 통신, 입출력과 구동 기능을 배치합니다. 케이블 구간과 중앙 제어반 의존도를 낮출 수 있지만, 전체 장비 보호·안전 설계는 별도로 유지합니다.</li>
+                <li><b>제품 운반을 개별 제어:</b> 선형 이송 시스템은 여러 운반체의 위치와 속도를 제어해 공정별 대기·분기·간격을 조절합니다. 공정 사이 이송과 장비 축의 동기화가 필요합니다.</li>
+                <li><b>AI가 개발을 보조:</b> 엔지니어링 도구의 AI 보조 기능은 코드나 설정의 초안, 설명, 점검 후보를 제안할 수 있습니다. 실제 반영 전에는 사용자가 내용과 의존성을 검토해야 합니다.</li>
+                <li><b>검증 후 배포:</b> 변경 이력과 시험 결과를 남기고 정적 분석, 컴파일, 가상 시운전, 오프라인 검증, 승인 절차를 거친 뒤 제한된 장비에 적용합니다.</li>
+                <li><b>고장 격리와 복구:</b> PC, 네트워크, 분산 모듈 이상이 발생하면 안전회로와 현장 인터록이 우선 작동하고, 통신 복구 후에는 원점·상태 일치와 재기동 승인 조건을 확인합니다.</li>
+              </ol>
+              <p>Beckhoff는 Battery Show에서 XTS 계열 운반 기술, MX-System, TwinCAT CoAgent, AGV·AMR 구성과 드라이브 등을 함께 제시합니다. MX-System은 IP67 기계 장착형 모듈을 이용해 전원·IPC·입출력·구동을 분산하는 구조로 소개되며, CoAgent는 여러 AI 제공자와 로컬·클라우드 모델 선택을 지원한다고 설명합니다. 이 기능 설명은 공급사 자료이므로 지원 버전과 현장 보안 조건을 확인해야 합니다.</p>
+
+              <h2>기존 방식과 달라지는 점</h2>
+              <div class="table-wrap"><table><thead><tr><th>항목</th><th>기존 방식</th><th>분산 PC 제어 구성</th><th>우선 확인</th></tr></thead><tbody>
+                <tr><td>전장 배치</td><td>중앙 제어반에 장치와 단자를 집중</td><td>기계 장착 모듈로 전원·입출력·구동을 분산</td><td>열, 방진·방수, 전압강하와 보호협조</td></tr>
+                <tr><td>물류 이송</td><td>고정 피치 컨베이어와 단순 정지 구간</td><td>운반체별 위치·속도·대기 경로를 조정</td><td>정체, 충돌회피, 공정 추적과 복구</td></tr>
+                <tr><td>제어 연산</td><td>기능별 전용 제어기와 분리된 상위 PC</td><td>한 PC 플랫폼에서 모션·데이터·화면 기능을 통합 가능</td><td>실시간 주기, 우선순위, 장애 격리와 이중화</td></tr>
+                <tr><td>엔지니어링</td><td>사람이 코드와 설정을 직접 작성·검토</td><td>AI가 초안과 점검 후보를 제안하고 사람이 승인</td><td>잘못된 제안 차단, 변경 추적과 권한 분리</td></tr>
+              </tbody></table></div>
+
+              <h2>장점과 한계</h2>
+              <h3>기대할 수 있는 장점</h3>
+              <ul>
+                <li>기계 가까이에 입출력과 구동부를 둘 경우 긴 배선을 줄이고 모듈 단위 증설·정비가 쉬워질 수 있습니다.</li>
+                <li>운반체별 제어는 작업 순서와 제품 종류가 자주 바뀌는 조립·검사 구간에서 공정 간 대기시간을 줄일 선택지를 제공합니다.</li>
+                <li>PC 기반 제어는 모션, 시각화, 검사와 생산 데이터 처리를 한 엔지니어링 체계 안에서 조합할 수 있습니다.</li>
+                <li>AI 보조는 기존 코드·설정 설명과 반복적인 개발 작업을 줄이는 후보가 될 수 있으나, 효과는 검증 가능한 변경 단위로 측정해야 합니다.</li>
+              </ul>
+              <h3>한계와 위험</h3>
+              <ul>
+                <li>모듈 분산은 제어반 공간을 줄일 수 있지만 장비 주변 케이블, 커넥터, 열과 오염 노출을 늘릴 수 있습니다.</li>
+                <li>PC 자원 공유는 화면·로그·AI 부하가 모션 주기를 흔들 수 있어 코어·작업 우선순위·최악 실행시간 시험이 필요합니다.</li>
+                <li>여러 공급사 장비를 연결하면 시간 동기화, 장치 설명 파일, 진단 코드, 안전 기능의 책임 경계가 복잡해질 수 있습니다.</li>
+                <li>운반체가 자유롭게 움직여도 공정 추적성, 정지거리, 충돌방지, 고장 후 재동기화를 해결하지 않으면 생산 손실이 커집니다.</li>
+                <li>AI가 만든 코드를 자동으로 제어기에 반영하지 말고, 모델·로그·소스코드 반출 여부와 권한·보안정책을 먼저 확인해야 합니다.</li>
+              </ul>
+
+              <h2>실제 적용 사례와 확인 범위</h2>
+              <p><b>전시 시연:</b> Siemens는 BI-MU에서 Autonox 로봇의 디지털 트윈과 실물 로봇 가공 시연을 나란히 제시합니다. 회사 자료에 따르면 6축 로봇이 경화·조질강을 밀링하고, SINUMERIK ONE CNC가 가공을 관리하는 구성입니다. 이는 전시에서 제시한 실물 시연이며, 특정 고객 양산라인의 장기간 성능 데이터와는 구분해야 합니다.</p>
+              <p><b>배터리 생산 전시:</b> Beckhoff는 Battery Show에서 배터리 생산용 자동화 기술을 전시하고 XTS, MX-System, PC 제어 및 AI 엔지니어링 보조를 소개합니다. XTS EcoLine이 같은 길이의 모터에서 기존 성능의 95%를 45% 낮은 비용으로 제공한다는 수치는 제조사 주장으로, 비교 조건·실제 장비 구성·보증 범위를 공급사에 확인해야 합니다. 현재 공개자료만으로 당사 적용 사례나 비용 절감이 입증됐다고 볼 수는 없습니다.</p>
+              <p>두 전시는 모두 제어·이송·디지털 모델의 통합 가능성을 보여주는 최신 공개 자료입니다. 당사 공정에 적용할 때는 양산 실적보다 먼저 정지·복구, 품질 추적과 유지보수 부담을 포함해 실험실 수준에서 비교해야 합니다.</p>
+
+              <h2>당사 공정·PC 제어와 연결해 볼 부분</h2>
+              <ul>
+                <li><b>검사·조립 셀:</b> 제품별 이송 속도와 검사·작업 위치 변경이 잦은 공정에서 운반체별 제어를 적용할 필요가 있는지 따져봅니다. 배터리 셀 취급은 낙하·충격·정전기·화재 위험을 포함해 검토합니다.</li>
+                <li><b>전장 구조:</b> 제어반 축소가 실제로 배선 길이·조립시간·점검 접근성을 개선하는지, 장비 프레임에 분산 모듈을 붙였을 때 방열·세척·접지와 예비품 수가 어떻게 바뀌는지 비교합니다.</li>
+                <li><b>PC 제어 부하분리:</b> 모션, 비전, 로그와 AI 도구를 같은 PC에 올리기 전, 최악 부하에서 모션 주기와 지터를 측정하고 실시간 작업이 우선권을 유지하는지 확인합니다.</li>
+                <li><b>AI 활용 경계:</b> 제어 프로그램 생성·수정 제안은 오프라인 복사본에서만 시험합니다. 안전 인터록·기계 원점·절대 상한을 AI가 바꾸지 못하도록 계정과 배포 권한을 분리합니다.</li>
+              </ul>
+
+              <h2>국내 업체와 접촉 경로</h2>
+              <ul>
+                <li><b>Beckhoff Automation Korea:</b> <a href="https://www.beckhoff.com/ko-kr/support/" target="_blank" rel="noopener noreferrer">한국 공식 기술지원 페이지</a>에서 서울 본사 기술팀에 문의할 수 있습니다. 전화 +82 2 2107-3242, 기술지원 메일 support-kr@beckhoff.com, 영업 메일 sales-kr@beckhoff.com으로 안내되어 있습니다. XTS·MX-System·TwinCAT의 국내 공급 가능 시점, 안전 옵션, 교육과 시험 장비를 함께 문의하십시오.</li>
+                <li><b>한국지멘스 Digital Industries:</b> <a href="https://www.siemens.com/ko-kr/contact/digital-industries-south-korea/" target="_blank" rel="noopener noreferrer">제품·구매 공식 문의</a>와 <a href="https://www.siemens.com/ko-kr/contact/digital-industries-service-south-korea/" target="_blank" rel="noopener noreferrer">기술지원 공식 페이지</a>를 이용합니다. 모션·CNC 지원센터 전화는 02-3450-7000, 기술지원 메일은 support.korea.automation@siemens.com입니다.</li>
+              </ul>
+
+              <h2>사전검증 순서</h2>
+              <ol>
+                <li><b>요구사항 고정:</b> 공정 takt, 운반 하중·속도, 정밀도, 안전 범위, 청정도, 온도와 정비 조건을 정리합니다.</li>
+                <li><b>벤치 구성:</b> 실제 PC·모션 부하, 분산 입출력, 구동기와 대표 센서를 붙여 통신 주기·지터·CPU 부하·온도를 동시에 기록합니다.</li>
+                <li><b>전기·환경 시험:</b> 모듈 입력 전압, 최대 부하, 단락·과전류 보호, 접지·차폐, EMC 내성, 커넥터 풀림, 분진·세척 노출을 검증합니다.</li>
+                <li><b>운반 시나리오:</b> 정상 생산뿐 아니라 정지·경로 차단·센서 고착·통신 끊김·전원 재투입 후 위치와 생산 이력의 일치를 확인합니다.</li>
+                <li><b>AI 보조 시험:</b> 대표 코드 변경 20건 이상을 비식별 복사본에서 검토해 유효 제안율, 위험 제안 차단율, 검토시간, 외부 전송 항목을 기록합니다.</li>
+                <li><b>제한 파일럿:</b> 안전한 시험 장비에서 운영자 승인형으로 적용하고, 기존 구조와 takt·불량·복구시간·정비시간을 비교합니다. 기준을 넘지 못하면 이전 구조로 되돌립니다.</li>
+              </ol>
+
+              <h2>용어 설명</h2>
+              <ul>
+                <li><b>PC 기반 제어:</b> 산업용 PC에서 실시간 제어 소프트웨어를 실행해 모션, 입출력, 검사와 데이터 처리를 구성하는 방식입니다.</li>
+                <li><b>분산 전장:</b> 중앙 제어반의 입출력·전원·구동 기능 일부를 기계 프레임 가까운 모듈로 나누어 배치하는 구조입니다.</li>
+                <li><b>AI 엔지니어링 보조:</b> 제어기 출력을 직접 결정하는 AI가 아니라 코드나 설정을 제안하고 설명하는 개발 지원 기능입니다.</li>
+                <li><b>디지털 트윈:</b> 설비·로봇의 구조와 동작을 디지털 모델로 표현해 실제 장비와 비교·검증하는 방법입니다.</li>
+              </ul>
+              <p><b>김남인 · 선행제어기술팀 미래기술파트</b></p>
+            </div></details>
+          </section>
+          <section class="detailSection sourcesSection" id="sources-261014">
+            <div class="sectionTitle"><span>SOURCES</span><h2>공식 근거자료</h2><p>10월 13일 공개된 자료와 국내 공식 접촉 경로를 수록했습니다.</p></div>
+            <div class="sourceGrid">
+              <article class="sourceCard"><div class="sourceType">Beckhoff 공식 전시자료 · 2026-10-13~15</div><h3>The Battery Show North America 2026</h3><p>XTS, MX-System, TwinCAT CoAgent, AGV·AMR와 모션 제품 전시 내용 및 공급사 성능·비용 주장을 확인했습니다.</p><a class="sourceLink" href="https://www.beckhoff.com/es-mx/company/events-and-dates/the-battery-show-north-america-2026-detroit-mi.html" target="_blank" rel="noopener noreferrer">공식 전시자료 열기 ↗</a></article>
+              <article class="sourceCard"><div class="sourceType">Siemens 공식 발표 · 2026-10-13</div><h3>BI-MU 통합 CNC·로봇·산업 AI</h3><p>64비트 SINUMERIK ONE, CNC 로봇 가공, 디지털 트윈과 산업 AI 시연 계획을 확인했습니다.</p><a class="sourceLink" href="https://press.siemens.com/it/it/comunicatostampa/siemens-35bi-mu-tecnologie-e-competenze-rendere-lindustria-italiana-piu" target="_blank" rel="noopener noreferrer">공식 발표 열기 ↗</a></article>
+              <article class="sourceCard"><div class="sourceType">국내 공식 기술지원</div><h3>Beckhoff Automation Korea</h3><p>한국 본사 기술팀·영업팀의 전화와 메일, 기술지원 범위를 확인했습니다.</p><a class="sourceLink" href="https://www.beckhoff.com/ko-kr/support/" target="_blank" rel="noopener noreferrer">공식 기술지원 페이지 열기 ↗</a></article>
+              <article class="sourceCard"><div class="sourceType">국내 공식 제품·기술지원</div><h3>Siemens Digital Industries Korea</h3><p>제품 문의와 모션·CNC 기술지원 전화 및 메일을 확인했습니다.</p><a class="sourceLink" href="https://www.siemens.com/ko-kr/contact/digital-industries-service-south-korea/" target="_blank" rel="noopener noreferrer">공식 기술지원 페이지 열기 ↗</a></article>
+            </div>
+          </section>
+        </div></article>
+      </details>
+
       <details class="staticReport" id="static-261013" open>
         <summary><span class="staticDate">10.13</span><span class="staticTitle">다변수 모델예측제어를 설비 폐루프에 넣는 조건</span><span class="staticAxis">설비 지능화</span></summary>
         <div class="staticMeta"><div class="tags"><span class="tag">모델예측제어</span><span class="tag">다변수제어</span><span class="tag">AI제어</span><span class="tag">안전경계</span></div><p>모델예측제어는 여러 공정변수와 제약조건을 동시에 계산해 설정값을 갱신하지만, AI가 목적과 조건을 바꿀 때는 허용범위·승인·기존 제어 복귀를 별도로 설계해야 합니다.</p></div>
@@ -2974,7 +3087,8 @@
       {id:'261010',date:'2026-10-10',title:'비전·모션·로봇을 한 실시간 PC 제어 주기에 묶는 방법',axis:'전기·제어',category:'PC·비전 제어',tags:['PC제어','실시간비전','EtherCAT','동기화'],summary:'비전을 PC 제어 런타임에 통합하면 영상·축 위치를 같은 시간축에서 처리할 수 있지만 연산량이 모션 주기를 침범하지 않도록 자원을 분리해야 합니다.',discovery:'동일 실시간 환경에서 비전 알고리즘과 모션·로봇 태스크를 동기 실행하는 PC 기반 제어',why:'촬영 시점의 축 위치를 정확히 연결하고 별도 비전 PC 간 통신을 줄일 수 있으나 단일 장애점과 자원경합이 커집니다.',study:'Distributed Clocks, 하드웨어 트리거, 태스크 우선순위, 멀티코어, job task, WCET',companies:'Beckhoff Automation Korea와 국내 머신비전·EtherCAT SI',poc:'최대 카메라·AI·로그 부하에서 EtherCAT 주기, 타임스탬프, 결과 지연과 장애 격리를 측정합니다.',caution:'공식 전시 설명은 사용자 장비의 주기 보장값이 아니며 조합별 재시험이 필요합니다.',source_use:'Beckhoff 공식 VISION 2026 및 통합 비전 기술자료',sourceCount:2},
       {id:'261011',date:'2026-10-11',title:'능동 스테레오 3D 카메라를 로봇 인식에 적용하는 조건',axis:'설비지능화',category:'3D 센싱',tags:['3D비전','능동스테레오','로봇인식','센서검증'],summary:'능동 스테레오 카메라는 무늬가 적은 물체의 깊이 인식을 보완하지만 반사 금속·검은 표면·외란광과 제어 지연을 함께 검증해야 합니다.',discovery:'적외선 패턴으로 표면 특징을 보강하는 1MP 능동 스테레오 깊이 카메라',why:'무작위 적재 부품의 위치·자세 추정에 활용할 수 있으나 표면별 깊이 결측을 먼저 확인해야 합니다.',study:'스테레오 시차, 깊이 오차, 외부표정, hand-eye calibration, 포인트클라우드, 타임스탬프',companies:'e-con Systems, KUKA Korea와 국내 3D 비전·로봇 SI',poc:'실제 시편으로 거리·각도·조명·오염을 바꾸며 결측률, 위치오차와 전체 지연을 측정합니다.',caution:'공개자료는 양산라인 반복정밀도와 반사체 성능을 보증하지 않으며 국내 지원은 별도 확인이 필요합니다.',source_use:'e-con Systems 공식 제품 발표와 전시자료',sourceCount:2},
       {id:'261012',date:'2026-10-12',title:'EtherCAT 서보와 분산 I/O로 장비 제어 구조를 바꾸는 흐름',axis:'전기·제어',category:'PC·모션 제어',tags:['EtherCAT','서보','분산 I/O','제어반 축소'],summary:'최근 핵심 흐름은 서보 축과 현장 전장을 함께 표준화하는 것입니다. EtherCAT 연결과 분산 전장은 배선·시운전 단축 가능성이 있지만 PC 마스터 호환, 안전, 전원·EMC를 먼저 검증해야 합니다.',discovery:'EtherCAT 서보와 장비 가까이에 배치하는 전원·안전·입출력 구조',why:'축 제어와 배선 구조를 함께 검토하면 장비 변경과 정비시간을 줄일 수 있지만 상호운용성과 현장 환경 검증이 필요합니다.',study:'ESI와 CoE 객체, 동기 모드, 제어주기, 분산전원 보호, 접지·차폐, STO 안전경계',companies:'한국오므론제어기기, Rockwell Automation Korea와 국내 EtherCAT·전장 시스템 통합 업체',poc:'1축 벤치에서 제어주기·위치오차·통신단절·STO·전원복귀를 시험하고 분산 배선의 온도·전압강하·진단성을 비교합니다.',caution:'C6는 유럽 발표 제품이며 한국 공급과 제3자 PC 마스터 호환은 확인되지 않았습니다. 공수 절감률은 공급사 주장입니다.',source_use:'최근 서보 발표와 제어반 외부 분산 전장, 자율운전으로 이어지는 단계적 제어 구조',sourceCount:4,weekly:{topic:'서보와 분산 전장을 함께 설계',change:'축 제어와 현장 배선을 하나의 장비 구조로 묶습니다.',check:'1축에서 통신주기와 안전정지, 전원복귀를 시험합니다.'}},
-      {id:'261013',date:'2026-10-13',title:'다변수 모델예측제어를 설비 폐루프에 넣는 조건',axis:'설비지능화',category:'AI·고급제어',tags:['모델예측제어','다변수제어','AI제어','안전경계'],summary:'모델예측제어는 여러 공정변수와 제약조건을 동시에 계산해 설정값을 갱신하지만, AI가 목적과 조건을 바꿀 때는 허용범위·승인·기존 제어 복귀를 별도로 설계해야 합니다.',discovery:'여러 공정변수와 제약조건을 동시에 예측해 설정값을 갱신하는 고급제어',why:'AI 분석을 실제 설비 동작으로 연결하려면 예측 정확도뿐 아니라 제어권한과 안전한 복귀 구조가 필요합니다.',study:'예측모델, 제어구간, 목적함수, 제약조건, 상태추정, 모델오차, 그림자운전, 기존 제어 복귀',companies:'Rockwell Automation Korea, 한국지멘스 Digital Industries와 국내 공정제어·데이터 분석 업체',poc:'기존 운전데이터로 모델을 만들고 그림자운전, 권고운전, 제한 폐루프 순서로 확대하며 품질편차·지연·제약위반과 복귀시간을 측정합니다.',caution:'10월 5일 발표는 예정 전시 내용이며 배터리 양산 적용 성과가 아닙니다. 공개 사례 수치도 공급사 자료이므로 공정별 재검증이 필요합니다.',source_use:'최근 자율운전 발표의 모델예측제어 구조와 공급사 공식 제품·안전경계 자료',sourceCount:4,weekly:{topic:'여러 변수를 함께 보는 예측제어',change:'작업자 보정 대신 제약 안에서 설정값을 계산합니다.',check:'그림자운전에서 오차와 제약위반을 먼저 측정합니다.'}}
+      {id:'261013',date:'2026-10-13',title:'다변수 모델예측제어를 설비 폐루프에 넣는 조건',axis:'설비지능화',category:'AI·고급제어',tags:['모델예측제어','다변수제어','AI제어','안전경계'],summary:'모델예측제어는 여러 공정변수와 제약조건을 동시에 계산해 설정값을 갱신하지만, AI가 목적과 조건을 바꿀 때는 허용범위·승인·기존 제어 복귀를 별도로 설계해야 합니다.',discovery:'여러 공정변수와 제약조건을 동시에 예측해 설정값을 갱신하는 고급제어',why:'AI 분석을 실제 설비 동작으로 연결하려면 예측 정확도뿐 아니라 제어권한과 안전한 복귀 구조가 필요합니다.',study:'예측모델, 제어구간, 목적함수, 제약조건, 상태추정, 모델오차, 그림자운전, 기존 제어 복귀',companies:'Rockwell Automation Korea, 한국지멘스 Digital Industries와 국내 공정제어·데이터 분석 업체',poc:'기존 운전데이터로 모델을 만들고 그림자운전, 권고운전, 제한 폐루프 순서로 확대하며 품질편차·지연·제약위반과 복귀시간을 측정합니다.',caution:'10월 5일 발표는 예정 전시 내용이며 배터리 양산 적용 성과가 아닙니다. 공개 사례 수치도 공급사 자료이므로 공정별 재검증이 필요합니다.',source_use:'최근 자율운전 발표의 모델예측제어 구조와 공급사 공식 제품·안전경계 자료',sourceCount:4,weekly:{topic:'여러 변수를 함께 보는 예측제어',change:'작업자 보정 대신 제약 안에서 설정값을 계산합니다.',check:'그림자운전에서 오차와 제약위반을 먼저 측정합니다.'}},
+      {id:'261014',date:'2026-10-14',title:'배터리 생산 장비의 분산형 PC 제어와 AI 엔지니어링',axis:'전기·제어',category:'PC·분산 제어',tags:['PC기반제어','분산제어','AI엔지니어링','배터리생산'],summary:'배터리 생산 전시에서 PC 기반 제어, 기계 부착형 분산 전장, 이동형 이송과 AI 엔지니어링 보조를 함께 제시했습니다. 제어주기와 안전·복구, AI 변경 승인 절차를 먼저 검증해야 합니다.',discovery:'기계 가까운 분산 PC 제어와 운반·AI 개발 지원의 결합',why:'10월 13일부터 열린 배터리 전시와 통합 CNC·로봇 발표가 맞물려 실제 설비 구조를 비교할 수 있습니다.',study:'산업용 PC, EtherCAT, 분산 입출력, 이동체, 디지털 트윈, AI 코드 검토, 안전복구',companies:'Beckhoff Automation Korea, 한국지멘스 Digital Industries',poc:'대표 PC·모션 부하를 재현해 주기·지터·EMC·온도와 통신 복구, AI 제안 검토율을 시험합니다.',caution:'전시 구성과 제조사 설명이며 당사 양산 성능이나 절감 효과는 검증되지 않았습니다.',source_use:'2026년 10월 13일 전시자료와 국내 업체 공식 기술지원 경로',sourceCount:4,weekly:{topic:'기계 가까이 나누는 PC 제어',change:'중앙 제어반에서 기계 장착형 전장으로 기능을 옮깁니다.',check:'최대 부하에서 주기와 통신복구, EMC를 시험합니다.'}}
     ]);
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
@@ -3217,7 +3331,7 @@
     function drawBriefs(){const r=selected;$('#briefs').innerHTML=r?`<article class="brief discovery"><div class="briefHead"><span class="briefNo">01</span><span><b class="briefTitle">발견 기술</b><small class="briefQuestion">무엇이 새로 나왔나</small></span></div><p>${r.discovery}</p></article><article class="brief meaning"><div class="briefHead"><span class="briefNo">02</span><span><b class="briefTitle">실무 의미</b><small class="briefQuestion">왜 업무에 중요한가</small></span></div><p>${r.why}</p></article><article class="brief verify"><div class="briefHead"><span class="briefNo">03</span><span><b class="briefTitle">사전검증</b><small class="briefQuestion">현장에서 무엇을 확인할까</small></span></div><p>${r.poc}</p></article>`:''}
     function drawArchive(){const xs=filtered();$('#reportList').innerHTML=xs.map(r=>`<button class="reportRow" data-read="${r.id}"><span class="reportDate">${r.date.slice(2).replaceAll('-','.')}</span><span class="reportTitle">${r.title}<small class="reportSub">${r.category} · ${r.tags.join(' · ')}</small></span><span class="axisBadge ${tone(r)}">${group(r)}</span></button>`).join('')||'<div class="empty">조건에 맞는 리포트가 없습니다.</div>';$('#intCount').textContent=reports.filter(r=>group(r)==='설비 지능화').length;$('#controlCount').textContent=reports.filter(r=>group(r)==='전기·제어').length;$('#otherCount').textContent=reports.filter(r=>group(r)==='기타 자동화').length;bindReaders()}
     function drawBoard(){const xs=filtered(),groups=['설비 지능화','전기·제어','기타 자동화'];$('#techBoard').innerHTML=groups.map(g=>{const items=xs.filter(r=>group(r)===g);return `<section class="surface lane"><div class="laneTitle"><h3>${g}</h3><span>${items.length}건</span></div>${items.map(r=>`<button class="techCard" data-read="${r.id}"><b>${r.title}</b><small>${r.date.slice(5)} · ${r.category}</small></button>`).join('')||'<div class="empty">등록된 리포트가 없습니다.</div>'}</section>`}).join('');bindReaders()}
-    const evalScores={260914:[24,24,17,13,12],260915:[20,20,17,13,14],260916:[19,21,20,14,14],260917:[21,22,20,15,14],260918:[19,20,19,14,14],260920:[20,21,18,14,14],260921:[23,23,18,14,13],260922:[19,20,16,13,14],260923:[19,21,17,13,14],260924:[21,22,20,14,14],260925:[21,22,17,14,14],260926:[21,22,19,15,14],260927:[20,22,20,15,14],260928:[20,22,20,15,14],260929:[21,21,20,15,14],260930:[22,23,20,15,13],261001:[22,23,20,15,13],261002:[20,22,19,14,14],261003:[22,22,20,15,14],261004:[19,21,20,15,14],261005:[17,22,20,15,14],261006:[19,22,20,15,14],261007:[20,22,20,15,14],261008:[24,24,20,15,13],261009:[23,23,19,14,13],261010:[23,24,20,14,13],261011:[22,23,19,14,13],261012:[23,23,20,14,14],261013:[23,23,20,14,14]};
+    const evalScores={260914:[24,24,17,13,12],260915:[20,20,17,13,14],260916:[19,21,20,14,14],260917:[21,22,20,15,14],260918:[19,20,19,14,14],260920:[20,21,18,14,14],260921:[23,23,18,14,13],260922:[19,20,16,13,14],260923:[19,21,17,13,14],260924:[21,22,20,14,14],260925:[21,22,17,14,14],260926:[21,22,19,15,14],260927:[20,22,20,15,14],260928:[20,22,20,15,14],260929:[21,21,20,15,14],260930:[22,23,20,15,13],261001:[22,23,20,15,13],261002:[20,22,19,14,14],261003:[22,22,20,15,14],261004:[19,21,20,15,14],261005:[17,22,20,15,14],261006:[19,22,20,15,14],261007:[20,22,20,15,14],261008:[24,24,20,15,13],261009:[23,23,19,14,13],261010:[23,24,20,14,13],261011:[22,23,19,14,13],261012:[23,23,20,14,14],261013:[23,23,20,14,14],261014:[22,23,20,14,14]};
     function drawEvaluation(){const grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C';$('#evalRows').innerHTML=[...reports].sort((a,b)=>b.date.localeCompare(a.date)).map(r=>{const s=evalScores[r.id]||[0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('')}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
