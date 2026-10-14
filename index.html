@@ -33,6 +33,7 @@
     @media(max-width:390px){.shell{padding:0 10px}.brand strong{font-size:.92rem}.update span{display:none}.searchWrap{grid-template-columns:72px 1fr}.viewBtn{padding-left:7px;padding-right:7px}.axisBtn{padding-left:8px;padding-right:8px}.day{min-height:46px;padding:5px}.spotTop{padding:16px}.quickBrief{padding:15px}.reportBody{padding-left:10px;padding-right:10px}.staticFallback{padding-left:10px;padding-right:10px}}
 
     .weeklyChanges{gap:14px}.weeklySection{padding:14px;border:1px solid #e2e9ef;border-radius:10px;background:#fafcfd}.weeklySection h3{display:flex;align-items:center;gap:8px;margin:0 0 11px;color:var(--navy);font-size:.86rem;line-height:1.5}.weeklySection .weeklyStep{flex:0 0 23px;width:23px;height:23px;font-size:.68rem}.weeklyList{list-style:none;margin:0;padding:0}.weeklyItem+.weeklyItem{margin-top:12px;padding-top:12px;border-top:1px solid #e7edf2}.weeklyReport{display:flex;align-items:flex-start;gap:8px;width:100%;padding:0;border:0;background:none;text-align:left;color:var(--navy);cursor:pointer;line-height:1.65}.weeklyReport:hover b{text-decoration:underline;text-underline-offset:3px}.weeklyReport:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:3px}.weeklyDate{flex:0 0 34px;padding-top:1px;color:var(--muted);font-size:.7rem;font-weight:700}.weeklyReport b{font-size:.81rem;font-weight:800;word-break:keep-all;overflow-wrap:anywhere}.weeklyItem p{margin:5px 0 0 42px;color:#46586a;font-size:.8rem;line-height:1.8;word-break:keep-all;overflow-wrap:anywhere}.weeklyMore{margin-top:12px}.weeklyMore summary{width:max-content;max-width:100%;color:var(--teal);font-size:.74rem;font-weight:750;cursor:pointer}.weeklyMore[open] .weeklyList{margin-top:12px}
+    .metricsNote{margin:0 0 14px;color:#8a5a15;font-size:.75rem;line-height:1.6}.metricsNote[hidden]{display:none}
   </style>
 </head>
 <body class="noJs">
@@ -3242,60 +3243,116 @@
     const missingDates=['2026-09-19'];
     const metricsBase='https://counterapi.com/api';
     const metricsNamespace='rlaskadls741-debug.github.io';
-    const trackedWeeks=new Set();
+    const visitAction='equipmentHubVisitV2';
+    const visitTrackingStart='2026-10-14';
+    let metricDbPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
+    const visitPromises=new Map();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
+    function currentVisitDate(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date())}
+    function metricDb(){
+      if(!metricDbPromise)metricDbPromise=new Promise((resolve,reject)=>{
+        if(!globalThis.indexedDB){reject(new Error('브라우저 저장소 사용 불가'));return;}
+        const request=indexedDB.open('equipment-hub-metrics-v2',1);
+        request.onupgradeneeded=()=>request.result.createObjectStore('state');
+        request.onsuccess=()=>resolve(request.result);
+        request.onerror=()=>reject(request.error||new Error('저장소 연결 실패'));
+        request.onblocked=()=>reject(new Error('저장소 연결 대기'));
+      });
+      return metricDbPromise;
+    }
+    async function metricState(key,value,createIdentity=false){
+      const db=await metricDb();
+      return new Promise((resolve,reject)=>{
+        const tx=db.transaction('state','readwrite'),store=tx.objectStore('state');
+        let result;
+        if(value!==undefined){store.put(value,key);result=value;}
+        else{
+          const request=store.get(key);
+          request.onsuccess=()=>{
+            result=request.result;
+            if(createIdentity&&!result){result='eh-'+crypto.randomUUID();store.put(result,key);}
+          };
+        }
+        tx.oncomplete=()=>resolve(result);
+        tx.onerror=()=>reject(tx.error||new Error('저장소 기록 실패'));
+        tx.onabort=()=>reject(tx.error||new Error('저장소 작업 중단'));
+      });
+    }
     async function metricRequest(action,key,options={}){
-      const params=new URLSearchParams(options);
-      const url=`${metricsBase}/${encodeURIComponent(metricsNamespace)}/${encodeURIComponent(action)}/${encodeURIComponent(key)}?${params}`;
-      const response=await fetch(url,{mode:'cors',cache:'no-store',referrerPolicy:'no-referrer'});
-      if(!response.ok)throw new Error(`집계 API ${response.status}`);
-      const data=await response.json();
-      return Number(data.value)||0;
+      const params=new URLSearchParams(options),controller=new AbortController();
+      const timer=setTimeout(()=>controller.abort(),12000);
+      try{
+        const response=await fetch(`${metricsBase}/${encodeURIComponent(metricsNamespace)}/${encodeURIComponent(action)}/${encodeURIComponent(key)}?${params}`,{mode:'cors',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal});
+        if(!response.ok)throw new Error(`집계 API ${response.status}`);
+        const data=await response.json(),value=Number(data.value);
+        if(!Number.isFinite(value)||value<0)throw new Error('잘못된 집계 응답');
+        return value;
+      }finally{clearTimeout(timer)}
+    }
+    function showMetricMessage(message){
+      metricMessage=message;
+      const el=$('#metricStatus');
+      if(el){el.textContent=message;el.hidden=!message;}
+    }
+    async function registerCurrentWeekVisit(){
+      if(location.hostname!==metricsNamespace||!location.pathname.startsWith('/equipment-intelligence-hub/')||document.visibilityState!=='visible')return;
+      const week=metricWeek(currentVisitDate());
+      if(visitPromises.has(week))return visitPromises.get(week);
+      const register=async()=>{
+        const userId=await metricState('visitorId',undefined,true);
+        if(await metricState('visited:'+week))return;
+        await metricRequest(visitAction,week,{unique:'true',userId});
+        await metricState('visited:'+week,true);
+      };
+      const promise=(async()=>{
+        try{
+          if(navigator.locks?.request)await navigator.locks.request('equipmentHubVisit:'+week,register);
+          else await register();
+          if(metricMessage.startsWith('방문 기록'))showMetricMessage('');
+          if(metricWeek(weekDate)===week)await loadWeekStats(weekDate);
+        }catch(error){
+          visitPromises.delete(week);
+          showMetricMessage('방문 기록의 성공을 확인하지 못했습니다. 집계는 서버 연결 후 표시됩니다.');
+          console.warn('방문 기록 실패',error);
+        }
+      })();
+      visitPromises.set(week,promise);
+      return promise;
     }
     async function loadWeekStats(iso){
-      const week=metricWeek(iso),uniqueEl=$('[data-view-stat="unique"]'),reportEl=$('[data-view-stat="report"]');
-      try{
-        if(!trackedWeeks.has(week)){
-          trackedWeeks.add(week);
-          const visitKey=`equipmentHubVisited:${week}`;
-          if(!localStorage.getItem(visitKey)){
-            await metricRequest('weekVisit',week);
-            localStorage.setItem(visitKey,'1');
-          }
-        }
-        const [unique,report]=await Promise.all([
-          metricRequest('weekVisit',week,{readOnly:'true'}),
-          metricRequest(`reportOpen-${week}`,'any',{readOnly:'true'})
-        ]);
-        if(metricWeek(weekDate)!==week)return;
-        if(uniqueEl){uniqueEl.textContent=unique.toLocaleString('ko-KR');uniqueEl.title='선택한 주 화면을 확인한 고유 브라우저·기기 수';}
-        if(reportEl){
-          let displayReport=report;
-          try{
-            const floorKey=`equipmentHubOpenFloor:${week}`,floor=Number(sessionStorage.getItem(floorKey))||0;
-            displayReport=Math.max(report,floor);
-            if(report>=floor&&floor)sessionStorage.removeItem(floorKey);
-          }catch(error){}
-          reportEl.textContent=displayReport.toLocaleString('ko-KR');
-          reportEl.title='선택한 주에 포함된 리포트의 상세 열람 횟수';
-        }
-      }catch(error){
-        if(uniqueEl)uniqueEl.title='집계 서버에 연결하지 못했습니다.';
-        if(reportEl)reportEl.title='집계 서버에 연결하지 못했습니다.';
-        console.warn('열람 지표를 불러오지 못했습니다.',error);
+      const generation=++statsGeneration,week=metricWeek(iso);
+      const [visit,report]=await Promise.allSettled([
+        week<metricWeek(visitTrackingStart)?Promise.resolve(null):metricRequest(visitAction,week,{readOnly:'true',unique:'true'}),
+        metricRequest(`reportOpen-${week}`,'any',{readOnly:'true'})
+      ]);
+      if(generation!==statsGeneration||metricWeek(weekDate)!==week)return;
+      const uniqueEl=$('[data-view-stat="unique"]'),reportEl=$('[data-view-stat="report"]');
+      if(uniqueEl){
+        uniqueEl.textContent=visit.status==='fulfilled'&&visit.value!==null?visit.value.toLocaleString('ko-KR'):'–';
+        uniqueEl.title=visit.status==='fulfilled'?(visit.value===null?'새 방식으로 집계하기 전의 주입니다.':`해당 주에 실제 접속한 고유 브라우저 수입니다. 같은 브라우저의 재접속은 제외합니다. ${visitTrackingStart}부터 새 집계를 시작했습니다.`):'집계 서버에 연결하지 못했습니다.';
       }
+      if(reportEl){
+        reportEl.textContent=report.status==='fulfilled'?report.value.toLocaleString('ko-KR'):'–';
+        reportEl.title=report.status==='fulfilled'?'선택한 주에 발행된 리포트의 상세 열람 횟수입니다. 같은 사람의 재열람도 포함합니다.':'집계 서버에 연결하지 못했습니다.';
+      }
+      if(visit.status==='rejected'||report.status==='rejected')showMetricMessage('집계 서버에 연결하지 못했습니다. 확인되지 않은 숫자는 표시하지 않습니다.');
+      else showMetricMessage(metricMessage.startsWith('집계 서버')?'':metricMessage);
     }
     function trackReportOpen(report){
-      const week=metricWeek(report.date);
-      const reportEl=$('[data-view-stat="report"]');
-      if(metricWeek(weekDate)===week&&reportEl){
-        const current=Number(reportEl.textContent.replace(/,/g,''))||0,next=current+1;
-        reportEl.textContent=next.toLocaleString('ko-KR');
-        try{sessionStorage.setItem(`equipmentHubOpenFloor:${week}`,String(next));}catch(error){}
-      }
-      const eventKey=`${report.id}-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
-      metricRequest(`reportOpen-${week}`,eventKey)
-        .catch(error=>console.warn('리포트 열람을 기록하지 못했습니다.',error));
+      if(location.hostname!==metricsNamespace||!location.pathname.startsWith('/equipment-intelligence-hub/'))return Promise.resolve();
+      const week=metricWeek(report.date),eventKey=`${report.id}-${crypto.randomUUID()}`;
+      ++statsGeneration;
+      reportWriteQueue=reportWriteQueue.then(async()=>{
+        try{
+          await metricRequest(`reportOpen-${week}`,eventKey);
+          showMetricMessage('');
+          if(metricWeek(weekDate)===week)await loadWeekStats(weekDate);
+        }catch(error){
+          showMetricMessage('이번 열람의 기록 성공을 확인하지 못했습니다. 열람 횟수를 임의로 올리지 않습니다.');
+          console.warn('열람 기록 실패',error);
+        }
+      });
+      return reportWriteQueue;
     }
     function dateKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
     function weekBounds(iso){const base=new Date(`${iso}T12:00:00`),start=new Date(base);start.setDate(base.getDate()-base.getDay());const end=new Date(start);end.setDate(start.getDate()+6);return{start,end}}
@@ -3326,7 +3383,7 @@
         const visible=weekReports.slice(0,3),remaining=weekReports.slice(3);
         return `<section class="weeklySection"><h3><i class="weeklyStep">${i+1}</i><span>${label}</span></h3><ul class="weeklyList">${visible.map(x=>weeklyItem(x,key)).join('')}</ul>${remaining.length?`<details class="weeklyMore"><summary>나머지 ${remaining.length}건 더 보기</summary><ul class="weeklyList">${remaining.map(x=>weeklyItem(x,key)).join('')}</ul></details>`:''}</section>`;
       }).join(''):'';
-      $('#spotlight').innerHTML=`<div class="weeklyPanel"><div class="weeklyHead"><b>선택한 주의 변화</b><span>${short(start)}~${short(end)}</span></div><p class="weeklyLead">${headline}</p><div class="weeklyMetrics"><div class="weeklyMetric"><strong>${weekReports.length}</strong><span>신규 리포트</span></div><div class="weeklyMetric"><strong data-view-stat="report">–</strong><span>리포트 열람 횟수</span></div><div class="weeklyMetric"><strong data-view-stat="unique">–</strong><span>방문자 수</span></div></div><div class="weeklyChanges">${changeItems}</div></div>${r?`<div class="selectedMini"><div class="selectedMiniLabel"><span>선택한 리포트</span><span>${group(r)}</span></div><h3>${r.title}</h3><button class="readBtn" data-read="${r.id}">요약과 상세 리포트 보기</button></div>`:'<div class="selectedMini"><div class="empty">이 주에는 선택할 리포트가 없습니다.</div></div>'}`;bindReaders();drawBriefs();loadWeekStats(weekDate)
+      $('#spotlight').innerHTML=`<div class="weeklyPanel"><div class="weeklyHead"><b>선택한 주의 변화</b><span>${short(start)}~${short(end)}</span></div><p class="weeklyLead">${headline}</p><div class="weeklyMetrics"><div class="weeklyMetric"><strong>${weekReports.length}</strong><span>신규 리포트</span></div><div class="weeklyMetric"><strong data-view-stat="report">–</strong><span>리포트 열람 횟수</span></div><div class="weeklyMetric"><strong data-view-stat="unique">–</strong><span>방문자 수</span></div></div><p id="metricStatus" class="metricsNote" role="status" hidden></p><div class="weeklyChanges">${changeItems}</div></div>${r?`<div class="selectedMini"><div class="selectedMiniLabel"><span>선택한 리포트</span><span>${group(r)}</span></div><h3>${r.title}</h3><button class="readBtn" data-read="${r.id}">요약과 상세 리포트 보기</button></div>`:'<div class="selectedMini"><div class="empty">이 주에는 선택할 리포트가 없습니다.</div></div>'}`;bindReaders();drawBriefs();showMetricMessage(metricMessage);loadWeekStats(weekDate)
     }
     function drawBriefs(){const r=selected;$('#briefs').innerHTML=r?`<article class="brief discovery"><div class="briefHead"><span class="briefNo">01</span><span><b class="briefTitle">발견 기술</b><small class="briefQuestion">무엇이 새로 나왔나</small></span></div><p>${r.discovery}</p></article><article class="brief meaning"><div class="briefHead"><span class="briefNo">02</span><span><b class="briefTitle">실무 의미</b><small class="briefQuestion">왜 업무에 중요한가</small></span></div><p>${r.why}</p></article><article class="brief verify"><div class="briefHead"><span class="briefNo">03</span><span><b class="briefTitle">사전검증</b><small class="briefQuestion">현장에서 무엇을 확인할까</small></span></div><p>${r.poc}</p></article>`:''}
     function drawArchive(){const xs=filtered();$('#reportList').innerHTML=xs.map(r=>`<button class="reportRow" data-read="${r.id}"><span class="reportDate">${r.date.slice(2).replaceAll('-','.')}</span><span class="reportTitle">${r.title}<small class="reportSub">${r.category} · ${r.tags.join(' · ')}</small></span><span class="axisBadge ${tone(r)}">${group(r)}</span></button>`).join('')||'<div class="empty">조건에 맞는 리포트가 없습니다.</div>';$('#intCount').textContent=reports.filter(r=>group(r)==='설비 지능화').length;$('#controlCount').textContent=reports.filter(r=>group(r)==='전기·제어').length;$('#otherCount').textContent=reports.filter(r=>group(r)==='기타 자동화').length;bindReaders()}
@@ -3335,12 +3392,15 @@
     function drawEvaluation(){const grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C';$('#evalRows').innerHTML=[...reports].sort((a,b)=>b.date.localeCompare(a.date)).map(r=>{const s=evalScores[r.id]||[0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('')}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
-    function openReader(id){const r=reports.find(x=>x.id===id);if(!r)return;trackReportOpen(r);selected=r;const q=query.trim();$('#readerAxis').textContent=`${group(r)} · ${r.category}`;$('#readerTitle').innerHTML=(q&&(searchScope==='all'||searchScope==='title'))?paint(r.title,q):esc(r.title);$('#readerMeta').textContent=`${r.date} · 외부 원문 ${r.sourceCount}개`;$('#readerBody').innerHTML=r.content;if(q&&(searchScope==='all'||searchScope==='body'))highlightRoot($('#readerBody'),q);$('#reader').classList.add('open');const first=$('#reader mark');if(first){let p=first.parentElement;while(p&&p!==$('#readerBody')){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement}requestAnimationFrame(()=>first.scrollIntoView({behavior:'smooth',block:'center'}))}else $('#reader').scrollIntoView({behavior:'smooth',block:'start'})}
+    function openReader(id){const r=reports.find(x=>x.id===id);if(!r)return;selected=r;const q=query.trim();$('#readerAxis').textContent=`${group(r)} · ${r.category}`;$('#readerTitle').innerHTML=(q&&(searchScope==='all'||searchScope==='title'))?paint(r.title,q):esc(r.title);$('#readerMeta').textContent=`${r.date} · 외부 원문 ${r.sourceCount}개`;$('#readerBody').innerHTML=r.content;if(q&&(searchScope==='all'||searchScope==='body'))highlightRoot($('#readerBody'),q);$('#reader').classList.add('open');trackReportOpen(r);const first=$('#reader mark');if(first){let p=first.parentElement;while(p&&p!==$('#readerBody')){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement}requestAnimationFrame(()=>first.scrollIntoView({behavior:'smooth',block:'center'}))}else $('#reader').scrollIntoView({behavior:'smooth',block:'start'})}
     function refresh(){const xs=filtered();if(!xs.length)selected=null;else if(!xs.some(r=>r.id===selected?.id))selected=xs[0];$('#reportCount').textContent=xs.length;drawCalendar();drawSpotlight();drawArchive();drawBoard();drawEvaluation()}
     $$('.viewBtn').forEach(b=>b.onclick=()=>{$$('.viewBtn').forEach(x=>x.classList.remove('active'));$$('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('#'+b.dataset.view).classList.add('active');$('#reader').classList.remove('open')});
     function runSearch(value){query=value;refresh();drawLiveResults()}
     $('#search').addEventListener('input',e=>runSearch(e.target.value));$('#search').addEventListener('compositionend',e=>runSearch(e.target.value));$('#searchScope').addEventListener('change',e=>{searchScope=e.target.value;refresh();drawLiveResults();$('#search').focus()});document.addEventListener('click',e=>{if(!e.target.closest('.searchWrap'))$('#liveResults').classList.remove('open')});$('#prevMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()-1,1);drawCalendar()};$('#nextMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()+1,1);drawCalendar()};$('#closeReader').onclick=()=>{$('#reader').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})};
-    drawAxes();refresh();
+    drawAxes();refresh();registerCurrentWeekVisit();
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')registerCurrentWeekVisit()});
+    window.addEventListener('focus',registerCurrentWeekVisit);
+    setInterval(()=>{if(document.visibilityState==='visible')registerCurrentWeekVisit()},60000);
   </script>
 </body>
 </html>
