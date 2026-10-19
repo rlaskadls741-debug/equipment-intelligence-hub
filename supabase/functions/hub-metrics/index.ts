@@ -31,7 +31,7 @@ Deno.serve(async(req: Request)=>{
       if(!/^eh-[a-f0-9-]{36}$/.test(data.visitor||""))return response(req,{error:"Invalid visitor"},400);
       visitor=Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(data.visitor))),b=>b.toString(16).padStart(2,"0")).join("");
       type=data.type;
-      if(type==="visit")target=week(today);
+      if(type==="visit")target=url.searchParams.get("week")||"";
       else if(type==="open"){
         if(data.date>today||data.date<"2026-01-01")return response(req,{error:"Invalid date"},400);
         target=week(data.date);event=data.event;report=data.report;
