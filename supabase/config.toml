@@ -1,0 +1,2 @@
+[functions.hub-metrics]
+verify_jwt = false
