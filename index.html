@@ -3627,7 +3627,7 @@
       try{
         const isVisit=action===visitAction,readOnly=options.readOnly==='true';
         const week=isVisit?key:action.slice('reportOpen-'.length);
-        let url=metricsBase+'?week='+encodeURIComponent(week),init={mode:'cors',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal};
+        let url=metricsBase+'?week='+encodeURIComponent(week),init={mode:'cors',cache:'no-store',referrerPolicy:'strict-origin-when-cross-origin',credentials:'omit',signal:controller.signal};
         if(!readOnly){
           const visitor=options.userId||await metricState('visitorId',undefined,true);
           const report=reports.find(r=>key.startsWith(r.id+'-'));
