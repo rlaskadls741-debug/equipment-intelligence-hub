@@ -3585,10 +3585,10 @@
     let axis='전체',query='',searchScope='all',selected=reports[reports.length-1]||null,weekDate=latestDate,month=new Date(latestDate.slice(0,7)+'-01T12:00:00');
     const axes=['전체','설비 지능화','전기·제어','기타 자동화'];
     const missingDates=['2026-09-19'];
-    const metricsBase='https://counterapi.com/api';
+    const metricsBase='https://nam-in-equipment-intelligence-hub.rlaskadls741.chatgpt.site/api/metrics';
     const metricsNamespace='rlaskadls741-debug.github.io';
     const visitAction='equipmentHubVisitV2';
-    const visitTrackingStart='2026-10-14';
+    const visitTrackingStart='2026-10-19';
     let metricDbPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
     const visitPromises=new Map();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
@@ -3623,12 +3623,22 @@
       });
     }
     async function metricRequest(action,key,options={}){
-      const params=new URLSearchParams(options),controller=new AbortController();
-      const timer=setTimeout(()=>controller.abort(),12000);
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
       try{
-        const response=await fetch(`${metricsBase}/${encodeURIComponent(metricsNamespace)}/${encodeURIComponent(action)}/${encodeURIComponent(key)}?${params}`,{mode:'cors',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal});
-        if(!response.ok)throw new Error(`집계 API ${response.status}`);
-        const data=await response.json(),value=Number(data.value);
+        const isVisit=action===visitAction,readOnly=options.readOnly==='true';
+        const week=isVisit?key:action.slice('reportOpen-'.length);
+        let url=metricsBase+'?week='+encodeURIComponent(week),init={mode:'cors',cache:'no-store',referrerPolicy:'no-referrer',signal:controller.signal};
+        if(!readOnly){
+          const visitor=options.userId||await metricState('visitorId',undefined,true);
+          const report=reports.find(r=>key.startsWith(r.id+'-'));
+          if(!isVisit&&!report)throw new Error('리포트 식별 실패');
+          init.method='POST';
+          init.headers={'Content-Type':'text/plain'};
+          init.body=JSON.stringify(isVisit?{type:'visit',visitor}:{type:'open',visitor,event:key,report:report.id,date:report.date});
+        }
+        const response=await fetch(url,init);
+        if(!response.ok)throw new Error('집계 API '+response.status);
+        const data=await response.json(),value=Number(isVisit?data.visitors:data.opens);
         if(!Number.isFinite(value)||value<0)throw new Error('잘못된 집계 응답');
         return value;
       }finally{clearTimeout(timer)}
@@ -3644,9 +3654,9 @@
       if(visitPromises.has(week))return visitPromises.get(week);
       const register=async()=>{
         const userId=await metricState('visitorId',undefined,true);
-        if(await metricState('visited:'+week))return;
+        if(await metricState('visitedV3:'+week))return;
         await metricRequest(visitAction,week,{unique:'true',userId});
-        await metricState('visited:'+week,true);
+        await metricState('visitedV3:'+week,true);
       };
       const promise=(async()=>{
         try{
