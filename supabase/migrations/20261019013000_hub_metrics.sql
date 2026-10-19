@@ -23,7 +23,7 @@ create table if not exists hub_metrics_private.request_limits (
 create or replace function public.hub_metrics(
  p_scope text, p_type text, p_week date, p_visitor text default null,
  p_event text default null, p_report text default null
-) returns jsonb language plpgsql security definer set search_path = '' as $$
+) returns jsonb language plpgsql security invoker set search_path = '' as $$
 declare w date := p_week; today date := (now() at time zone 'Asia/Seoul')::date;
  n integer;
 begin
@@ -59,3 +59,10 @@ begin
 end $$;
 revoke all on function public.hub_metrics(text,text,date,text,text,text) from public,anon,authenticated;
 grant execute on function public.hub_metrics(text,text,date,text,text,text) to service_role;
+
+alter table hub_metrics_private.visits enable row level security;
+alter table hub_metrics_private.opens enable row level security;
+alter table hub_metrics_private.request_limits enable row level security;
+grant usage on schema hub_metrics_private to service_role;
+grant select,insert on hub_metrics_private.visits,hub_metrics_private.opens to service_role;
+grant select,insert,update on hub_metrics_private.request_limits to service_role;
