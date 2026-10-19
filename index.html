@@ -3589,6 +3589,7 @@
     const metricsNamespace='rlaskadls741-debug.github.io';
     const visitAction='equipmentHubVisitV2';
     const visitTrackingStart='2026-10-19';
+    const metricsTestScope=(()=>{const q=new URLSearchParams(location.search).get('metrics_test');return /^qa-[a-f0-9-]{36}$/.test(q||'')?q:''})();
     let metricDbPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
     const visitPromises=new Map();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
@@ -3627,7 +3628,7 @@
       try{
         const isVisit=action===visitAction,readOnly=options.readOnly==='true';
         const week=isVisit?key:action.slice('reportOpen-'.length);
-        let url=metricsBase+'?week='+encodeURIComponent(week),init={mode:'cors',cache:'no-store',referrerPolicy:'strict-origin-when-cross-origin',credentials:'omit',signal:controller.signal};
+        let url=metricsBase+'?week='+encodeURIComponent(week)+(metricsTestScope?'&test='+encodeURIComponent(metricsTestScope):''),init={mode:'cors',cache:'no-store',referrerPolicy:'strict-origin-when-cross-origin',credentials:'omit',signal:controller.signal};
         if(!readOnly){
           const visitor=options.userId||await metricState('visitorId',undefined,true);
           const report=reports.find(r=>key.startsWith(r.id+'-'));
@@ -3654,9 +3655,9 @@
       if(visitPromises.has(week))return visitPromises.get(week);
       const register=async()=>{
         const userId=await metricState('visitorId',undefined,true);
-        if(await metricState('visitedV3:'+week))return;
+        if(await metricState('visitedV3:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
         await metricRequest(visitAction,week,{unique:'true',userId});
-        await metricState('visitedV3:'+week,true);
+        await metricState('visitedV3:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
       };
       const promise=(async()=>{
         try{
