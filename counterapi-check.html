@@ -1,0 +1,33 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>기존 집계 방식 연결 점검</title><style>body{max-width:800px;margin:48px auto;padding:0 24px;font-family:system-ui,sans-serif;color:#17324d;line-height:1.7}button,a{font:inherit}button{padding:10px 18px;background:#17324d;color:white;border:0;border-radius:8px;cursor:pointer}pre{white-space:pre-wrap;background:#f2f5f8;padding:20px;border-radius:10px;color:#243b53}#status{font-weight:600}</style><h1>기존 집계 방식 연결 점검</h1><p>10월 8일에 사용했던 CounterAPI를 이 브라우저에서 직접 확인합니다. 실제 허브 통계는 늘리지 않습니다.</p><p id="status" role="status">점검 준비 중</p><button id="run">다시 점검</button> <a href="./">허브로 돌아가기</a><pre id="result" aria-live="polite"></pre><script>
+const base='https://counterapi.com/api',production='rlaskadls741-debug.github.io';
+const out=document.getElementById('result'),status=document.getElementById('status'),button=document.getElementById('run');
+function line(s){out.textContent+=s+'\n'}
+async function request(ns,action,key,opts={}){
+ const url=base+'/'+encodeURIComponent(ns)+'/'+encodeURIComponent(action)+'/'+encodeURIComponent(key)+'?'+new URLSearchParams(opts);
+ const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),15000);
+ try{const r=await fetch(url,{mode:'cors',cache:'no-store',credentials:'omit',referrerPolicy:'strict-origin-when-cross-origin',signal:ctrl.signal});if(!r.ok)throw new Error('서버 응답 '+r.status);const d=await r.json();if(!Number.isFinite(Number(d.value)))throw new Error('숫자 응답이 아닙니다');return Number(d.value)}finally{clearTimeout(timer)}
+}
+function equal(actual,expected,label){line(label+': '+actual+' (기대값 '+expected+')');if(actual!==expected)throw new Error(label+' 결과 불일치')}
+async function run(){
+ button.disabled=true;out.textContent='';status.textContent='기존 서버 응답을 기다리는 중…';
+ const ns=production+'-qa-'+crypto.randomUUID(),who='qa-'+crypto.randomUUID(),visit='weeklyVisit',reads='reportReadEvents';
+ try{
+  line('점검 시각: '+new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul'}));
+  const old=await request(production,'reportOpen-2026-10-04','any',{readOnly:'true'});line('기존 집계 조회 성공: '+old);
+  status.textContent='기록과 재열람 동작 점검 중…';
+  equal(await request(ns,visit,'week',{unique:'true',userId:who}),1,'첫 방문');
+  equal(await request(ns,visit,'week',{unique:'true',userId:who}),1,'같은 방문자 재접속');
+  equal(await request(ns,visit,'week',{unique:'true',userId:'qa-'+crypto.randomUUID()}),2,'다른 방문자 접속');
+  const e1=crypto.randomUUID(),e2=crypto.randomUUID();
+  await request(ns,reads,e1,{unique:'true',userId:e1});
+  await request(ns,reads,e2,{unique:'true',userId:e2});
+  await request(ns,reads,e1,{unique:'true',userId:e1});
+  let value=0;
+  for(let i=0;i<4;i++){if(i)await new Promise(r=>setTimeout(r,2500));value=await request(ns,reads,'any',{readOnly:'true',unique:'true'});if(value===2)break}
+  equal(value,2,'두 번 열람 및 동일 기록 재전송');
+  status.textContent='기존 방식 연결·기록 시험 성공';line('시험용 별도 공간의 기록입니다. 실제 허브 통계에는 포함되지 않습니다.');
+ }catch(e){status.textContent='기존 방식 시험 실패';line('실패 원인: '+(e.name==='AbortError'?'15초 동안 집계 서버의 응답을 받지 못했습니다.':e.message));line('이 결과는 현재 브라우저의 연결 결과입니다.');}
+ finally{button.disabled=false}
+}
+button.onclick=run;run();
+</script></html>
