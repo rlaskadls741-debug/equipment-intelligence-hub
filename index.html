@@ -3585,7 +3585,7 @@
     let axis='전체',query='',searchScope='all',selected=reports[reports.length-1]||null,weekDate=latestDate,month=new Date(latestDate.slice(0,7)+'-01T12:00:00');
     const axes=['전체','설비 지능화','전기·제어','기타 자동화'];
     const missingDates=['2026-09-19'];
-    const metricsBase='https://nam-in-equipment-intelligence-hub.rlaskadls741.chatgpt.site/api/metrics';
+    const metricsBase='https://zajvkqrmocitqrkqrumt.supabase.co/functions/v1/hub-metrics';
     const metricsNamespace='rlaskadls741-debug.github.io';
     const visitAction='equipmentHubVisitV2';
     const visitTrackingStart='2026-10-19';
@@ -3655,9 +3655,9 @@
       if(visitPromises.has(week))return visitPromises.get(week);
       const register=async()=>{
         const userId=await metricState('visitorId',undefined,true);
-        if(await metricState('visitedV3:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
+        if(await metricState('visitedSupabaseV1:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
         await metricRequest(visitAction,week,{unique:'true',userId});
-        await metricState('visitedV3:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
+        await metricState('visitedSupabaseV1:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
       };
       const promise=(async()=>{
         try{
@@ -3754,8 +3754,8 @@
     $('#search').addEventListener('input',e=>runSearch(e.target.value));$('#search').addEventListener('compositionend',e=>runSearch(e.target.value));$('#searchScope').addEventListener('change',e=>{searchScope=e.target.value;refresh();drawLiveResults();$('#search').focus()});document.addEventListener('click',e=>{if(!e.target.closest('.searchWrap'))$('#liveResults').classList.remove('open')});$('#prevMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()-1,1);drawCalendar()};$('#nextMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()+1,1);drawCalendar()};$('#closeReader').onclick=()=>{$('#reader').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})};
     drawAxes();refresh();registerCurrentWeekVisit();
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')registerCurrentWeekVisit()});
-    window.addEventListener('focus',registerCurrentWeekVisit);
-    setInterval(()=>{if(document.visibilityState==='visible')registerCurrentWeekVisit()},60000);
+    window.addEventListener('focus',()=>{registerCurrentWeekVisit();loadWeekStats(weekDate)});
+    setInterval(()=>{if(document.visibilityState==='visible'){registerCurrentWeekVisit();loadWeekStats(weekDate)}},30000);
   </script>
 </body>
 </html>
