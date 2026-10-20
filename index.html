@@ -3619,7 +3619,11 @@
     const metricsBase='https://zajvkqrmocitqrkqrumt.supabase.co/functions/v1/hub-metrics';
     const metricsNamespace='rlaskadls741-debug.github.io';
     const visitAction='equipmentHubVisitV2';
-    const metricsTestScope=(()=>{const q=new URLSearchParams(location.search).get('metrics_test');return /^qa-[a-f0-9-]{36}$/.test(q||'')?q:''})();
+    const metricParams=new URLSearchParams(location.search);
+    const requestedMetricScope=metricParams.get('metrics_test')||'';
+    const metricsTestScope=/^qa-[a-f0-9-]{36}$/.test(requestedMetricScope)
+      ?requestedMetricScope
+      :(metricParams.has('metrics-check')?'qa-00000000-0000-4000-8000-000000000001':'');
     let metricDbPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
     const visitPromises=new Map();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
