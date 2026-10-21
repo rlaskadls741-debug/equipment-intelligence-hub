@@ -19,13 +19,14 @@
    if(event.key==='Escape'&&!frame.contentDocument.querySelector('dialog[open]')){event.preventDefault();close();}
   });
  });
- function mount(doc){
-  const header=doc.querySelector('body>header');
-  if(!header||header.querySelector('#conversionChecklistOpen'))return;
-  const css=doc.createElement('style');
-  css.textContent='body>header{position:relative}body>header h1,body>header>p{padding-right:370px}#conversionChecklistOpen{position:absolute;right:28px;top:29px;display:inline-flex;align-items:center;gap:12px;padding:13px 17px;border:1px solid #adc4d9;border-radius:7px;background:#edf4fa;color:#205584;font:700 14px/1.5 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 6px #1f477008}#conversionChecklistOpen:hover{background:#dfedf8}#conversionChecklistOpen:focus-visible{outline:3px solid #5792bf;outline-offset:3px}#conversionChecklistOpen small{font-size:10px;font-weight:500;color:#55748e}@media(max-width:1100px){body>header h1,body>header>p{padding-right:0}#conversionChecklistOpen{position:static;display:flex;width:fit-content;margin:16px 0 0 auto;padding:10px 13px}}';
-  doc.head.append(css);
-  const button=doc.createElement('button');
+ function mount(){
+  if(document.getElementById('conversionChecklistToolbar'))return;
+  const toolbar=document.createElement('div');toolbar.id='conversionChecklistToolbar';
+  toolbar.innerHTML='<span>PC 제어 프로그램 분석 Tool</span>';
+  const css=document.createElement('style');
+  css.textContent='#conversionChecklistToolbar{position:fixed;inset:0 0 auto;height:49px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;box-sizing:border-box;padding:6px 20px;background:#fff;border-bottom:1px solid #d6e2ec;color:#62798e;font-size:11px}#app{top:49px;height:calc(100% - 49px)}#conversionChecklistOpen{display:inline-flex;align-items:center;gap:12px;padding:7px 13px;border:1px solid #adc4d9;border-radius:6px;background:#edf4fa;color:#205584;font:700 12px/1.5 system-ui,sans-serif;cursor:pointer}#conversionChecklistOpen:hover{background:#dfedf8}#conversionChecklistOpen:focus-visible{outline:3px solid #5792bf;outline-offset:2px}#conversionChecklistOpen small{font-size:10px;font-weight:500;color:#55748e}@media(max-width:650px){#conversionChecklistToolbar{padding:6px 10px;justify-content:flex-end}#conversionChecklistToolbar>span{display:none}#conversionChecklistOpen{font-size:11px;padding:7px 10px;gap:8px}}';
+  document.head.append(css);
+  const button=document.createElement('button');
   button.id='conversionChecklistOpen';button.type='button';
   button.setAttribute('aria-haspopup','dialog');
   button.innerHTML='<span>Ajin &gt; WMX3 변환 체크리스트</span><small>상태 편집 ↗</small>';
@@ -34,7 +35,7 @@
    if(!frame.hasAttribute('src'))frame.src='./conversion-checklist.html?v=20261021-1';
    dialog.showModal();
   });
-  header.append(button);
+  toolbar.append(button);document.body.append(toolbar);
  }
  window.AjinWmxChecklistLauncher={mount};
 })();
