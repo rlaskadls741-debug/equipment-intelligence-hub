@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="PC 제어 프로그램 분석 Tool의 제작 과정과 변경 내용을 정리한 이력입니다.">
+<title>변경 이력 | PC 제어 프로그램 분석 Tool</title>
+<style>
+:root{--ink:#253244;--muted:#617186;--line:#dce4ed;--blue:#28618f;--pale:#f3f7fb;--paper:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f5f8;color:var(--ink);font:14px/1.8 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}a{color:var(--blue);text-underline-offset:3px}a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.hero{background:#fff;border-bottom:1px solid var(--line);padding:30px max(22px,calc((100vw - 1080px)/2)) 25px}.eyebrow{font-size:11px;letter-spacing:1px;font-weight:700;color:#728197}.hero h1{margin:6px 0;font-size:29px;letter-spacing:-.7px}.hero p{margin:0;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-block;padding:6px 12px;border-radius:5px;border:1px solid #cbd8e5;background:#f7fafc;text-decoration:none;font-weight:600;font-size:12px}.btn.primary{background:#285f8d;border-color:#285f8d;color:#fff}.layout{max-width:1120px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:185px minmax(0,1fr);gap:23px}.toc{align-self:start;position:sticky;top:18px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:13px}.toc strong{display:block;margin-bottom:7px;font-size:13px}.toc a{display:block;padding:5px 6px;text-decoration:none;font-size:12px;border-radius:4px}.toc a:hover{background:var(--pale)}main{min-width:0}.period{margin-bottom:24px;scroll-margin-top:18px}.period>h2{font-size:19px;letter-spacing:-.3px;margin:0 0 11px}.period>h2 span{font-size:12px;font-weight:400;color:var(--muted);margin-left:8px}.entry{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:18px 21px;margin-bottom:12px;scroll-margin-top:18px}.entry h3{font-size:16px;margin:4px 0 9px;letter-spacing:-.2px}.tag{display:inline-block;padding:0 7px;border:1px solid #d6e2ec;background:#eef4f9;border-radius:4px;color:#365e7e;font-size:11px}.entry p{margin:7px 0;color:#435166}.entry ul{margin:7px 0;padding-left:20px;color:#435166}.entry li{margin:4px 0}.before-after{display:grid;grid-template-columns:64px minmax(0,1fr);gap:5px 10px;margin:10px 0 0;font-size:13px}.before-after dt{font-weight:700;color:#53677c}.before-after dd{margin:0;color:#435166}.evidence{margin-top:12px;border-top:1px solid #e6ebf1;padding-top:9px;font-size:11px;color:var(--muted)}.evidence a{margin-right:9px;white-space:nowrap}.note{border-left:3px solid #78a0c1;border-radius:3px;background:#eaf1f7;padding:10px 13px;color:#43566d;margin-bottom:12px;font-size:12px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px}caption{text-align:left;color:var(--muted);font-size:12px;margin-bottom:8px}th,td{padding:10px 11px;text-align:left;vertical-align:top;border:1px solid var(--line)}th{background:var(--pale);font-weight:700}td:first-child{width:100px;font-weight:600;color:#43566d}.metrics{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 2px}.metrics span{padding:3px 8px;border:1px solid var(--line);border-radius:4px;background:#f7f9fc;font-size:11px;color:#52667c}.footer{text-align:center;color:#78869a;font-size:11px;padding:0 20px 27px}
+@media(max-width:760px){.hero{padding:23px 18px}.hero h1{font-size:25px}.layout{display:block;margin:16px auto;padding:0 12px}.toc{position:static;display:flex;align-items:center;flex-wrap:wrap;gap:3px 8px;margin-bottom:17px;padding:10px}.toc strong{margin:0 4px}.entry{padding:16px}.period>h2 span{display:block;margin-left:0}.before-after{grid-template-columns:52px minmax(0,1fr);gap:5px 8px}.tablewrap table{min-width:520px}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="eyebrow">DEMOKIT · PC 제어 프로그램 분석 Tool</div>
+  <h1>변경 이력</h1>
+  <p>처음 제작한 목적부터 흐름도·코드 연결, 검색·사전, 화면 개선까지의 작업을 정리했습니다.</p>
+  <nav class="actions" aria-label="관련 화면"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="./manual.html">사용 설명서</a></nav>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="변경 이력 목차"><strong>이력 보기</strong><a href="#changes-1021">10.21 · 화면·설명서·배포</a><a href="#earlier-work">10.14까지 · 누적 제작</a><a href="#scope">분석 자료의 범위</a></nav>
+  <main>
+    <section class="period" id="changes-1021" aria-labelledby="date-1021">
+      <h2 id="date-1021"><time datetime="2026-10-21">2026.10.21</time><span>화면과 안내 개선</span></h2>
+      <article class="entry" id="tool-history">
+        <span class="tag">변경 이력</span>
+        <h3>분석 Tool 전용 변경 이력 페이지 추가</h3>
+        <dl class="before-after"><dt>이전</dt><dd>상단 ‘변경 이력’이 기술동향 허브의 이력으로 연결돼 분석 Tool의 작업 내용을 볼 수 없었습니다.</dd><dt>수정</dt><dd>‘전체 흐름도 열기’ 오른쪽에서 이 페이지를 열도록 연결했습니다. 분석 Tool의 누적 제작 내용과 이후 수정 사항을 함께 정리했습니다.</dd></dl>
+      </article>
+      <article class="entry" id="menu-guide">
+        <span class="tag">메뉴 위치</span>
+        <h3>설명서를 왼쪽 ‘주요 화면’ 아래에 배치</h3>
+        <dl class="before-after"><dt>이전</dt><dd>설명서 링크가 요청한 메뉴 위치에 보이지 않거나, 메뉴가 다시 만들어질 때 사라지는 문제가 있었습니다.</dd><dt>수정</dt><dd>왼쪽 ‘주요 화면’ 제목 바로 아래, ‘전체 흐름도’ 바로 위에 ‘사용 설명서 보기’를 배치했습니다. 상단에 있던 중복 설명서 링크는 제거했습니다.</dd></dl>
+        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/f0fbf1ecdf6aefb2b982fcbcca73defe452d12a8" target="_blank" rel="noopener noreferrer">메뉴 생성 후 설명서 배치</a><a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/336ff84028053dbe479bfb2f6efc2f8928b25e0b" target="_blank" rel="noopener noreferrer">상단 중복 링크 정리</a></div>
+      </article>
+      <article class="entry" id="manual-added">
+        <span class="tag">사용 설명서</span>
+        <h3>화면 조작과 코드 읽는 방법을 별도 페이지로 정리</h3>
+        <p>빠른 시작, 화면 구성, 전체·상세 흐름도, 확대·이동, 원문·해설, 검색·사전, 기호·색상, 자료를 읽을 때 주의할 점을 정리했습니다.</p>
+        <ul><li>흐름도 상자에서 코드 근거를 확인하는 순서를 안내했습니다.</li><li>코드의 노란 표시는 이동해 온 선택 줄의 위치 강조임을 설명했습니다.</li><li>현재 메뉴 위치와 상단 변경 이력 안내를 설명서에도 반영했습니다.</li></ul>
+        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/580241d002c13c306faca1bdce1cee9c6eba9536" target="_blank" rel="noopener noreferrer">사용 설명서 추가</a></div>
+      </article>
+      <article class="entry" id="github-pages">
+        <span class="tag">웹 배포</span>
+        <h3>분석 Tool을 고정 주소에서 열 수 있도록 배포</h3>
+        <p>기존 HTML 분석 Tool을 GitHub Pages의 고정 주소에 연결했습니다. 전체 흐름도, 원문 코드·해설, 코드 사전, 검색 결과, 함수 호출 관계, 하드웨어 이해를 같은 Tool에서 열 수 있도록 구성했습니다.</p>
+        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/a73dbc26a2cdddf70ef3a271ad8db27572ba69de" target="_blank" rel="noopener noreferrer">분석 Tool 배포</a></div>
+      </article>
+    </section>
+    <section class="period" id="earlier-work" aria-labelledby="earlier-title">
+      <h2 id="earlier-title">2026.10.14까지<span>누적 제작·개선 과정</span></h2>
+      <div class="note">아래 내용은 ‘PC 제어 프로그램 분석 Tool 제작·개선 기록’(2026.10.14)에 정리된 작업입니다. 개별 수정일이 기록되지 않은 내용은 제작 단계 순서로 묶었습니다.</div>
+      <article class="entry">
+        <h3>자동 시퀀스 예시에서 설비 전체 제어 흐름으로 확장</h3>
+        <p>초기 예시의 실린더·진공 동작만으로는 전원 투입부터 한 사이클 완료까지의 연결을 보기 어려웠습니다. 초기화, EtherCAT 통신, 서보·드라이브, 컨베이어, 센서·IO, 자동 운전과 정지까지 분석 범위를 넓혔습니다.</p>
+        <div class="tablewrap"><table><caption>제작 단계별 주요 변경</caption><thead><tr><th scope="col">단계</th><th scope="col">불편했던 점</th><th scope="col">반영 내용</th></tr></thead><tbody>
+          <tr><td>전체 코드 분석</td><td>자동 운전만 보면 초기화·수동 운전·원점·정지와 연결하기 어려웠습니다.</td><td>초기화, 입력 감시, 수동·원점, 자동 시작, 반송, STOP·RESET, 종료 흐름을 함께 분석했습니다.</td></tr>
+          <tr><td>흐름도 정리</td><td>상세 도식을 여러 개 모아도 전체 실행 순서가 보이지 않았습니다.</td><td>통합 흐름도 1개와 기능별 상세 흐름도 42개를 구성하고 기호·색상을 정리했습니다.</td></tr>
+          <tr><td>코드 근거 연결</td><td>흐름도 동작이 실제 코드 어디에 있는지 찾기 어려웠습니다.</td><td>단계에서 파일·행·함수로 이동하고, 선언·호출·구현의 관계를 확인하도록 연결했습니다.</td></tr>
+          <tr><td>검색·화면 복귀</td><td>검색 결과의 원문 위치를 찾거나 이전 화면으로 돌아오기 번거로웠습니다.</td><td>결과에 파일·행을 표시하고 이전 화면 복귀와 Ctrl+F 안내를 추가했습니다.</td></tr>
+          <tr><td>코드 사전</td><td>원문을 읽는 중 기본 문법과 프로젝트 용어를 따로 찾아야 했습니다.</td><td>전체 사전, 코드 용어 팝업, 옆 사전을 추가해 문법·변수·함수를 연결했습니다.</td></tr>
+          <tr><td>목록·표시 정리</td><td>‘더 보기’ 방식과 의미가 모호한 코드 클릭 표시가 불편했습니다.</td><td>전체 항목을 검색하는 방식으로 정리하고 코드 표시, 키보드 이동 안내와 제목을 개선했습니다.</td></tr>
+        </tbody></table></div>
+        <div class="metrics" aria-label="10월 14일 기록 기준 규모"><span>C++ 79개 파일 · 약 28,520행</span><span>함수 색인 214개</span><span>연결 근거 367개</span><span>사전 검색 항목 6,345개</span></div>
+        <div class="evidence">규모와 제작 단계는 2026.10.14 제작·개선 기록 기준입니다.</div>
+      </article>
+    </section>
+    <section class="period" id="scope" aria-labelledby="scope-title">
+      <article class="entry">
+        <h2 id="scope-title" style="font-size:18px;margin:0 0 9px">분석 자료의 범위</h2>
+        <p>기준 코드는 2026.09.29 15:21:38에 내보낸 자료입니다. 흐름도는 제공 코드와 매뉴얼을 읽어 정리한 분석이며, 실제 설비의 배선·설정·동작을 확인한 결과와는 구분해 봐야 합니다.</p>
+        <p>실제 설비와 대조할 항목은 EtherCAT 설정과 PDO 매핑, 사용 중인 INI·motion.mot, IO 배선과 접점 방식, 드라이브 신호, 완료 조건과 STOP·RESET 반응입니다.</p>
+        <div class="actions"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="#top">맨 위로</a></div>
+      </article>
+    </section>
+  </main>
+</div>
+<footer class="footer">PC 제어 프로그램 분석 Tool · 변경 이력</footer>
+</body>
+</html>
