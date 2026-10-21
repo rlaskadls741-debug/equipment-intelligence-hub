@@ -19,8 +19,8 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
  const frame=document.getElementById("app");
  try{
   const files=[
-   "./source-91b0354c519584875697ff7accb38aecf2b51c32.txt?v=91b0354c519584875697ff7accb38aecf2b51c32",
-   "./source-0b372e012892524bf34ec86c166abcfb10d9d1a0.txt?v=0b372e012892524bf34ec86c166abcfb10d9d1a0"
+   "./source-part1.txt?v=94c0fcd2ee6744112a94b98aabedc2a120f4f303",
+   "./source-part2.txt?v=c041fa66d41905060ea88eacb9c8b92b311b034f"
   ];
   const parts=await Promise.all(files.map(async url=>{
    const response=await fetch(url,{cache:"no-store"});
