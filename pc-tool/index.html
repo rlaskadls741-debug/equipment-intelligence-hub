@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PC 제어 프로그램 분석 Tool</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#f3f5f8;font-family:system-ui,sans-serif}
+#status{position:fixed;inset:0;display:grid;place-items:center;color:#334155;font-size:16px}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
+</style>
+</head>
+<body>
+<div id="status" role="status">Tool 불러오는 중…</div>
+<iframe id="app" title="PC 제어 프로그램 분석 Tool" hidden></iframe>
+<script>
+(async()=>{
+ const status=document.getElementById("status");
+ const frame=document.getElementById("app");
+ try{
+  const files=[
+   "./source-91b0354c519584875697ff7accb38aecf2b51c32.txt?v=91b0354c519584875697ff7accb38aecf2b51c32",
+   "./source-0b372e012892524bf34ec86c166abcfb10d9d1a0.txt?v=0b372e012892524bf34ec86c166abcfb10d9d1a0"
+  ];
+  const parts=await Promise.all(files.map(async url=>{
+   const response=await fetch(url,{cache:"no-store"});
+   if(!response.ok) throw new Error("Source load failed: "+response.status);
+   return response.text();
+  }));
+  frame.srcdoc=parts.join("");
+  frame.hidden=false;
+  status.remove();
+ }catch(error){
+  status.textContent="Tool을 불러오지 못했습니다. 페이지를 새로고침해 주세요.";
+  console.error(error);
+ }
+})();
+</script>
+</body>
+</html>
