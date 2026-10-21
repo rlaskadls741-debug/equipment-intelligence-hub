@@ -1,0 +1,611 @@
+[
+ {
+  "id": "start-guards",
+  "file": "AutoDlg.cpp",
+  "start": 920,
+  "end": 937,
+  "ordered": [
+   "GetAutoTabIndex()",
+   "if (!bAutoTabIndex)",
+   "if (!m_bDeviceOpen)",
+   "if (m_bThreadRunECat & 0x01)",
+   "if (m_bThreadRunPM2Q & 0x01)",
+   "OnAlarmReset()",
+   "OnServoOn()",
+   "EnableWindow(FALSE)",
+   "StartAutoRun()",
+   "SetAutoBitmapState(true)"
+  ],
+  "absent": [
+   "m_bHomeEnd",
+   "ServoReady"
+  ],
+  "finding": "AUTO 시작의 실제 조기 반환 조건과 호출 순서. HomeEnd 확인은 없음."
+ },
+ {
+  "id": "thread-creation",
+  "file": "AutoDlg.cpp",
+  "start": 440,
+  "end": 458,
+  "ordered": [
+   "if (m_pAutoRunECat == NULL)",
+   "AfxBeginThread(gAutoRunECatThread, this)",
+   "if (m_pAutoRunPM2Q == NULL)",
+   "AfxBeginThread(gAutoRunPM2QThread, this)",
+   "if ((m_pAutoRunECat != NULL) && (m_pAutoRunPM2Q != NULL))"
+  ],
+  "finding": "두 작업 스레드 생성 요청 순서. 포인터가 존재해도 운전 성공을 입증하지 않음."
+ },
+ {
+  "id": "ecat-entry",
+  "file": "AutoDlg.cpp",
+  "start": 504,
+  "end": 505,
+  "present": [
+   "_ECAT_OBJECT_01_DETECT] == TRUE",
+   "_ECAT_CYLINDER_UP] == TRUE",
+   "_ECAT_PRESSURE_SENSOR] == FALSE",
+   "m_bECatProcessFlag == FALSE",
+   "m_gECatError == _OFF"
+  ],
+  "absent": [
+   "m_bPM2QProcessFlag"
+  ],
+  "finding": "ECAT는 자기 플래그만 검사하며 PM2Q와 대칭 잠금이 아님."
+ },
+ {
+  "id": "pm2q-entry",
+  "file": "AutoDlg.cpp",
+  "start": 572,
+  "end": 578,
+  "present": [
+   "_PM2Q_OBJECT_00_DETECT] == TRUE",
+   "_PM2Q_CYLINDER_UP] == TRUE",
+   "_PM2Q_PRESSURE_SENSOR] == FALSE",
+   "m_bECatProcessFlag == FALSE",
+   "m_gPM2QError == _OFF",
+   "m_bPM2QProcessFlag == FALSE",
+   "m_nError = 0"
+  ],
+  "finding": "PM2Q의 ECAT 플래그 확인과 내부 자기 플래그·지역 오류 초기화."
+ },
+ {
+  "id": "ecat-cycle-order",
+  "file": "AutoDlg.cpp",
+  "start": 512,
+  "end": 536,
+  "ordered": [
+   "ECatCylinderDownUp(false)",
+   "ECat_LoadingPosition_Go()",
+   "ECatCylinderDownUp(true)",
+   "ECat_ObjectDetection(true, m_nError)",
+   "if (m_nError > 0)",
+   "m_gECatError = m_nError",
+   "ECat_ObjectDetection(false, m_nError)",
+   "else",
+   "ECat_UnloadingPosition_Go()",
+   "m_bECatProcessFlag = FALSE",
+   "Sleep(50)"
+  ],
+  "finding": "흡착 ON 오류 분기와 로딩·언로딩·플래그 해제 순서."
+ },
+ {
+  "id": "pm2q-cycle-order",
+  "file": "AutoDlg.cpp",
+  "start": 580,
+  "end": 604,
+  "ordered": [
+   "PM2QCylinderDownUp(false)",
+   "PM2Q_LoadingPosition_Go()",
+   "PM2QCylinderDownUp(true)",
+   "PM2Q_ObjectDetection(true, m_nError)",
+   "if (m_nError > 0)",
+   "m_gPM2QError = m_nError",
+   "PM2Q_ObjectDetection(false, m_nError)",
+   "else",
+   "PM2Q_UnloadingPosition_Go()",
+   "m_bPM2QProcessFlag = FALSE",
+   "Sleep(50)"
+  ],
+  "finding": "PM2Q 흡착·오류·언로딩 순서."
+ },
+ {
+  "id": "ecat-release-unchecked",
+  "file": "AutoDlg.cpp",
+  "start": 523,
+  "end": 532,
+  "ordered": [
+   "ECat_UnloadingPosition_Go()",
+   "ECatCylinderDownUp(true)",
+   "ECat_ObjectDetection(false, m_nError)",
+   "ECatCylinderDownUp(false)",
+   "m_bECatProcessFlag = FALSE"
+  ],
+  "absent": [
+   "if (m_nError",
+   "m_gECatError"
+  ],
+  "finding": "정상 경로의 흡착 OFF 오류는 이 분기에서 검사하지 않음."
+ },
+ {
+  "id": "pm2q-release-unchecked",
+  "file": "AutoDlg.cpp",
+  "start": 591,
+  "end": 600,
+  "ordered": [
+   "PM2Q_UnloadingPosition_Go()",
+   "PM2QCylinderDownUp(true)",
+   "PM2Q_ObjectDetection(false, m_nError)",
+   "PM2QCylinderDownUp(false)",
+   "m_bPM2QProcessFlag = FALSE"
+  ],
+  "absent": [
+   "if (m_nError",
+   "m_gPM2QError"
+  ],
+  "finding": "PM2Q 정상 해제 경로도 오류 미검사."
+ },
+ {
+  "id": "ecat-coordinate-order",
+  "file": "AutoDlg.cpp",
+  "start": 767,
+  "end": 784,
+  "ordered": [
+   "lCoordinate = 0",
+   "AxmMotGetWorkCoordinate",
+   "AxmContiWriteClear",
+   "AxmContiSetAxisMap",
+   "AxmMotSetWorkCoordinate",
+   "AxmContiSetAbsRelMode",
+   "AxmLineMove",
+   "Sleep(20)"
+  ],
+  "finding": "ECAT GetWorkCoordinate는 Clear/Map 전에 호출."
+ },
+ {
+  "id": "pm2q-coordinate-order",
+  "file": "AutoDlg.cpp",
+  "start": 830,
+  "end": 845,
+  "ordered": [
+   "lCoordinate = 1",
+   "dpOrigin[2] = { 0, 0 }",
+   "AxmContiWriteClear",
+   "AxmContiSetAxisMap",
+   "AxmMotSetWorkCoordinate",
+   "AxmContiSetAbsRelMode",
+   "AxmLineMove",
+   "Sleep(20)"
+  ],
+  "absent": [
+   "AxmMotGetWorkCoordinate"
+  ],
+  "finding": "PM2Q는 0으로 초기화한 작업 좌표 배열을 전달."
+ },
+ {
+  "id": "ecat-motion-wait",
+  "file": "AutoDlg.cpp",
+  "start": 786,
+  "end": 794,
+  "present": [
+   "AxmStatusReadInMotion(_ECAT_00",
+   "AxmStatusReadInMotion(_ECAT_01",
+   "uStatus0 == 0 && uStatus1 == 0"
+  ],
+  "absent": [
+   "Sleep(",
+   "Abort",
+   "GetTickCount",
+   "dwRetCode"
+  ],
+  "finding": "두 축 InMotion=0 대기. 시간 초과·취소·API 오류 검사 없음."
+ },
+ {
+  "id": "pm2q-motion-wait",
+  "file": "AutoDlg.cpp",
+  "start": 847,
+  "end": 855,
+  "present": [
+   "AxmStatusReadInMotion(_PM2Q_00",
+   "AxmStatusReadInMotion(_PM2Q_01",
+   "uStatus0 == 0 && uStatus1 == 0"
+  ],
+  "absent": [
+   "Sleep(",
+   "Abort",
+   "GetTickCount",
+   "dwRetCode"
+  ],
+  "finding": "PM2Q 이동 대기도 같은 종료 조건."
+ },
+ {
+  "id": "ecat-loading-target",
+  "file": "AutoDlg.cpp",
+  "start": 993,
+  "end": 1004,
+  "present": [
+   "xPos = m_Oper.m_dStartPos[_ECAT_00]",
+   "yPos = m_Oper.m_dEndPos[_ECAT_01]",
+   "ECat_mmMoveToLinear(xPos, yPos)"
+  ],
+  "finding": "ECAT 로딩 Start[0], End[1]."
+ },
+ {
+  "id": "ecat-unloading-target",
+  "file": "AutoDlg.cpp",
+  "start": 1007,
+  "end": 1018,
+  "present": [
+   "xPos = m_Oper.m_dEndPos[_ECAT_00]",
+   "yPos = m_Oper.m_dStartPos[_ECAT_01]"
+  ],
+  "finding": "ECAT 언로딩 End[0], Start[1]."
+ },
+ {
+  "id": "pm2q-loading-target",
+  "file": "AutoDlg.cpp",
+  "start": 1035,
+  "end": 1046,
+  "present": [
+   "xPos = m_Oper.m_dStartPos[_PM2Q_00]",
+   "yPos = m_Oper.m_dStartPos[_PM2Q_01]"
+  ],
+  "finding": "PM2Q 로딩 Start[2], Start[3]."
+ },
+ {
+  "id": "pm2q-unloading-target",
+  "file": "AutoDlg.cpp",
+  "start": 1049,
+  "end": 1060,
+  "present": [
+   "xPos = m_Oper.m_dEndPos[_PM2Q_00]",
+   "yPos = m_Oper.m_dEndPos[_PM2Q_01]"
+  ],
+  "finding": "PM2Q 언로딩 End[2], End[3]."
+ },
+ {
+  "id": "ecat-cylinder-no-wait",
+  "file": "AutoDlg.cpp",
+  "start": 1168,
+  "end": 1234,
+  "ordered": [
+   "if (bState)",
+   "_ECAT_CYLINDER_DOWN_SOL",
+   "_ECAT_CYLINDER_UP_SOL",
+   "else",
+   "_ECAT_CYLINDER_UP_SOL",
+   "_ECAT_CYLINDER_DOWN_SOL",
+   "Sleep(80)",
+   "return TRUE"
+  ],
+  "absent": [
+   "while (",
+   "m_bThreadECatAbort"
+  ],
+  "finding": "자동 ECAT 실린더는 80 ms 고정 대기. 센서 while은 주석."
+ },
+ {
+  "id": "pm2q-cylinder-no-wait",
+  "file": "AutoDlg.cpp",
+  "start": 1236,
+  "end": 1292,
+  "ordered": [
+   "if (bState)",
+   "_PM2Q_CYLINDER_DOWN_SOL",
+   "_PM2Q_CYLINDER_UP_SOL",
+   "else",
+   "_PM2Q_CYLINDER_UP_SOL",
+   "_PM2Q_CYLINDER_DOWN_SOL",
+   "Sleep(80)",
+   "return TRUE"
+  ],
+  "absent": [
+   "while (",
+   "m_bThreadPM2QAbort"
+  ],
+  "finding": "자동 PM2Q 실린더도 80 ms 고정 대기."
+ },
+ {
+  "id": "ecat-main-cylinder",
+  "file": "DemoKitDlg.cpp",
+  "start": 1607,
+  "end": 1632,
+  "present": [
+   "Sleep(10)",
+   "_ECAT_CYLINDER_DOWN_SOL",
+   "_ECAT_CYLINDER_UP_SOL"
+  ],
+  "absent": [
+   "while ("
+  ],
+  "finding": "수동·원점 ECAT 함수는 출력 유지와 10 ms 대기."
+ },
+ {
+  "id": "pm2q-main-cylinder",
+  "file": "DemoKitDlg.cpp",
+  "start": 1634,
+  "end": 1665,
+  "ordered": [
+   "_PM2Q_CYLINDER_DOWN_SOL",
+   "_PM2Q_CYLINDER_UP_SOL",
+   "Sleep(20)",
+   "_PM2Q_CYLINDER_DOWN_SOL",
+   "else",
+   "_PM2Q_CYLINDER_UP_SOL",
+   "_PM2Q_CYLINDER_DOWN_SOL",
+   "Sleep(20)",
+   "_PM2Q_CYLINDER_UP_SOL"
+  ],
+  "finding": "수동·원점 PM2Q 함수는 20 ms 후 요청 출력도 0으로 기록."
+ },
+ {
+  "id": "ecat-vacuum-timeout-first",
+  "file": "AutoDlg.cpp",
+  "start": 1341,
+  "end": 1363,
+  "ordered": [
+   "dwTimeOut = 2 * 1000",
+   "while (!flag)",
+   "(GetTickCount() - tt) >= dwTimeOut",
+   "bTimeOutError = TRUE",
+   "_ECAT_PRESSURE_SENSOR] == TRUE",
+   "Sleep(20)",
+   "DoEvents()",
+   "if (bTimeOutError)",
+   "error = 1",
+   "return FALSE"
+  ],
+  "absent": [
+   "Abort"
+  ],
+  "finding": "시간 초과 먼저 판정. 압력이 같은 반복에 맞아도 오류는 유지."
+ },
+ {
+  "id": "pm2q-vacuum-timeout-first",
+  "file": "AutoDlg.cpp",
+  "start": 1420,
+  "end": 1439,
+  "ordered": [
+   "dwTimeOut = 2 * 1000",
+   "while (!flag)",
+   "(GetTickCount() - tt) >= dwTimeOut",
+   "bTimeOutError = TRUE",
+   "_PM2Q_PRESSURE_SENSOR] == TRUE",
+   "Sleep(20)",
+   "DoEvents()",
+   "if (bTimeOutError)",
+   "error = 1",
+   "return FALSE"
+  ],
+  "absent": [
+   "Abort"
+  ],
+  "finding": "PM2Q 진공 ON의 동일한 시간 초과·센서 순서."
+ },
+ {
+  "id": "ecat-vacuum-off",
+  "file": "AutoDlg.cpp",
+  "start": 1365,
+  "end": 1396,
+  "present": [
+   "_ECAT_SUCTION_SOL",
+   "_ECAT_PRESSURE_SENSOR] == FALSE",
+   "dwTimeOut = 2 * 1000",
+   "error = 0",
+   "return TRUE"
+  ],
+  "finding": "흡착 OFF는 DI8=0 또는 시간 초과 확인."
+ },
+ {
+  "id": "pm2q-vacuum-off",
+  "file": "AutoDlg.cpp",
+  "start": 1442,
+  "end": 1473,
+  "present": [
+   "_PM2Q_SUCTION_SOL",
+   "_PM2Q_PRESSURE_SENSOR] == FALSE",
+   "dwTimeOut = 2 * 1000",
+   "error = 0",
+   "return TRUE"
+  ],
+  "finding": "흡착 OFF는 DI9=0 또는 시간 초과 확인."
+ },
+ {
+  "id": "monitor-loop",
+  "file": "DemoKitDlg.cpp",
+  "start": 891,
+  "end": 903,
+  "ordered": [
+   "while (pOwner->m_bMonitorExe)",
+   "AxdGetIoStatus()",
+   "AxmPositionVelocityStatusUpdate()",
+   "AxmAmplierStatusUpdate()",
+   "AxmStatusMonitorUpdate()",
+   "Sleep(50)"
+  ],
+  "finding": "감시 반복 순서와 50 ms Sleep 요청. 버스 주기를 뜻하지 않음."
+ },
+ {
+  "id": "start-stop-inputs",
+  "file": "DemoKitDlg.cpp",
+  "start": 928,
+  "end": 967,
+  "present": [
+   "m_bInput[_START_SWITCH]",
+   "m_bInput[_STOP_SWITCH]",
+   "(bCurrStartFlag == TRUE) && (bCurrStopFlag == FALSE)",
+   "(bCurrStopFlag == TRUE) && (bCurrStartFlag == FALSE)",
+   "m_nTabIndex == (_AUTO - 1)",
+   "OnAutoRun(true)",
+   "OnAutoRun(false)"
+  ],
+  "finding": "START/STOP의 서로 반대 입력 조건과 AUTO 탭 제한."
+ },
+ {
+  "id": "reset-no-tab-guard",
+  "file": "DemoKitDlg.cpp",
+  "start": 970,
+  "end": 985,
+  "present": [
+   "if (bCurrResetFlag)",
+   "m_bResetFlag == FALSE",
+   "OnAlarmReset()",
+   "Sleep(50)"
+  ],
+  "absent": [
+   "GetAutoTabIndex"
+  ],
+  "finding": "RESET에는 AUTO 탭 제한이 없음."
+ },
+ {
+  "id": "init-failure-still-threads",
+  "file": "DemoKitDlg.cpp",
+  "start": 260,
+  "end": 288,
+  "ordered": [
+   "AxtDIoInit()",
+   "AxtMotionInit()",
+   "AfxBeginThread(gThreadMonitor",
+   "AfxBeginThread(gThreadIO",
+   "SetTimer(CTRL_DEMOKIT_TIMER, 200",
+   "OnAlarmReset()"
+  ],
+  "finding": "초기화 성공 여부와 별도로 이어지는 스레드·타이머 준비."
+ },
+ {
+  "id": "init-home-accel-typo",
+  "file": "InitDlg.cpp",
+  "start": 336,
+  "end": 369,
+  "present": [
+   "lAxisNo < 4",
+   "if (dVelFirst > 20)",
+   "dAccFirst = m_Oper.m_dHomeAccel[lAxisNo]",
+   "if (dVelFirst > 40)",
+   "AxmHomeSetStart(lAxisNo)",
+   "m_bHomeEnd[_PM2Q_01] = FALSE"
+  ],
+  "finding": "가속도 설정 뒤 dVelFirst를 다시 검사하는 원문상의 검토 항목."
+ },
+ {
+  "id": "init-home-result-route",
+  "file": "DemoKitDlg.cpp",
+  "start": 1296,
+  "end": 1303,
+  "present": [
+   "m_Tab.m_tabPages[0]",
+   "INIT_DLG_SERVO_STATUS_USER_MSG"
+  ],
+  "finding": "Init 원점 결과 조회로 이어지는 실제 메시지 전송."
+ },
+ {
+  "id": "home-result-binding",
+  "file": "InitDlg.cpp",
+  "start": 46,
+  "end": 46,
+  "present": [
+   "INIT_DLG_SERVO_STATUS_USER_MSG",
+   "OnServoStatusUpdate"
+  ],
+  "finding": "Init 수신 메시지 맵 연결."
+ },
+ {
+  "id": "oper-home-timer",
+  "file": "OperDlg.cpp",
+  "start": 183,
+  "end": 183,
+  "present": [
+   "SetTimer(CTRL_OPER_DLG_TIMER, 200, NULL)"
+  ],
+  "finding": "Oper 원점 결과는 200 ms 타이머 경로."
+ },
+ {
+  "id": "running-flag-duplication",
+  "file": "DemoKitDlg.cpp",
+  "start": 1485,
+  "end": 1488,
+  "present": [
+   "m_bIsECatAutoRunning | m_bIsECatAutoRunning"
+  ],
+  "absent": [
+   "m_bIsPM2QAutoRunning"
+  ],
+  "finding": "GetIsAutoRunning은 ECAT 중복·PM2Q 누락. 원문 결함 후보이며 HTML 수정과 구분."
+ },
+ {
+  "id": "reset-global-errors",
+  "file": "DemoKitDlg.cpp",
+  "start": 1513,
+  "end": 1562,
+  "present": [
+   "if (!m_bDeviceOpen)",
+   "m_gECatError = 0",
+   "m_gPM2QError = 0",
+   "AxmSignalServoAlarmReset(_PM2Q_01, dwAlarm)"
+  ],
+  "finding": "장치 준비 시 전역 진공 오류를 지움. 축3 실제 인자는 dwAlarm."
+ },
+ {
+  "id": "auto-stop-no-direct-actuator-stop",
+  "file": "AutoDlg.cpp",
+  "start": 940,
+  "end": 960,
+  "present": [
+   "m_bThreadECatAbort = TRUE",
+   "m_bThreadPM2QAbort = TRUE",
+   "m_bExeECat = FALSE",
+   "m_bExePM2Q = FALSE"
+  ],
+  "absent": [
+   "AxmMoveSStop",
+   "AxmSignalServoOn",
+   "ObjectDetection",
+   "CylinderDownUp"
+  ],
+  "finding": "자동 STOP은 플래그 변경. 전축 정지·서보 OFF·진공 OFF를 직접 요청하지 않음."
+ },
+ {
+  "id": "pm2q-cleanup-setter",
+  "file": "AutoDlg.cpp",
+  "start": 432,
+  "end": 436,
+  "present": [
+   "m_bThreadRunPM2Q = FALSE",
+   "SetIsAutoECatRunning"
+  ],
+  "finding": "PM2Q 종료 처리의 ECAT 상태 설정 호출은 원문 검토 항목."
+ },
+ {
+  "id": "jog-axis3-ccw",
+  "file": "OperDlg.cpp",
+  "start": 1215,
+  "end": 1215,
+  "present": [
+   "AxmMoveVel(_PM2Q_01, -1 * dJogVel"
+  ],
+  "finding": "축3 CCW는 음수 속도 지령."
+ },
+ {
+  "id": "jog-axis3-cw",
+  "file": "OperDlg.cpp",
+  "start": 1249,
+  "end": 1249,
+  "present": [
+   "AxmMoveVel(_PM2Q_01, dJogVel"
+  ],
+  "finding": "축3 CW는 양수 속도 지령."
+ },
+ {
+  "id": "ini-default-duplicate-branch",
+  "file": "DemoKit.cpp",
+  "start": 199,
+  "end": 208,
+  "ordered": [
+   "if (i == 0)",
+   "else if (i == 1)",
+   "else if (i == 1)",
+   "else"
+  ],
+  "finding": "End[2] 기본값은 도달 불가 60이 아닌 else의 165.50. 현재 INI 값은 미확인."
+ }
+]

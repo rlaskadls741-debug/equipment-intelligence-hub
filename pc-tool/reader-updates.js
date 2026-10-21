@@ -36,7 +36,8 @@
  window.AutoSequencePptSource={open,focus:open,close:()=>api.goBack(),active:()=>null,transport:'query-and-fragment',mode:'inline-source'};
  })();</script>`;
  function apply(source){
-  source=replaceOne(source,'if(!location.hash)location.hash="07_auto_start:input";','if(!location.hash)location.hash="all_flow";','default overview screen');
+  source=replaceOne(source,'if(!location.hash)location.hash="07_auto_start:input";','if(!location.hash&&parent!==window&&parent.location.hash)location.hash=parent.location.hash;if(!location.hash)location.hash="all_flow";','default overview screen');
+  source=replaceOne(source,'const initialSource=resolveLocation(location);','const initialSource=resolveLocation(parent===window?location:parent.location);','source links from verification history');
   source=replaceOne(source,/function parseRange\(value,file,count=80\)\{[^\n]+\}/,parseRange,'line and count validation');
   source=replaceOne(source,'<label for="sourceLine">행</label>','<label for="sourceLine">시작 행</label>','start line label');
   source=replaceOne(source,'<label for="sourceRows">줄 수</label>','<label for="sourceRows">강조할 줄 수</label>','selection count label');
