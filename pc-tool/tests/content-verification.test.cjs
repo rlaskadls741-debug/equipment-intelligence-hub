@@ -29,3 +29,11 @@ test('home and vacuum evidence point to the actual messages and sensor condition
 test('corrected inline JavaScript parses before the page is deployed',()=>{
  for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g))if(!/application\/json/.test(m[1]))new vm.Script(m[2]);
 });
+test('conditions preserve pointer access, address arguments and full OR continuations',()=>{
+ assert.ok(after.annotations['AutoDlg.cpp'][69].text.includes('pMsg->message'));
+ assert.ok(after.annotations['AutoDlg.cpp'][69].text.includes('||'));
+ assert.ok(!after.annotations['AutoDlg.cpp'][69].text.includes('보다 큼'));
+ assert.ok(!after.annotations['AutoDlg.cpp'][70].text.includes('앞줄과 &&'));
+ assert.ok(!after.annotations['AutoDlg.cpp'][387].text.includes('비트 연산 결과'));
+ assert.ok(after.annotations['AutoDlg.cpp'][109].text.includes('명시적 초기화식'));
+});

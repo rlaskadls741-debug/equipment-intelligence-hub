@@ -5,7 +5,27 @@
  function reviewData(T){
   const rows=Object.fromEntries(Object.entries(T.source).map(([f,s])=>[f,s.split(/\r?\n/)]));
   const at=r=>rows[r.file].slice(r.start-1,r.end).join('\n');
-  const changes={constructorUsesRemoved:0,constructorExamplesRebuilt:0,exampleReadingsCorrected:0,constantsCorrected:0,scopedUsesRemoved:0,scopedExamplesRebuilt:0};
+  const changes={constructorUsesRemoved:0,constructorExamplesRebuilt:0,exampleReadingsCorrected:0,constantsCorrected:0,scopedUsesRemoved:0,scopedExamplesRebuilt:0,conditionAnnotationsCorrected:0,declarationAnnotationsQualified:0};
+  // Preserve the complete condition rather than translating -> or unary & as comparisons/bitwise AND.
+  for(const [file,raw]of Object.entries(T.source)){
+   const clean=raw.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\/|(?:u8|[LuU])?"(?:\\[\s\S]|[^"\\])*"|(?:[LuU])?'(?:\\[\s\S]|[^'\\])*'/g,m=>m.replace(/[^\n]/g,' '));
+   const ranges=[];
+   for(const m of clean.matchAll(/\b(if|while|for)\s*\(/g)){
+    const open=m.index+m[0].lastIndexOf('(');let depth=1,end=open+1;
+    for(;end<clean.length&&depth;end++){if(clean[end]==='(')depth++;else if(clean[end]===')')depth--;}
+    if(depth)continue;
+    const startLine=clean.slice(0,m.index).split('\n').length,endLine=clean.slice(0,end).split('\n').length;
+    ranges.push({type:m[1],startLine,endLine,expression:raw.slice(open+1,end-1).replace(/\s+/g,' ').trim()});
+   }
+   for(let i=0;i<T.annotations[file].length;i++){
+    const a=T.annotations[file][i];
+    if(['code','declaration','continuation'].includes(a.kind)&&(/조건\(|비트 연산 결과|앞줄과 &&/.test(a.text))){
+     const range=ranges.find(r=>r.startLine<=i+1&&r.endLine>=i+1);
+     if(range){a.text=(range.startLine===i+1?'':'앞에서 시작한 '+range.type+' 조건식이 이어지는 줄입니다. ')+range.type+'의 전체 괄호 안 식: '+range.expression+' . '+(range.type==='if'?'이 식이 참이면 해당 if에 속한 문장을 실행합니다.':range.type==='while'?'반복 진입 때 이 식이 참이면 본문을 실행하고 다시 조건을 검사합니다.':'초기화·조건·갱신을 원문 순서로 읽습니다. 각 항목은 세미콜론으로 구분합니다.');changes.conditionAnnotationsCorrected++;}
+    }
+    if(a.text.includes('초기값은 아직 대입하지 않았다')){a.text=a.text.replace('초기값은 아직 대입하지 않았다','이 선언에는 명시적 초기화식이 없습니다. 실제 초기 상태는 저장 기간·자료형·생성자에 따릅니다');changes.declarationAnnotationsQualified++;}
+   }
+  }
   const entries=T.dictionary.entries;
   for(const [name,r]of Object.entries(T.constants)){
    const line=rows[r.file][r.start-1],m=line.match(/^\s*#\s*define\s+\w+\s*(.*?)\s*(?:\/\/.*)?$/);
@@ -86,6 +106,8 @@
   source=source.replace("['declaration_only','empty_implementation','needs_context','continued_statement'].includes","['declaration_only','empty_implementation','needs_context','continued_statement','external_unverified'].includes");
   source=source.replace('<div id="sourceFindBar"','<p class="verification-scope-note" style="font-size:12px;color:#64768a">원문 대조·정적 참조 검사: 2026.10.21 · 추가 해설의 확인 범위는 <a href="./verification.html" target="_blank" rel="noopener">검증 이력</a>에서 확인하세요.</p><div id="sourceFindBar"');
   source=source.replace("source_context:'선언·사용처 대조'","source_context:'정적 참조 확인 · 설명은 코드 해석',external_unverified:'호출 확인 · 외부 API 의미 추가 확인'");
+  source=source.replace("popupAnchor=anchor||popupAnchor;popup.innerHTML=", "popupAnchor=anchor||popupAnchor;const exactRef=e.kind==='grammar'||[...e.declarations,...e.uses].some(r=>r.file===context.file&&r.start<=context.line&&context.line<=r.end);const candidateNote=exactRef?'':'<p style=\"padding:10px 14px;background:#fff3db;color:#78521f\">이름이 같은 검색 후보입니다. 현재 줄의 선언·소속과 같은 항목인지 확인되지 않았습니다. 표시된 파일·함수를 비교해 주세요.</p>';popup.innerHTML=");
+  source=source.replace("</button></header><div class=\"code-popup-body\">'+entryHTML(e,true)","</button></header>'+candidateNote+'<div class=\"code-popup-body\">'+entryHTML(e,true)");
   source=source.replace('<span>${meaningful.toLocaleString()}줄에 동작 해설이 있습니다.', '<span>행 연결·원문 동일성 검사 완료. 자연어 해설은 코드 해석이며 전 문장의 의미를 독립 검증한 상태는 아닙니다. <a href="./verification.html" target="_blank" rel="noopener">검증 범위 보기</a></span><span>${meaningful.toLocaleString()}줄에 동작 해설이 있습니다.');
   source=source.replace('<span class="explanation-label">동작 해설','<span class="explanation-label" title="원문과 연결된 추가 해설입니다. 자연어의 의미까지 자동 인증한 결과는 아닙니다.">동작 해설');
   return source;

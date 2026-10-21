@@ -83,6 +83,7 @@ out['issues']=[
  {'id':'F08','type':'해설 수정','item':'실제 선언·인자 구분','before':'Oper974행 초기화를 호출 결과처럼 설명 / 축3 리셋 인자 혼동 가능','after':'false 초기화와 후속 대입을 구분하고 실제 dwAlarm 전달을 명시','status':'수정·재검사'},
  {'id':'F09','type':'확인 범위 표시','item':'자동 검사와 의미 검증 혼동 방지','before':'선언·사용처 대조 상태만으로 자연어 전체까지 확인한 것처럼 읽힐 수 있음','after':'정적 참조·코드 해석·SDK 의미 추가 확인을 화면에서 구분. OMRON 직접 근거 PDF73/92/120/124쪽 명시','status':'반영·재검사'}
 ]
+out['issues'].append({'id':'F10','type':'조건·선언 해설 수정','item':'연산자 문맥과 명시적 초기화식 구분','before':'포인터 ->를 > 비교로, 주소 전달 &를 비트 연산으로 설명하거나 이어지는 OR 조건을 AND로 단정한 템플릿','after':'조건 해설 '+str(out['corrections']['conditionAnnotationsCorrected'])+'행을 전체 괄호 식을 보존해 재작성. 선언 '+str(out['corrections']['declarationAnnotationsQualified'])+'행은 명시적 초기화식 유무와 실제 초기 상태를 구분. 클릭 사전에서 소속이 확인되지 않은 동명 후보도 경고 표시.','status':'수정·재검사'})
 out['source_findings']=[{'item':c['finding'],'file':c['file'],'start':c['start'],'end':c['end']} for c in out['control_review'] if c['id'] in ['running-flag-duplication','pm2q-cleanup-setter','init-home-accel-typo','ini-default-duplicate-branch','auto-stop-no-direct-actuator-stop','ecat-release-unchecked','pm2q-release-unchecked','ecat-motion-wait','pm2q-motion-wait','start-guards']]
 out['external_review']=[
  {'source':'PM2Q 제품 매뉴얼','location':'인쇄31·42~43 / PDF35·46~47','result':'펄스형 드라이브용 MCN1/MCN2, 펄스 출력·엔코더 입력·모션 IO 지원 확인. 실제 설비 배선은 미확인.'},
