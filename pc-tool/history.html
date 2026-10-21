@@ -3,79 +3,240 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="PC 제어 프로그램 분석 Tool의 제작 과정과 변경 내용을 정리한 이력입니다.">
+<meta name="description" content="프로젝트 대화에서 확인한 PC 제어 프로그램 분석 Tool의 날짜별 세부 제작·수정 기록입니다.">
 <title>변경 이력 | PC 제어 프로그램 분석 Tool</title>
 <style>
 :root{--ink:#253244;--muted:#617186;--line:#dce4ed;--blue:#28618f;--pale:#f3f7fb;--paper:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f5f8;color:var(--ink);font:14px/1.8 "Malgun Gothic","Apple SD Gothic Neo",sans-serif}a{color:var(--blue);text-underline-offset:3px}a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}.hero{background:#fff;border-bottom:1px solid var(--line);padding:30px max(22px,calc((100vw - 1080px)/2)) 25px}.eyebrow{font-size:11px;letter-spacing:1px;font-weight:700;color:#728197}.hero h1{margin:6px 0;font-size:29px;letter-spacing:-.7px}.hero p{margin:0;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-block;padding:6px 12px;border-radius:5px;border:1px solid #cbd8e5;background:#f7fafc;text-decoration:none;font-weight:600;font-size:12px}.btn.primary{background:#285f8d;border-color:#285f8d;color:#fff}.layout{max-width:1120px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:185px minmax(0,1fr);gap:23px}.toc{align-self:start;position:sticky;top:18px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:13px}.toc strong{display:block;margin-bottom:7px;font-size:13px}.toc a{display:block;padding:5px 6px;text-decoration:none;font-size:12px;border-radius:4px}.toc a:hover{background:var(--pale)}main{min-width:0}.period{margin-bottom:24px;scroll-margin-top:18px}.period>h2{font-size:19px;letter-spacing:-.3px;margin:0 0 11px}.period>h2 span{font-size:12px;font-weight:400;color:var(--muted);margin-left:8px}.entry{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:18px 21px;margin-bottom:12px;scroll-margin-top:18px}.entry h3{font-size:16px;margin:4px 0 9px;letter-spacing:-.2px}.tag{display:inline-block;padding:0 7px;border:1px solid #d6e2ec;background:#eef4f9;border-radius:4px;color:#365e7e;font-size:11px}.entry p{margin:7px 0;color:#435166}.entry ul{margin:7px 0;padding-left:20px;color:#435166}.entry li{margin:4px 0}.before-after{display:grid;grid-template-columns:64px minmax(0,1fr);gap:5px 10px;margin:10px 0 0;font-size:13px}.before-after dt{font-weight:700;color:#53677c}.before-after dd{margin:0;color:#435166}.evidence{margin-top:12px;border-top:1px solid #e6ebf1;padding-top:9px;font-size:11px;color:var(--muted)}.evidence a{margin-right:9px;white-space:nowrap}.note{border-left:3px solid #78a0c1;border-radius:3px;background:#eaf1f7;padding:10px 13px;color:#43566d;margin-bottom:12px;font-size:12px}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:12px}caption{text-align:left;color:var(--muted);font-size:12px;margin-bottom:8px}th,td{padding:10px 11px;text-align:left;vertical-align:top;border:1px solid var(--line)}th{background:var(--pale);font-weight:700}td:first-child{width:100px;font-weight:600;color:#43566d}.metrics{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 2px}.metrics span{padding:3px 8px;border:1px solid var(--line);border-radius:4px;background:#f7f9fc;font-size:11px;color:#52667c}.footer{text-align:center;color:#78869a;font-size:11px;padding:0 20px 27px}
 @media(max-width:760px){.hero{padding:23px 18px}.hero h1{font-size:25px}.layout{display:block;margin:16px auto;padding:0 12px}.toc{position:static;display:flex;align-items:center;flex-wrap:wrap;gap:3px 8px;margin-bottom:17px;padding:10px}.toc strong{margin:0 4px}.entry{padding:16px}.period>h2 span{display:block;margin-left:0}.before-after{grid-template-columns:52px minmax(0,1fr);gap:5px 8px}.tablewrap table{min-width:520px}}
+
+[hidden]{display:none!important}.hero .summary{font-size:12px;margin-top:9px;color:#52667c}.history-search{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.history-search label{font-size:12px;font-weight:700}.history-search input{flex:1;min-width:150px;max-width:390px;border:1px solid #c7d4e0;border-radius:5px;padding:8px 10px;font:inherit;font-size:12px;background:white}.history-search button{border:1px solid #c7d4e0;border-radius:5px;background:white;padding:7px 10px;color:#43566d;cursor:pointer}.history-search output{font-size:11px;color:var(--muted);margin-left:auto}.history-search input:focus-visible,.history-search button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.entry{padding:16px 19px}.entry h3{margin:5px 0 10px}.entry-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.record-number{font-size:10px;color:#8291a2;font-variant-numeric:tabular-nums}.record-time{font-size:11px;color:#6b7c8e}.record-source{margin-top:10px;padding-top:8px;border-top:1px solid #e6ebf1;font-size:11px;color:#6b7c8e}.period{scroll-margin-top:20px}.period>h2 .group-count{display:inline-block;margin-left:8px;font-size:11px;background:#e8eff5;border-radius:4px;padding:0 7px}.before-after{grid-template-columns:74px minmax(0,1fr)}.empty{background:white;border:1px solid var(--line);padding:22px;border-radius:6px;color:var(--muted)}.scope-list{margin:8px 0;padding-left:20px;color:#435166}.toc a{font-variant-numeric:tabular-nums}.scope-title{font-size:18px;margin:0 0 9px}@media(max-width:760px){.entry{padding:14px}.before-after{grid-template-columns:65px minmax(0,1fr)}.history-search output{margin-left:0;width:100%}.period>h2 .group-count{display:inline-block;margin-left:7px}.record-time{font-size:10px}}
 </style>
 </head>
 <body>
 <header class="hero" id="top">
-  <div class="eyebrow">DEMOKIT · PC 제어 프로그램 분석 Tool</div>
-  <h1>변경 이력</h1>
-  <p>처음 제작한 목적부터 흐름도·코드 연결, 검색·사전, 화면 개선까지의 작업을 정리했습니다.</p>
+  <div class="eyebrow">DEMOKIT · PC 제어 프로그램 분석 Tool</div><h1>변경 이력</h1>
+  <p>날짜별로 무엇을 요청했고, 어떤 문제를 다시 고쳤는지 개별 작업으로 기록했습니다.</p>
+  <p class="summary">총 37개 세부 항목 · 7개 날짜 · 10월 14일 이전·당일 작업 30개</p>
   <nav class="actions" aria-label="관련 화면"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="./manual.html">사용 설명서</a></nav>
 </header>
 <div class="layout">
-  <nav class="toc" aria-label="변경 이력 목차"><strong>이력 보기</strong><a href="#changes-1021">10.21 · 화면·설명서·배포</a><a href="#earlier-work">10.14까지 · 누적 제작</a><a href="#scope">분석 자료의 범위</a></nav>
-  <main>
-    <section class="period" id="changes-1021" aria-labelledby="date-1021">
-      <h2 id="date-1021"><time datetime="2026-10-21">2026.10.21</time><span>화면과 안내 개선</span></h2>
-      <article class="entry" id="tool-history">
-        <span class="tag">변경 이력</span>
-        <h3>분석 Tool 전용 변경 이력 페이지 추가</h3>
-        <dl class="before-after"><dt>이전</dt><dd>상단 ‘변경 이력’이 기술동향 허브의 이력으로 연결돼 분석 Tool의 작업 내용을 볼 수 없었습니다.</dd><dt>수정</dt><dd>‘전체 흐름도 열기’ 오른쪽에서 이 페이지를 열도록 연결했습니다. 분석 Tool의 누적 제작 내용과 이후 수정 사항을 함께 정리했습니다.</dd></dl>
-      </article>
-      <article class="entry" id="menu-guide">
-        <span class="tag">메뉴 위치</span>
-        <h3>설명서를 왼쪽 ‘주요 화면’ 아래에 배치</h3>
-        <dl class="before-after"><dt>이전</dt><dd>설명서 링크가 요청한 메뉴 위치에 보이지 않거나, 메뉴가 다시 만들어질 때 사라지는 문제가 있었습니다.</dd><dt>수정</dt><dd>왼쪽 ‘주요 화면’ 제목 바로 아래, ‘전체 흐름도’ 바로 위에 ‘사용 설명서 보기’를 배치했습니다. 상단에 있던 중복 설명서 링크는 제거했습니다.</dd></dl>
-        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/f0fbf1ecdf6aefb2b982fcbcca73defe452d12a8" target="_blank" rel="noopener noreferrer">메뉴 생성 후 설명서 배치</a><a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/336ff84028053dbe479bfb2f6efc2f8928b25e0b" target="_blank" rel="noopener noreferrer">상단 중복 링크 정리</a></div>
-      </article>
-      <article class="entry" id="manual-added">
-        <span class="tag">사용 설명서</span>
-        <h3>화면 조작과 코드 읽는 방법을 별도 페이지로 정리</h3>
-        <p>빠른 시작, 화면 구성, 전체·상세 흐름도, 확대·이동, 원문·해설, 검색·사전, 기호·색상, 자료를 읽을 때 주의할 점을 정리했습니다.</p>
-        <ul><li>흐름도 상자에서 코드 근거를 확인하는 순서를 안내했습니다.</li><li>코드의 노란 표시는 이동해 온 선택 줄의 위치 강조임을 설명했습니다.</li><li>현재 메뉴 위치와 상단 변경 이력 안내를 설명서에도 반영했습니다.</li></ul>
-        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/580241d002c13c306faca1bdce1cee9c6eba9536" target="_blank" rel="noopener noreferrer">사용 설명서 추가</a></div>
-      </article>
-      <article class="entry" id="github-pages">
-        <span class="tag">웹 배포</span>
-        <h3>분석 Tool을 고정 주소에서 열 수 있도록 배포</h3>
-        <p>기존 HTML 분석 Tool을 GitHub Pages의 고정 주소에 연결했습니다. 전체 흐름도, 원문 코드·해설, 코드 사전, 검색 결과, 함수 호출 관계, 하드웨어 이해를 같은 Tool에서 열 수 있도록 구성했습니다.</p>
-        <div class="evidence">관련 수정 기록: <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/a73dbc26a2cdddf70ef3a271ad8db27572ba69de" target="_blank" rel="noopener noreferrer">분석 Tool 배포</a></div>
-      </article>
-    </section>
-    <section class="period" id="earlier-work" aria-labelledby="earlier-title">
-      <h2 id="earlier-title">2026.10.14까지<span>누적 제작·개선 과정</span></h2>
-      <div class="note">아래 내용은 ‘PC 제어 프로그램 분석 Tool 제작·개선 기록’(2026.10.14)에 정리된 작업입니다. 개별 수정일이 기록되지 않은 내용은 제작 단계 순서로 묶었습니다.</div>
-      <article class="entry">
-        <h3>자동 시퀀스 예시에서 설비 전체 제어 흐름으로 확장</h3>
-        <p>초기 예시의 실린더·진공 동작만으로는 전원 투입부터 한 사이클 완료까지의 연결을 보기 어려웠습니다. 초기화, EtherCAT 통신, 서보·드라이브, 컨베이어, 센서·IO, 자동 운전과 정지까지 분석 범위를 넓혔습니다.</p>
-        <div class="tablewrap"><table><caption>제작 단계별 주요 변경</caption><thead><tr><th scope="col">단계</th><th scope="col">불편했던 점</th><th scope="col">반영 내용</th></tr></thead><tbody>
-          <tr><td>전체 코드 분석</td><td>자동 운전만 보면 초기화·수동 운전·원점·정지와 연결하기 어려웠습니다.</td><td>초기화, 입력 감시, 수동·원점, 자동 시작, 반송, STOP·RESET, 종료 흐름을 함께 분석했습니다.</td></tr>
-          <tr><td>흐름도 정리</td><td>상세 도식을 여러 개 모아도 전체 실행 순서가 보이지 않았습니다.</td><td>통합 흐름도 1개와 기능별 상세 흐름도 42개를 구성하고 기호·색상을 정리했습니다.</td></tr>
-          <tr><td>코드 근거 연결</td><td>흐름도 동작이 실제 코드 어디에 있는지 찾기 어려웠습니다.</td><td>단계에서 파일·행·함수로 이동하고, 선언·호출·구현의 관계를 확인하도록 연결했습니다.</td></tr>
-          <tr><td>검색·화면 복귀</td><td>검색 결과의 원문 위치를 찾거나 이전 화면으로 돌아오기 번거로웠습니다.</td><td>결과에 파일·행을 표시하고 이전 화면 복귀와 Ctrl+F 안내를 추가했습니다.</td></tr>
-          <tr><td>코드 사전</td><td>원문을 읽는 중 기본 문법과 프로젝트 용어를 따로 찾아야 했습니다.</td><td>전체 사전, 코드 용어 팝업, 옆 사전을 추가해 문법·변수·함수를 연결했습니다.</td></tr>
-          <tr><td>목록·표시 정리</td><td>‘더 보기’ 방식과 의미가 모호한 코드 클릭 표시가 불편했습니다.</td><td>전체 항목을 검색하는 방식으로 정리하고 코드 표시, 키보드 이동 안내와 제목을 개선했습니다.</td></tr>
-        </tbody></table></div>
-        <div class="metrics" aria-label="10월 14일 기록 기준 규모"><span>C++ 79개 파일 · 약 28,520행</span><span>함수 색인 214개</span><span>연결 근거 367개</span><span>사전 검색 항목 6,345개</span></div>
-        <div class="evidence">규모와 제작 단계는 2026.10.14 제작·개선 기록 기준입니다.</div>
-      </article>
-    </section>
-    <section class="period" id="scope" aria-labelledby="scope-title">
-      <article class="entry">
-        <h2 id="scope-title" style="font-size:18px;margin:0 0 9px">분석 자료의 범위</h2>
-        <p>기준 코드는 2026.09.29 15:21:38에 내보낸 자료입니다. 흐름도는 제공 코드와 매뉴얼을 읽어 정리한 분석이며, 실제 설비의 배선·설정·동작을 확인한 결과와는 구분해 봐야 합니다.</p>
-        <p>실제 설비와 대조할 항목은 EtherCAT 설정과 PDO 매핑, 사용 중인 INI·motion.mot, IO 배선과 접점 방식, 드라이브 신호, 완료 조건과 STOP·RESET 반응입니다.</p>
-        <div class="actions"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="#top">맨 위로</a></div>
-      </article>
-    </section>
-  </main>
-</div>
+<nav class="toc" aria-label="변경 이력 목차"><strong>날짜별 이력</strong><a href="#changes-1021">10.21 · 설명서 <small>(5)</small></a><a href="#changes-1020">10.20 · 전체 <small>(2)</small></a><a href="#changes-1014">10.14 · 목차 <small>(5)</small></a><a href="#changes-1013">10.13 · 클릭 표시 <small>(3)</small></a><a href="#changes-1012">10.12 · 기초 사전 확대 <small>(6)</small></a><a href="#changes-1008">10.08 · 통합 흐름도 재구성 <small>(11)</small></a><a href="#changes-1007">10.07 · 전체 분석 시작 <small>(5)</small></a><a href="#scope">분석 범위·기록 기준</a></nav>
+<main>
+ <div class="history-search"><label for="historySearch">이력 검색</label><input id="historySearch" type="search" placeholder="예: 원문 복귀, Ctrl+F, 노란색, 사전" autocomplete="off"><button id="historyReset" type="button">초기화</button><output id="historyCount" role="status" aria-live="polite">37개 표시 / 전체 37개</output></div>
+ <div class="note">날짜·시각은 프로젝트 대화의 한국시간 기준입니다. 같은 기능을 다시 고친 과정도 별도 항목으로 남겼으며, 과거의 수정 보고와 요청·문제 발견 기록을 구분했습니다.</div>
+ <p class="empty" id="historyEmpty" hidden>일치하는 이력이 없습니다. 다른 단어로 검색하거나 초기화를 눌러 주세요.</p>
+ <section class="period" id="changes-1021" data-history-date aria-labelledby="date-1021"><h2 id="date-1021"><time datetime="2026-10-21">2026.10.21</time><span class="group-count">5개 항목</span><span>설명서·메뉴·배포·이력 보완</span></h2><article class="entry" id="record-01" data-history-entry data-date="2026-10-21">
+  <div class="entry-meta"><span class="record-number">01</span><span class="tag">이력 보완</span></div>
+  <h3>요약으로 묶었던 과거 이력을 개별 작업으로 복원</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>‘10월 14일까지 누적 제작’이라는 한 묶음으로 정리해, 대화에서 여러 차례 고친 과정이 빠져 보였습니다.</dd><dt>반영 내용</dt><dd>프로젝트 대화에서 날짜와 수정 보고를 다시 찾아 10월 7·8·12·13·14·20·21일로 나눴습니다. 같은 날에도 흐름도·검색·사전·표시·화면 이동을 각각 별도 항목으로 기록했습니다.</dd></dl>
+  <div class="record-source">10.21 · 세부 이력이 누락됐다는 지적을 반영해 이 페이지 재작성</div>
+</article><article class="entry" id="record-02" data-history-entry data-date="2026-10-21">
+  <div class="entry-meta"><span class="record-number">02</span><span class="tag">변경 이력</span></div>
+  <h3>분석 Tool 전용 변경 이력 페이지 연결</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>상단 ‘변경 이력’이 기술동향 허브의 이력으로 연결돼 분석 Tool의 작업 내용을 볼 수 없었습니다.</dd><dt>반영 내용</dt><dd>Tool 전용 이력 페이지를 만들고, 상단 ‘전체 흐름도 열기’ 오른쪽에서 열도록 연결했습니다. 사용 설명서의 화면 안내도 현재 메뉴에 맞춰 수정했습니다.</dd></dl>
+  <div class="record-source">10.21 · 전용 페이지 배포 및 상단 링크 열기 확인 · <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/6f92865516c04476a5862f4327d2d245b85fb6e6" target="_blank" rel="noopener noreferrer">전용 이력 연결 수정 기록</a></div>
+</article><article class="entry" id="record-03" data-history-entry data-date="2026-10-21">
+  <div class="entry-meta"><span class="record-number">03</span><span class="tag">메뉴 재수정</span></div>
+  <h3>설명서를 ‘주요 화면’ 아래에 고정하고 상단 중복 제거</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>설명서를 추가한 뒤에도 요청한 왼쪽 메뉴에 보이지 않았고, 메뉴가 다시 만들어질 때 링크가 사라지는 문제가 있었습니다.</dd><dt>반영 내용</dt><dd>메뉴 생성 후 ‘주요 화면’ 제목 바로 아래, ‘전체 흐름도’ 바로 위에 ‘사용 설명서 보기’를 배치했습니다. 상단의 중복 설명서는 제거하고 그 자리에 변경 이력을 연결했습니다.</dd></dl>
+  <div class="record-source">10.21 · 10:48~11:02 메뉴 위치 반복 수정 / 11:00 메뉴 생성 후 배치 수정 보고 · <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/f0fbf1ecdf6aefb2b982fcbcca73defe452d12a8" target="_blank" rel="noopener noreferrer">메뉴 생성 후 배치 수정</a> · <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/336ff84028053dbe479bfb2f6efc2f8928b25e0b" target="_blank" rel="noopener noreferrer">상단 중복 링크 정리</a></div>
+</article><article class="entry" id="record-04" data-history-entry data-date="2026-10-21">
+  <div class="entry-meta"><span class="record-number">04</span><span class="tag">사용 설명서</span></div>
+  <h3>조작 방법과 코드 읽는 순서를 별도 설명서로 작성</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>검색·흐름도·원문·사전이 함께 있어 처음 보는 사람이 각 화면을 어떻게 연결해 읽는지 알기 어려웠습니다.</dd><dt>반영 내용</dt><dd>빠른 시작, 화면 구성, 전체·상세 흐름도, 확대·이동, 원문·해설, 검색·사전, 기호·색상, 자료를 읽을 때 주의할 점을 정리했습니다. 코드 줄의 위치 강조와 연결된 번호 정의를 읽는 방법도 설명했습니다.</dd></dl>
+  <div class="record-source">10.21 10:42 · 사용 설명서 추가 기록 · <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/580241d002c13c306faca1bdce1cee9c6eba9536" target="_blank" rel="noopener noreferrer">설명서 추가 기록</a></div>
+</article><article class="entry" id="record-05" data-history-entry data-date="2026-10-21">
+  <div class="entry-meta"><span class="record-number">05</span><span class="tag">웹 배포</span></div>
+  <h3>기존 분석 HTML을 고정 웹 주소에서 열도록 배포</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>수정 HTML을 파일로 전달받아 열어야 해서 최신본의 위치와 공유 주소를 일관되게 유지하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>GitHub Pages의 pc-tool 경로에 분석 Tool을 연결했습니다. 전체 흐름도, 원문 코드·해설, 코드 사전, 검색 결과, 함수 호출 관계와 하드웨어 이해를 같은 주소에서 엽니다.</dd></dl>
+  <div class="record-source">10.21 10:29 · 분석 Tool 배포 기록 · <a href="https://github.com/rlaskadls741-debug/equipment-intelligence-hub/commit/a73dbc26a2cdddf70ef3a271ad8db27572ba69de" target="_blank" rel="noopener noreferrer">분석 Tool 배포 기록</a></div>
+</article></section><section class="period" id="changes-1020" data-history-date aria-labelledby="date-1020"><h2 id="date-1020"><time datetime="2026-10-20">2026.10.20</time><span class="group-count">2개 항목</span><span>전체·상세 흐름도 조작</span></h2><article class="entry" id="record-06" data-history-entry data-date="2026-10-20">
+  <div class="entry-meta"><span class="record-number">06</span><span class="tag">확대·축소</span></div>
+  <h3>전체 흐름도와 상세 도식 42개에 Ctrl+휠 조작 반영</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>전체·상세 흐름도에서 Ctrl을 누른 채 스크롤해 확대·축소할 수 있도록 해 달라는 요청이 있었습니다.</dd><dt>반영 내용</dt><dd>두 화면 모두 Ctrl+마우스 휠로 확대·축소하고, 일반 휠은 스크롤에 사용하도록 조작 방식을 맞췄습니다.</dd></dl>
+  <div class="record-source">10.20 12:25 요청 → 12:27 반영 보고 · 당시 실제 브라우저 화면 검증은 미완료</div>
+</article><article class="entry" id="record-07" data-history-entry data-date="2026-10-20">
+  <div class="entry-meta"><span class="record-number">07</span><span class="tag">위치 이동</span></div>
+  <h3>도식 드래그 이동과 상자 클릭을 함께 유지</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>확대한 도식의 위치를 마우스로 옮기면서도, 동작 상자를 눌러 근거 코드를 여는 기능이 필요했습니다.</dd><dt>반영 내용</dt><dd>도식 위에서 마우스를 누른 채 끌어 위치를 옮기도록 반영했습니다. 상자를 클릭하면 코드 근거를 여는 기존 동작도 유지했다고 보고했습니다.</dd></dl>
+  <div class="record-source">10.20 12:25 요청 → 12:27 반영 보고 · 전체·상세 흐름도 공통</div>
+</article></section><span id="earlier-work"></span><section class="period" id="changes-1014" data-history-date aria-labelledby="date-1014"><h2 id="date-1014"><time datetime="2026-10-14">2026.10.14</time><span class="group-count">5개 항목</span><span>목차·키보드·사전·근거 정리</span></h2><article class="entry" id="record-08" data-history-entry data-date="2026-10-14">
+  <div class="entry-meta"><span class="record-number">08</span><span class="tag">목차·제목</span></div>
+  <h3>제목과 탭을 통일하고 탐색 메뉴를 구분</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>화면·탭의 제목과 탐색 항목을 정리할 필요가 있었고, 현재 위치와 키보드 초점 표시가 부족했습니다.</dd><dt>반영 내용</dt><dd>제목과 브라우저 탭을 통일했습니다. 목차를 주요 화면, 기능별 상세 흐름도, 근거·참고 자료로 구분하고 현재 위치와 키보드 초점 표시를 강화했습니다.</dd></dl>
+  <div class="record-source">10.14 12:03 · 사용성 수정 보고</div>
+</article><article class="entry" id="record-09" data-history-entry data-date="2026-10-14">
+  <div class="entry-meta"><span class="record-number">09</span><span class="tag">키보드 조작</span></div>
+  <h3>코드 토큰을 Tab·화살표·Enter로 탐색</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>클릭 가능한 변수·함수·문법 항목을 마우스에 의존해 열어야 했습니다.</dd><dt>반영 내용</dt><dd>Tab으로 코드 항목에 들어간 뒤 화살표로 이동하고, Enter 또는 Space로 사전을 여는 조작을 추가했습니다. 키보드 이동 안내도 함께 표시했습니다.</dd></dl>
+  <div class="record-source">10.14 12:03 · 키보드 탐색 반영 및 DOM 동작 검증 보고</div>
+</article><article class="entry" id="record-10" data-history-entry data-date="2026-10-14">
+  <div class="entry-meta"><span class="record-number">10</span><span class="tag">사전 재수정</span></div>
+  <h3>6,345개 사전 목록은 열 때 전체 표시</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>‘더 보기’로 목록을 나눠 보는 불편과, 많은 사전 항목을 처음부터 그리는 부담을 함께 줄일 필요가 있었습니다.</dd><dt>반영 내용</dt><dd>사전 전체 목록은 처음에는 그리지 않고, 사전을 열면 전체 6,345개 항목을 표시하도록 정리했습니다. 전체 목록 검색과 문법 사용 위치 펼치기 동작을 점검했습니다.</dd></dl>
+  <div class="record-source">10.14 12:03 · 전체 사전 표시·코드 팝업·복귀 동작 검증 보고</div>
+</article><article class="entry" id="record-11" data-history-entry data-date="2026-10-14">
+  <div class="entry-meta"><span class="record-number">11</span><span class="tag">분석 근거</span></div>
+  <h3>코드에서 확인한 사실과 현장 확인 항목 구분</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>코드의 명령 호출이나 매뉴얼 설명을 실제 설비에서 검증한 결과로 받아들일 수 있었습니다.</dd><dt>반영 내용</dt><dd>검토 항목을 ‘코드에서 확인한 사실’과 ‘설비에서 확인할 내용’으로 나눴습니다. 실제 배선, 설정, 센서 피드백, STOP·RESET 반응은 현장 자료와 대조하도록 정리했습니다.</dd></dl>
+  <div class="record-source">10.14 12:03 · 근거 구분 반영 보고</div>
+</article><article class="entry" id="record-12" data-history-entry data-date="2026-10-14">
+  <div class="entry-meta"><span class="record-number">12</span><span class="tag">자료 집계</span></div>
+  <h3>전달 파일 82개와 원문 C++ 79개의 차이 설명</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>전달된 PART 파일 수와 HTML의 원문·검색 대상 파일 수가 달라 분석 자료가 빠졌는지 혼동할 수 있었습니다.</dd><dt>반영 내용</dt><dd>전달 파일은 82개, HTML에서 원문·검색 대상으로 제공하는 C++ 파일은 79개로 집계 기준이 다르다는 설명을 추가했습니다. 코드 기준 시각도 함께 명시했습니다.</dd></dl>
+  <div class="record-source">10.14 12:03 · 파일 수 차이 설명 반영 / 10.14 제작·개선 기록에 보존</div>
+</article></section><section class="period" id="changes-1013" data-history-date aria-labelledby="date-1013"><h2 id="date-1013"><time datetime="2026-10-13">2026.10.13</time><span class="group-count">3개 항목</span><span>클릭 표시·대량 위치 처리</span></h2><article class="entry" id="record-13" data-history-entry data-date="2026-10-13">
+  <div class="entry-meta"><span class="record-number">13</span><span class="tag">클릭 표시</span></div>
+  <h3>사전을 열 수 있는 코드 항목을 노란색으로 구분</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>어떤 코드 부분을 클릭할 수 있는지, 노란 표시가 무엇을 뜻하는지 명확하지 않았습니다.</dd><dt>반영 내용</dt><dd>변수명·함수명·기초 문법·연산자를 노란색으로 구분했다고 보고했습니다. 괄호·쉼표·세미콜론은 클릭 강조에서 제외해 표시가 지나치게 많아지는 문제를 줄였습니다.</dd></dl>
+  <div class="record-source">10.13 09:24 요청 → 09:28 반영 보고</div>
+</article><article class="entry" id="record-14" data-history-entry data-date="2026-10-13">
+  <div class="entry-meta"><span class="record-number">14</span><span class="tag">사용 위치</span></div>
+  <h3>전체 원문 위치는 펼칠 때 불러오도록 변경</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>반복 사용이 많은 문법을 누르면 수천 개의 사용 위치를 즉시 만들면서 화면이 무거워졌습니다.</dd><dt>반영 내용</dt><dd>대표 위치를 먼저 보여주고 ‘전체 원문 위치 펼치기’를 누를 때 나머지를 불러오도록 바꿨습니다. if의 1,876개 위치처럼 많은 결과도 전체 조회할 수 있도록 했습니다.</dd></dl>
+  <div class="record-source">10.13 09:27 요청 → 09:28 반영 보고</div>
+</article><article class="entry" id="record-15" data-history-entry data-date="2026-10-13">
+  <div class="entry-meta"><span class="record-number">15</span><span class="tag">점검·성능</span></div>
+  <h3>세미콜론 사용 위치의 대량 생성 지연 발견</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>전수 점검에서 세미콜론을 클릭하면 사용 위치 10,321개를 즉시 만들고, 시험 환경에서 약 1.4초 지연되는 현상이 확인됐습니다.</dd><dt>반영 내용</dt><dd>대표 위치 우선 표시와 전체 위치 지연 생성 방안을 제안했습니다. 이후 09:28 수정에서 펼칠 때 불러오는 방식으로 반영됐습니다. 당시 실제 PC·모바일의 성능과 팝업 배치는 추가 확인 항목으로 남겼습니다.</dd></dl>
+  <div class="record-source">10.13 09:10 · 문제 발견 보고 / 09:28 후속 수정 보고</div>
+</article></section><section class="period" id="changes-1012" data-history-date aria-labelledby="date-1012"><h2 id="date-1012"><time datetime="2026-10-12">2026.10.12</time><span class="group-count">6개 항목</span><span>기초 사전 확대·팝업·명칭</span></h2><article class="entry" id="record-16" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">16</span><span class="tag">제목·파일명</span></div>
+  <h3>‘PC 제어 프로그램 분석 Tool’로 명칭 변경</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>분석 자료의 목적이 드러나도록 화면 제목과 전달 파일명을 정리해 달라는 요청이 있었습니다.</dd><dt>반영 내용</dt><dd>화면과 파일의 이름을 ‘PC 제어 프로그램 분석 Tool’로 변경했습니다. 이후 10월 14일 제목·브라우저 탭·메뉴를 다시 통일했습니다.</dd></dl>
+  <div class="record-source">10.12 14:39 요청 / 16:31 파일명 변경 보고 / 16:42 전달 보고</div>
+</article><article class="entry" id="record-17" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">17</span><span class="tag">팝업 닫기</span></div>
+  <h3>코드 사전 팝업을 ×·Esc·바깥 클릭으로 닫기</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>코드를 읽는 도중 연 사전이 원문을 가릴 때 간단하게 닫고 다시 읽을 수 있어야 했습니다.</dd><dt>반영 내용</dt><dd>팝업의 × 버튼, Esc, 팝업 바깥 클릭으로 닫는 동작을 구현했다고 보고했습니다.</dd></dl>
+  <div class="record-source">10.12 16:26 · 코드 사전 팝업 조작 반영 보고</div>
+</article><article class="entry" id="record-18" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">18</span><span class="tag">옆 사전</span></div>
+  <h3>팝업 내용을 오른쪽에 고정하고 전체 사전으로 이동</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>용어 설명을 계속 참고하면서 원문을 읽거나 같은 항목을 전체 사전에서 확인하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>‘오른쪽 사전에 고정’과 ‘전체 사전에서 보기’를 연결했습니다. 사전에서 원문으로 이동하고 이전 화면으로 돌아오는 흐름도 함께 구성했습니다.</dd></dl>
+  <div class="record-source">10.12 16:26 · 팝업·옆 사전·전체 사전 연결 반영 보고</div>
+</article><article class="entry" id="record-19" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">19</span><span class="tag">코드 팝업</span></div>
+  <h3>변수·함수·문법·연산자를 코드에서 눌러 설명 열기</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>코드를 읽다가 모르는 용어가 나오면 별도 사전에서 다시 검색해야 했습니다.</dd><dt>반영 내용</dt><dd>관련 코드 항목을 클릭하면 설명 팝업이 열리도록 연결했습니다. 파일명·행 번호를 함께 표시하고, 원문을 보던 맥락에서 용어를 확인하도록 했습니다.</dd></dl>
+  <div class="record-source">10.12 14:39 요청 → 16:26 팝업 기능 반영 보고</div>
+</article><article class="entry" id="record-20" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">20</span><span class="tag">기초 사전 재보완</span></div>
+  <h3>기초 항목을 174개로 확대해 총 6,345개 구성</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>자료형의 짧은 정의만으로는 실제 코드에서 변수·인자·반환값이 어떻게 이어지는지 이해하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>기초 항목을 151개에서 174개로 늘렸습니다. 변수·상수·문자열·대입·인자·값/참조 전달·반환값·형변환·비트 마스크·컴파일과 링크를 보강해 전체 6,345개 항목으로 정리했습니다.</dd></dl>
+  <div class="record-source">10.12 14:44 설명·맥락 보강 요청 / 16:16~16:18 확대 반영 보고</div>
+</article><article class="entry" id="record-21" data-history-entry data-date="2026-10-12">
+  <div class="entry-meta"><span class="record-number">21</span><span class="tag">기초 사전</span></div>
+  <h3>기초 문법 151개를 추가해 총 6,322개 제공</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>int 같은 기초 자료형·문법·연산자까지 독립 항목으로 넣고 쉽게 설명해 달라는 요청이 있었습니다.</dd><dt>반영 내용</dt><dd>기존 6,171개 항목을 유지하면서 기초 문법 151개를 추가했습니다. int의 뜻·예제·주의점과 실제 선언, 전달, 참조 매개변수, 오류 분기의 연결을 설명했습니다.</dd></dl>
+  <div class="record-source">10.12 14:39~14:44 요청 → 15:44 1차 반영 보고 · 이후 174개로 추가 보완</div>
+</article></section><section class="period" id="changes-1008" data-history-date aria-labelledby="date-1008"><h2 id="date-1008"><time datetime="2026-10-08">2026.10.08</time><span class="group-count">11개 항목</span><span>통합 흐름도 재구성·원문·검색</span></h2><article class="entry" id="record-22" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">22</span><span class="tag">복귀 재검토</span></div>
+  <h3>사전에서 돌아올 때 읽던 코드 맥락을 유지</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>상단 버튼·안내가 코드 공간을 차지하고, 사전에서 선언부로 이동하면 이전에 읽던 코드로 돌아오기 어렵다는 문제가 다시 확인됐습니다.</dd><dt>재검토 내용</dt><dd>읽던 파일·줄 위치, 접힌 블록, 사전 상태를 복원하는 방향으로 재정리했습니다. 15:42에 복귀 기능을 보고한 뒤에도 사용 맥락을 기준으로 다시 보완할 항목을 짚었습니다.</dd></dl>
+  <div class="record-source">10.08 16:05 · 사용 불편 재확인 및 상태 복원 개선 방향 보고</div>
+</article><article class="entry" id="record-23" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">23</span><span class="tag">코드 내 검색</span></div>
+  <h3>Ctrl+F와 이전·다음 일치 위치 이동 추가</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>긴 원문 파일에서 원하는 코드를 빠르게 찾기 어려워, 코드 안에서 Ctrl+F로 검색할 수 있게 해 달라는 요청이 있었습니다.</dd><dt>반영 내용</dt><dd>현재 파일 검색과 이전·다음 일치 위치 이동, 접힌 코드 자동 펼침, 검색창 닫기를 반영했습니다.</dd></dl>
+  <div class="record-source">10.08 15:04 요청 → 15:42 반영 보고</div>
+</article><article class="entry" id="record-24" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">24</span><span class="tag">전체 목록</span></div>
+  <h3>원문과 6,171개 사전 항목을 ‘더 보기’ 없이 제공</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>원문·사전을 여러 번 ‘더 보기’로 나눠 여는 방식이 불편했습니다.</dd><dt>반영 내용</dt><dd>전체 원문과 당시 6,171개 사전 항목을 표시·검색하도록 정리했습니다. 이후 항목이 늘어난 사전은 10월 14일에 열 때 전체 목록을 그리는 방식으로 다시 개선했습니다.</dd></dl>
+  <div class="record-source">10.08 15:04 요청 → 15:42 반영 보고</div>
+</article><article class="entry" id="record-25" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">25</span><span class="tag">가독성 요청</span></div>
+  <h3>어색한 표현과 흐름도 화면 크기 문제 재검토</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>통합 흐름도를 만든 뒤에도 가독성이 부족하고 표현이 어색하며, 화면 크기에 맞는 확대·축소·이동이 필요하다는 지적이 있었습니다.</dd><dt>요청·후속 기록</dt><dd>가독성·표현·화면 대응을 후속 개선 항목으로 요청했습니다. Ctrl+휠과 드래그 조작의 공통 적용은 별도 확인되는 10월 20일 반영 이력으로 기록했습니다.</dd></dl>
+  <div class="record-source">10.08 10:29 · 사용자 개선 요청 / 조작 공통 적용은 10.20 기록 참조</div>
+</article><article class="entry" id="record-26" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">26</span><span class="tag">검색 결과</span></div>
+  <h3>센서·IO·함수 검색에 파일·행·코드 미리보기 표시</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>검색 결과에서 해당 용어가 실제로 어느 파일의 어떤 코드에 있는지 확인하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>검색 결과에 실제 파일명, 행 번호와 코드 내용을 표시하고, 결과를 선택하면 해당 원문 위치로 이동하도록 연결했습니다.</dd></dl>
+  <div class="record-source">10.08 10:02 요청 → 10:27 반영 보고</div>
+</article><article class="entry" id="record-27" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">27</span><span class="tag">행 범위 조회</span></div>
+  <h3>512-530·512+20 방식의 코드 범위 조회 추가</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>특정 한 줄뿐 아니라 그 앞뒤의 코드 묶음을 직접 지정해 확인할 필요가 있었습니다.</dd><dt>반영 내용</dt><dd>512-530처럼 시작·끝 행을 지정하거나, 512+20처럼 시작 행과 줄 수로 조회하는 방식을 추가했습니다.</dd></dl>
+  <div class="record-source">10.08 10:02 요청 → 10:27 반영 보고</div>
+</article><article class="entry" id="record-28" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">28</span><span class="tag">코드 블록</span></div>
+  <h3>중괄호 범위를 묶고 접어서 읽기</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>중괄호가 흩어져 있어 함수·조건·반복문의 범위를 한눈에 파악하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>중괄호 블록을 묶어 표시하고 접고 펼치는 기능을 추가했습니다. 구조를 먼저 보고 필요한 블록의 원문을 읽도록 정리했습니다.</dd></dl>
+  <div class="record-source">10.08 10:02 요청 → 10:27 반영 보고</div>
+</article><article class="entry" id="record-29" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">29</span><span class="tag">줄별 해설 재수정</span></div>
+  <h3>의미 있는 실행 코드에 해설 집중</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>주석·빈 줄·중괄호까지 같은 방식으로 해설해 코드와 설명이 불필요하게 길어졌습니다.</dd><dt>반영 내용</dt><dd>주석, 빈 줄과 중괄호의 반복 해설을 생략하고 의미 있는 코드 줄을 중심으로 설명하도록 바꿨습니다.</dd></dl>
+  <div class="record-source">10.08 10:02 요청 → 10:27 반영 보고</div>
+</article><article class="entry" id="record-30" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">30</span><span class="tag">통합 흐름도 재작성</span></div>
+  <h3>42개 도식 나열을 하나의 연속 흐름으로 변경</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>상세 흐름도 42개를 한 캔버스에 모은 결과가 단순히 복사해 붙인 것 같고, 전체 순서를 보여주지 못한다는 지적이 있었습니다.</dd><dt>반영 내용</dt><dd>전원 ON부터 초기화·감시·준비·자동 반송 한 사이클·반복·정지까지 하나로 이어지는 통합 흐름도로 다시 구성했습니다. 상세 도식은 세부 내용을 보는 보조 자료로 유지했습니다.</dd></dl>
+  <div class="record-source">10.08 09:39 초기 배치 보고 → 09:46 재작성 요청 → 09:59·10:27 통합 흐름 반영 보고</div>
+</article><article class="entry" id="record-31" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">31</span><span class="tag">전체 원문</span></div>
+  <h3>분석 범위를 C++ 79개 파일 전체로 확대</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>초기 22개 제어 원문 중심의 연결만으로는 전체 프로젝트의 원문과 사용 위치를 충분히 확인하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>79개 C++ 파일과 전체 28,520행을 표시·검색 대상으로 확장했습니다. 흐름 단계, 함수·행 연결과 줄별 해설을 통합 화면에 포함했다고 보고했습니다.</dd></dl>
+  <div class="record-source">10.08 09:35 전체 파일 통합 보고 / 15:42 전체 원문·검색 점검 보고</div>
+</article><article class="entry" id="record-32" data-history-entry data-date="2026-10-08">
+  <div class="entry-meta"><span class="record-number">32</span><span class="tag">하드웨어 이해</span></div>
+  <h3>코드부터 장치·기구·센서 피드백까지 연결</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>함수 호출만으로는 실제 드라이브·밸브·컨베이어·센서가 어떤 경로로 연결되는지 이해하기 어려웠습니다.</dd><dt>반영 내용</dt><dd>코드 호출 → 통신·IO → 드라이브·밸브 → 기구 동작 → 센서 피드백을 따라가는 하드웨어 학습 안내를 추가했습니다.</dd></dl>
+  <div class="record-source">10.08 09:16 요청 → 09:39 하드웨어 학습 안내 반영 보고</div>
+</article></section><section class="period" id="changes-1007" data-history-date aria-labelledby="date-1007"><h2 id="date-1007"><time datetime="2026-10-07">2026.10.07</time><span class="group-count">5개 항목</span><span>전체 분석 시작·표준 도식·코드 연결</span></h2><article class="entry" id="record-33" data-history-entry data-date="2026-10-07">
+  <div class="entry-meta"><span class="record-number">33</span><span class="tag">한국어 해설</span></div>
+  <h3>코드 근거에 한국어 해설과 표시 전환 추가</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>선언·호출·구현 원문만으로는 인자, 조건과 반환값이 무엇을 뜻하는지 읽기 어려웠습니다.</dd><dt>반영 내용</dt><dd>근거 줄에 한국어 설명을 추가하고 선언, 호출 인자, 조건, IO·센서, 대기와 반환값을 설명했습니다. 원문과 행 번호는 유지하고 줄별 해설을 켜고 끄도록 했습니다.</dd></dl>
+  <div class="record-source">10.07 18:25 · 줄별 한국어 해설 반영 보고 / 다음 날 반복 해설을 다시 정리</div>
+</article><article class="entry" id="record-34" data-history-entry data-date="2026-10-07">
+  <div class="entry-meta"><span class="record-number">34</span><span class="tag">코드 정정</span></div>
+  <h3>좌표 읽기 순서와 3번 축 JOG 부호 수정</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>도식과 설명을 원문에 연결하는 과정에서 좌표 읽기 순서와 3번 축 JOG 방향 부호의 정정이 필요했습니다.</dd><dt>반영 내용</dt><dd>좌표 읽기 순서와 3번 축 JOG 부호를 수정했다고 보고했습니다. 코드에서 확인되는 동작과 장치의 일반 원리, 미확인 사항을 구분하는 설명도 함께 정리했습니다.</dd></dl>
+  <div class="record-source">10.07 17:43 · 원문 근거 연결 수정 보고에 포함</div>
+</article><article class="entry" id="record-35" data-history-entry data-date="2026-10-07">
+  <div class="entry-meta"><span class="record-number">35</span><span class="tag">원문 근거</span></div>
+  <h3>상자에서 선언·호출·구현으로 이동하도록 연결</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>흐름도 단계의 신뢰성을 확인하려면 실제 C++ 선언, 호출 위치와 구현 원문까지 직접 볼 수 있어야 했습니다.</dd><dt>반영 내용</dt><dd>HTML에 제어 원문 22개 파일을 내장했습니다. 상자를 누르면 관련 선언·호출·구현의 파일명·행 번호·원문과 클래스·호출자·IO·상태 변수를 확인하도록 연결했습니다.</dd></dl>
+  <div class="record-source">10.07 17:11 요청 → 17:43 반영 보고</div>
+</article><article class="entry" id="record-36" data-history-entry data-date="2026-10-07">
+  <div class="entry-meta"><span class="record-number">36</span><span class="tag">도식 재작성</span></div>
+  <h3>기호·색상을 정리하고 직각 연결선으로 재구성</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>선이 꼬이고 곡선·표현이 혼재해 도식이 복잡하며, 표준 기호와 색상 구분이 필요하다는 지적이 있었습니다.</dd><dt>반영 내용</dt><dd>ISO 5807 기본 기호와 색상 구분, 직각 연결선을 적용해 42개 도식으로 재작성했습니다. 시작·처리·판단·입출력·호출·연결자를 구분했습니다.</dd></dl>
+  <div class="record-source">10.07 15:31 요청 → 16:20 재작성 보고</div>
+</article><article class="entry" id="record-37" data-history-entry data-date="2026-10-07">
+  <div class="entry-meta"><span class="record-number">37</span><span class="tag">분석 시작</span></div>
+  <h3>자동 운전 일부에서 설비 전체 제어로 범위 확대</h3>
+  <dl class="before-after"><dt>요청·문제</dt><dd>실린더·진공 중심의 자동 시퀀스 예시만으로는 설비의 전체 동작을 설명하기 부족했습니다.</dd><dt>반영 내용</dt><dd>전원, 초기화, EtherCAT, 서보·드라이브, 컨베이어, 모터, 전체 센서·IO와 자동 사이클·정지까지 매우 상세하게 다루는 전체 흐름도 제작을 시작했습니다.</dd></dl>
+  <div class="record-source">10.07 14:59 · 전체 제어 흐름도 제작 요청</div>
+</article></section>
+ <section class="period" id="scope" aria-labelledby="scope-title"><article class="entry"><h2 class="scope-title" id="scope-title">분석 범위·기록 기준</h2>
+ <p>기준 코드는 2026.09.29 15:21:38에 내보낸 자료입니다. 제공 코드·매뉴얼의 분석과 실제 설비의 배선·설정·동작 검증은 구분해 봐야 합니다.</p>
+ <div class="metrics"><span>C++ 79개 파일 · 약 28,520행</span><span>함수 색인 214개</span><span>연결 근거 367개</span><span>사전 검색 항목 6,345개</span></div>
+ <ul class="scope-list"><li>과거 이력은 ‘전체 제어 흐름도 생성’ 프로젝트 대화의 요청·수정 보고를 기준으로 정리했습니다. 분석 규모는 10월 14일 제작·개선 기록과 대조했습니다.</li><li>10월 14일에는 코드 팝업·복귀·키보드·사전의 DOM 동작 검증이 보고됐지만, 당시 브라우저 화면 캡처 검증은 실행 환경 문제로 마치지 못했습니다.</li><li>실제 설비 대조 항목은 EtherCAT 설정·PDO 매핑, 사용 INI·motion.mot, IO 배선·접점, 드라이브 신호와 STOP·RESET 반응입니다.</li></ul>
+ <div class="actions"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="#top">맨 위로</a></div></article></section>
+</main></div>
 <footer class="footer">PC 제어 프로그램 분석 Tool · 변경 이력</footer>
-</body>
-</html>
+<script>
+(()=>{
+ const input=document.getElementById('historySearch');
+ const entries=[...document.querySelectorAll('[data-history-entry]')];
+ const groups=[...document.querySelectorAll('[data-history-date]')];
+ const normalize=value=>value.toLocaleLowerCase().replace(/\s+/g,' ').trim();
+ const index=entries.map(node=>[node,normalize(node.dataset.date+' '+node.textContent)]);
+ function filter(){
+  const terms=normalize(input.value).split(' ').filter(Boolean);
+  let count=0;
+  for(const [node,text] of index){const match=terms.every(term=>text.includes(term));node.hidden=!match;if(match)count++;}
+  for(const group of groups)group.hidden=![...group.querySelectorAll('[data-history-entry]')].some(node=>!node.hidden);
+  document.getElementById('historyCount').textContent=count+'개 표시 / 전체 '+entries.length+'개';
+  document.getElementById('historyEmpty').hidden=count!==0;
+ }
+ input.addEventListener('input',filter);
+ document.getElementById('historyReset').addEventListener('click',()=>{input.value='';filter();input.focus();});
+ document.querySelectorAll('.toc a').forEach(link=>link.addEventListener('click',()=>{if(input.value){input.value='';filter();}}));
+})();
+</script>
+</body></html>
