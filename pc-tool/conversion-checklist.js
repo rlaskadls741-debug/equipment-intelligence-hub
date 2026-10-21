@@ -9,7 +9,7 @@
  const vendorTopics={C17:'전자기어비',C19:'1SN 원점·리밋',C21:'PM2Q A/B접점',C37:'인버터 PDO'};
  const colorValid=value=>typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value);
  const statusKey=label=>Object.keys(LABELS).find(key=>LABELS[key]===label);
- const initialItem=id=>({status:statusKey(baseline[id].status),color:null,note:'',updatedAt:''});
+ const initialItem=id=>({status:statusKey(baseline[id].status),note:'',updatedAt:''});
  function freshState(){return {schema:1,project:'ajin-wmx3',palette:{...DEFAULT_PALETTE},items:Object.fromEntries(DATA.checklist.map(row=>[row.id,initialItem(row.id)])),savedAt:''};}
  function validate(input){
   if(!input||input.schema!==1||input.project!=='ajin-wmx3'||!input.items||typeof input.items!=='object'||Array.isArray(input.items))throw new Error('이 체크리스트에서 내보낸 JSON 파일이 아닙니다.');
@@ -22,9 +22,9 @@
   for(const [id,item] of Object.entries(input.items)){
    if(!Object.hasOwn(baseline,id))throw new Error('알 수 없는 항목 번호가 있습니다: '+id);
    if(!item||!Object.hasOwn(LABELS,item.status))throw new Error(id+'의 상태가 올바르지 않습니다.');
-   if(item.color!==null&&item.color!==undefined&&!colorValid(item.color))throw new Error(id+'의 색상이 올바르지 않습니다.');
    if(typeof item.note!=='string'||item.note.length>10000)throw new Error(id+'의 메모가 올바르지 않습니다.');
-   result.items[id]={status:item.status,color:item.color?.toLowerCase()||null,note:item.note,updatedAt:typeof item.updatedAt==='string'&&Number.isFinite(Date.parse(item.updatedAt))?item.updatedAt:''};
+   // Older backups may include per-item colors; retain their progress and use status colors.
+   result.items[id]={status:item.status,note:item.note,updatedAt:typeof item.updatedAt==='string'&&Number.isFinite(Date.parse(item.updatedAt))?item.updatedAt:''};
   }
   if(!Object.keys(result.items).length)throw new Error('불러올 체크항목이 없습니다.');
   if(typeof input.savedAt==='string'&&Number.isFinite(Date.parse(input.savedAt)))result.savedAt=input.savedAt;
@@ -51,7 +51,6 @@
   }catch(error){state.savedAt=previous;showStatus('브라우저 저장 실패 · 저장 파일 내보내기로 보관하세요.',true);return false;}
  }
  const rowNodes=new Map();
- function effectiveColor(id){const item=state.items[id];return item.color||state.palette[item.status];}
  function updateColors(){
   for(const [key,value] of Object.entries(state.palette)){
    document.documentElement.style.setProperty('--'+key,value);
@@ -61,12 +60,7 @@
   }
   for(const row of DATA.checklist){
    const node=rowNodes.get(row.id);if(!node)continue;
-   const item=state.items[row.id],color=effectiveColor(row.id);
-   node.style.setProperty('--row-color',color);
-   node.querySelector('input[type=color]').value=color;
-   node.querySelector('.hex-input').value=color;
-   node.querySelector('.reset-color').textContent=item.color?'상태별 색상으로 되돌리기':'상태 색상 사용 중';
-   node.querySelector('.reset-color').disabled=!item.color;
+   node.style.setProperty('--row-color',state.palette[state.items[row.id].status]);
   }
  }
  function updateSummary(){
@@ -79,7 +73,7 @@
  }
  function touch(id){state.items[id].updatedAt=new Date().toISOString();rowNodes.get(id).querySelector('.updated').textContent='수정 '+time(state.items[id].updatedAt);save();}
  function colorPair(label,value,onChange){
-  const wrap=el('div',{class:'row-color-controls'});
+  const wrap=el('div',{class:'palette-color-controls'});
   const picker=el('input',{type:'color',class:'color-picker','aria-label':label+' 색상 선택',value});
   const hex=el('input',{type:'text',class:'hex-input','aria-label':label+' 색상 코드',value,maxlength:'7',spellcheck:'false',pattern:'#[0-9A-Fa-f]{6}'});
   picker.addEventListener('input',()=>{hex.value=picker.value;hex.removeAttribute('aria-invalid');onChange(picker.value);});
@@ -117,16 +111,13 @@
    const status=el('div',{class:'status-cell'}),select=el('select',{class:'status-select','aria-label':row.id+' 현재 상태'});
    for(const [key,label] of Object.entries(LABELS))select.append(el('option',{value:key},label));
    select.value=item.status;
-   select.addEventListener('change',()=>{state.items[row.id].status=select.value;state.items[row.id].color=null;touch(row.id);updateColors();updateSummary();applyFilters();});
+   select.addEventListener('change',()=>{state.items[row.id].status=select.value;touch(row.id);updateColors();updateSummary();applyFilters();});
    status.append(select,el('span',{class:'status-caption'},'내가 관리하는 현재 상태'));
-   const colorCell=el('div',{class:'color-cell'}),reset=el('button',{type:'button',class:'reset-color','aria-label':row.id+' 상태별 색상으로 되돌리기'});
-   colorCell.append(colorPair(row.id,effectiveColor(row.id),value=>{state.items[row.id].color=value;touch(row.id);updateColors();}),reset);
-   reset.addEventListener('click',()=>{state.items[row.id].color=null;touch(row.id);updateColors();});
    const notes=el('div',{class:'notes-cell'}),textarea=el('textarea',{class:'row-note','aria-label':row.id+' 내 메모',placeholder:'확인값·결과·다음 작업 기록',maxlength:'10000'});
    textarea.value=item.note;
    textarea.addEventListener('input',()=>{state.items[row.id].note=textarea.value;touch(row.id);});
    notes.append(textarea,el('span',{class:'updated'},item.updatedAt?'수정 '+time(item.updatedAt):''));
-   node.append(main,status,colorCell,notes);$('checklistRows').append(node);
+   node.append(main,status,notes);$('checklistRows').append(node);
   }
  }
  function applyFilters(){
