@@ -13,6 +13,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
 <body>
 <div id="status" role="status">Tool 불러오는 중…</div>
 <iframe id="app" title="PC 제어 프로그램 분석 Tool" hidden></iframe>
+<script src="./reader-updates.js?v=20261021-reader-1"></script>
 <script>
 (async()=>{
  const status=document.getElementById("status");
@@ -27,7 +28,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
    if(!response.ok) throw new Error("Source load failed: "+response.status);
    return response.text();
   }));
-  let source=parts.join("");
+  let source=window.DemoKitReaderUpdates.apply(parts.join(""));
   source=source.replace(/<a href="manual.html" class="manual-entry"[^>]*>사용 설명서<\/a>/,"");
   source=source.replace(/<a class="main-manual-link"[^>]*>[^<]*<\/a>/,"");
   const flowLink=/<a href="#all_flow" class="atlas-entry" data-atlas-open="all_flow">전체 흐름도 열기 →<\/a>/;
