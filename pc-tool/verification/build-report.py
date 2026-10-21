@@ -92,6 +92,7 @@ out['external_review']=[
  {'source':'AJINEXTEK AXM 다축 구동','url':'https://www.ajinextek.com/webmanual/AXM/multi-move.html','result':'다축/보간 일반 설명과 축맵·절대/상대·LineMove 예시 확인. 전체47개 API 계약과 설치 버전의 일치 검증은 미완료.'},
  {'source':'Microsoft Learn C++ / Windows / MFC','url':'https://learn.microsoft.com/en-us/cpp/cpp/?view=msvc-170','result':'기초 문법174개 문구·학습 예제를 검토하고 자료형·연산자·문장·선언/정의·포인터/참조·스레드·메시지 맵 공식 설명과 대조. 프로젝트 운전 사실의 증거와 구분.'}
 ]
-out['browser_review']={'status':'배포 후 기록 예정','cases':[]}
+browser_review_file=root/'verification'/'browser-review.json'
+out['browser_review']=json.loads(browser_review_file.read_text()) if browser_review_file.exists() else {'status':'배포 후 기록 예정','cases':[]}
 (root/'verification'/'report.json').write_text(json.dumps(out,ensure_ascii=False,separators=(',',':'))+'\n')
 print(json.dumps({'counts':out['counts'],'corrections':out['corrections'],'automated_checks':sum(s['total'] for s in out['summary'].values()),'failed':sum(s['fail'] for s in out['summary'].values()),'report_bytes':(root/'verification'/'report.json').stat().st_size},ensure_ascii=False))
