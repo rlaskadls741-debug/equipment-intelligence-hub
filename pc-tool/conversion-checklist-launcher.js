@@ -1,0 +1,40 @@
+/* Add the conversion checklist without changing the original analysis archive. */
+(()=>{
+ 'use strict';
+ const dialog=document.createElement('dialog');
+ dialog.id='conversionChecklistDialog';
+ dialog.setAttribute('aria-label','Ajin > WMX3 변환 체크리스트');
+ dialog.innerHTML='<div class="conversion-dialog-bar"><span>Ajin &gt; WMX3 변환 체크리스트</span><button type="button" id="conversionChecklistClose">흐름도로 돌아가기 ×</button></div><iframe id="conversionChecklistFrame" title="변환 체크리스트 편집"></iframe>';
+ document.body.append(dialog);
+ const style=document.createElement('style');
+ style.textContent='#conversionChecklistDialog{padding:0;border:1px solid #c6d4e2;border-radius:12px;width:calc(100vw - 32px);max-width:1600px;height:calc(100dvh - 32px);max-height:none;box-sizing:border-box;background:#f3f6fa;overflow:hidden}#conversionChecklistDialog[open]{display:flex;flex-direction:column}#conversionChecklistDialog::backdrop{background:#142b46aa}.conversion-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px;background:#fff;border-bottom:1px solid #dce4ed;color:#344960;font-size:12px;font-weight:700}.conversion-dialog-bar button{padding:7px 11px;background:#edf3f9;border:1px solid #c6d4e2;border-radius:6px;color:#24547d;cursor:pointer}#conversionChecklistFrame{position:static;inset:auto;display:block;width:100%;height:100%;min-height:0;flex:1;border:0}@media(max-width:650px){#conversionChecklistDialog{width:100vw;height:100dvh;border:0;border-radius:0}.conversion-dialog-bar{padding:8px 10px}.conversion-dialog-bar>span{display:none}.conversion-dialog-bar button{margin-left:auto}}';
+ document.head.append(style);
+ const frame=dialog.querySelector('iframe');
+ let opener;
+ function close(){dialog.close();opener?.focus();}
+ document.getElementById('conversionChecklistClose').addEventListener('click',close);
+ dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
+ frame.addEventListener('load',()=>{
+  frame.contentDocument?.addEventListener('keydown',event=>{
+   if(event.key==='Escape'&&!frame.contentDocument.querySelector('dialog[open]')){event.preventDefault();close();}
+  });
+ });
+ function mount(doc){
+  const header=doc.querySelector('body>header');
+  if(!header||header.querySelector('#conversionChecklistOpen'))return;
+  const css=doc.createElement('style');
+  css.textContent='body>header{position:relative}body>header h1,body>header>p{padding-right:370px}#conversionChecklistOpen{position:absolute;right:28px;top:29px;display:inline-flex;align-items:center;gap:12px;padding:13px 17px;border:1px solid #adc4d9;border-radius:7px;background:#edf4fa;color:#205584;font:700 14px/1.5 system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 6px #1f477008}#conversionChecklistOpen:hover{background:#dfedf8}#conversionChecklistOpen:focus-visible{outline:3px solid #5792bf;outline-offset:3px}#conversionChecklistOpen small{font-size:10px;font-weight:500;color:#55748e}@media(max-width:1100px){body>header h1,body>header>p{padding-right:0}#conversionChecklistOpen{position:static;display:flex;width:fit-content;margin:16px 0 0 auto;padding:10px 13px}}';
+  doc.head.append(css);
+  const button=doc.createElement('button');
+  button.id='conversionChecklistOpen';button.type='button';
+  button.setAttribute('aria-haspopup','dialog');
+  button.innerHTML='<span>Ajin &gt; WMX3 변환 체크리스트</span><small>상태 편집 ↗</small>';
+  button.addEventListener('click',()=>{
+   opener=button;
+   if(!frame.hasAttribute('src'))frame.src='./conversion-checklist.html?v=20261021-1';
+   dialog.showModal();
+  });
+  header.append(button);
+ }
+ window.AjinWmxChecklistLauncher={mount};
+})();

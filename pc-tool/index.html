@@ -15,6 +15,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
 <iframe id="app" title="PC 제어 프로그램 분석 Tool" hidden></iframe>
 <script src="./reader-updates.js?v=20261021-audit-1"></script>
 <script src="./content-verification.js?v=20261021-audit-2"></script>
+<script src="./conversion-checklist-launcher.js?v=20261021-1"></script>
 <script>
 (async()=>{
  const status=document.getElementById("status");
@@ -36,8 +37,10 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
   if(!flowLink.test(source)) throw new Error("Overall flow shortcut not found");
   source=source.replace(flowLink,match=>match+'<span class="audit-links" style="display:inline-flex;vertical-align:middle;flex-direction:column;gap:5px;margin-left:14px"><a class="history-entry" href="./history.html" target="_blank" rel="noopener" style="color:#2d6593;text-decoration:none">변경 이력 →</a><a class="verification-entry" href="./verification.html" target="_blank" rel="noopener" style="color:#28634f;text-decoration:none">검증 이력 →</a></span>');
   const navGuideScript='<script>(()=>{const main=document.querySelector("aside nav .nav-main");if(!main)return;const link=document.createElement("a");link.className="manual-nav-link";link.href="./manual.html";link.target="_blank";link.rel="noopener";link.textContent="사용 설명서 보기 ↗";link.style.cssText="display:block;box-sizing:border-box;width:100%;margin:0 0 8px;padding:8px 9px;border:1px solid #c7d9e7;border-radius:5px;background:#edf4f9;color:#20508b;font-size:12px;font-weight:700;line-height:1.6;text-decoration:none";const heading=main.querySelector(".group-title");if(heading)heading.after(link);else main.prepend(link)})();<\/script>';
-  if(!source.includes("</body>")) throw new Error("Tool page end not found");
-  source=source.replace("</body>",navGuideScript+"</body>");
+  const bodyEnd="</"+"body>";
+  if(!source.includes(bodyEnd)) throw new Error("Tool page end not found");
+  source=source.replace(bodyEnd,navGuideScript+bodyEnd);
+  frame.addEventListener('load',()=>window.AjinWmxChecklistLauncher.mount(frame.contentDocument),{once:true});
   frame.srcdoc=source;
   frame.hidden=false;
   status.remove();
