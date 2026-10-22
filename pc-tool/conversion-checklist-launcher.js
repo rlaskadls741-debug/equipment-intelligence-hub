@@ -32,7 +32,7 @@
   button.innerHTML='<span>Ajin &gt; WMX3 변환 체크리스트</span><small>상태 편집 ↗</small>';
   button.addEventListener('click',()=>{
    opener=button;
-   if(!frame.hasAttribute('src'))frame.src='./conversion-checklist.html?v=20261021-4';
+   if(!frame.hasAttribute('src'))frame.src='./conversion-checklist.html?v=20261022-notes-1';
    dialog.showModal();
   });
   toolbar.append(button);document.body.append(toolbar);

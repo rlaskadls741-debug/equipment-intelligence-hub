@@ -9,7 +9,9 @@
  const vendorTopics={C17:'전자기어비',C19:'1SN 원점·리밋',C21:'PM2Q A/B접점',C37:'인버터 PDO'};
  const colorValid=value=>typeof value==='string'&&/^#[0-9a-f]{6}$/i.test(value);
  const statusKey=label=>Object.keys(LABELS).find(key=>LABELS[key]===label);
- const initialItem=id=>({status:statusKey(baseline[id].status),note:'',updatedAt:''});
+ const NOTE_TEMPLATE_VERSION=DATA.noteTemplateVersion;
+ const defaultNote=id=>{const row=baseline[id];return '확인값: '+row.found+'\n\n결과: '+row.result+'\n\n다음 작업: '+row.remaining;};
+ const initialItem=id=>({status:statusKey(baseline[id].status),note:defaultNote(id),noteTemplateVersion:NOTE_TEMPLATE_VERSION,updatedAt:''});
  function freshState(){return {schema:1,project:'ajin-wmx3',palette:{...DEFAULT_PALETTE},items:Object.fromEntries(DATA.checklist.map(row=>[row.id,initialItem(row.id)])),savedAt:''};}
  function validate(input){
   if(!input||input.schema!==1||input.project!=='ajin-wmx3'||!input.items||typeof input.items!=='object'||Array.isArray(input.items))throw new Error('이 체크리스트에서 내보낸 JSON 파일이 아닙니다.');
@@ -24,7 +26,9 @@
    if(!item||!Object.hasOwn(LABELS,item.status))throw new Error(id+'의 상태가 올바르지 않습니다.');
    if(typeof item.note!=='string'||item.note.length>10000)throw new Error(id+'의 메모가 올바르지 않습니다.');
    // Older backups may include per-item colors; retain their progress and use status colors.
-   result.items[id]={status:item.status,note:item.note,updatedAt:typeof item.updatedAt==='string'&&Number.isFinite(Date.parse(item.updatedAt))?item.updatedAt:''};
+   // Fill empty notes from older saves once. Keep written notes and intentional clears.
+   const note=item.noteTemplateVersion===undefined&&!item.note.trim()?defaultNote(id):item.note;
+   result.items[id]={status:item.status,note,noteTemplateVersion:NOTE_TEMPLATE_VERSION,updatedAt:typeof item.updatedAt==='string'&&Number.isFinite(Date.parse(item.updatedAt))?item.updatedAt:''};
   }
   if(!Object.keys(result.items).length)throw new Error('불러올 체크항목이 없습니다.');
   if(typeof input.savedAt==='string'&&Number.isFinite(Date.parse(input.savedAt)))result.savedAt=input.savedAt;
@@ -102,18 +106,18 @@
    if(vendorTopics[row.id])meta.append(el('span',{class:'vendor-tag'},'이전 문의 · '+vendorTopics[row.id]));
    main.append(meta,el('h3',{class:'item-title'},row.item));
    const detail=el('details',{class:'row-evidence'}),body=el('div',{class:'detail-body'});
-   detail.append(el('summary',{},'확인 근거 · 남은 작업 보기'));
+   detail.append(el('summary',{},'확인값 · 결과 · 다음 작업 보기'));
    const baselineP=el('p');baselineP.append(el('span',{class:'detail-label'},'최초 검토 상태 · 2026.10.21'),el('span',{class:'baseline-status'},row.status+' · 문서/코드 검토 기준'));
    body.append(baselineP);
-   for(const [label,text] of [['확인한 내용',row.found],['남은 확인·작업',row.remaining]]){const p=el('p');p.append(el('span',{class:'detail-label'},label),document.createTextNode(text));body.append(p);}
-   body.append(el('p',{class:'evidence-ref'},'근거: '+row.evidence),el('p',{class:'route'},'후속 경로: '+row.route+' · 최초 구현/실물 시험: 미실시'));
+   for(const [label,text] of [['확인값',row.found],['결과',row.result],['다음 작업',row.remaining]]){const p=el('p');p.append(el('span',{class:'detail-label'},label),document.createTextNode(text));body.append(p);}
+   body.append(el('p',{class:'evidence-ref'},'근거: '+row.evidence),el('p',{class:'route'},'확인 방법: '+row.route+' · 전환 코드 작성·실물 시험: 미실시'));
    detail.append(body);main.append(detail);
    const status=el('div',{class:'status-cell'}),select=el('select',{class:'status-select','aria-label':row.id+' 현재 상태'});
    for(const [key,label] of Object.entries(LABELS))select.append(el('option',{value:key},label));
    select.value=item.status;
    select.addEventListener('change',()=>{state.items[row.id].status=select.value;touch(row.id);updateColors();updateSummary();applyFilters();});
    status.append(select,el('span',{class:'status-caption'},'내가 관리하는 현재 상태'));
-   const notes=el('div',{class:'notes-cell'}),textarea=el('textarea',{class:'row-note','aria-label':row.id+' 내 메모',placeholder:'확인값·결과·다음 작업 기록',maxlength:'10000'});
+   const notes=el('div',{class:'notes-cell'}),textarea=el('textarea',{class:'row-note','aria-label':row.id+' 내 메모',placeholder:'확인값·결과·다음 작업을 수정하거나 추가하세요',maxlength:'10000'});
    textarea.value=item.note;
    textarea.addEventListener('input',()=>{state.items[row.id].note=textarea.value;touch(row.id);});
    notes.append(textarea,el('span',{class:'updated'},item.updatedAt?'수정 '+time(item.updatedAt):''));
@@ -125,7 +129,7 @@
   let visible=0;const categories={};
   for(const row of DATA.checklist){
    const item=state.items[row.id];
-   const haystack=[row.id,row.item,row.category,row.found,row.remaining,row.evidence,item.note,vendorTopics[row.id]||''].join(' ').toLocaleLowerCase();
+   const haystack=[row.id,row.item,row.category,row.found,row.result,row.remaining,row.evidence,item.note,vendorTopics[row.id]||''].join(' ').toLocaleLowerCase();
    const show=(!term||haystack.includes(term))&&(!category||category===row.category)&&(!status||status===item.status)&&(!vendor||!!vendorTopics[row.id]);
    rowNodes.get(row.id).hidden=!show;
    if(show){visible++;categories[row.category]=(categories[row.category]||0)+1;}

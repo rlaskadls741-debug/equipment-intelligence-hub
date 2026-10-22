@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ajin &gt; WMX3 변환 체크리스트</title>
-<link rel="stylesheet" href="./conversion-checklist.css?v=20261021-3">
-<script defer src="./conversion-checklist-data.js?v=20261021-4"></script>
-<script defer src="./conversion-checklist.js?v=20261021-3"></script>
+<link rel="stylesheet" href="./conversion-checklist.css?v=20261022-notes-1">
+<script defer src="./conversion-checklist-data.js?v=20261022-notes-1"></script>
+<script defer src="./conversion-checklist.js?v=20261022-notes-1"></script>
 </head>
 <body>
 <header class="hero">
  <div class="eyebrow">DEMOKIT · AJINEXTEK → MOVENSYS</div>
  <h1>Ajin &gt; WMX3 변환 체크리스트</h1>
- <p>확인 근거를 읽고, 전환 작업에 맞춰 항목별 상태·메모를 관리합니다.</p>
- <div class="scope-note"><strong>검증 기준: 2026.10.21</strong><span>초기 초록색은 문서·코드상 확인을 뜻합니다. WMX3 구현·컴파일·실물 시험은 전 항목 미실시입니다.</span></div>
+ <p>1번부터 60번까지 확인값, 검토 결과, 다음 작업을 정리했습니다. 작업 후 상태와 메모를 수정해 사용하세요.</p>
+ <div class="scope-note"><strong>문서·코드 검토: 2026.10.21 · 문구 정리: 2026.10.22</strong><span>초기 초록색은 문서·코드에서 확인한 항목입니다. 전환 코드 작성·컴파일·실물 시험은 전 항목 미실시입니다. 대상은 WMX3 3.6이며, 기존 3.7 문서로 검토한 WMX 기능은 3.6 매뉴얼·SDK와 대조해야 합니다.</span></div>
  <div class="savebar">
   <span id="saveStatus" role="status" aria-live="polite">저장 상태 확인 중…</span>
   <div class="actions"><button type="button" id="saveNow" class="primary">지금 저장</button><button type="button" id="exportState">저장 파일 내보내기</button><button type="button" id="importState">저장 파일 불러오기</button><input type="file" id="importFile" accept="application/json,.json" hidden></div>
@@ -29,14 +29,14 @@
  </section>
  <details class="palette-panel"><summary>상태별 기본 색상 조정</summary><div id="paletteControls"></div></details>
  <section class="checklist-section" aria-labelledby="listHeading">
-  <div class="list-heading"><div><h2 id="listHeading">전환 체크항목 <span id="resultCount">60 / 60</span></h2><p>상태·메모는 내가 수정하는 작업 기록이며, 최초 확인 근거는 그대로 남습니다.</p></div><button type="button" id="expandAll">근거 모두 펼치기</button></div>
+  <div class="list-heading"><div><h2 id="listHeading">전환 체크항목 <span id="resultCount">60 / 60</span></h2><p>빈 메모에는 확인값·결과·다음 작업을 채워두었습니다. 작성해 둔 메모는 유지되며, 최초 검토 내용은 펼쳐서 확인할 수 있습니다.</p></div><button type="button" id="expandAll">근거 모두 펼치기</button></div>
   <div class="filters">
    <label class="search-field">항목 검색<input type="search" id="checklistSearch" placeholder="예: PDO, 전자기어, C21" autocomplete="off"></label>
    <label>분류<select id="categoryFilter"><option value="">전체 분류</option></select></label>
    <label>현재 상태<select id="statusFilter"><option value="">전체 상태</option><option value="confirmed">확인 완료</option><option value="partial">부분 확인</option><option value="unverified">미확인</option></select></label>
    <label class="vendor-filter"><input type="checkbox" id="vendorOnly">이전 문의 4개 주제</label>
   </div>
-  <div class="column-guide" aria-hidden="true"><span>항목 / 확인 근거</span><span>현재 상태</span><span>내 메모</span></div>
+  <div class="column-guide" aria-hidden="true"><span>항목 / 확인 근거</span><span>현재 상태</span><span>작업 메모 · 수정 가능</span></div>
   <div id="checklistRows"></div>
   <p id="emptyState" hidden>조건에 맞는 항목이 없습니다. 검색어와 필터를 조정해 주세요.</p>
  </section>
