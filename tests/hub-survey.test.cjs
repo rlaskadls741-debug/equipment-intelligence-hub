@@ -38,6 +38,20 @@ test('ratings, text, body and honeypot validation reject malformed responses',as
   assert.equal((await s.send('x'.repeat(30001))).status,413);
   assert.equal(s.rows.size,0);
 });
+test('binary questionnaire accepts only the two named choices and preserves both answers',async()=>{
+  const s=setup();
+  const binary={...s.answers,survey_version:'2026-10-v2-binary',satisfaction:'satisfied',learning:'dissatisfied'};
+  assert.equal((await s.send(binary)).status,201);
+  const stored=s.rows.get(binary.submission_id);
+  assert.equal(stored.survey_version,'2026-10-v2-binary');
+  assert.equal(stored.satisfaction,5);
+  assert.equal(stored.learning,1);
+  assert.equal((await s.send(binary)).status,200);
+  assert.equal(s.rows.size,1);
+  for(const field of ['satisfaction','learning'])for(const value of [1,3,5,'neutral','',null]){
+    assert.equal((await s.send({...binary,submission_id:randomUUID(),[field]:value})).status,400);
+  }
+});
 test('results cannot be read; origins, preflight and throttle behave correctly',async()=>{
   const s=setup();assert.equal((await s.send(s.answers,'https://bad.example')).status,403);
   assert.equal((await s.send(s.answers,undefined,'GET')).status,405);

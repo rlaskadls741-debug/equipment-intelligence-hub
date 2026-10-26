@@ -20,18 +20,24 @@ Deno.serve(async (req) => {
     let data;
     try { data = JSON.parse(raw); } catch { return reply({error:'invalid_json'}, 400); }
     if (!data || typeof data !== 'object' || Array.isArray(data)) return reply({error:'invalid_data'},400);
-    if (!uuid.test(data.submission_id || '') || data.survey_version !== '2026-10-v1') return reply({error:'invalid_submission'},400);
+    if (!uuid.test(data.submission_id || '') || !['2026-10-v1','2026-10-v2-binary'].includes(data.survey_version)) return reply({error:'invalid_submission'},400);
     if (data.website !== '') return reply({error:'invalid_submission'},400);
     const scope = data.scope || 'production';
     if (scope !== 'production' && !/^qa-[0-9a-f-]{36}$/.test(scope)) return reply({error:'invalid_scope'},400);
+    const binary = data.survey_version === '2026-10-v2-binary';
     for (const key of ['satisfaction','learning']) {
-      if (!Number.isInteger(data[key]) || data[key] < 1 || data[key] > 5) return reply({error:'invalid_rating'},400);
+      const valid = binary ? ['satisfied','dissatisfied'].includes(data[key])
+        : Number.isInteger(data[key]) && data[key] >= 1 && data[key] <= 5;
+      if (!valid) return reply({error:'invalid_rating'},400);
     }
     for (const key of ['helpful','improvements','comments']) {
       if (typeof data[key] !== 'string' || data[key].length > 2000) return reply({error:'invalid_text'},400);
     }
     const row = { submission_id:data.submission_id, survey_version:data.survey_version, scope,
-      satisfaction:data.satisfaction, learning:data.learning, helpful:data.helpful.trim(),
+      // Binary v2 uses the existing numeric columns: 5=satisfied, 1=dissatisfied.
+      // Always aggregate responses by survey_version; never mix v1 scores with v2 choices.
+      satisfaction:binary ? (data.satisfaction === 'satisfied' ? 5 : 1) : data.satisfaction,
+      learning:binary ? (data.learning === 'satisfied' ? 5 : 1) : data.learning, helpful:data.helpful.trim(),
       improvements:data.improvements.trim(), comments:data.comments.trim() };
     const encoded = new TextEncoder().encode(JSON.stringify(row));
     const hash = await crypto.subtle.digest('SHA-256', encoded);
