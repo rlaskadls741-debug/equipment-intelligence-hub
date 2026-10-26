@@ -2168,7 +2168,8 @@
     const metricParams=new URLSearchParams(location.search);
     const requestedMetricScope=metricParams.get('metrics_test')||'';
     const metricsQaFallback='qa-00000000-0000-4000-8000-000000000001';
-    const metricsQaRequested=metricParams.has('metrics_test')||metricParams.has('metrics-check')||navigator.webdriver===true;
+    const metricsAutomationDetected=navigator.webdriver===true||/HeadlessChrome|Playwright|Puppeteer|Chrome-Lighthouse|WebPageTest/i.test(navigator.userAgent||'');
+    const metricsQaRequested=metricParams.has('metrics_test')||metricParams.has('metrics-check')||metricsAutomationDetected;
     const metricsTestScope=/^qa-[a-f0-9-]{36}$/.test(requestedMetricScope)
       ?requestedMetricScope
       :(metricsQaRequested?metricsQaFallback:'');
@@ -2232,7 +2233,7 @@
           const report=reports.find(r=>key.startsWith(r.id+'-'));
           if(!isVisit&&!report)throw new Error('리포트 식별 실패');
           init.method='POST';
-          init.headers={'Content-Type':'text/plain','X-Equipment-Hub':'metrics-v3'};
+          init.headers={'Content-Type':'text/plain','X-Equipment-Hub':'metrics-v3','X-Equipment-Hub-Scope':metricsTestScope?'qa-v1':'production-human-v1'};
           init.body=JSON.stringify(isVisit?{type:'visit',visitor}:{type:'open',visitor,event:key,report:report.id,date:report.date});
         }
         const response=await fetch(url,init);
