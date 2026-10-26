@@ -15,11 +15,12 @@
 <body>
 <main>
 <header>
-<a class="back" href="./">← 기술허브로 돌아가기</a>
+<a class="back" href="/equipment-intelligence-hub/">← 기술허브로 돌아가기</a>
 <h1>기술허브, 어떻게 보셨나요?</h1>
 <p>도움이 된 점과 아쉬웠던 점을 편하게 알려주세요.<br>보내주신 의견으로 기술허브를 다듬겠습니다.</p>
 <p class="note">약 1~2분</p>
-<p class="note rule">같은 브라우저에서는 한 번만 제출할 수 있습니다.</p>
+<p id="report-week" class="note"></p>
+<p class="note rule">같은 브라우저에서는 주차별 한 번만 제출할 수 있습니다.</p>
 <p id="qa-note" class="qa" hidden>시험용 설문입니다. 실제 응답과 별도로 저장됩니다.</p>
 </header>
 <section id="checking" class="card" aria-live="polite"><div class="spinner" aria-hidden="true"></div><p>이 브라우저의 참여 여부를 확인하고 있습니다.</p></section>
@@ -38,7 +39,7 @@
 <div class="trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="submit-row"><button id="submit" type="submit">의견 보내기</button><p id="status" role="alert"></p></div>
 </form>
-<section id="success" class="card" tabindex="-1" hidden><h2 id="success-title">의견 남겨주셔서 감사합니다.</h2><p id="success-message">보내주신 응답이 저장됐습니다.<br>기술허브를 개선하는 데 참고하겠습니다.</p><a href="./">기술허브로 돌아가기</a></section>
+<section id="success" class="card" tabindex="-1" hidden><h2 id="success-title">의견 남겨주셔서 감사합니다.</h2><p id="success-message">보내주신 응답이 저장됐습니다.<br>기술허브를 개선하는 데 참고하겠습니다.</p><a href="/equipment-intelligence-hub/">기술허브로 돌아가기</a></section>
 <footer>선행제어기술팀 미래기술파트 · 김남인</footer>
 </main>
 <script>
@@ -49,6 +50,14 @@ const PUBLIC_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFz
 const form=document.getElementById('survey'),button=document.getElementById('submit'),status=document.getElementById('status'),checking=document.getElementById('checking');
 const requestedScope=new URLSearchParams(location.search).get('test');
 const scope=/^qa-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(requestedScope||'')?requestedScope:'production';
+const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
+function addDays(value,days){const date=new Date(value+'T00:00:00Z');date.setUTCDate(date.getUTCDate()+days);return date.toISOString().slice(0,10);}
+function completedWeekStart(){const date=new Date(today+'T00:00:00Z'),day=date.getUTCDay(),backToPreviousSaturday=((day+1)%7)||7;return addDays(today,-backToPreviousSaturday-6);}
+function validWeek(value){if(!/^20\d{2}-(0[1-9]|1[0-2])-([0-2]\d|3[01])$/.test(value)||value<'2026-07-26')return false;const date=new Date(value+'T00:00:00Z');return !Number.isNaN(date.getTime())&&date.getUTCDay()===0&&addDays(value,6)<=today;}
+const requestedWeek=new URLSearchParams(location.search).get('week')||'';
+const surveyWeek=validWeek(requestedWeek)?requestedWeek:completedWeekStart();
+const weekEnd=addDays(surveyWeek,6),[startYear,startMonth,startDay]=surveyWeek.split('-'),[endYear,endMonth,endDay]=weekEnd.split('-');
+document.getElementById('report-week').textContent=startYear+'년 '+Number(startMonth)+'월 '+Number(startDay)+'일~'+(startYear===endYear?'':endYear+'년 ')+Number(endMonth)+'월 '+Number(endDay)+'일 리포트 의견';
 document.getElementById('qa-note').hidden=scope==='production';
 let busy=false,pending=null,visitorId='';
 
@@ -82,14 +91,14 @@ function requestHeaders(json=false){
 
 function showComplete(already=false){
   checking.hidden=true;form.hidden=true;
-  if(already){document.getElementById('success-title').textContent='이미 참여한 설문입니다.';document.getElementById('success-message').innerHTML='이 브라우저에서는 응답이 한 번만 저장됩니다.<br>기존 응답은 그대로 보관되어 있습니다.';}
+  if(already){document.getElementById('success-title').textContent='이 주차의 설문에 이미 참여했습니다.';document.getElementById('success-message').innerHTML='같은 브라우저에서는 주차별 응답이 한 번만 저장됩니다.<br>다음 주 설문에는 다시 참여할 수 있습니다.';}
   const success=document.getElementById('success');success.hidden=false;success.focus();
 }
 
 async function checkParticipation(){
   try{
     visitorId=await getVisitorId();
-    const response=await fetch(API+'?scope='+encodeURIComponent(scope)+'&visitor='+encodeURIComponent(visitorId),{
+    const response=await fetch(API+'?scope='+encodeURIComponent(scope)+'&week='+encodeURIComponent(surveyWeek)+'&visitor='+encodeURIComponent(visitorId),{
       method:'GET',headers:requestHeaders(),cache:'no-store',credentials:'omit',referrerPolicy:'strict-origin-when-cross-origin',signal:AbortSignal.timeout(15000)});
     const result=await response.json();
     if(!response.ok||result.ok!==true)throw new Error('check');
@@ -109,19 +118,19 @@ form.addEventListener('submit',async event=>{
   try{
     if(!visitorId)visitorId=await getVisitorId();
     const values=new FormData(form);
-    const answers={survey_version:'2026-10-v3-one-browser',scope,visitor_id:visitorId,satisfaction:String(values.get('satisfaction')),
+    const answers={survey_version:'2026-10-v4-weekly',scope,survey_week_start:surveyWeek,visitor_id:visitorId,satisfaction:String(values.get('satisfaction')),
       learning:String(values.get('learning')),helpful:String(values.get('helpful')).trim(),improvements:String(values.get('improvements')).trim(),
       comments:String(values.get('comments')).trim(),website:String(values.get('website'))};
     const fingerprint=JSON.stringify(answers);
-    try{if(!pending)pending=JSON.parse(sessionStorage.getItem('hub-survey-pending-v3')||'null');}catch{}
+    try{if(!pending)pending=JSON.parse(sessionStorage.getItem('hub-survey-pending-v4')||'null');}catch{}
     if(!pending||pending.fingerprint!==fingerprint)pending={fingerprint,id:crypto.randomUUID()};
-    try{sessionStorage.setItem('hub-survey-pending-v3',JSON.stringify(pending));}catch{}
+    try{sessionStorage.setItem('hub-survey-pending-v4',JSON.stringify(pending));}catch{}
     const response=await fetch(API,{method:'POST',headers:requestHeaders(true),body:JSON.stringify({submission_id:pending.id,...answers}),
       credentials:'omit',referrerPolicy:'strict-origin-when-cross-origin',signal:AbortSignal.timeout(20000)});
     let result;try{result=await response.json();}catch{throw new Error('server');}
     if(response.status===409&&result.duplicate){showComplete(true);return;}
     if(!response.ok||result.ok!==true||result.receipt!==pending.id)throw new Error(response.status===429?'rate_limit':'server');
-    try{sessionStorage.removeItem('hub-survey-pending-v3');}catch{}
+    try{sessionStorage.removeItem('hub-survey-pending-v4');}catch{}
     showComplete(false);
   }catch(error){
     status.textContent=error.message==='rate_limit'?'잠시 후 다시 보내주세요. 작성하신 내용은 그대로 있습니다.':'응답을 저장하지 못했습니다. 연결을 확인하고 다시 눌러주세요. 작성하신 내용은 그대로 있습니다.';

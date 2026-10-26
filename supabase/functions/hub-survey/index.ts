@@ -5,6 +5,7 @@ const surveyHeader = 'survey-v3';
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 const visitorPattern = /^eh-([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/;
 const qaScopePattern = /^qa-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+const datePattern = /^20\d{2}-(0[1-9]|1[0-2])-([0-2]\d|3[01])$/;
 
 function corsHeaders() {
   return {
@@ -36,6 +37,22 @@ async function browserHash(visitorId: string) {
   return sha256('equipment-hub-survey-v3:' + visitorId);
 }
 
+function currentKoreaDate() {
+  return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Asia/Seoul' }).format(new Date());
+}
+
+function addDays(value: string, days: number) {
+  const date = new Date(value + 'T00:00:00Z');
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function validSurveyWeek(value: unknown): value is string {
+  if (typeof value !== 'string' || !datePattern.test(value) || value < '2026-07-26') return false;
+  const start = new Date(value + 'T00:00:00Z');
+  return !Number.isNaN(start.getTime()) && start.getUTCDay() === 0 && addDays(value, 6) <= currentKoreaDate();
+}
+
 Deno.serve(async (req: Request) => {
   if (req.headers.get('origin') !== trustedOrigin) return reply({ error: 'origin_not_allowed' }, 403);
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders() });
@@ -53,9 +70,10 @@ Deno.serve(async (req: Request) => {
       const url = new URL(req.url);
       const visitorId = url.searchParams.get('visitor') || '';
       const scope = url.searchParams.get('scope') || 'production';
-      if (!visitorPattern.test(visitorId) || !validScope(scope)) return reply({ error: 'invalid_status_request' }, 400);
+      const surveyWeek = url.searchParams.get('week') || '';
+      if (!visitorPattern.test(visitorId) || !validScope(scope) || !validSurveyWeek(surveyWeek)) return reply({ error: 'invalid_status_request' }, 400);
       const hash = await browserHash(visitorId);
-      const check = await fetch(base + '?scope=eq.' + encodeURIComponent(scope) + '&browser_hash=eq.' + hash + '&select=submission_id&limit=1', {
+      const check = await fetch(base + '?scope=eq.' + encodeURIComponent(scope) + '&survey_week_start=eq.' + surveyWeek + '&browser_hash=eq.' + hash + '&select=submission_id&limit=1', {
         headers: dbHeaders,
         signal: AbortSignal.timeout(10000)
       });
@@ -72,11 +90,13 @@ Deno.serve(async (req: Request) => {
     if (!data || typeof data !== 'object' || Array.isArray(data)) return reply({ error: 'invalid_data' }, 400);
     const submissionId = String(data.submission_id || '');
     const visitorId = String(data.visitor_id || '');
-    if (!uuid.test(submissionId) || data.survey_version !== '2026-10-v3-one-browser') return reply({ error: 'invalid_submission' }, 400);
+    if (!uuid.test(submissionId) || data.survey_version !== '2026-10-v4-weekly') return reply({ error: 'invalid_submission' }, 400);
     if (!visitorPattern.test(visitorId)) return reply({ error: 'invalid_browser' }, 400);
     if (data.website !== '') return reply({ error: 'invalid_submission' }, 400);
     const scope = data.scope || 'production';
     if (!validScope(scope)) return reply({ error: 'invalid_scope' }, 400);
+    const surveyWeek = data.survey_week_start;
+    if (!validSurveyWeek(surveyWeek)) return reply({ error: 'invalid_survey_week' }, 400);
     for (const key of ['satisfaction', 'learning']) {
       if (!['satisfied', 'dissatisfied'].includes(String(data[key] || ''))) return reply({ error: 'invalid_rating' }, 400);
     }
@@ -90,6 +110,7 @@ Deno.serve(async (req: Request) => {
       submission_id: submissionId,
       survey_version: data.survey_version,
       scope,
+      survey_week_start: surveyWeek,
       browser_hash,
       satisfaction: data.satisfaction === 'satisfied' ? 5 : 1,
       learning: data.learning === 'satisfied' ? 5 : 1,
@@ -111,7 +132,7 @@ Deno.serve(async (req: Request) => {
         : reply({ error: 'submission_conflict' }, 409);
     }
 
-    const priorBrowser = await fetch(base + '?scope=eq.' + encodeURIComponent(scope) + '&browser_hash=eq.' + browser_hash + '&select=submission_id&limit=1', {
+    const priorBrowser = await fetch(base + '?scope=eq.' + encodeURIComponent(scope) + '&survey_week_start=eq.' + surveyWeek + '&browser_hash=eq.' + browser_hash + '&select=submission_id&limit=1', {
       headers: dbHeaders,
       signal: AbortSignal.timeout(10000)
     });
@@ -133,7 +154,7 @@ Deno.serve(async (req: Request) => {
       signal: AbortSignal.timeout(10000)
     });
     if (result.status === 409) {
-      const raced = await fetch(base + '?scope=eq.' + encodeURIComponent(String(scope)) + '&browser_hash=eq.' + browser_hash + '&select=submission_id&limit=1', {
+      const raced = await fetch(base + '?scope=eq.' + encodeURIComponent(String(scope)) + '&survey_week_start=eq.' + surveyWeek + '&browser_hash=eq.' + browser_hash + '&select=submission_id&limit=1', {
         headers: dbHeaders,
         signal: AbortSignal.timeout(10000)
       });
