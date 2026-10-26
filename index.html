@@ -135,7 +135,98 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
-      <details class="staticReport" id="static-261026" open>
+      <details class="staticReport" id="static-261027" open>
+  <summary><span class="staticDate">10.27</span><span class="staticTitle">현장 서버에서 운전·보안·에너지를 나누어 분석하는 산업 AI 에이전트</span><span class="staticAxis">PC제어·AI</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">산업AI에이전트</span><span class="tag">현장서버</span><span class="tag">OT모니터링</span><span class="tag">사이버보안</span><span class="tag">에너지최적화</span></div><p>Schneider Electric, HPE, NVIDIA가 공장 내부 서버에서 OT 상태·보안·에너지를 각각 분석하고 한 화면에서 관리하는 산업 AI 에이전트 구성을 공개했습니다.</p></div>
+  <article class="reportBody staticContent">
+    <div class="newsArticle">
+      <header class="newsHeader">
+        <p class="newsKicker">현장 AI 에이전트·OT 통합 분석 · 2026-10-27</p>
+        <h2>현장 서버에서 운전·보안·에너지를 나누어 분석하는 산업 AI 에이전트</h2>
+        <p class="newsLead">Schneider Electric은 HPE Private Cloud AI와 NVIDIA 모델을 공장 내부에 두고, OT 감시·사이버보안·에너지 최적화를 맡는 에이전트를 EcoStruxure Industrial Insights에서 관리하는 구성을 발표했습니다.</p>
+      </header>
+      <section class="newsSection">
+        <h3>주요 내용</h3>
+        <p>세 에이전트는 같은 공정 자료를 서로 다른 목적으로 읽습니다. OT 감시 에이전트는 장비 상태와 알람의 영향을 찾고, 보안 에이전트는 네트워크 활동과 제어 동작을 함께 대조하며, 에너지 에이전트는 생산조건과 전력 사용을 연결해 조정 후보를 제시합니다.</p>
+        <p>새로 공개된 부분은 대화형 AI 하나를 추가한 것이 아니라, 현장 프라이빗 AI 인프라 위에서 에이전트별 데이터·권한·역할을 나누고 EcoStruxure 환경에서 배포와 감사를 함께 관리하는 구조입니다.</p>
+      </section>
+      <dl class="newsFacts" aria-label="기술 핵심 정보">
+        <div><dt>기술 구조</dt><dd>HPE Private Cloud AI, NVIDIA Nemotron 모델, EcoStruxure Industrial Insights, OTMS와 세 종류의 산업 AI 에이전트</dd></div>
+        <div><dt>기존 방식과 차이</dt><dd>개별 이상감지 화면을 따로 보는 대신 공정상태·보안사건·에너지 사용을 역할별 에이전트가 같은 현장 데이터에서 분석합니다.</dd></div>
+        <div><dt>현장 적용</dt><dd>알람·장비 구성·공정 토폴로지·정비이력·네트워크 이벤트·전력 사용량을 넣고 원인 순위, 권고 생성시간과 결과 확인 기록을 비교합니다.</dd></div>
+        <div><dt>관련 업체</dt><dd>Schneider Electric Korea의 산업 자동화 영업 창구와 HPE Korea의 Private Cloud AI 세일즈 창구에서 국내 제공범위와 시험 구성을 확인할 수 있습니다.</dd></div>
+      </dl>
+      <section class="extendedArticle" aria-label="기술 상세">
+        <h2>기술 상세</h2>
+        <h3>선정 이유</h3>
+        <p>Schneider Electric의 글로벌 발표는 10월 21일 산업 AI 에이전트 세 종류와 관리환경을 공개했고, 프랑스 법인은 10월 26일 같은 내용을 현지 산업 자동화 발표로 게재했습니다. HPE도 10월 21일 Private Cloud AI에 관리형 API, 역할·조직·프로젝트별로 통제되는 MCP 서비스와 감사 기능을 추가한다고 밝혔습니다.</p>
+        <p>기존 설비 AI는 진동 이상감지, 영상검사, 에너지 예측처럼 한 모델이 한 문제를 처리하는 경우가 많았습니다. 이번 발표는 OT 감시·사이버보안·에너지 최적화 에이전트가 공정 토폴로지와 운전 맥락을 공유하되 역할과 접근범위를 나누고, 현장 프라이빗 AI에서 함께 운용되는 구성을 구체화했습니다.</p>
+        <h3>기술 구조와 작동 과정</h3>
+        <ol>
+          <li>제어시스템, 서버, 작업용 컴퓨터, 네트워크 스위치에서 상태와 이벤트를 수집합니다.</li>
+          <li>장비 구성, 공정 토폴로지, 알람, 정비이력, 생산조건과 에너지 사용량을 현장 서버의 분석자료로 정리합니다.</li>
+          <li>OT 감시 에이전트는 설비 상태 변화와 알람을 묶어 예상 운전영향과 점검 우선순위를 계산합니다.</li>
+          <li>사이버보안 에이전트는 네트워크 활동, 제어 동작, 자산 구성과 공정 이벤트를 대조해 비정상 조합을 찾습니다.</li>
+          <li>에너지 최적화 에이전트는 생산량과 운전조건을 유지하면서 전력 사용을 줄일 수 있는 운전 후보를 계산합니다.</li>
+          <li>EcoStruxure Industrial Insights가 에이전트 배포, 접근권한, 보안감사와 수명주기를 한 환경에서 관리합니다.</li>
+          <li>권고나 조치 뒤에는 알람 해소, 시스템 안정상태, 에너지 사용량 변화를 다시 읽어 결과를 확인합니다.</li>
+        </ol>
+        <h3>기존 방식과 달라진 점</h3>
+        <ul>
+          <li>기존 중앙 클라우드 분석은 공정자료를 외부 환경으로 전송합니다. 이번 구성은 모델과 데이터 처리를 공장 가까운 Private Cloud AI에 둡니다.</li>
+          <li>기존 단일 분석모델은 정해진 입력과 결과를 처리합니다. 이번 구성은 장비 구성, 공정관계, 알람과 정비이력을 함께 읽어 사건의 운전영향까지 순위를 매깁니다.</li>
+          <li>운전 감시, 보안관제와 에너지 관리는 보통 별도 화면과 담당조직에서 운영됩니다. 세 에이전트는 같은 현장 맥락을 사용하면서 각 역할의 권한과 기록을 분리합니다.</li>
+          <li>HPE가 공개한 관리형 MCP 서비스는 에이전트가 사용할 도구와 자료를 역할·조직·프로젝트 단위로 버전관리하고 감사할 수 있도록 설계됐습니다.</li>
+        </ul>
+        <h3>장점과 한계</h3>
+        <ul>
+          <li>공정자료가 현장 서버 안에서 처리되므로 대용량 이력과 민감한 OT 구성을 외부로 보내는 양을 줄일 수 있습니다.</li>
+          <li>알람 한 건을 장비상태, 네트워크 변화와 에너지 사용까지 대조하면 서로 다른 관제화면 사이에서 원인을 찾는 시간을 줄일 수 있습니다.</li>
+          <li>에이전트별 도구와 데이터 권한을 나누면 보안 분석기가 운전 설정을 임의로 변경하는 상황을 차단할 수 있습니다.</li>
+          <li>공정 토폴로지와 자산 구성이 오래되면 에이전트가 실제 연결관계를 잘못 판단할 수 있습니다.</li>
+          <li>여러 에이전트가 같은 사건에 상반된 권고를 만들 때 우선순위와 최종 실행권한을 별도로 정해야 합니다.</li>
+          <li>현장 GPU와 서버 용량은 에이전트 수, 입력주기와 동시 사용자 수에 따라 달라지므로 응답시간과 자원 사용량을 함께 측정해야 합니다.</li>
+        </ul>
+        <h3>실제 적용 사례</h3>
+        <p>CMPC Chile는 연속식 펄프·제지 공정에서 Schneider Electric OTMS를 3년간 사용해 제어시스템, 서버, 작업용 컴퓨터와 스위치의 상태와 가용성을 한 화면에서 감시했습니다. 공개된 운영 범위는 OTMS이며, 이번 산업 AI 에이전트는 이 데이터 기반 위에 추가하는 다음 단계로 설명됐습니다.</p>
+        <p>CMPC 사례는 새 에이전트의 양산 성능 수치보다 입력자료가 실제 현장에서 어떻게 준비되는지를 보여줍니다. 자산 목록, 공정 토폴로지, 알람과 정비이력이 먼저 정리돼야 에이전트가 설비영향을 추론하고 담당자가 결과를 확인할 수 있습니다.</p>
+        <h3>공정·PC 제어와 연결해 볼 부분</h3>
+        <p>PC 제어 설비에서는 제어 프로그램의 상태값, 장비 구성, 알람, 작업용 컴퓨터의 자원사용량과 네트워크 이벤트를 같은 시각기준으로 모으는 구성이 먼저 필요합니다. 에이전트는 모션이나 안전제어 주기 안에 넣지 않고, 운전 감시와 원인 분석을 담당하는 별도 현장 서버에서 시작하는 편이 적합합니다.</p>
+        <p>첫 적용범위는 자동 조치보다 사건 묶음과 원인 후보의 정확도를 확인하는 단계가 적절합니다. 예를 들어 통신지연과 장비 알람이 동시에 발생했을 때 에이전트가 관련 자산, 직전 구성변경과 정비이력을 정확히 제시하는지 확인합니다. 이후 권고가 반복해서 맞는 항목만 정해진 인터페이스를 통해 운전 절차와 연결합니다.</p>
+        <h3>국내 접촉 경로</h3>
+        <p>Schneider Electric Korea 공식 영업 문의에서 EcoStruxure Industrial Insights와 OTMS의 국내 제공 여부, 지원되는 제어시스템·서버·스위치 범위, 데이터 수집주기, 에이전트별 권한과 감사기록을 확인합니다. HPE Korea 세일즈 창구에는 Private Cloud AI의 현장 설치 조건, 최소 GPU·서버 구성, 관리형 API·MCP 서비스 제공 시기와 국내 기술지원 범위를 문의합니다.</p>
+        <h3>사전검증 순서</h3>
+        <ol>
+          <li>시험용 제어시스템과 현장 서버, 네트워크 스위치의 자산 목록과 연결관계를 작성합니다.</li>
+          <li>정상 운전 1주 분량의 상태값, 알람, 네트워크 이벤트와 에너지 사용량을 같은 시각기준으로 수집합니다.</li>
+          <li>OT 감시·보안·에너지 에이전트마다 읽을 수 있는 자료와 실행 가능한 도구를 구분합니다.</li>
+          <li>통신지연, 구성변경, 센서 이상과 에너지 급증을 각각 단독·동시로 넣어 원인 순위와 권고 생성시간을 측정합니다.</li>
+          <li>정답 원인, 에이전트 제시 원인과 담당자 판단을 대조해 오탐, 누락과 잘못된 조치 권고를 기록합니다.</li>
+          <li>에이전트가 권한 밖 설정을 변경하려는 요청을 차단하고, 모든 도구 호출과 결과 확인이 감사기록에 남는지 확인합니다.</li>
+          <li>동시 사용자와 입력주기를 늘리며 GPU 사용률, 메모리, 응답시간과 데이터 누락을 측정해 현장 서버 규모를 결정합니다.</li>
+        </ol>
+      </section>
+      <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+        <li id="term-261027-1"><b>OT</b><span>설비의 제어시스템, 운전용 컴퓨터, 산업용 네트워크처럼 실제 공정을 움직이고 감시하는 운영기술입니다.</span></li>
+        <li id="term-261027-2"><b>엣지</b><span>공정 데이터를 외부 중앙 서버로 보내기 전에 공장이나 장비 가까운 현장 서버에서 처리하는 방식입니다.</span></li>
+        <li id="term-261027-3"><b>AI 에이전트</b><span>정해진 역할과 접근권한에 따라 자료를 읽고 분석도구를 호출해 결과를 만드는 AI 구성요소입니다.</span></li>
+        <li id="term-261027-4"><b>MCP</b><span>AI가 외부 자료와 도구를 정해진 형식으로 호출하도록 연결하는 규격입니다.</span></li>
+        <li id="term-261027-5"><b>공정 토폴로지</b><span>설비, 제어기, 서버와 네트워크가 실제 공정에서 어떻게 연결되는지를 나타낸 관계정보입니다.</span></li>
+      </ol></section></details>
+      <details class="articleDisclosure sourceDisclosure"><summary>공식 근거자료 6건</summary><ol class="articleSources">
+        <li><a href="https://www.se.com/fr/fr/about-us/newsroom/news/press-releases/Schneider-Electric-NVIDIA-et-HPE-s%E2%80%99associent-pour-acc%C3%A9l%C3%A9rer-le-d%C3%A9ploiement-de-l%E2%80%99IA-physique-dans-les-industries-de-proc%C3%A9d%C3%A9s-6adf2e5b3cc3e7c9ea044e64" target="_blank" rel="noopener noreferrer">Schneider Electric France, 공정산업용 현장 AI 에이전트 발표 — 2026-10-26.</a></li>
+        <li><a href="https://www.se.com/ww/en/about-us/newsroom/news/press-releases/Schneider-Electric-NVIDIA-HPE-announce-strategic-collaboration-to-accelerate-Physical-AI-for-Process-Industries-6ad89a6d51489951020d90e6/" target="_blank" rel="noopener noreferrer">Schneider Electric, OT 감시·보안·에너지 에이전트 구조와 CMPC 사례 — 2026-10-21.</a></li>
+        <li><a href="https://www.hpe.com/us/en/newsroom/press-release/2026/10/hpe-teams-with-nvidia-to-advance-secure-agentic-ai-across-enterprises-and-industrial-environments.html" target="_blank" rel="noopener noreferrer">HPE, Private Cloud AI의 관리형 API·MCP·감사 기능 발표 — 2026-10-21.</a></li>
+        <li><a href="https://www.hpe.com/kr/ko/products/private-cloud/pcai.html" target="_blank" rel="noopener noreferrer">HPE Korea, Private Cloud AI 구성과 현장형 에이전트 운영범위.</a></li>
+        <li><a href="https://www.se.com/kr/ko/about-us/contact/" target="_blank" rel="noopener noreferrer">Schneider Electric Korea, 공식 영업·기술 문의.</a></li>
+        <li><a href="https://www.hpe.com/kr/ko/contact-hpe.html" target="_blank" rel="noopener noreferrer">HPE Korea, 세일즈·기술지원 문의.</a></li>
+      </ol></details>
+      <p class="sourceNote">공식 발표의 공개 기능, 운영 사례와 제품 범위를 기준으로 정리했습니다.</p>
+      <p class="authorLine">작성: 김남인, 선행제어기술팀 미래기술파트</p>
+    </div>
+  </article>
+</details>
+      <details class="staticReport" id="static-261026">
   <summary><span class="staticDate">10.26</span><span class="staticTitle">Rockwell, 자동화 엔지니어링 작업 조정 플랫폼 공개</span><span class="staticAxis">PC제어·AI</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">다중AI에이전트</span><span class="tag">도구연결</span><span class="tag">가상시험연계</span><span class="tag">PC제어</span><span class="tag">로컬AI모델</span></div><p>Rockwell Automation은 Logix Designer, Logix Echo, Emulate3D와 FactoryTalk Optix 작업을 여러 AI 에이전트에 나눠 맡기는 FactoryTalk Conductor를 발표했습니다.</p></div>
   <article class="reportBody staticContent">
@@ -1999,6 +2090,7 @@
     reports.push({"id":"261024","date":"2026-10-24","title":"여러 AI 도구를 설계·시험 순서에 묶는 엔지니어링 조정 플랫폼","axis":"인공지능 제어","category":"AI 엔지니어링·검증 관리","tags":["AI엔지니어링","설계자동화","가상시운전","PC제어","변경이력"],"summary":"최근 24시간 안에 양산 성과가 확인된 새 발표는 찾지 못했습니다. 최근 일주일에는 여러 AI 도구가 설계·개발·가상시험을 순서대로 수행하고 변경이력과 승인 권한을 남기는 엔지니어링 조정 플랫폼이 반복해서 나타나, 실제 도입 전 확인할 경계를 정리합니다.","discovery":"자연어 요청을 여러 설계·코드·화면·가상시험 도구의 작업순서로 나누고 승인된 결과만 PC 제어 프로젝트에 반영하는 엔지니어링 조정 계층","why":"10월 21일 Rockwell Automation이 2027년 상용화를 예고했고 Bosch Rexroth와 Schneider Electric 공식 자료에서도 여러 AI 기능에 접근권한, 변경기록과 결과 확인 단계를 넣었습니다.","study":"요청 해석, 작업 분해, 도구별 권한, 코드·설정 생성, 가상시험, 변경 비교, 작업자 승인, 이전 버전 복귀","companies":"로크웰 오토메이션 코리아 공식 문의창구와 국내 시스템 통합 파트너를 통해 시범 제공 시기, 폐쇄망 구성, 지원 도구와 검증 책임 범위를 확인","poc":"기존 장비 프로젝트의 화면 한 장과 제어 순서 한 구간을 대상으로 AI가 만든 변경안을 별도 브랜치에 저장하고, 정적 검사·가상설비 시험·사람 승인·복귀까지 걸린 시간과 오류를 기존 방식과 비교합니다.","caution":"FactoryTalk Conductor는 2027년 1분기 상용화 예정이고 Bosch Agent iXi도 베타 단계입니다. 자연어 요청이 안전한 제어코드와 검증된 장비동작을 자동으로 보장하지 않습니다.","source_use":"10월 21일 Rockwell Automation 발표와 제품 설명, 10월 13일·9월 29일 Bosch Rexroth 자료, 10월 21일 Schneider Electric 발표와 로크웰 오토메이션 코리아 문의처","sourceCount":6,"weekly":{"topic":"AI 엔지니어링 작업 조정","change":"한 AI의 답 대신 여러 도구의 설계·시험을 승인 순서로 묶습니다.","check":"AI 변경안을 가상시험하고 이전 버전으로 복귀되는지 봅니다."}});
     reports.push({"id":"261025","date":"2026-10-25","title":"자연어 작업지시로 CNC와 휴머노이드를 함께 움직이는 제어 구조","axis":"설비 지능화","category":"CNC·휴머노이드 협업 제어","tags":["휴머노이드","CNC","작업계획AI","PC제어","기능안전"],"summary":"최근 24시간 안에 새 양산 성과는 확인하지 못했습니다. 10월 21일 Mitsubishi Electric이 자연어 작업지시를 CNC와 휴머노이드의 작업순서로 나누는 개발 시스템을 발표해, 실제 장비 제어에 연결하기 전 신호·권한·안전 경계를 정리합니다.","discovery":"작업자가 자연어로 목표를 입력하면 상위 작업계획기가 CNC 가공과 휴머노이드의 투입·청소·검사·운반 순서를 나누고 두 장비의 상태를 맞추는 구조","why":"전용 로봇 셀 개조와 장비별 연동코드 부담을 줄이려는 구체적 개발품이 최근 일주일 공식 발표됐고 10월 26일 실물 시연이 예정돼 후속 확인 항목이 분명합니다.","study":"자연어 지시 제한, 작업 분해, CNC·로봇 상태 신호, 문·척·가공 완료 조건, 충돌 회피, 안전정지, 수동 복귀","companies":"한국미쓰비시전기오토메이션 CNC 문의 02-3660-9631과 로봇 문의 02-3660-9630에 시스템 국내 지원, 신호 연결과 안전책임 범위를 함께 확인","poc":"가상 CNC와 로봇 또는 실제 장비와 격리된 시험환경에서 소재 투입·가공·청소·검사 순서를 실행하고, 문 상태·척 상태·완료 신호를 의도적으로 어긋나게 해 명령 차단과 안전정지·수동 복귀를 확인합니다.","caution":"공개 내용은 개발 발표이며 JIMTOF 2026 시연도 실행일 다음 날부터 예정돼 있습니다. 작업계획기의 PC 구성, 통신주기, 안전인증과 양산 가동률은 공개되지 않았습니다.","source_use":"10월 21일 Mitsubishi Electric·KUKA 공식 발표, Microsoft의 10월 6일 제조 물리 AI 설명, Mitsubishi Electric의 CNC 디지털 트윈 자료와 한국 CNC·안전 문의자료","sourceCount":6,"weekly":{"topic":"CNC와 휴머노이드 협업","change":"전용 연동코드 대신 작업계획기가 두 장비의 순서를 나눕니다.","check":"문·척·가공 완료 신호를 어긋나게 해 정지를 봅니다."}});
     reports.push({"id":"261026","date":"2026-10-26","title":"여러 자동화 도구를 한 작업으로 묶는 AI 작업 조정 플랫폼","axis":"PC제어·AI","category":"다중 AI 에이전트·엔지니어링 작업 조정","tags":["다중AI에이전트","도구연결","가상시험연계","PC제어","로컬AI모델"],"summary":"10월 21일 Rockwell Automation은 코드 추천형 도우미를 넘어 설계·제어 개발·가상시험·운영화면 도구를 여러 AI 에이전트가 이어서 처리하는 FactoryTalk Conductor를 발표했습니다. 2027년 1분기 출시 예정이라 양산 성과가 아닌 후속 검증 대상입니다.","discovery":"한 작업을 여러 단계로 나누고 전문 AI 에이전트와 설계·개발·가상시험·운영화면 소프트웨어에 배정한 뒤 결과와 근거를 다시 모으는 구조","why":"10월 21일 신규 공식 발표에서 초기 연결 제품과 2027년 1분기 출시계획이 공개돼 기존 코드 도우미와의 차이를 확인할 수 있습니다.","study":"작업 분해, 에이전트 역할, 도구별 권한, 중간결과 전달, 사용자 정의 작업기술, 로컬 AI 모델, 근거 추적, 실패 중단","companies":"Rockwell Automation Korea 공식 영업·기술지원 창구에 국내 시연, 사용자 정의 에이전트, 비 Rockwell 도구 연결, 현장 설치 모델과 변경기록 범위를 확인","poc":"Logix 프로젝트 수정, I/O 설정, 가상시험과 운전화면 변경을 역할별로 나누고 단계 간 누락, 잘못된 전달과 실행기록을 엔지니어 수작업 결과와 비교합니다.","caution":"FactoryTalk Conductor는 2027년 1분기 상용화 예정입니다. 실제 호출 권한, 실패 복구, 응답시간, 비 Rockwell 도구 연결 범위와 생산성 수치는 공개되지 않았습니다.","source_use":"10월 21일 Rockwell Automation 신규 발표와 10월 22일 Microsoft 제조 엔지니어링 자료를 중심으로 확인하고, Beckhoff 공식 자료는 기존 단일 환경 도우미와의 구조 비교에 사용","sourceCount":4,"weekly":{"topic":"여러 제어도구를 묶는 AI 작업 조정","change":"코드 작성 뒤 Logix Echo·Emulate3D 가상시험과 Optix 화면 수정을 차례로 실행합니다.","check":"작업 분해 누락과 단계 간 결과 전달 오류를 확인합니다."}});
+    reports.push({"id":"261027","date":"2026-10-27","title":"현장 서버에서 운전·보안·에너지를 나누어 분석하는 산업 AI 에이전트","axis":"PC제어·AI","category":"현장 AI 에이전트·OT 통합 분석","tags":["산업AI에이전트","현장서버","OT모니터링","사이버보안","에너지최적화"],"summary":"Schneider Electric, HPE, NVIDIA가 공장 내부 서버에서 OT 상태·보안·에너지를 각각 분석하고 EcoStruxure Industrial Insights에서 함께 관리하는 산업 AI 에이전트 구성을 공개했습니다. CMPC Chile가 3년간 운용한 OTMS는 현장 데이터 기반으로 제시됐으며 AI 에이전트 적용은 다음 단계로 구분됩니다.","discovery":"OT 실시간값·장비 구성·공정 토폴로지·알람·정비이력을 현장 프라이빗 AI에 모으고, 운전 감시·사이버보안·에너지 최적화 에이전트를 한 관리환경에서 배포하고 통제하는 구조","why":"10월 26일 프랑스 현지 발표와 10월 21일 Schneider Electric·HPE 공식자료에서 세 에이전트의 입력자료와 역할, HPE Private Cloud AI의 관리형 API·MCP 서비스, EcoStruxure의 통합 관리범위가 구체적으로 공개됐습니다.","study":"OT 데이터 수집범위, 공정 토폴로지, 에이전트별 접근권한, 현장 추론 지연, 권고와 자동실행의 경계, 결과 확인 방식, 모델·API 감사기록","companies":"Schneider Electric Korea 영업 문의에서 EcoStruxure Industrial Insights·OTMS 국내 제공범위를 확인하고, HPE Korea에 Private Cloud AI의 현장 설치형 구성·GPU 규모·관리형 API와 지원체계를 문의","poc":"격리된 시험환경에 알람, 장비 구성, 공정값, 네트워크 이벤트와 에너지 사용량을 넣고 세 에이전트가 같은 사건을 어떻게 분류하는지 비교합니다. 권고 생성시간, 잘못된 원인 순위, 누락 알람, 권한 밖 실행 차단과 결과 확인 기록을 측정합니다.","caution":"공개 범위: CMPC Chile의 OTMS 3년 운영. 후속 확인: 산업 AI 에이전트의 실제 도입 시점, 응답시간, 현장별 모델 구성과 자동실행 범위.","source_use":"10월 26일 Schneider Electric 프랑스 발표와 10월 21일 글로벌·HPE 발표를 중심으로 확인하고, 한국 공식 제품·문의 페이지에서 국내 접촉 경로를 확인","sourceCount":6,"weekly":{"topic":"공정 현장형 AI 에이전트","change":"운전·보안·에너지 에이전트를 현장 서버에서 함께 관리합니다.","check":"알람·구성·공정값을 바꿔 원인 판정과 응답시간을 비교합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -2356,7 +2448,7 @@
       261013:[18,18,12,15,14,9],261014:[18,18,16,15,14,9],261015:[18,19,14,15,14,9],261016:[18,19,13,15,14,9],
       261017:[18,19,14,14,15,9],261018:[18,18,13,14,15,9],261019:[18,18,16,14,14,9],261020:[18,18,14,15,14,9],
       261021:[18,18,17,14,14,9],261022:[18,19,16,15,15,9],261023:[19,19,17,15,15,9],261024:[18,19,18,15,15,9],
-      261025:[19,19,19,14,15,9],261026:[19,19,19,15,15,9]
+      261025:[19,19,19,14,15,9],261026:[19,19,19,15,15,9],261027:[19,18,18,14,15,9]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
