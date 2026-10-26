@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>기술허브 이용 의견</title>
+<style>
+:root{font-family:"Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;color:#202b38;background:#f5f7fa;font-synthesis:none;line-height:1.65}
+*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:48px auto;padding:0 24px 40px}a{color:#315c86;text-underline-offset:4px}header{margin-bottom:28px}.back{font-size:13px}h1{font-size:27px;letter-spacing:-.8px;line-height:1.4;margin:22px 0 10px}header p{margin:7px 0;font-size:15px;color:#536174}.note{font-size:13px!important;color:#6b7685!important}form{background:#fff;border:1px solid #dde3eb;border-radius:12px;padding:8px 30px 28px}fieldset{border:0;padding:26px 0;margin:0;min-width:0;border-bottom:1px solid #e9edf2}legend{float:left;width:100%;font-weight:600;font-size:16px;line-height:1.6;padding:0;margin-bottom:14px}.content{clear:both}.tag{font-size:12px;color:#728091;font-weight:400;margin-left:6px;white-space:nowrap}.rating{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.choice{display:flex;position:relative;flex-direction:column;align-items:center;justify-content:center;min-height:94px;padding:9px 4px;border:1px solid #d9e0e9;border-radius:8px;cursor:pointer;text-align:center;transition:border-color .12s,background .12s}.choice:hover{border-color:#5e7da1;background:#f7faff}.choice:has(input:checked){border:2px solid #315e89;background:#edf4fc;padding:8px 3px}.choice:has(input:focus-visible){outline:3px solid #92b8df;outline-offset:3px}.choice input{position:absolute;opacity:0;width:1px;height:1px}.number{font-size:22px;font-weight:650;line-height:1.3;color:#314f6c}.meaning{font-size:12px;line-height:1.5;margin-top:5px;word-break:keep-all}textarea{display:block;width:100%;min-height:108px;resize:vertical;border:1px solid #d6dee8;border-radius:7px;padding:12px;font:inherit;font-size:14px;color:inherit;background:#fff}textarea:focus{outline:2px solid #7ca4cc;outline-offset:2px}textarea::placeholder{color:#8a95a3;font-size:13px}.count{text-align:right;font-size:11px;color:#7a8795;margin:4px 0 0}.submit-row{padding-top:24px}button{border:0;border-radius:7px;background:#315e89;color:#fff;font:inherit;font-size:15px;font-weight:600;padding:13px 26px;cursor:pointer;width:100%}button:hover{background:#244a6e}button:disabled{cursor:wait;opacity:.65}button:focus-visible,a:focus-visible{outline:3px solid #92b8df;outline-offset:3px}#status{margin:10px 0 0;font-size:14px;min-height:0;color:#a52c32}#status:empty{display:none}footer{font-size:12px;color:#788493;margin-top:19px;text-align:center}.trap{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}#success{background:#fff;border:1px solid #dde3eb;border-radius:12px;padding:40px 30px;text-align:center}#success h2{font-size:23px;margin:8px 0}#success p{font-size:15px;color:#536174}#success a{display:inline-block;margin-top:14px}[hidden]{display:none!important}.qa{color:#8a5d00!important;background:#fff6dc;padding:8px 12px;border-radius:5px}
+@media(max-width:540px){main{margin:24px auto;padding:0 16px 28px}h1{font-size:24px}form{padding:2px 17px 22px}fieldset{padding:23px 0}legend{font-size:15px}.rating{gap:5px}.choice{min-height:100px;padding:7px 2px}.choice:has(input:checked){padding:6px 1px}.meaning{font-size:11px}.number{font-size:21px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<a class="back" href="./">← 기술허브로 돌아가기</a>
+<h1>기술허브, 어떻게 보셨나요?</h1>
+<p>도움이 된 점과 아쉬웠던 점을 편하게 알려주세요.<br>보내주신 의견으로 기술허브를 다듬겠습니다.</p>
+<p class="note">약 1~2분 · 이름과 이메일은 받지 않습니다.</p>
+<p id="qa-note" class="qa" hidden>시험용 설문입니다. 실제 응답과 별도로 저장됩니다.</p>
+</header>
+<form id="survey">
+<fieldset><legend>1. 리포트에 전반적으로 얼마나 만족하시나요?<span class="tag">필수</span></legend><div class="content rating">
+<label class="choice"><input type="radio" name="satisfaction" value="1" required><span class="number">1</span><span class="meaning">매우 불만족</span></label>
+<label class="choice"><input type="radio" name="satisfaction" value="2" required><span class="number">2</span><span class="meaning">불만족</span></label>
+<label class="choice"><input type="radio" name="satisfaction" value="3" required><span class="number">3</span><span class="meaning">보통</span></label>
+<label class="choice"><input type="radio" name="satisfaction" value="4" required><span class="number">4</span><span class="meaning">만족</span></label>
+<label class="choice"><input type="radio" name="satisfaction" value="5" required><span class="number">5</span><span class="meaning">매우 만족</span></label>
+</div></fieldset>
+<fieldset><legend>2. 새로운 기술과 최근 변화를 이해하는 데 얼마나 도움이 됐나요?<span class="tag">필수</span></legend><div class="content rating">
+<label class="choice"><input type="radio" name="learning" value="1" required><span class="number">1</span><span class="meaning">전혀 도움 안 됨</span></label>
+<label class="choice"><input type="radio" name="learning" value="2" required><span class="number">2</span><span class="meaning">별로 도움 안 됨</span></label>
+<label class="choice"><input type="radio" name="learning" value="3" required><span class="number">3</span><span class="meaning">보통</span></label>
+<label class="choice"><input type="radio" name="learning" value="4" required><span class="number">4</span><span class="meaning">도움 됨</span></label>
+<label class="choice"><input type="radio" name="learning" value="5" required><span class="number">5</span><span class="meaning">매우 도움 됨</span></label>
+</div></fieldset>
+<fieldset><legend><label for="helpful">3. 어떤 부분이 도움이 됐나요?</label><span class="tag">선택</span></legend><div class="content"><textarea id="helpful" name="helpful" maxlength="2000" placeholder="도움이 된 내용이나 기능을 적어주세요." aria-describedby="helpful-count"></textarea><p class="count" id="helpful-count">0 / 2,000</p></div></fieldset>
+<fieldset><legend><label for="improvements">4. 어떤 부분을 보완하면 좋을까요?</label><span class="tag">선택</span></legend><div class="content"><textarea id="improvements" name="improvements" maxlength="2000" placeholder="설명, 분량, 화면 구성 등 아쉬웠던 점을 적어주세요." aria-describedby="improvements-count"></textarea><p class="count" id="improvements-count">0 / 2,000</p></div></fieldset>
+<fieldset><legend><label for="comments">5. 그 밖에 남기고 싶은 의견이 있으신가요?</label><span class="tag">선택</span></legend><div class="content"><textarea id="comments" name="comments" maxlength="2000" placeholder="더 알아보고 싶은 기술이나 함께 검토하고 싶은 아이디어도 좋습니다." aria-describedby="comments-count"></textarea><p class="count" id="comments-count">0 / 2,000</p></div></fieldset>
+<div class="trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="submit-row"><button id="submit" type="submit">의견 보내기</button><p id="status" role="alert"></p></div>
+</form>
+<section id="success" tabindex="-1" hidden><h2>의견 남겨주셔서 감사합니다.</h2><p>보내주신 응답이 저장됐습니다.<br>기술허브를 개선하는 데 참고하겠습니다.</p><a href="./">기술허브로 돌아가기</a></section>
+<footer>선행제어기술팀 미래기술파트 · 김남인</footer>
+</main>
+<script>
+(() => {
+'use strict';
+const API = 'https://zajvkqrmocitqrkqrumt.supabase.co/functions/v1/hub-survey';
+const PUBLIC_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphanZrcXJtb2NpdHFya3FydW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNDczMTksImV4cCI6MjEwNzkyMzMxOX0.eQDUbR4HpEKFejEJxrIId8LTXWkePSOWRfcrv3TFow0';
+const form=document.getElementById('survey'),button=document.getElementById('submit'),status=document.getElementById('status');
+const requestedScope=new URLSearchParams(location.search).get('test');
+const scope=/^qa-[0-9a-f-]{36}$/.test(requestedScope||'')?requestedScope:'production';
+document.getElementById('qa-note').hidden=scope==='production';
+let busy=false,pending=null;
+form.querySelectorAll('textarea').forEach(el=>el.addEventListener('input',()=>{
+  document.getElementById(el.id+'-count').textContent=el.value.length.toLocaleString('en-US')+' / 2,000';
+}));
+form.addEventListener('invalid',()=>{status.textContent='1번과 2번 문항에서 점수를 각각 선택해 주세요.';},true);
+form.addEventListener('change',()=>{status.textContent='';});
+form.addEventListener('submit',async event=>{
+  event.preventDefault(); if(busy)return;
+  if(!form.reportValidity())return;
+  busy=true;button.disabled=true;button.textContent='보내는 중…';status.textContent='';
+  try {
+    const values=new FormData(form);
+    const answers={survey_version:'2026-10-v1',scope,satisfaction:Number(values.get('satisfaction')),
+      learning:Number(values.get('learning')),helpful:String(values.get('helpful')).trim(),
+      improvements:String(values.get('improvements')).trim(),comments:String(values.get('comments')).trim(),website:String(values.get('website'))};
+    const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(answers)));
+    const fingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');
+    try {if(!pending)pending=JSON.parse(sessionStorage.getItem('hub-survey-pending')||'null');}catch{}
+    if(!pending||pending.fingerprint!==fingerprint)pending={fingerprint,id:crypto.randomUUID()};
+    try{sessionStorage.setItem('hub-survey-pending',JSON.stringify(pending));}catch{}
+    const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json',apikey:PUBLIC_ANON_KEY,Authorization:'Bearer '+PUBLIC_ANON_KEY},
+      body:JSON.stringify({submission_id:pending.id,...answers}),signal:AbortSignal.timeout(20000)});
+    let result;try{result=await response.json();}catch{throw Error('server');}
+    if(!response.ok||result.ok!==true||result.receipt!==pending.id)throw Error(response.status===429?'rate_limit':'server');
+    try{sessionStorage.removeItem('hub-survey-pending');}catch{}
+    form.hidden=true;const success=document.getElementById('success');success.hidden=false;success.focus();
+  } catch(error) {
+    status.textContent=error.message==='rate_limit'?'잠시 후 다시 보내주세요. 작성하신 내용은 그대로 있습니다.':'응답을 저장하지 못했습니다. 연결을 확인하고 다시 눌러주세요. 작성하신 내용은 그대로 있습니다.';
+    button.disabled=false;button.textContent='다시 보내기';busy=false;
+  }
+});
+})();
+</script>
+</body>
+</html>

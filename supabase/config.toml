@@ -1,2 +1,5 @@
 [functions.hub-metrics]
 verify_jwt = false
+
+[functions.hub-survey]
+verify_jwt = true
