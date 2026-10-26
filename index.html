@@ -2255,9 +2255,9 @@
       if(visitPromises.has(week))return visitPromises.get(week);
       const register=async()=>{
         const userId=await stableVisitorId();
-        if(await metricState('visitedSelectedWeekV1:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
+        if(await metricState('visitedSelectedWeekV2:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
         await metricRequest(visitAction,week,{unique:'true',userId});
-        await metricState('visitedSelectedWeekV1:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
+        await metricState('visitedSelectedWeekV2:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
       };
       const promise=(async()=>{
         try{
