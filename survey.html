@@ -8,8 +8,8 @@
 <title>기술허브 이용 의견</title>
 <style>
 :root{font-family:"Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;color:#202b38;background:#f5f7fa;font-synthesis:none;line-height:1.65}
-*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:48px auto;padding:0 24px 40px}a{color:#315c86;text-underline-offset:4px}header{margin-bottom:28px}.back{font-size:13px}h1{font-size:27px;letter-spacing:-.8px;line-height:1.4;margin:22px 0 10px}header p{margin:7px 0;font-size:15px;color:#536174}.note{font-size:13px!important;color:#6b7685!important}form{background:#fff;border:1px solid #dde3eb;border-radius:12px;padding:8px 30px 28px}fieldset{border:0;padding:26px 0;margin:0;min-width:0;border-bottom:1px solid #e9edf2}legend{float:left;width:100%;font-weight:600;font-size:16px;line-height:1.6;padding:0;margin-bottom:14px}.content{clear:both}.tag{font-size:12px;color:#728091;font-weight:400;margin-left:6px;white-space:nowrap}.rating{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice{display:flex;position:relative;flex-direction:column;align-items:center;justify-content:center;min-height:66px;padding:9px 4px;border:1px solid #d9e0e9;border-radius:8px;cursor:pointer;text-align:center;transition:border-color .12s,background .12s}.choice:hover{border-color:#5e7da1;background:#f7faff}.choice:has(input:checked){border:2px solid #315e89;background:#edf4fc;padding:8px 3px}.choice:has(input:focus-visible){outline:3px solid #92b8df;outline-offset:3px}.choice input{position:absolute;opacity:0;width:1px;height:1px}.number{font-size:22px;font-weight:650;line-height:1.3;color:#314f6c}.meaning{font-size:12px;line-height:1.5;margin-top:5px;word-break:keep-all}textarea{display:block;width:100%;min-height:108px;resize:vertical;border:1px solid #d6dee8;border-radius:7px;padding:12px;font:inherit;font-size:14px;color:inherit;background:#fff}textarea:focus{outline:2px solid #7ca4cc;outline-offset:2px}textarea::placeholder{color:#8a95a3;font-size:13px}.count{text-align:right;font-size:11px;color:#7a8795;margin:4px 0 0}.submit-row{padding-top:24px}button{border:0;border-radius:7px;background:#315e89;color:#fff;font:inherit;font-size:15px;font-weight:600;padding:13px 26px;cursor:pointer;width:100%}button:hover{background:#244a6e}button:disabled{cursor:wait;opacity:.65}button:focus-visible,a:focus-visible{outline:3px solid #92b8df;outline-offset:3px}#status{margin:10px 0 0;font-size:14px;min-height:0;color:#a52c32}#status:empty{display:none}footer{font-size:12px;color:#788493;margin-top:19px;text-align:center}.trap{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}#success{background:#fff;border:1px solid #dde3eb;border-radius:12px;padding:40px 30px;text-align:center}#success h2{font-size:23px;margin:8px 0}#success p{font-size:15px;color:#536174}#success a{display:inline-block;margin-top:14px}[hidden]{display:none!important}.qa{color:#8a5d00!important;background:#fff6dc;padding:8px 12px;border-radius:5px}
-@media(max-width:540px){main{margin:24px auto;padding:0 16px 28px}h1{font-size:24px}form{padding:2px 17px 22px}fieldset{padding:23px 0}legend{font-size:15px}.rating{gap:5px}.choice{min-height:66px;padding:7px 2px}.choice:has(input:checked){padding:6px 1px}.meaning{font-size:11px}.number{font-size:21px}}
+*{box-sizing:border-box}body{margin:0}main{max-width:760px;margin:48px auto;padding:0 24px 40px}a{color:#315c86;text-underline-offset:4px}header{margin-bottom:28px}.back{font-size:13px}h1{font-size:27px;letter-spacing:-.8px;line-height:1.4;margin:22px 0 10px}header p{margin:7px 0;font-size:15px;color:#536174}.note{font-size:13px!important;color:#6b7685!important}.rule{display:inline-flex;gap:7px;align-items:center;padding:7px 11px;border-radius:6px;background:#edf4fc;color:#315e89!important;font-weight:600}.card,form{background:#fff;border:1px solid #dde3eb;border-radius:12px}.card{padding:38px 30px;text-align:center}.card h2{font-size:22px;margin:7px 0}.card p{font-size:14px;color:#536174;margin:7px 0}.card a{display:inline-block;margin-top:13px}form{padding:8px 30px 28px}fieldset{border:0;padding:26px 0;margin:0;min-width:0;border-bottom:1px solid #e9edf2}legend{float:left;width:100%;font-weight:600;font-size:16px;line-height:1.6;padding:0;margin-bottom:14px}.content{clear:both}.tag{font-size:12px;color:#728091;font-weight:400;margin-left:6px;white-space:nowrap}.rating{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice{display:flex;position:relative;align-items:center;justify-content:center;min-height:58px;padding:9px 4px;border:1px solid #d9e0e9;border-radius:8px;cursor:pointer;text-align:center;transition:border-color .12s,background .12s}.choice:hover{border-color:#5e7da1;background:#f7faff}.choice:has(input:checked){border:2px solid #315e89;background:#edf4fc;padding:8px 3px}.choice:has(input:focus-visible){outline:3px solid #92b8df;outline-offset:3px}.choice input{position:absolute;opacity:0;width:1px;height:1px}textarea{display:block;width:100%;min-height:108px;resize:vertical;border:1px solid #d6dee8;border-radius:7px;padding:12px;font:inherit;font-size:14px;color:inherit;background:#fff}textarea:focus{outline:2px solid #7ca4cc;outline-offset:2px}textarea::placeholder{color:#8a95a3;font-size:13px}.count{text-align:right;font-size:11px;color:#7a8795;margin:4px 0 0}.submit-row{padding-top:24px}button{border:0;border-radius:7px;background:#315e89;color:#fff;font:inherit;font-size:15px;font-weight:600;padding:13px 26px;cursor:pointer;width:100%}button:hover{background:#244a6e}button:disabled{cursor:wait;opacity:.65}button:focus-visible,a:focus-visible{outline:3px solid #92b8df;outline-offset:3px}#status{margin:10px 0 0;font-size:14px;min-height:0;color:#a52c32}#status:empty{display:none}footer{font-size:12px;color:#788493;margin-top:19px;text-align:center}.trap{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}[hidden]{display:none!important}.qa{color:#8a5d00!important;background:#fff6dc;padding:8px 12px;border-radius:5px}.spinner{width:26px;height:26px;margin:0 auto 13px;border:3px solid #dbe5ef;border-top-color:#315e89;border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:540px){main{margin:24px auto;padding:0 16px 28px}h1{font-size:24px}form{padding:2px 17px 22px}fieldset{padding:23px 0}legend{font-size:15px}.rating{gap:5px}.choice{min-height:58px;padding:7px 2px}.choice:has(input:checked){padding:6px 1px}.card{padding:32px 20px}}
 </style>
 </head>
 <body>
@@ -19,9 +19,11 @@
 <h1>기술허브, 어떻게 보셨나요?</h1>
 <p>도움이 된 점과 아쉬웠던 점을 편하게 알려주세요.<br>보내주신 의견으로 기술허브를 다듬겠습니다.</p>
 <p class="note">약 1~2분</p>
+<p class="note rule">같은 브라우저에서는 한 번만 제출할 수 있습니다.</p>
 <p id="qa-note" class="qa" hidden>시험용 설문입니다. 실제 응답과 별도로 저장됩니다.</p>
 </header>
-<form id="survey">
+<section id="checking" class="card" aria-live="polite"><div class="spinner" aria-hidden="true"></div><p>이 브라우저의 참여 여부를 확인하고 있습니다.</p></section>
+<form id="survey" hidden>
 <fieldset><legend>1. 리포트 전반에 만족하시나요?<span class="tag">필수</span></legend><div class="content rating">
 <label class="choice"><input type="radio" name="satisfaction" value="satisfied" required><span>만족</span></label>
 <label class="choice"><input type="radio" name="satisfaction" value="dissatisfied" required><span>불만족</span></label>
@@ -36,49 +38,98 @@
 <div class="trap" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
 <div class="submit-row"><button id="submit" type="submit">의견 보내기</button><p id="status" role="alert"></p></div>
 </form>
-<section id="success" tabindex="-1" hidden><h2>의견 남겨주셔서 감사합니다.</h2><p>보내주신 응답이 저장됐습니다.<br>기술허브를 개선하는 데 참고하겠습니다.</p><a href="./">기술허브로 돌아가기</a></section>
+<section id="success" class="card" tabindex="-1" hidden><h2 id="success-title">의견 남겨주셔서 감사합니다.</h2><p id="success-message">보내주신 응답이 저장됐습니다.<br>기술허브를 개선하는 데 참고하겠습니다.</p><a href="./">기술허브로 돌아가기</a></section>
 <footer>선행제어기술팀 미래기술파트 · 김남인</footer>
 </main>
 <script>
 (() => {
 'use strict';
-const API = 'https://zajvkqrmocitqrkqrumt.supabase.co/functions/v1/hub-survey';
-const PUBLIC_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphanZrcXJtb2NpdHFya3FydW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNDczMTksImV4cCI6MjEwNzkyMzMxOX0.eQDUbR4HpEKFejEJxrIId8LTXWkePSOWRfcrv3TFow0';
-const form=document.getElementById('survey'),button=document.getElementById('submit'),status=document.getElementById('status');
+const API='https://zajvkqrmocitqrkqrumt.supabase.co/functions/v1/hub-survey';
+const PUBLIC_ANON_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InphanZrcXJtb2NpdHFya3FydW10Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIzNDczMTksImV4cCI6MjEwNzkyMzMxOX0.eQDUbR4HpEKFejEJxrIId8LTXWkePSOWRfcrv3TFow0';
+const form=document.getElementById('survey'),button=document.getElementById('submit'),status=document.getElementById('status'),checking=document.getElementById('checking');
 const requestedScope=new URLSearchParams(location.search).get('test');
-const scope=/^qa-[0-9a-f-]{36}$/.test(requestedScope||'')?requestedScope:'production';
+const scope=/^qa-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(requestedScope||'')?requestedScope:'production';
 document.getElementById('qa-note').hidden=scope==='production';
-let busy=false,pending=null;
-form.querySelectorAll('textarea').forEach(el=>el.addEventListener('input',()=>{
-  document.getElementById(el.id+'-count').textContent=el.value.length.toLocaleString('en-US')+' / 2,000';
-}));
+let busy=false,pending=null,visitorId='';
+
+function openStateDb(){
+  return new Promise((resolve,reject)=>{
+    if(!globalThis.indexedDB){reject(new Error('storage'));return;}
+    const request=indexedDB.open('equipment-hub-metrics-v2',1);
+    request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains('state'))request.result.createObjectStore('state');};
+    request.onsuccess=()=>resolve(request.result);
+    request.onerror=()=>reject(request.error||new Error('storage'));
+    request.onblocked=()=>reject(new Error('storage'));
+  });
+}
+
+async function getVisitorId(){
+  const db=await openStateDb();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction('state','readwrite'),store=tx.objectStore('state'),request=store.get('visitorId');
+    let value='';
+    request.onsuccess=()=>{value=request.result;if(!/^eh-[0-9a-f-]{36}$/.test(value||'')){value='eh-'+crypto.randomUUID();store.put(value,'visitorId');}};
+    tx.oncomplete=()=>{db.close();resolve(value);};
+    tx.onerror=()=>{db.close();reject(tx.error||new Error('storage'));};
+  });
+}
+
+function requestHeaders(json=false){
+  const headers={apikey:PUBLIC_ANON_KEY,Authorization:'Bearer '+PUBLIC_ANON_KEY,'X-Equipment-Hub':'survey-v3'};
+  if(json)headers['Content-Type']='application/json';
+  return headers;
+}
+
+function showComplete(already=false){
+  checking.hidden=true;form.hidden=true;
+  if(already){document.getElementById('success-title').textContent='이미 참여한 설문입니다.';document.getElementById('success-message').innerHTML='이 브라우저에서는 응답이 한 번만 저장됩니다.<br>기존 응답은 그대로 보관되어 있습니다.';}
+  const success=document.getElementById('success');success.hidden=false;success.focus();
+}
+
+async function checkParticipation(){
+  try{
+    visitorId=await getVisitorId();
+    const response=await fetch(API+'?scope='+encodeURIComponent(scope)+'&visitor='+encodeURIComponent(visitorId),{
+      method:'GET',headers:requestHeaders(),cache:'no-store',credentials:'omit',referrerPolicy:'strict-origin-when-cross-origin',signal:AbortSignal.timeout(15000)});
+    const result=await response.json();
+    if(!response.ok||result.ok!==true)throw new Error('check');
+    if(result.submitted){showComplete(true);return;}
+    checking.hidden=true;form.hidden=false;
+  }catch{
+    checking.hidden=true;form.hidden=false;status.textContent='참여 여부를 미리 확인하지 못했습니다. 제출할 때 서버에서 다시 확인합니다.';
+  }
+}
+
+form.querySelectorAll('textarea').forEach(el=>el.addEventListener('input',()=>{document.getElementById(el.id+'-count').textContent=el.value.length.toLocaleString('en-US')+' / 2,000';}));
 form.addEventListener('invalid',()=>{status.textContent='1번과 2번 문항에서 만족 또는 불만족을 각각 선택해 주세요.';},true);
 form.addEventListener('change',()=>{status.textContent='';});
 form.addEventListener('submit',async event=>{
-  event.preventDefault(); if(busy)return;
-  if(!form.reportValidity())return;
+  event.preventDefault();if(busy)return;if(!form.reportValidity())return;
   busy=true;button.disabled=true;button.textContent='보내는 중…';status.textContent='';
-  try {
+  try{
+    if(!visitorId)visitorId=await getVisitorId();
     const values=new FormData(form);
-    const answers={survey_version:'2026-10-v2-binary',scope,satisfaction:String(values.get('satisfaction')),
-      learning:String(values.get('learning')),helpful:String(values.get('helpful')).trim(),
-      improvements:String(values.get('improvements')).trim(),comments:String(values.get('comments')).trim(),website:String(values.get('website'))};
-    const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(answers)));
-    const fingerprint=Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');
-    try {if(!pending)pending=JSON.parse(sessionStorage.getItem('hub-survey-pending')||'null');}catch{}
+    const answers={survey_version:'2026-10-v3-one-browser',scope,visitor_id:visitorId,satisfaction:String(values.get('satisfaction')),
+      learning:String(values.get('learning')),helpful:String(values.get('helpful')).trim(),improvements:String(values.get('improvements')).trim(),
+      comments:String(values.get('comments')).trim(),website:String(values.get('website'))};
+    const fingerprint=JSON.stringify(answers);
+    try{if(!pending)pending=JSON.parse(sessionStorage.getItem('hub-survey-pending-v3')||'null');}catch{}
     if(!pending||pending.fingerprint!==fingerprint)pending={fingerprint,id:crypto.randomUUID()};
-    try{sessionStorage.setItem('hub-survey-pending',JSON.stringify(pending));}catch{}
-    const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json',apikey:PUBLIC_ANON_KEY,Authorization:'Bearer '+PUBLIC_ANON_KEY},
-      body:JSON.stringify({submission_id:pending.id,...answers}),signal:AbortSignal.timeout(20000)});
-    let result;try{result=await response.json();}catch{throw Error('server');}
-    if(!response.ok||result.ok!==true||result.receipt!==pending.id)throw Error(response.status===429?'rate_limit':'server');
-    try{sessionStorage.removeItem('hub-survey-pending');}catch{}
-    form.hidden=true;const success=document.getElementById('success');success.hidden=false;success.focus();
-  } catch(error) {
+    try{sessionStorage.setItem('hub-survey-pending-v3',JSON.stringify(pending));}catch{}
+    const response=await fetch(API,{method:'POST',headers:requestHeaders(true),body:JSON.stringify({submission_id:pending.id,...answers}),
+      credentials:'omit',referrerPolicy:'strict-origin-when-cross-origin',signal:AbortSignal.timeout(20000)});
+    let result;try{result=await response.json();}catch{throw new Error('server');}
+    if(response.status===409&&result.duplicate){showComplete(true);return;}
+    if(!response.ok||result.ok!==true||result.receipt!==pending.id)throw new Error(response.status===429?'rate_limit':'server');
+    try{sessionStorage.removeItem('hub-survey-pending-v3');}catch{}
+    showComplete(false);
+  }catch(error){
     status.textContent=error.message==='rate_limit'?'잠시 후 다시 보내주세요. 작성하신 내용은 그대로 있습니다.':'응답을 저장하지 못했습니다. 연결을 확인하고 다시 눌러주세요. 작성하신 내용은 그대로 있습니다.';
     button.disabled=false;button.textContent='다시 보내기';busy=false;
   }
 });
+
+checkParticipation();
 })();
 </script>
 </body>
