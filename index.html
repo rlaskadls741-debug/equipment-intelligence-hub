@@ -2172,7 +2172,7 @@
     const metricsTestScope=/^qa-[a-f0-9-]{36}$/.test(requestedMetricScope)
       ?requestedMetricScope
       :(metricsQaRequested?metricsQaFallback:'');
-    let metricDbPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
+    let metricDbPromise=null,visitorIdentityPromise=null,statsGeneration=0,metricMessage='',reportWriteQueue=Promise.resolve();
     const visitPromises=new Map();
     function metricWeek(iso){return dateKey(weekBounds(iso).start)}
     function currentVisitDate(){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date())}
@@ -2187,7 +2187,7 @@
       });
       return metricDbPromise;
     }
-    async function metricState(key,value,createIdentity=false){
+    async function metricState(key,value,createIdentity=false,backupIdentity=''){
       const db=await metricDb();
       return new Promise((resolve,reject)=>{
         const tx=db.transaction('state','readwrite'),store=tx.objectStore('state');
@@ -2197,7 +2197,10 @@
           const request=store.get(key);
           request.onsuccess=()=>{
             result=request.result;
-            if(createIdentity&&!result){result='eh-'+crypto.randomUUID();store.put(result,key);}
+            if(createIdentity&&!visitorIdPattern.test(result||'')){
+              result=visitorIdPattern.test(backupIdentity)?backupIdentity:'eh-'+crypto.randomUUID();
+              store.put(result,key);
+            }
           };
         }
         tx.oncomplete=()=>resolve(result);
@@ -2206,15 +2209,17 @@
       });
     }
     const visitorIdPattern=/^eh-[a-f0-9-]{36}$/;
-    async function stableVisitorId(){
-      let id=await metricState('visitorId');
-      let backup='';
-      try{backup=localStorage.getItem('equipmentHubVisitorIdV1')||''}catch{}
-      if(!visitorIdPattern.test(id||'')&&visitorIdPattern.test(backup))id=backup;
-      if(!visitorIdPattern.test(id||''))id='eh-'+crypto.randomUUID();
-      if(await metricState('visitorId')!==id)await metricState('visitorId',id);
-      try{if(localStorage.getItem('equipmentHubVisitorIdV1')!==id)localStorage.setItem('equipmentHubVisitorIdV1',id)}catch{}
-      return id;
+    function stableVisitorId(){
+      if(!visitorIdentityPromise)visitorIdentityPromise=(async()=>{
+        let backup='';
+        try{backup=localStorage.getItem('equipmentHubVisitorIdV1')||''}catch{}
+        // Reading and creating the identity share one IndexedDB write transaction,
+        // so concurrent requests and tabs cannot create different visitor IDs.
+        const id=await metricState('visitorId',undefined,true,backup);
+        try{if(localStorage.getItem('equipmentHubVisitorIdV1')!==id)localStorage.setItem('equipmentHubVisitorIdV1',id)}catch{}
+        return id;
+      })().catch(error=>{visitorIdentityPromise=null;throw error;});
+      return visitorIdentityPromise;
     }
     async function metricRequest(action,key,options={}){
       const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);
