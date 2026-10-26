@@ -2322,8 +2322,8 @@
       const r=selected,{start,end}=weekBounds(weekDate),weekReports=reportsInWeek(weekDate),short=d=>`${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
       const headline=weekReports.length?`이번 주에 등록된 ${weekReports.length}건을 기술, 변화, 확인사항으로 정리했습니다.`:'이 주에는 등록된 리포트가 없습니다.';
       const concise=text=>{const value=String(text||'').trim();return value.length>85?value.slice(0,84)+'…':value};
-      const surveyWeek=dateKey(start),surveyLabel=short(start)+'~'+short(end),surveyReady=weekReports.length>0&&dateKey(end)<=currentVisitDate();
-      const surveyNav=`<section class="surveyNav" aria-label="선택한 주의 설문"><div class="surveyNavHead"><b>주간 설문</b><span>${surveyLabel}</span></div><button class="surveyOpenBtn" type="button" data-survey-week="${surveyWeek}" data-survey-label="${surveyLabel}" ${surveyReady?'':'disabled'}>${surveyReady?'선택한 주의 설문 열기':'이 주의 설문은 토요일 이후에 열립니다'}</button></section>`;
+      const surveyWeek=dateKey(start),surveyLabel=short(start)+'~'+short(end),surveyReady=weekReports.length>0;
+      const surveyNav=`<section class="surveyNav" aria-label="선택한 주의 설문"><div class="surveyNavHead"><b>주간 설문</b><span>${surveyLabel}</span></div><button class="surveyOpenBtn" type="button" data-survey-week="${surveyWeek}" data-survey-label="${surveyLabel}" ${surveyReady?'':'disabled'}>${surveyReady?'선택한 주의 설문 열기':'이 주의 리포트 발행 후 설문이 열립니다'}</button></section>`;
       const weeklyItem=(x,key)=>{
         const note=x.weekly||{},topic=note.topic||x.category||x.title;
         const text=key==='change'?(note.change||concise(x.why)):key==='check'?(note.check||concise(x.poc)):'';
