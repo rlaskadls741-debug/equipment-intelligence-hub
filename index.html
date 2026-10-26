@@ -1824,7 +1824,7 @@
           if(metricWeek(weekDate)===week)await loadWeekStats(weekDate);
         }catch(error){
           visitPromises.delete(week);
-          showMetricMessage('방문 기록의 성공을 확인하지 못했습니다. 집계는 서버 연결 후 표시됩니다.');
+          showMetricMessage('');
           console.warn('방문 기록 실패',error);
         }
       })();
@@ -1841,14 +1841,14 @@
       const uniqueEl=$('[data-view-stat="unique"]'),reportEl=$('[data-view-stat="report"]');
       if(uniqueEl){
         uniqueEl.textContent=visit.status==='fulfilled'?visit.value.toLocaleString('ko-KR'):'–';
-        uniqueEl.title=visit.status==='fulfilled'?'이 주를 실제로 열어본 고유 브라우저 수입니다. 같은 브라우저는 주마다 한 번만 집계합니다. 2026-10-19부터 기록합니다.':'집계 서버에 연결하지 못했습니다.';
+        uniqueEl.title=visit.status==='fulfilled'?'이 주를 실제로 열어본 고유 브라우저 수입니다. 같은 브라우저는 주마다 한 번만 집계합니다. 2026-10-19부터 기록합니다.':'방문자 수를 표시할 수 없습니다.';
       }
       if(reportEl){
         reportEl.textContent=report.status==='fulfilled'?report.value.toLocaleString('ko-KR'):'–';
-        reportEl.title=report.status==='fulfilled'?'선택한 주에 발행된 리포트의 상세 열람 횟수입니다. 같은 사람의 재열람도 포함합니다.':'집계 서버에 연결하지 못했습니다.';
+        reportEl.title=report.status==='fulfilled'?'선택한 주에 발행된 리포트의 상세 열람 횟수입니다. 같은 사람의 재열람도 포함합니다.':'열람 횟수를 표시할 수 없습니다.';
       }
-      if(visit.status==='rejected'||report.status==='rejected')showMetricMessage('집계 서버에 연결하지 못했습니다. 확인되지 않은 숫자는 표시하지 않습니다.');
-      else showMetricMessage(metricMessage.startsWith('집계 서버')?'':metricMessage);
+      if(visit.status==='rejected'||report.status==='rejected')showMetricMessage('');
+      else showMetricMessage('');
     }
     function trackReportOpen(report){
       if(location.hostname!==metricsNamespace||!location.pathname.startsWith('/equipment-intelligence-hub/'))return Promise.resolve();
