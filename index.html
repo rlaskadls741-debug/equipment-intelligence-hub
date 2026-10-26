@@ -2255,9 +2255,10 @@
       if(visitPromises.has(week))return visitPromises.get(week);
       const register=async()=>{
         const userId=await stableVisitorId();
-        if(await metricState('visitedSelectedWeekV2:'+week+(metricsTestScope?':'+metricsTestScope:'')))return;
+        // The server is the source of truth. Send every genuine week selection;
+        // its (scope, week, visitor) unique key keeps the same browser at one visit.
         await metricRequest(visitAction,week,{unique:'true',userId});
-        await metricState('visitedSelectedWeekV2:'+week+(metricsTestScope?':'+metricsTestScope:''),true);
+        await metricState('visitedSelectedWeekV2:'+week+(metricsTestScope?':'+metricsTestScope:''),true).catch(()=>{});
       };
       const promise=(async()=>{
         try{
@@ -2266,9 +2267,10 @@
           if(metricMessage.startsWith('방문 기록'))showMetricMessage('');
           if(metricWeek(weekDate)===week)await loadWeekStats(weekDate);
         }catch(error){
-          visitPromises.delete(week);
           showMetricMessage('');
           console.warn('방문 기록 실패',error);
+        }finally{
+          visitPromises.delete(week);
         }
       })();
       visitPromises.set(week,promise);
