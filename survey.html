@@ -52,10 +52,10 @@ const requestedScope=new URLSearchParams(location.search).get('test');
 const scope=/^qa-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(requestedScope||'')?requestedScope:'production';
 const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
 function addDays(value,days){const date=new Date(value+'T00:00:00Z');date.setUTCDate(date.getUTCDate()+days);return date.toISOString().slice(0,10);}
-function completedWeekStart(){const date=new Date(today+'T00:00:00Z'),day=date.getUTCDay(),backToPreviousSaturday=((day+1)%7)||7;return addDays(today,-backToPreviousSaturday-6);}
-function validWeek(value){if(!/^20\d{2}-(0[1-9]|1[0-2])-([0-2]\d|3[01])$/.test(value)||value<'2026-07-26')return false;const date=new Date(value+'T00:00:00Z');return !Number.isNaN(date.getTime())&&date.getUTCDay()===0&&addDays(value,6)<=today;}
+function currentWeekStart(){const date=new Date(today+'T00:00:00Z'),day=date.getUTCDay();return addDays(today,-day);}
+function validWeek(value){if(!/^20\d{2}-(0[1-9]|1[0-2])-([0-2]\d|3[01])$/.test(value)||value<'2026-07-26')return false;const date=new Date(value+'T00:00:00Z');return !Number.isNaN(date.getTime())&&date.getUTCDay()===0&&value<=today;}
 const requestedWeek=new URLSearchParams(location.search).get('week')||'';
-const surveyWeek=validWeek(requestedWeek)?requestedWeek:completedWeekStart();
+const surveyWeek=validWeek(requestedWeek)?requestedWeek:currentWeekStart();
 const weekEnd=addDays(surveyWeek,6),[startYear,startMonth,startDay]=surveyWeek.split('-'),[endYear,endMonth,endDay]=weekEnd.split('-');
 document.getElementById('report-week').textContent=startYear+'년 '+Number(startMonth)+'월 '+Number(startDay)+'일~'+(startYear===endYear?'':endYear+'년 ')+Number(endMonth)+'월 '+Number(endDay)+'일 리포트 의견';
 document.getElementById('qa-note').hidden=scope==='production';
