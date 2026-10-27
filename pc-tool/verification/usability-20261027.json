@@ -1,0 +1,135 @@
+{
+  "id": "2026-10-27-usability-01",
+  "date": "2026-10-27",
+  "base_commit": "0096e680a671582b5f0c30150a4c11945170f7a5",
+  "scope": "단계 선택·원문 이동·화면 배치와 기존 자료 보존",
+  "source_html_sha256": "4ffeac8a32181e4cf0d191fa5e173927b1dc6ac70aa4237b1fab4f931a3de3d2",
+  "analysis_data_unchanged": true,
+  "cpp_source_files_preserved": 79,
+  "stage_rendering": {
+    "count": 367,
+    "code": 300,
+    "decl": 282,
+    "notes": 112
+  },
+  "system_nodes_opened": 176,
+  "click_path": {
+    "sample": "제어 프로그램 실행 → 헤더 선언 확인",
+    "before": 3,
+    "after": 1,
+    "additional_clicks_to_open_primary_source": 1,
+    "source_location": "DemoKit.cpp:83–85",
+    "return_preserves_selected_node_and_zoom": true
+  },
+  "layouts": {
+    "layout1920": {
+      "width": 1920,
+      "overflow": false,
+      "canvas": {
+        "left": 269,
+        "right": 1315,
+        "top": 345.140625,
+        "bottom": 1067.890625
+      },
+      "dock": {
+        "left": 1360,
+        "right": 1908,
+        "top": 12,
+        "bottom": 939
+      }
+    },
+    "layout1280": {
+      "width": 1280,
+      "overflow": false,
+      "canvas": {
+        "left": 269,
+        "right": 799.8125,
+        "top": 390.890625,
+        "bottom": 1113.640625
+      },
+      "dock": {
+        "left": 844.8125,
+        "right": 1268,
+        "top": 12,
+        "bottom": 939
+      }
+    },
+    "fullscreen1280": {
+      "canvas": {
+        "left": 14,
+        "right": 830.8125,
+        "top": 252.25,
+        "bottom": 937
+      },
+      "dock": {
+        "left": 844.8125,
+        "right": 1280,
+        "top": 0,
+        "bottom": 951
+      },
+      "overflow": false
+    },
+    "layout1024": {
+      "width": 1024,
+      "overflow": false,
+      "canvas": {
+        "left": 249,
+        "right": 983,
+        "top": -75.71875,
+        "bottom": 257.125
+      },
+      "dock": {
+        "left": 226,
+        "right": 1006,
+        "top": 380.21875,
+        "bottom": 950.8125
+      }
+    },
+    "layout390": {
+      "width": 390,
+      "overflow": false,
+      "canvas": {
+        "left": 31,
+        "right": 359,
+        "top": -131.0625,
+        "bottom": 201.78125
+      },
+      "dock": {
+        "left": 12,
+        "right": 378,
+        "top": 333.34375,
+        "bottom": 951.484375
+      }
+    },
+    "fullscreen390": {
+      "canvas": {
+        "left": 9,
+        "right": 381,
+        "top": -30.75,
+        "bottom": 302.09375
+      },
+      "dock": {
+        "left": 12,
+        "right": 378,
+        "top": 333.09375,
+        "bottom": 951.234375
+      },
+      "overflow": false
+    }
+  },
+  "existing_automated_tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "browser_errors": [],
+  "regressions_checked": [
+    "행/범위 Enter 이동",
+    "직접 진입과 단계 경유의 사전 토큰",
+    "함수 호출 관계 진입·복귀",
+    "검색 Enter로 근거 열기",
+    "보기 설정의 정상 경로 강조",
+    "설명서 열기·닫기",
+    "WMX3 3.6 변환 체크리스트 60개 항목 열기"
+  ],
+  "review_limit": "읽기 도구의 기능 검사이며 자연어 의미 전수검증·C++ 빌드·설비 동작 검증을 새로 수행한 기록은 아닙니다."
+}

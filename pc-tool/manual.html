@@ -24,9 +24,7 @@ a{color:var(--blue)}.hero{background:#fff;border-bottom:1px solid var(--line);pa
   <main>
     <section class="section" id="quick-start">
       <h2>빠른 시작</h2>
-      <p class="lead">처음에는 <b>전체 흐름도</b>에서 큰 순서를 보고, 관심 있는 단계의 상자를 눌러 원문 근거를 확인하면 됩니다.</p>
-      <ol><li>왼쪽 <span class="pill">전체 흐름도</span>를 눌러 프로그램 시작부터 정지까지의 큰 흐름을 봅니다.</li><li>도식의 상자를 눌러 선택 동작의 설명과 연결된 코드 근거를 엽니다.</li><li>더 자세히 보려면 상단의 <span class="pill">상세 흐름도 열기</span> 또는 왼쪽 기능별 목록에서 관련 도식을 고릅니다.</li><li>오른쪽 근거 창에서 코드 줄, 동작 해설, 함수의 선언·호출·구현을 확인합니다.</li><li>전환 작업을 기록하려면 우상단 <span class="pill">Ajin &gt; WMX3 변환 체크리스트</span>를 엽니다. <a href="#conversion-checklist">체크리스트 사용법</a>에서 상태·메모 저장 방법을 확인합니다.</li></ol>
-      <div class="callout">상자는 “어떤 단계가 실행되는가”를 보여주고, 근거 창은 “그 단계가 코드에서 어떻게 연결되는가”를 확인하는 곳입니다.</div>
+      <ol><li>전체 흐름도에서 궁금한 단계를 누릅니다. 설명·실행 코드·관련 함수 선언이 함께 나옵니다.</li><li>파일 전체를 읽으려면 코드 옆의 <span class="pill">원문 보기</span>를 누릅니다. 선택 범위가 바로 강조됩니다.</li><li><span class="pill">흐름도로 돌아가기</span>를 누르면 선택 단계와 확대 위치로 돌아옵니다.</li></ol>
     </section>
 
     <section class="section" id="screen">
@@ -35,7 +33,7 @@ a{color:var(--blue)}.hero{background:#fff;border-bottom:1px solid var(--line);pa
         <div class="card"><b>상단·우상단</b>우상단 고정 영역의 <span class="pill">Ajin &gt; WMX3 변환 체크리스트</span>에서 전환 작업 기록을 엽니다. Tool 제목 아래에는 전체 흐름도 바로가기, <a href="./history.html">변경 이력</a>과 <a href="./verification.html">검증 이력</a>이 있습니다.</div>
         <div class="card"><b>왼쪽 탐색</b>‘주요 화면’ 바로 아래의 ‘사용 설명서 보기’로 이 설명서를 엽니다. 그 아래에서 전체 흐름도, 원문 코드·해설, 코드 사전, 검색 결과, 함수 호출 관계, 하드웨어 이해를 고릅니다. 기능별 상세 흐름도도 이곳에서 선택합니다.</div>
         <div class="card"><b>가운데 작업 영역</b>선택한 흐름도와 설명을 봅니다. 도식 안의 상자는 눌러 관련 근거를 열 수 있습니다.</div>
-        <div class="card"><b>오른쪽 근거 창</b>선택한 단계의 요약, 코드와 줄별 해설, 함수 연결, IO·축 번호 정의 등을 확인합니다. <span class="pill">닫기</span>로 접습니다.</div>
+        <div class="card"><b>오른쪽 근거 창</b>선택 단계의 설명, 실행 코드와 함수 선언을 바로 봅니다. 변수·문서는 <span class="pill">추가 근거·변수·문서</span>에 있습니다. 좁은 화면에서는 흐름도 아래에 이어서 표시합니다.</div>
       </div>
     </section>
 
@@ -81,7 +79,7 @@ a{color:var(--blue)}.hero{background:#fff;border-bottom:1px solid var(--line);pa
     </section>
 
     <section class="section" id="zoom">
-      <h2>도식 크기와 위치 조절</h2>
+      <h2>도식 크기와 위치 조절</h2><p>자주 쓰는 확대·축소와 <span class="pill">전체 보기</span>는 도식 위에 있습니다. 위치 선택·정상 경로 강조·하드웨어 연결선·SVG 저장은 <span class="pill">보기 설정</span>에서 고릅니다.</p>
       <div class="tablewrap"><table><thead><tr><th>조작</th><th>방법</th><th>추천 상황</th></tr></thead><tbody>
       <tr><td>배율 선택</td><td>도식 위의 확대 비율 메뉴에서 <span class="pill">폭 맞춤</span>, <span class="pill">전체 맞춤</span>, 75·100·125·150% 중 선택</td><td>처음 열었을 때 전체를 보거나 글자를 크게 볼 때</td></tr>
       <tr><td>세밀한 확대·축소</td><td><kbd>Ctrl</kbd>을 누른 채 마우스 휠을 위·아래로 움직임</td><td>특정 구간을 자세히 읽을 때</td></tr>
@@ -94,7 +92,8 @@ a{color:var(--blue)}.hero{background:#fff;border-bottom:1px solid var(--line);pa
     <section class="section" id="evidence">
       <h2>원문 코드와 해설 보기</h2>
       <div class="callout"><b>행/범위</b> 한 칸에 <b>500</b>을 입력하면 한 줄, <b>500-519</b> 또는 <b>500+20</b>을 입력하면 500~519행을 강조합니다. 파일 전체는 그대로 표시됩니다. <b>이동</b> 버튼이나 <b>Enter</b>로 현재 원문 화면 안에서 이동합니다.</div>
-      <ul><li>흐름도 상자나 연결된 근거 버튼을 선택하면 해당 동작의 근거 창이 열립니다.</li><li><b>줄별 해설 보기</b>를 켜면 코드 줄 아래에 해당 줄의 역할이나 전달값 설명이 표시됩니다. 끄면 원문 코드 중심으로 볼 수 있습니다.</li><li><span class="pill">원문에서 보기</span>를 누르면 해당 파일·행으로 이동합니다. 전체 코드를 직접 찾을 때는 왼쪽 <span class="pill">원문 코드·해설</span> 화면을 사용합니다.</li><li><span class="pill">함수의 선언·호출·구현</span>을 펼치면 함수가 선언된 곳, 호출하는 곳, 실제 구현된 곳을 구분해서 볼 수 있습니다.</li><li>IO·축·모듈 번호 정의가 연결된 단계에는 관련 토큰 버튼이 보일 수 있습니다. 버튼을 누르면 해당 번호 정의나 상태 변수 선언 위치로 이동합니다.</li></ul>
+      <ul><li>단계 선택 창에는 실행 코드와 함수 선언을 기본으로 표시합니다. 긴 범위는 앞 12행을 보여주며, <span class="pill">원문 보기</span>에서 전체 범위를 확인합니다.</li><li>선언 옆의 파일·행 버튼으로 헤더를 바로 엽니다. <span class="pill">호출 관계</span>에서는 호출 위치와 함수 구현을 확인합니다.</li><li>원문 화면의 <b>줄별 해설 보기</b>로 줄마다 붙는 설명을 켜거나 끕니다. <span class="pill">추가 근거·변수·문서</span>에는 다른 코드 범위, 번호 정의와 문서 출처가 있습니다.</li></ul>
+      <table><thead><tr><th>구분</th><th>의미</th></tr></thead><tbody><tr><td>선언</td><td>함수 이름과 입력·반환 형식입니다. 선언만으로 실행되지는 않습니다.</td></tr><tr><td>호출·이벤트 연결</td><td>함수를 실행하는 위치나 계기입니다. MFC 내부 호출은 제공 소스에 없을 수 있습니다.</td></tr><tr><td>구현</td><td>함수 안에서 조건 검사·명령·반환 등을 처리하는 코드입니다.</td></tr></tbody></table>
     </section>
 
     <section class="section" id="search">
@@ -110,7 +109,7 @@ a{color:var(--blue)}.hero{background:#fff;border-bottom:1px solid var(--line);pa
 
     <section class="section" id="reading">
       <h2>읽을 때 주의할 점</h2>
-      <ul><li>코드에서 출력·이동 명령을 호출했다는 사실만으로 실제 장치가 움직였다고 단정하지 않습니다. 완료 입력, 센서 상태, 오류 및 인터록 조건을 함께 확인합니다.</li><li>도식은 코드와 설명을 연결해 읽기 쉽게 만든 자료입니다. 판단이 필요한 경우 원문 행과 연결된 상태 변수·IO 정의를 함께 확인합니다.</li><li>화면이 좁을 때는 사이드바와 근거 창이 가운데 도식을 가릴 수 있습니다. 근거 창을 닫거나 브라우저 창을 넓힌 뒤 배율을 다시 맞추면 편하게 볼 수 있습니다.</li></ul>
+      <ul><li>코드에서 출력·이동 명령을 호출했다는 사실만으로 실제 장치가 움직였다고 단정하지 않습니다. 완료 입력, 센서 상태, 오류 및 인터록 조건을 함께 확인합니다.</li><li>도식은 코드와 설명을 연결해 읽기 쉽게 만든 자료입니다. 판단이 필요한 경우 원문 행과 연결된 상태 변수·IO 정의를 함께 확인합니다.</li><li>넓은 화면에서는 흐름도와 단계 설명을 나란히 봅니다. 좁은 화면에서는 설명이 아래에 이어집니다.</li></ul>
       <div class="actions"><a class="btn primary" href="./">Tool로 돌아가기</a><a class="btn" href="#top">맨 위로</a></div>
     </section>
   </main>
