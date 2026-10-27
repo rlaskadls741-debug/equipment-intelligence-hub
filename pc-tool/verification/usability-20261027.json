@@ -3,7 +3,7 @@
   "date": "2026-10-27",
   "base_commit": "0096e680a671582b5f0c30150a4c11945170f7a5",
   "scope": "단계 선택·원문 이동·화면 배치와 기존 자료 보존",
-  "source_html_sha256": "4ffeac8a32181e4cf0d191fa5e173927b1dc6ac70aa4237b1fab4f931a3de3d2",
+  "source_html_sha256": "23c6f80325646d9a1baa5c19e66e6cdb8ae7b613c007ca4cd401c92ff68e16d4",
   "analysis_data_unchanged": true,
   "cpp_source_files_preserved": 79,
   "stage_rendering": {
@@ -131,5 +131,6 @@
     "설명서 열기·닫기",
     "WMX3 3.6 변환 체크리스트 60개 항목 열기"
   ],
-  "review_limit": "읽기 도구의 기능 검사이며 자연어 의미 전수검증·C++ 빌드·설비 동작 검증을 새로 수행한 기록은 아닙니다."
+  "review_limit": "읽기 도구의 기능 검사이며 자연어 의미 전수검증·C++ 빌드·설비 동작 검증을 새로 수행한 기록은 아닙니다.",
+  "reference_labels_preserved": true
 }
