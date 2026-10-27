@@ -24,7 +24,8 @@ test('home and vacuum evidence point to the actual messages and sensor condition
  assert.ok(!refs.some(r=>r.file==='DemoKitDlg.cpp'&&r.start===1306));
  assert.ok(after.evidence['12B_vacuum_wait:sensor'].refs.some(r=>r.start===1461));
  assert.equal(after.annotation_info.total_source_lines,28520);
- assert.equal(after.constants.VC_EXTRALEAN.value,'(치환값 없음 · 정의 여부에 사용)');
+ assert.equal(after.constants.VC_EXTRALEAN.value,'');
+ assert.equal(after.constants.VC_EXTRALEAN.value_note,'치환 값 없음');
 });
 test('corrected inline JavaScript parses before the page is deployed',()=>{
  for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g))if(!/application\/json/.test(m[1]))new vm.Script(m[2]);
@@ -34,6 +35,7 @@ test('conditions preserve pointer access, address arguments and full OR continua
  assert.ok(after.annotations['AutoDlg.cpp'][69].text.includes('||'));
  assert.ok(!after.annotations['AutoDlg.cpp'][69].text.includes('보다 큼'));
  assert.ok(!after.annotations['AutoDlg.cpp'][70].text.includes('앞줄과 &&'));
- assert.ok(!after.annotations['AutoDlg.cpp'][387].text.includes('비트 연산 결과'));
+ assert.match(after.annotations['AutoDlg.cpp'][387].text,/PeekMessage/);
+ assert.match(after.annotations['AutoDlg.cpp'][387].text,/메시지를 큐에서 제거/);
  assert.ok(after.annotations['AutoDlg.cpp'][109].text.includes('명시적 초기화식'));
 });

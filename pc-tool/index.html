@@ -13,8 +13,8 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
 <body>
 <div id="status" role="status">Tool 불러오는 중…</div>
 <iframe id="app" title="PC 제어 프로그램 분석 Tool" hidden></iframe>
-<script src="./reader-updates.js?v=20261021-audit-1"></script>
-<script src="./content-verification.js?v=20261021-audit-2"></script>
+<script src="./reader-updates.js?v=20261027-merge-1"></script>
+<script src="./content-verification.js?v=20261027-merge-1"></script>
 <script src="./conversion-checklist-launcher.js?v=20261022-notes-1"></script>
 <script>
 (async()=>{
@@ -22,8 +22,8 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
  const frame=document.getElementById("app");
  try{
   const files=[
-   "./source-part1.txt?v=94c0fcd2ee6744112a94b98aabedc2a120f4f303",
-   "./source-part2.txt?v=c041fa66d41905060ea88eacb9c8b92b311b034f"
+   "./source-part1.txt?v=b5717f06a0733f9dd2b0042782810d2783f11945",
+   "./source-part2.txt?v=0a18c6de45311453e033859ef04c552bce66f386"
   ];
   const parts=await Promise.all(files.map(async url=>{
    const response=await fetch(url,{cache:"no-store"});
@@ -36,7 +36,7 @@ iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#fff}
   const flowLink=/<a href="#all_flow" class="atlas-entry" data-atlas-open="all_flow">전체 흐름도 열기 →<\/a>/;
   if(!flowLink.test(source)) throw new Error("Overall flow shortcut not found");
   source=source.replace(flowLink,match=>match+'<span class="audit-links" style="display:inline-flex;vertical-align:middle;flex-direction:column;gap:5px;margin-left:14px"><a class="history-entry" href="./history.html" target="_blank" rel="noopener" style="color:#2d6593;text-decoration:none">변경 이력 →</a><a class="verification-entry" href="./verification.html" target="_blank" rel="noopener" style="color:#28634f;text-decoration:none">검증 이력 →</a></span>');
-  const navGuideScript='<script>(()=>{const main=document.querySelector("aside nav .nav-main");if(!main)return;const link=document.createElement("a");link.className="manual-nav-link";link.href="./manual.html";link.target="_blank";link.rel="noopener";link.textContent="사용 설명서 보기 ↗";link.style.cssText="display:block;box-sizing:border-box;width:100%;margin:0 0 8px;padding:8px 9px;border:1px solid #c7d9e7;border-radius:5px;background:#edf4f9;color:#20508b;font-size:12px;font-weight:700;line-height:1.6;text-decoration:none";const heading=main.querySelector(".group-title");if(heading)heading.after(link);else main.prepend(link)})();<\/script>';
+  const navGuideScript='<script>(()=>{const main=document.querySelector("aside nav .nav-main");if(!main||document.getElementById("learningManualOpen"))return;const link=document.createElement("a");link.className="manual-nav-link";link.href="./manual.html";link.target="_blank";link.rel="noopener";link.textContent="사용 설명서 보기 ↗";link.style.cssText="display:block;box-sizing:border-box;width:100%;margin:0 0 8px;padding:8px 9px;border:1px solid #c7d9e7;border-radius:5px;background:#edf4f9;color:#20508b;font-size:12px;font-weight:700;line-height:1.6;text-decoration:none";const heading=main.querySelector(".group-title");if(heading)heading.after(link);else main.prepend(link)})();<\/script>';
   const bodyEnd="</"+"body>";
   if(!source.includes(bodyEnd)) throw new Error("Tool page end not found");
   source=source.replace(bodyEnd,navGuideScript+bodyEnd);

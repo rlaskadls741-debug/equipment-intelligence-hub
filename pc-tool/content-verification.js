@@ -98,6 +98,7 @@
   return T;
  }
  function apply(source){
+  if(source.includes('"applied_to_original":true'))return source;
   const re=/(<script[^>]*id="control-trace"[^>]*>)([\s\S]*?)(<\/script>)/;
   if(!re.test(source))throw new Error('Verification data not found');
   source=source.replace(re,(_,open,json,close)=>open+JSON.stringify(reviewData(JSON.parse(json))).replace(/</g,'\\u003c')+close);

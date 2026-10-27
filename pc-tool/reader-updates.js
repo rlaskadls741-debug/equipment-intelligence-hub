@@ -36,6 +36,7 @@
  window.AutoSequencePptSource={open,focus:open,close:()=>api.goBack(),active:()=>null,transport:'query-and-fragment',mode:'inline-source'};
  })();</script>`;
  function apply(source){
+  if(source.includes('"applied_to_original":true'))return source;
   source=replaceOne(source,'if(!location.hash)location.hash="07_auto_start:input";','if(!location.hash&&parent!==window&&parent.location.hash)location.hash=parent.location.hash;if(!location.hash)location.hash="all_flow";','default overview screen');
   source=replaceOne(source,'const initialSource=resolveLocation(location);','const initialSource=resolveLocation(parent===window?location:parent.location);','source links from verification history');
   source=replaceOne(source,/function parseRange\(value,file,count=80\)\{[^\n]+\}/,parseRange,'line and count validation');
