@@ -49,9 +49,9 @@ class Parser:
    if k=='do':
     body=self.body();self.ws()
     if not self.s.startswith('while',self.i):raise ValueError('do while')
-    self.i+=5;cond=self.balanced();self.ws()
+    condition_line=self.line();self.i+=5;cond=self.balanced();self.ws()
     if self.s[self.i:self.i+1]==';':self.i+=1
-    return [dict(kind='do',text='do … while '+cond,line=line,end=self.line(),body=body)]
+    return [dict(kind='do',text='do … while '+cond,line=condition_line,end=self.line(),body=body)]
    cond=self.balanced();headerend=self.line()
    if k=='switch':
     # Switch branches are shown as one source block; never invent a sequential path.
