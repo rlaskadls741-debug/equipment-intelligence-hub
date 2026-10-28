@@ -79,6 +79,17 @@ class Parser:
    self.i+=1
   text=self.s[start:self.i].strip();kind='return' if re.match(r'(return|throw)\b',text) else 'break' if re.match(r'break\b',text) else 'continue' if re.match(r'continue\b',text) else 'process'
   return [dict(kind=kind,text=text,line=line,end=self.line())] if text else []
+# Display wording only; original C++ and source-part files are unchanged.
+for annotations in T['annotations'].values():
+ for annotation in annotations:
+  if annotation.get('text'):
+   annotation['text']=annotation['text'].replace('가 참/0이 아닌지 동안 본문을 반복한다.','가 0이 아닌 동안 반복한다.').replace('반복문를','반복문을')
+WAIT_NOTES={
+ ('CDemoKitDlg::OnDestroy',415):('감시 스레드의 실행 표시가 아직 켜져 있는가?', '414행에서 m_bMonitorExe를 FALSE로 바꿔 감시 종료를 요청했습니다. 이 조건에서는 m_bThreadMonitor가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 감시 스레드가 종료 단계에서 이 표시를 FALSE로 바꾸면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),
+ ('CDemoKitDlg::OnDestroy',432):('입력 감시 스레드의 실행 표시가 아직 켜져 있는가?', '431행에서 m_bIOExe를 FALSE로 바꿔 입력 감시 종료를 요청했습니다. m_bThreadIO가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 이 표시가 FALSE가 되면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),
+ ('CAutoDlg::StopECatAutoRun',384):('ECAT 자동 작업의 실행 표시가 아직 켜져 있는가?', '중단 요청을 설정한 뒤 m_bThreadRunECat를 확인합니다. TRUE이면 메시지를 큐에서 꺼내고 10 ms씩 쉬며 다시 확인합니다. FALSE가 되어야 반복문을 빠져나가 다음 정리 처리를 진행합니다. 중단 요청 자체가 실행 표시를 즉시 끄는 것은 아닙니다.'),
+ ('CAutoDlg::StopPM2QAutoRun',415):('PM2Q 자동 작업의 실행 표시가 아직 켜져 있는가?', '중단 요청을 설정한 뒤 m_bThreadRunPM2Q를 확인합니다. TRUE이면 메시지를 큐에서 꺼내고 10 ms씩 쉬며 다시 확인합니다. FALSE가 되어야 반복문을 빠져나가 다음 정리 처리를 진행합니다. 중단 요청 자체가 실행 표시를 즉시 끄는 것은 아닙니다.')
+}
 F={}; failures=[]
 for key,f in T['functions'].items():
  rows=T['source'][f['file']].splitlines();raw='\n'.join(rows[f['start']-1:f['end']]);s=clean(raw);p=Parser(s,f['start']);p.i=s.index('{')
@@ -92,6 +103,11 @@ for key,f in T['functions'].items():
    if key=='CDemoKitApp::InitInstance' and n['line']==85:n['calls']+=[dict(target='CDemoKitDlg::OnInitDialog',line=85,kind='MFC 초기화 콜백')]
    ann=T['annotations'][f['file']][n['line']-1:n['end']]
    n['note']=n.get('note') or next((a['text'] for a in ann if a.get('kind') in ('code','declaration') and a.get('text')),'')
+   override=WAIT_NOTES.get((key,n['line']))
+   if override:n['title'],n['note']=override
+   elif n['kind']=='while' and n['text'].replace(' ','')=='while(WaitForDone)':
+    n['title']='두 축의 이동 완료를 계속 확인해야 하는가?'
+    n['note']='WaitForDone이 TRUE인 동안 두 축의 InMotion 상태를 반복해서 읽습니다. 두 상태가 모두 0이면 본문에서 WaitForDone을 FALSE로 바꾸고 반복을 끝냅니다.'
    if n.get('body') is not None:enrich(n['body']);enrich(n.get('alt',[]))
  enrich(ast)
  F[key]={**f,'ast':ast}

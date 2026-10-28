@@ -70,3 +70,11 @@ for(let i=0;i<systemNodes.length;i++)for(let j=i+1;j<systemNodes.length;j++){con
 for(const e of systemEdges)for(let i=1;i<e.p.length;i++){const [x1,y1]=e.p[i-1],[x2,y2]=e.p[i];for(const n of systemNodes){if(n.id===e.a||n.id===e.b)continue;const crosses=x1===x2?x1>n.x+2&&x1<n.x+n.w-2&&Math.max(y1,y2)>n.y+2&&Math.min(y1,y2)<n.y+n.h-2:y1>n.y+2&&y1<n.y+n.h-2&&Math.max(x1,x2)>n.x+2&&Math.min(x1,x2)<n.x+n.w-2;assert(!crosses,'system edge '+e.a+'/'+e.b+' crosses '+n.id);}}
 for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','control','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
 console.log('PASS: single-screen system map references, major stages, bounds, and connector clearances.');
+
+const destroy=vm.runInContext('buildGraph(F["CDemoKitDlg::OnDestroy"])',ctx);
+const monitorWait=destroy.nodes.find(n=>n.kind==='while'&&n.line===415);
+assert(monitorWait.title.includes('감시 스레드')&&monitorWait.title.includes('켜져'),'monitor wait has a meaningful question');
+assert(monitorWait.note.includes('10 ms')&&monitorWait.note.includes('FALSE'),'monitor wait explains body and exit condition');
+assert(!raw.includes('참/0이 아닌지 동안'),'malformed repeat wording removed from new map');
+assert(!raw.includes('반복문를'),'incorrect particle removed');
+console.log('PASS: wait conditions explain what repeats and when the wait ends.');
