@@ -69,7 +69,9 @@ for(const n of systemNodes){assert(n.fns.every(f=>data.functions[f]),n.id+' syst
 for(let i=0;i<systemNodes.length;i++)for(let j=i+1;j<systemNodes.length;j++){const a=systemNodes[i],b=systemNodes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y),'system map overlap');}
 for(const e of systemEdges)for(let i=1;i<e.p.length;i++){const [x1,y1]=e.p[i-1],[x2,y2]=e.p[i];for(const n of systemNodes){if(n.id===e.a||n.id===e.b)continue;const crosses=x1===x2?x1>n.x+2&&x1<n.x+n.w-2&&Math.max(y1,y2)>n.y+2&&Math.min(y1,y2)<n.y+n.h-2:y1>n.y+2&&y1<n.y+n.h-2&&Math.max(x1,x2)>n.x+2&&Math.min(x1,x2)<n.x+n.w-2;assert(!crosses,'system edge '+e.a+'/'+e.b+' crosses '+n.id);}}
 for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','output','condition','device','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
-assert.equal(new Set(systemNodes.map(n=>n.y)).size,5,'system map has five rows');
+assert.equal(new Set(systemNodes.map(n=>n.y)).size,4,'system map has four rows');
+for(const id of ['manual','stop','exit'])assert(systemNodes.find(n=>n.id===id).x>=1280,'separate events stay in right sidebar');
+for(const n of systemNodes.filter(n=>!['manual','stop','exit'].includes(n.id)))assert(n.x+n.w<=1230,'main flow stays outside right sidebar');
 for(const e of systemEdges)for(let i=1;i<e.p.length;i++)assert(e.p[i][1]>=e.p[i-1][1],'system connectors never go upward');
 console.log('PASS: single-screen system map references, major stages, bounds, and connector clearances.');
 
@@ -88,7 +90,7 @@ assert(systemEdges.some(e=>e.a==='button'&&e.b==='autorun'),'Run directly enters
 assert(!systemNodes.some(n=>n.id==='request'),'unknown DI0 trigger is not a confirmed main path');
 assert(!systemNodes.some(n=>/외부.*스위치|물리.*버튼/.test(n.title+n.lines.join(' '))),'main map does not invent hardware buttons');
 assert.deepEqual(Array.from(systemNodes.find(n=>n.id==='input').fns),['CDemoKitDlg::AxdGetIoStatus'],'DI reader uses real module read function');
-assert(systemEdges.some(e=>e.a==='workers'&&e.b==='output')&&systemEdges.some(e=>e.a==='input'&&e.b==='condition'),'existing DO commands and DI state use are shown');
+assert(systemNodes.find(n=>n.id==='output').lines.some(l=>l.includes('B:'))&&systemNodes.find(n=>n.id==='ecat').lines.some(l=>l.includes('B:'))&&systemEdges.some(e=>e.a==='input'&&e.b==='condition'),'DO reference markers and DI state use are shown');
 assert(raw.includes('DI0의 실제 신호원은 현재 확인한 자료에서 특정하지 못했습니다.'),'uncertainty is explicit');
 assert(raw.includes('data-di-fn="CDemoKitDlg::gThreadIO"'),'DI condition code remains accessible');
 assert(!raw.includes('화면 START 버튼'),'incorrect UI button label removed');
