@@ -69,6 +69,8 @@ for(const n of systemNodes){assert(n.fns.every(f=>data.functions[f]),n.id+' syst
 for(let i=0;i<systemNodes.length;i++)for(let j=i+1;j<systemNodes.length;j++){const a=systemNodes[i],b=systemNodes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y),'system map overlap');}
 for(const e of systemEdges)for(let i=1;i<e.p.length;i++){const [x1,y1]=e.p[i-1],[x2,y2]=e.p[i];for(const n of systemNodes){if(n.id===e.a||n.id===e.b)continue;const crosses=x1===x2?x1>n.x+2&&x1<n.x+n.w-2&&Math.max(y1,y2)>n.y+2&&Math.min(y1,y2)<n.y+n.h-2:y1>n.y+2&&y1<n.y+n.h-2&&Math.max(x1,x2)>n.x+2&&Math.min(x1,x2)<n.x+n.w-2;assert(!crosses,'system edge '+e.a+'/'+e.b+' crosses '+n.id);}}
 for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','output','condition','device','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
+assert.equal(new Set(systemNodes.map(n=>n.y)).size,5,'system map has five rows');
+for(const e of systemEdges)for(let i=1;i<e.p.length;i++)assert(e.p[i][1]>=e.p[i-1][1],'system connectors never go upward');
 console.log('PASS: single-screen system map references, major stages, bounds, and connector clearances.');
 
 const destroy=vm.runInContext('buildGraph(F["CDemoKitDlg::OnDestroy"])',ctx);
