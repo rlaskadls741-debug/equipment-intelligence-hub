@@ -41,10 +41,32 @@ const dg=vm.runInContext('buildGraph(F["CAutoDlg::Delay"])',ctx);
 const dc=dg.nodes.find(n=>n.kind==='do');
 assert(dc&&dc.line===1407,'do/while condition uses its own source line');
 assert(!dg.edges.some(e=>e.a===dg.entry&&e.b===dc.id),'do body executes before its condition');
-assert(dg.edges.some(e=>e.a===dc.id&&e.loop),'do repeats its body only on true condition');
+assert(dg.edges.some(e=>e.a===dc.id&&e.label==='예'&&!e.loop),'do true goes down to its repeat connector');
+assert(dg.edges.some(e=>e.loop&&dg.nodes.find(n=>n.id===e.a).text==='반복 본문으로 돌아가기'),'do repeat connector returns to body');
 console.log('PASS: do/while body precedes condition; condition source is distinct.');
 
 ctx.branchGraph=auto;
 const branchLabels=vm.runInContext('branchGraph.edges.filter(e=>e.a==='+JSON.stringify(branch.id)+').map(e=>edgeLabel(e,edgeRoute(e,branchGraph),branchGraph))',ctx);
 assert(branchLabels[0].x!==branchLabels[1].x||branchLabels[0].y!==branchLabels[1].y,'yes/no labels occupy separate positions');
 console.log('PASS: yes/no branch labels have distinct positions.');
+
+for(const mode of ['compact','full']){controls.value=mode;
+ for(const id of Object.keys(data.functions)){
+  const g=vm.runInContext('buildGraph(F['+JSON.stringify(id)+'])',ctx);ctx.orientationGraph=g;
+  for(const n of g.nodes.filter(n=>['if','while','for','do'].includes(n.kind))){
+   const es=g.edges.filter(e=>e.a===n.id&&['예','아니오'].includes(e.label));
+   for(const e of es){ctx.orientationEdge=e;const p=vm.runInContext('edgeRoute(orientationEdge,orientationGraph)',ctx);
+    assert(p,`${id}: visible branch connector`);
+    if(e.label==='예'){assert.equal(p[0][0],n.x+n.w/2);assert.equal(p[0][1],n.y+n.h);assert(p[1][1]>p[0][1],`${id}: true must start downward`);}
+    else{assert.equal(p[0][0],n.x+n.w);assert.equal(p[0][1],n.y+n.h/2);assert(p[1][0]>p[0][0],`${id}: false must start rightward`);}
+   }
+  }
+ }
+}
+console.log('PASS: every if/while/for/do uses true-down / false-right in both display modes.');
+const systemNodes=vm.runInContext('SYSTEM_NODES',ctx),systemEdges=vm.runInContext('SYSTEM_EDGES',ctx);
+for(const n of systemNodes){assert(n.fns.every(f=>data.functions[f]),n.id+' system map references');assert(n.x>=0&&n.y>=0&&n.x+n.w<=1600&&n.y+n.h<=910,n.id+' map bounds');}
+for(let i=0;i<systemNodes.length;i++)for(let j=i+1;j<systemNodes.length;j++){const a=systemNodes[i],b=systemNodes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y),'system map overlap');}
+for(const e of systemEdges)for(let i=1;i<e.p.length;i++){const [x1,y1]=e.p[i-1],[x2,y2]=e.p[i];for(const n of systemNodes){if(n.id===e.a||n.id===e.b)continue;const crosses=x1===x2?x1>n.x+2&&x1<n.x+n.w-2&&Math.max(y1,y2)>n.y+2&&Math.min(y1,y2)<n.y+n.h-2:y1>n.y+2&&y1<n.y+n.h-2&&Math.max(x1,x2)>n.x+2&&Math.min(x1,x2)<n.x+n.w-2;assert(!crosses,'system edge '+e.a+'/'+e.b+' crosses '+n.id);}}
+for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','control','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
+console.log('PASS: single-screen system map references, major stages, bounds, and connector clearances.');
