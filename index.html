@@ -78,6 +78,13 @@
     .extendedArticle p{margin:0 0 11px!important;line-height:1.78!important}
     .extendedArticle ul,.extendedArticle ol{margin:8px 0 17px;padding-left:23px}
     .extendedArticle li{margin:0 0 7px;line-height:1.7}
+    .advLimit{margin:12px 0 20px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}
+    .advLimit section{padding:15px 17px}
+    .advLimit section+section{border-top:2px solid #667085}
+    .advLimit h4{margin:0 0 9px;color:var(--navy);font-size:.98rem}
+    .advLimit ul{margin:0;padding-left:22px}
+    .advLimit li:last-child{margin-bottom:0}
+    .companyLink{color:var(--navy);font-weight:850;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
     .extendedArticle blockquote{margin:14px 0;padding:12px 15px;border-left:3px solid #7ca8b8;background:#f6f9fa;color:#455565}
     .articleTableWrap{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--line);border-radius:9px}
     .articleTableWrap table{min-width:680px;margin:0;border:0}
@@ -154,7 +161,7 @@
         <div><dt>기술 구조</dt><dd>오므론 컨트롤러에 OsecT 탐지 기능을 결합하고 센서·드라이브 구성정보와 통신 이벤트를 MES·SCADA로 전달합니다.</dd></div>
         <div><dt>기존 방식과 차이</dt><dd>네트워크 패킷만 보던 감시에서 컨트롤러가 보유한 현장 I/O 구성과 실제 제어대상을 함께 확인하는 감시로 확장됩니다.</dd></div>
         <div><dt>현장 적용</dt><dd>등록되지 않은 노트북을 시험용 제어망에 연결해 경보 발생시간과 대상 설비 표시 여부를 확인합니다. 센서 교체와 드라이브 설정 변경 후에는 변경정보가 화면에 반영되는 시간을 측정합니다. 보안 감시 기능을 켜기 전과 후의 최대 제어주기도 비교합니다.</dd></div>
-        <div><dt>관련 업체</dt><dd>한국오므론제어기기 기술상담 창구에서 대상 컨트롤러와 I/O 범위를, NTT도코모비즈니스 보안 문의 창구에서 OsecT 연동과 관제범위를 확인할 수 있습니다.</dd></div>
+        <div><dt>관련 업체</dt><dd><a class="companyLink" href="https://www.ia.omron.co.kr/" target="_blank" rel="noopener noreferrer">한국오므론제어기기</a>는 컨트롤러·센서·드라이브 등 공장자동화 기기를 공급합니다. <a class="companyLink" href="https://www.ntt.com/en/index" target="_blank" rel="noopener noreferrer">NTT DOCOMO BUSINESS</a>는 기업용 네트워크·보안·클라우드 서비스를 제공합니다.</dd></div>
       </dl>
       <section class="extendedArticle" aria-label="기술 상세">
         <h2>기술 상세</h2>
@@ -177,55 +184,70 @@
           <li>IT 관제와 생산라인 상태가 별도 화면에 있으면 보안 경보가 어느 공정에 영향을 주는지 다시 확인해야 합니다. MES·SCADA 연계는 경보와 생산대상을 한 관리망에서 연결합니다.</li>
           <li>DX1과 RINK의 기존 협력은 OT 데이터를 외부 데이터스페이스로 전달하는 경로를 보호했습니다. 이번 개발은 공장 내부에서 데이터가 만들어지는 제어기와 I/O 구간까지 감시범위를 넓힙니다.</li>
         </ul>
-        <h3>장점과 한계</h3>
-        <ul>
-          <li>센서·드라이브 구성과 통신 이상을 함께 보면 IP 주소만으로 알기 어려운 실제 공정영향을 더 빨리 찾을 수 있습니다.</li>
-          <li>교체작업 뒤 자산대장과 실제 구성이 달라진 장비를 찾아 보안점검과 설비점검을 같은 기록으로 처리할 수 있습니다.</li>
-          <li>네트워크 스위치의 미러 포트가 없는 소규모 장비에서도 컨트롤러가 제공하는 범위 안에서 현장기기 정보를 수집할 수 있습니다.</li>
-          <li>공개 단계는 OsecT 기능을 컨트롤러에 넣기 위한 공동개발입니다. 지원 컨트롤러, I/O 제조사, 수집주기와 출시일은 발표문에 제시되지 않았습니다.</li>
-          <li>현장기기 이름과 생산라인 위치가 정확히 등록돼 있지 않으면 경보가 어느 공정과 연결되는지 판단하기 어렵습니다.</li>
-          <li>보안 감시 부하가 제어 실행시간을 늘리지 않도록 CPU 사용률, 통신량과 최대 제어주기를 함께 측정해야 합니다.</li>
-        </ul>
+        <div class="advLimit" aria-label="장점과 한계">
+          <section>
+            <h4>장점</h4>
+            <ul>
+              <li>센서·드라이브 구성과 통신 이상을 함께 보면 IP 주소만으로 알기 어려운 실제 공정영향을 더 빨리 찾을 수 있습니다.</li>
+              <li>교체작업 뒤 자산대장과 실제 구성이 달라진 장비를 찾아 보안점검과 설비점검을 같은 기록으로 처리할 수 있습니다.</li>
+              <li>네트워크 스위치의 미러 포트가 없는 소규모 장비에서도 컨트롤러가 제공하는 범위 안에서 현장기기 정보를 수집할 수 있습니다.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>한계</h4>
+            <ul>
+              <li>공개 단계는 OsecT 기능을 컨트롤러에 넣기 위한 공동개발입니다. 지원 컨트롤러, I/O 제조사, 수집주기와 출시일은 발표문에 제시되지 않았습니다.</li>
+              <li>현장기기 이름과 생산라인 위치가 정확히 등록돼 있지 않으면 경보가 어느 공정과 연결되는지 판단하기 어렵습니다.</li>
+              <li>보안 감시 부하가 제어 실행시간을 늘리지 않도록 CPU 사용률, 통신량과 최대 제어주기를 함께 측정해야 합니다.</li>
+            </ul>
+          </section>
+        </div>
         <h3>실제 적용과 공개 일정</h3>
         <p>두 회사는 2022년부터 FA와 IT를 연결하는 제조 데이터 공동개발을 진행했고, 2025년 10월부터 DX1과 RINK를 이용해 OT 데이터를 클라우드·데이터스페이스로 보내는 실증을 확대했습니다. 이번 발표의 통합 보안 서비스는 NTT그룹의 OT 보안 기능을 포함해 2026년 10월부터 순차 제공하는 일정으로 제시됐습니다.</p>
         <p>컨트롤러 내장형 OsecT 기능은 개발 추진 항목으로 공개됐습니다. 2027년부터 검토할 항목에는 사용범위가 통제된 데이터 샌드박스와 AI 에이전트의 개발자·운영자·실행권한을 등록하는 기술이 포함됐습니다.</p>
         <h3>공정·PC 제어와 연결해 볼 부분</h3>
         <p>PC 제어 설비에서도 제어 PC가 관리하는 I/O 목록, 드라이버 버전과 장비 주소를 네트워크 탐지 결과에 붙이면 낯선 접속이 실제 어느 축과 센서에 영향을 주는지 확인할 수 있습니다. 제어 프로그램의 실시간 실행영역과 보안 수집 프로그램은 CPU 코어, 메모리와 통신 우선순위를 분리해 운전 영향을 측정하는 구성이 필요합니다.</p>
         <p>첫 적용대상은 외부 원격접속이 있고 센서·드라이브 교체가 잦은 한 개 장비가 적합합니다. 정상 구성표를 만든 뒤 승인된 교체, 승인되지 않은 장비 접속과 설정 변경을 따로 발생시켜 경보가 실제 변경내용과 일치하는지 비교합니다.</p>
-        <h3>국내 접촉 경로</h3>
-        <p>한국오므론제어기기 공식 기술상담에서 OsecT 기능을 지원할 컨트롤러 계열, 센서·드라이브 구성정보의 수집범위, MES·SCADA 전달방식과 국내 시험지원 일정을 확인합니다. NTT도코모비즈니스 공식 보안 문의에는 OsecT 라이선스, 공장망 설치방식, 24시간 관제와 사고대응 지원범위를 문의합니다.</p>
+        <h3>관련 업체</h3>
+        <p><a class="companyLink" href="https://www.ia.omron.co.kr/" target="_blank" rel="noopener noreferrer">한국오므론제어기기</a>는 컨트롤러, 센서, 드라이브와 산업용 네트워크 기기를 공급하는 공장자동화 업체입니다. 이번 발표에서는 컨트롤러와 현장 I/O 구성정보를 제공하는 역할을 맡습니다.</p>
+        <p><a class="companyLink" href="https://www.ntt.com/en/index" target="_blank" rel="noopener noreferrer">NTT DOCOMO BUSINESS</a>는 기업용 네트워크, 보안관제와 클라우드 서비스를 제공하는 정보통신 업체입니다. 이번 발표에서는 OsecT 침입탐지와 OT·IT 통합 보안 운영을 담당합니다.</p>
         <h3>사전검증 순서</h3>
         <ol>
           <li>시험 장비의 컨트롤러, 센서, 드라이브, I/O 모듈과 네트워크 주소를 정상 구성표로 기록합니다.</li>
           <li>정상 생산 8시간 동안 제어주기 최대값, CPU 사용률, 통신량과 보안 경보 수를 기준값으로 측정합니다.</li>
           <li>승인된 센서 교체와 드라이브 설정 변경을 실행해 새 구성정보가 MES·SCADA에 표시되는 시간과 누락 장비 수를 기록합니다.</li>
-          <li>허가되지 않은 노트북을 공장망에 연결하고 등록되지 않은 통신을 발생시켜 최초 탐지시간과 대상 컨트롤러 식별 여부를 확인합니다.</li>
+          <li>정상 운전 중 수집한 장비 목록에 없던 노트북을 시험용 공장망에 연결합니다. 연결 시각부터 경보 발생까지 걸린 시간과 경보에 표시된 IP·MAC 주소, 통신 대상 컨트롤러가 맞는지 확인합니다.</li>
           <li>정상 정비통신 20건과 승인되지 않은 통신 20건을 각각 재생해 오탐, 미탐과 잘못 연결된 I/O 수를 계산합니다.</li>
           <li>보안 수집을 켠 상태와 끈 상태에서 제어주기 최대값, CPU 사용률과 패킷 손실을 비교해 제어영향을 확인합니다.</li>
           <li>탐지 이벤트에 사용자, 변경시각, 장비 주소, I/O 구성과 대응결과가 남는지 확인하고 사고대응 절차와 연결합니다.</li>
         </ol>
       </section>
       <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
-        <li id="term-261028-1"><b>OT</b><span>생산설비를 직접 운전하고 감시하는 제어기, 현장 컴퓨터와 산업용 네트워크 영역입니다.</span></li>
-        <li id="term-261028-2"><b>IT</b><span>업무용 서버, 사내망, 계정과 기업 데이터를 처리하는 정보기술 영역입니다.</span></li>
-        <li id="term-261028-3"><b>OsecT</b><span>NTT도코모비즈니스가 제공하는 OT 침입탐지 솔루션으로 장비와 통신을 파악하고 비정상 접속을 알립니다.</span></li>
+        <li id="term-261028-1"><b>OT (Operational Technology)</b><span>생산설비를 직접 운전하고 감시하는 제어기, 현장 컴퓨터와 산업용 네트워크 영역입니다.</span></li>
+        <li id="term-261028-2"><b>IT (Information Technology)</b><span>업무용 서버, 사내망, 계정과 기업 데이터를 처리하는 정보기술 영역입니다.</span></li>
+        <li id="term-261028-3"><b>OsecT (제품명)</b><span>NTT도코모비즈니스가 제공하는 OT 침입탐지 솔루션으로 장비와 통신을 파악하고 비정상 접속을 알립니다.</span></li>
         <li id="term-261028-4"><b>비인가 통신 탐지</b><span>승인되지 않은 장비, 주소나 명령이 제어망에서 통신하는 상황을 찾아 경보로 남기는 기능입니다.</span></li>
-        <li id="term-261028-5"><b>IDS</b><span>네트워크 통신을 감시해 침입이나 비정상 동작을 찾는 침입탐지시스템입니다.</span></li>
+        <li id="term-261028-5"><b>IDS (Intrusion Detection System)</b><span>네트워크 통신을 감시해 침입이나 비정상 동작을 찾는 침입탐지시스템입니다.</span></li>
         <li id="term-261028-6"><b>컨트롤러</b><span>센서 입력을 읽고 정해진 제어논리에 따라 모터, 밸브와 구동기를 움직이는 산업용 제어장치입니다.</span></li>
-        <li id="term-261028-7"><b>I/O</b><span>센서 신호를 제어기에 넣고 제어기 명령을 현장기기로 내보내는 입출력 연결부입니다.</span></li>
+        <li id="term-261028-7"><b>I/O (Input/Output)</b><span>센서 신호를 제어기에 넣고 제어기 명령을 현장기기로 내보내는 입출력 연결부입니다.</span></li>
         <li id="term-261028-8"><b>드라이브</b><span>제어기 명령에 따라 모터의 속도, 토크와 위치를 조절하는 구동장치입니다.</span></li>
-        <li id="term-261028-9"><b>MES</b><span>작업지시, 생산실적, 품질과 설비정보를 관리하는 제조실행시스템입니다.</span></li>
-        <li id="term-261028-10"><b>SCADA</b><span>여러 설비의 운전값과 알람을 수집해 감시하고 필요할 때 원격 명령을 내리는 시스템입니다.</span></li>
+        <li id="term-261028-9"><b>MES (Manufacturing Execution System)</b><span>작업지시, 생산실적, 품질과 설비정보를 관리하는 제조실행시스템입니다.</span></li>
+        <li id="term-261028-10"><b>SCADA (Supervisory Control and Data Acquisition)</b><span>여러 설비의 운전값과 알람을 수집해 감시하고 필요할 때 원격 명령을 내리는 시스템입니다.</span></li>
         <li id="term-261028-11"><b>미러 포트</b><span>스위치를 지나는 통신을 복사해 보안장비나 분석기에 전달하는 네트워크 포트입니다.</span></li>
         <li id="term-261028-12"><b>패킷</b><span>네트워크에서 주소와 제어정보를 담아 전송하는 데이터의 작은 단위입니다.</span></li>
-        <li id="term-261028-13"><b>DX1</b><span>여러 제조장비의 데이터를 모아 가공·표시·외부전송 흐름을 구성하는 오므론의 데이터 흐름 제어기입니다.</span></li>
-        <li id="term-261028-14"><b>RINK</b><span>망 연결과 보안 기능을 서비스 형태로 제공하는 NTT도코모비즈니스의 기업용 네트워크 서비스입니다.</span></li>
+        <li id="term-261028-13"><b>DX1 (제품명)</b><span>여러 제조장비의 데이터를 모아 가공·표시·외부전송 흐름을 구성하는 오므론의 데이터 흐름 제어기입니다.</span></li>
+        <li id="term-261028-14"><b>RINK (상표명)</b><span>망 연결과 보안 기능을 서비스 형태로 제공하는 NTT도코모비즈니스의 기업용 네트워크 서비스입니다.</span></li>
         <li id="term-261028-15"><b>데이터스페이스</b><span>기업끼리 데이터 사용조건과 권한을 정해 안전하게 공유하는 연계환경입니다.</span></li>
         <li id="term-261028-16"><b>오탐·미탐</b><span>오탐은 정상 통신을 이상으로 판단한 경우이고, 미탐은 실제 이상통신을 놓친 경우입니다.</span></li>
-        <li id="term-261028-17"><b>CPU 사용률</b><span>제어기나 PC의 연산능력 중 현재 프로그램이 사용하고 있는 비율입니다.</span></li>
+        <li id="term-261028-17"><b>CPU (Central Processing Unit) 사용률</b><span>제어기나 PC의 연산능력 중 현재 프로그램이 사용하고 있는 비율입니다.</span></li>
         <li id="term-261028-18"><b>제어주기</b><span>입력 확인, 제어계산과 출력 갱신을 한 번 수행하는 데 걸리는 반복시간입니다.</span></li>
         <li id="term-261028-19"><b>패킷 손실</b><span>전송된 네트워크 데이터가 혼잡이나 오류로 목적지에 도착하지 못한 비율입니다.</span></li>
-        <li id="term-261028-20"><b>데이터 샌드박스</b><span>정해진 사용범위와 처리조건 안에서만 데이터를 분석하도록 격리한 시험·처리환경입니다.</span></li>
+        <li id="term-261028-20"><b>IP (Internet Protocol) 주소</b><span>네트워크에서 장비를 구분하고 데이터를 보낼 위치를 정하는 논리 주소입니다.</span></li>
+        <li id="term-261028-21"><b>MAC (Media Access Control) 주소</b><span>네트워크 장치의 통신 인터페이스를 식별하는 하드웨어 주소입니다.</span></li>
+        <li id="term-261028-22"><b>PC (Personal Computer)</b><span>제어 프로그램, 화면과 데이터 수집 프로그램을 실행하는 산업용 또는 일반 컴퓨터입니다.</span></li>
+        <li id="term-261028-23"><b>FA (Factory Automation)</b><span>컨트롤러, 센서와 구동장치를 이용해 생산설비를 자동으로 운전하는 기술입니다.</span></li>
+        <li id="term-261028-24"><b>AI (Artificial Intelligence)</b><span>데이터에서 규칙을 학습해 분류, 예측이나 판단 결과를 만드는 소프트웨어 기술입니다.</span></li>
+        <li id="term-261028-25"><b>데이터 샌드박스</b><span>정해진 사용범위와 처리조건 안에서만 데이터를 분석하도록 격리한 시험·처리환경입니다.</span></li>
       </ol></section></details>
       <details class="articleDisclosure sourceDisclosure"><summary>공식 근거자료 6건</summary><ol class="articleSources">
         <li><a href="https://www.omron.com/global/en/news/2026/10/c1027.html" target="_blank" rel="noopener noreferrer">OMRON, 컨트롤러 내장형 OsecT와 OT·IT 통합 보안 협업 발표 — 2026-10-27.</a></li>
@@ -2488,7 +2510,7 @@
     reports.push({"id":"261025","date":"2026-10-25","title":"자연어 작업지시로 CNC와 휴머노이드를 함께 움직이는 제어 구조","axis":"설비 지능화","category":"CNC·휴머노이드 협업 제어","tags":["휴머노이드","CNC","작업계획AI","PC제어","기능안전"],"summary":"최근 24시간 안에 새 양산 성과는 확인하지 못했습니다. 10월 21일 Mitsubishi Electric이 자연어 작업지시를 CNC와 휴머노이드의 작업순서로 나누는 개발 시스템을 발표해, 실제 장비 제어에 연결하기 전 신호·권한·안전 경계를 정리합니다.","discovery":"작업자가 자연어로 목표를 입력하면 상위 작업계획기가 CNC 가공과 휴머노이드의 투입·청소·검사·운반 순서를 나누고 두 장비의 상태를 맞추는 구조","why":"전용 로봇 셀 개조와 장비별 연동코드 부담을 줄이려는 구체적 개발품이 최근 일주일 공식 발표됐고 10월 26일 실물 시연이 예정돼 후속 확인 항목이 분명합니다.","study":"자연어 지시 제한, 작업 분해, CNC·로봇 상태 신호, 문·척·가공 완료 조건, 충돌 회피, 안전정지, 수동 복귀","companies":"한국미쓰비시전기오토메이션 CNC 문의 02-3660-9631과 로봇 문의 02-3660-9630에 시스템 국내 지원, 신호 연결과 안전책임 범위를 함께 확인","poc":"가상 CNC와 로봇 또는 실제 장비와 격리된 시험환경에서 소재 투입·가공·청소·검사 순서를 실행하고, 문 상태·척 상태·완료 신호를 의도적으로 어긋나게 해 명령 차단과 안전정지·수동 복귀를 확인합니다.","caution":"공개 내용은 개발 발표이며 JIMTOF 2026 시연도 실행일 다음 날부터 예정돼 있습니다. 작업계획기의 PC 구성, 통신주기, 안전인증과 양산 가동률은 공개되지 않았습니다.","source_use":"10월 21일 Mitsubishi Electric·KUKA 공식 발표, Microsoft의 10월 6일 제조 물리 AI 설명, Mitsubishi Electric의 CNC 디지털 트윈 자료와 한국 CNC·안전 문의자료","sourceCount":6,"weekly":{"topic":"CNC와 휴머노이드 협업","change":"전용 연동코드 대신 작업계획기가 두 장비의 순서를 나눕니다.","check":"문·척·가공 완료 신호를 어긋나게 해 정지를 봅니다."}});
     reports.push({"id":"261026","date":"2026-10-26","title":"여러 자동화 도구를 한 작업으로 묶는 AI 작업 조정 플랫폼","axis":"PC제어·AI","category":"다중 AI 에이전트·엔지니어링 작업 조정","tags":["다중AI에이전트","도구연결","가상시험연계","PC제어","로컬AI모델"],"summary":"10월 21일 Rockwell Automation은 코드 추천형 도우미를 넘어 설계·제어 개발·가상시험·운영화면 도구를 여러 AI 에이전트가 이어서 처리하는 FactoryTalk Conductor를 발표했습니다. 2027년 1분기 출시 예정이라 양산 성과가 아닌 후속 검증 대상입니다.","discovery":"한 작업을 여러 단계로 나누고 전문 AI 에이전트와 설계·개발·가상시험·운영화면 소프트웨어에 배정한 뒤 결과와 근거를 다시 모으는 구조","why":"10월 21일 신규 공식 발표에서 초기 연결 제품과 2027년 1분기 출시계획이 공개돼 기존 코드 도우미와의 차이를 확인할 수 있습니다.","study":"작업 분해, 에이전트 역할, 도구별 권한, 중간결과 전달, 사용자 정의 작업기술, 로컬 AI 모델, 근거 추적, 실패 중단","companies":"Rockwell Automation Korea 공식 영업·기술지원 창구에 국내 시연, 사용자 정의 에이전트, 비 Rockwell 도구 연결, 현장 설치 모델과 변경기록 범위를 확인","poc":"Logix 프로젝트 수정, I/O 설정, 가상시험과 운전화면 변경을 역할별로 나누고 단계 간 누락, 잘못된 전달과 실행기록을 엔지니어 수작업 결과와 비교합니다.","caution":"FactoryTalk Conductor는 2027년 1분기 상용화 예정입니다. 실제 호출 권한, 실패 복구, 응답시간, 비 Rockwell 도구 연결 범위와 생산성 수치는 공개되지 않았습니다.","source_use":"10월 21일 Rockwell Automation 신규 발표와 10월 22일 Microsoft 제조 엔지니어링 자료를 중심으로 확인하고, Beckhoff 공식 자료는 기존 단일 환경 도우미와의 구조 비교에 사용","sourceCount":4,"weekly":{"topic":"여러 제어도구를 묶는 AI 작업 조정","change":"코드 작성 뒤 Logix Echo·Emulate3D 가상시험과 Optix 화면 수정을 차례로 실행합니다.","check":"작업 분해 누락과 단계 간 결과 전달 오류를 확인합니다."}});
     reports.push({"id":"261027","date":"2026-10-27","title":"현장 서버에서 운전·보안·에너지를 나누어 분석하는 산업 AI 에이전트","axis":"PC제어·AI","category":"현장 AI 에이전트·OT 통합 분석","tags":["산업AI에이전트","현장서버","OT모니터링","사이버보안","에너지최적화"],"summary":"Schneider Electric, HPE, NVIDIA가 공장 내부 서버에서 OT 상태·보안·에너지를 각각 분석하고 EcoStruxure Industrial Insights에서 함께 관리하는 산업 AI 에이전트 구성을 공개했습니다. CMPC Chile가 3년간 운용한 OTMS는 현장 데이터 기반으로 제시됐으며 AI 에이전트 적용은 다음 단계로 구분됩니다.","discovery":"OT 실시간값·장비 구성·공정 토폴로지·알람·정비이력을 현장 프라이빗 AI에 모으고, 운전 감시·사이버보안·에너지 최적화 에이전트를 한 관리환경에서 배포하고 통제하는 구조","why":"10월 26일 프랑스 현지 발표와 10월 21일 Schneider Electric·HPE 공식자료에서 세 에이전트의 입력자료와 역할, HPE Private Cloud AI의 관리형 API·MCP 서비스, EcoStruxure의 통합 관리범위가 구체적으로 공개됐습니다.","study":"OT 데이터 수집범위, 공정 토폴로지, 에이전트별 접근권한, 현장 추론 지연, 권고와 자동실행의 경계, 결과 확인 방식, 모델·API 감사기록","companies":"Schneider Electric Korea 영업 문의에서 EcoStruxure Industrial Insights·OTMS 국내 제공범위를 확인하고, HPE Korea에 Private Cloud AI의 현장 설치형 구성·GPU 규모·관리형 API와 지원체계를 문의","poc":"시험용 설비에서 모터 과전류, 통신 지연과 전력 사용량 급증을 각각 발생시킵니다. 운전 감시·보안·에너지 분석 AI가 실제 원인을 맞히는지 확인하고, 답변 시간·놓친 알람·허용되지 않은 설정 변경의 차단 여부를 기록합니다.","caution":"공개 범위: CMPC Chile의 OTMS 3년 운영. 후속 확인: 산업 AI 에이전트의 실제 도입 시점, 응답시간, 현장별 모델 구성과 자동실행 범위.","source_use":"10월 26일 Schneider Electric 프랑스 발표와 10월 21일 글로벌·HPE 발표를 중심으로 확인하고, 한국 공식 제품·문의 페이지에서 국내 접촉 경로를 확인","sourceCount":6,"weekly":{"topic":"공정 현장형 AI 에이전트","change":"운전·보안·에너지 에이전트를 현장 서버에서 함께 관리합니다.","check":"알람·구성·공정값을 바꿔 원인 판정과 응답시간을 비교합니다."}});
-    reports.push({"id":"261028","date":"2026-10-28","title":"컨트롤러에서 센서·드라이브 구성까지 읽는 OT 보안 감시","axis":"전기·제어","category":"컨트롤러 내장형 OT 보안","tags":["OT보안","컨트롤러내장감시","비인가 통신탐지","현장기기구성","MES·SCADA"],"summary":"오므론과 NTT도코모비즈니스가 컨트롤러에 OsecT의 비인가 통신 탐지 기능을 넣고, 네트워크 장비에서 보기 어려웠던 센서·드라이브 구성정보를 MES·SCADA에서 통신 이상과 함께 관리하는 공동개발 계획을 공개했습니다.","discovery":"컨트롤러가 보유한 센서·드라이브 구성정보와 OsecT의 비인가 통신 탐지를 결합해 공장 관리망의 MES·SCADA로 전달하는 감시방식","why":"10월 27일 공동발표에서 OsecT 탐지 기능의 컨트롤러 내장, 현장 I/O 구성정보 수집, MES·SCADA 통합관리라는 새 개발범위가 구체적으로 공개됐습니다.","study":"컨트롤러 내장형 탐지, 현장 I/O 구성수집, OT 자산 식별, MES·SCADA 연계, 제어부하와 오탐·미탐 측정","companies":"한국오므론제어기기 기술상담에서 지원 컨트롤러와 I/O 범위를 확인하고, NTT도코모비즈니스 보안 문의에서 OsecT 연동·관제·사고대응 지원범위를 문의","poc":"등록되지 않은 노트북을 시험용 제어망에 연결합니다. 접속부터 경보까지 걸린 시간과 대상 설비 표시 여부를 확인합니다. 센서 교체와 드라이브 설정 변경 후에는 변경정보가 화면에 반영되는 시간을 측정합니다. 마지막으로 보안 감시 기능을 켜기 전과 후의 최대 제어주기를 비교합니다.","caution":"공개 단계: 컨트롤러에 OsecT 탐지 기능을 넣기 위한 공동개발. 확인 항목: 지원 기종, I/O 범위, 수집주기, 출시일과 국내 시험지원.","source_use":"10월 27일 오므론·NTT도코모비즈니스 공동발표를 중심으로 확인하고 OsecT·DX1 공식 제품자료와 국내 접촉 창구를 보조근거로 사용","sourceCount":6,"weekly":{"topic":"현장기기까지 읽는 OT 보안","change":"통신 이상과 센서·드라이브 구성을 함께 확인합니다.","check":"무단 접속과 기기 교체의 탐지시간·오탐을 측정합니다."}});
+    reports.push({"id":"261028","date":"2026-10-28","title":"컨트롤러에서 센서·드라이브 구성까지 읽는 OT 보안 감시","axis":"전기·제어","category":"컨트롤러 내장형 OT 보안","tags":["OT보안","컨트롤러내장감시","비인가 통신탐지","현장기기구성","MES·SCADA"],"summary":"오므론과 NTT도코모비즈니스가 컨트롤러에 OsecT의 비인가 통신 탐지 기능을 넣고, 네트워크 장비에서 보기 어려웠던 센서·드라이브 구성정보를 MES·SCADA에서 통신 이상과 함께 관리하는 공동개발 계획을 공개했습니다.","discovery":"컨트롤러가 보유한 센서·드라이브 구성정보와 OsecT의 비인가 통신 탐지를 결합해 공장 관리망의 MES·SCADA로 전달하는 감시방식","why":"10월 27일 공동발표에서 OsecT 탐지 기능의 컨트롤러 내장, 현장 I/O 구성정보 수집, MES·SCADA 통합관리라는 새 개발범위가 구체적으로 공개됐습니다.","study":"컨트롤러 내장형 탐지, 현장 I/O 구성수집, OT 자산 식별, MES·SCADA 연계, 제어부하와 오탐·미탐 측정","companies":"한국오므론제어기기는 컨트롤러·센서·드라이브 등 공장자동화 기기를 공급하고, NTT DOCOMO BUSINESS는 기업용 네트워크·보안관제·클라우드 서비스를 제공","poc":"정상 운전 중 수집한 장비 목록에 없던 노트북을 시험용 공장망에 연결합니다. 연결 시각부터 경보 발생까지 걸린 시간과 IP·MAC 주소, 통신 대상 컨트롤러 표시 여부를 확인합니다. 센서 교체와 드라이브 설정 변경 후에는 변경정보 반영시간을 측정합니다. 보안 감시 기능을 켜기 전과 후의 최대 제어주기도 비교합니다.","caution":"공개 단계: 컨트롤러에 OsecT 탐지 기능을 넣기 위한 공동개발. 확인 항목: 지원 기종, I/O 범위, 수집주기, 출시일과 국내 시험지원.","source_use":"10월 27일 오므론·NTT도코모비즈니스 공동발표를 중심으로 확인하고 OsecT·DX1 공식 제품자료와 국내 접촉 창구를 보조근거로 사용","sourceCount":6,"weekly":{"topic":"현장기기까지 읽는 OT 보안","change":"통신 이상과 센서·드라이브 구성을 함께 확인합니다.","check":"무단 접속과 기기 교체의 탐지시간·오탐을 측정합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
