@@ -68,7 +68,7 @@ const systemNodes=vm.runInContext('SYSTEM_NODES',ctx),systemEdges=vm.runInContex
 for(const n of systemNodes){assert(n.fns.every(f=>data.functions[f]),n.id+' system map references');assert(n.x>=0&&n.y>=0&&n.x+n.w<=1600&&n.y+n.h<=910,n.id+' map bounds');}
 for(let i=0;i<systemNodes.length;i++)for(let j=i+1;j<systemNodes.length;j++){const a=systemNodes[i],b=systemNodes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y),'system map overlap');}
 for(const e of systemEdges)for(let i=1;i<e.p.length;i++){const [x1,y1]=e.p[i-1],[x2,y2]=e.p[i];for(const n of systemNodes){if(n.id===e.a||n.id===e.b)continue;const crosses=x1===x2?x1>n.x+2&&x1<n.x+n.w-2&&Math.max(y1,y2)>n.y+2&&Math.min(y1,y2)<n.y+n.h-2:y1>n.y+2&&y1<n.y+n.h-2&&Math.max(x1,x2)>n.x+2&&Math.min(x1,x2)<n.x+n.w-2;assert(!crosses,'system edge '+e.a+'/'+e.b+' crosses '+n.id);}}
-for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','control','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
+for(const id of ['start','init','input','monitor','manual','autorun','spawn','ecat','pm2q','output','condition','device','stop','exit'])assert(systemNodes.some(n=>n.id===id),'system map includes '+id);
 console.log('PASS: single-screen system map references, major stages, bounds, and connector clearances.');
 
 const destroy=vm.runInContext('buildGraph(F["CDemoKitDlg::OnDestroy"])',ctx);
@@ -79,13 +79,22 @@ assert(!raw.includes('참/0이 아닌지 동안'),'malformed repeat wording remo
 assert(!raw.includes('반복문를'),'incorrect particle removed');
 console.log('PASS: wait conditions explain what repeats and when the wait ends.');
 
-const runButton=systemNodes.find(n=>n.id==='button'),externalRequest=systemNodes.find(n=>n.id==='request');
-assert.equal(runButton.title,'AUTO 탭 Run 버튼');
+const runButton=systemNodes.find(n=>n.id==='button');
+assert.equal(runButton.title,'AUTO 탭 Run 클릭');
 assert.deepEqual(Array.from(runButton.fns),['CAutoDlg::OnButtonAutoRun']);
-assert(externalRequest.title.includes('외부 START'));
-assert(systemEdges.some(e=>e.a==='button'&&e.b==='autorun'),'Run directly joins common start handler');
-assert(!systemEdges.some(e=>e.a==='button'&&e.b==='request'),'Run does not go through external switch message path');
-assert(systemEdges.some(e=>e.a==='input'&&e.b==='request')&&systemEdges.some(e=>e.a==='request'&&e.b==='autorun'),'external START follows message path');
+assert(systemEdges.some(e=>e.a==='button'&&e.b==='autorun'),'Run directly enters start handler');
+assert(!systemNodes.some(n=>n.id==='request'),'unknown DI0 trigger is not a confirmed main path');
+assert(!systemNodes.some(n=>/외부.*스위치|물리.*버튼/.test(n.title+n.lines.join(' '))),'main map does not invent hardware buttons');
+assert.deepEqual(Array.from(systemNodes.find(n=>n.id==='input').fns),['CDemoKitDlg::AxdGetIoStatus'],'DI reader uses real module read function');
+assert(systemEdges.some(e=>e.a==='workers'&&e.b==='output')&&systemEdges.some(e=>e.a==='input'&&e.b==='condition'),'existing DO commands and DI state use are shown');
+assert(raw.includes('DI0의 실제 신호원은 현재 확인한 자료에서 특정하지 못했습니다.'),'uncertainty is explicit');
+assert(raw.includes('data-di-fn="CDemoKitDlg::gThreadIO"'),'DI condition code remains accessible');
 assert(!raw.includes('화면 START 버튼'),'incorrect UI button label removed');
 assert(!raw.includes('자동 START 버튼'),'ambiguous UI button label removed');
-console.log('PASS: AUTO Run UI label and separate UI/external START paths.');
+console.log('PASS: confirmed Run path, configured IO loop, and qualified DI0 code reference.');
+
+const runFn=data.functions['CAutoDlg::OnButtonAutoRun'];
+const runSource=data.source[runFn.file].split('\n').slice(runFn.start-1,runFn.end).join('\n');
+assert(!/m_bInput\s*\[[^\]]+\]\s*=(?!=)/.test(runSource),'Run handler does not write DI input cache');
+assert(raw.includes('DI 조건 코드의 확인 범위'),'reference function view keeps uncertainty notice');
+console.log('PASS: Run source does not write DI input; reference-code scope stays visible.');

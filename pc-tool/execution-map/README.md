@@ -33,8 +33,10 @@ node pc-tool/tests/execution-map.test.cjs
 - 기존 설명 화면은 ‘학습 경로 안내’로 분리했다.
 - 자동 검사에 두 보기 방식의 분기 출구 방향, 조감도 단계·함수 참조·영역·선의 박스 관통 검사를 추가했다.
 
-## AUTO 탭 Run과 외부 START
+## 현재 설비 기준 · Run과 기존 IO
 
-- 실제 화면 명칭: AUTO 탭 Run 버튼 → OnButtonAutoRun → StartAutoRun.
-- 외부 START 스위치: 입력 감시 → OnAutoRun → OnAutoRunUpdate → OnButtonAutoRun.
-- 두 입력은 OnButtonAutoRun에서 합류한다. 화면 Run은 외부 요청 메시지 전달 경로를 거치지 않는다.
+- 사용자가 확인한 운전 시작 경로: AUTO 탭 Run → MFC 버튼 이벤트 → OnButtonAutoRun → StartAutoRun.
+- IO는 이미 구성된 설비 기준이다. 프로그램이 기존 DO로 명령하고, 기존 DI를 읽어 조건을 판단한다. 사용자가 DI 값을 별도로 입력하거나 Run 전에 IO를 새로 설정하는 절차가 아니다.
+- Run 클릭이 m_Dpr.m_bInput[0]을 직접 변경하는 구조는 아니다.
+- DI0/1/2를 START/STOP/RESET 조건으로 보는 코드는 별도 참고 창에서 보존한다. 실제 DI0 신호원은 미확인이다. 물리 START 버튼의 존재 또는 해당 코드의 미사용 여부를 단정하지 않는다.
+- 조감도에서는 Run 경로와 기존 DO 명령·장치·DI 상태 관계를 보여주고, 코드상 DI 조건 경로는 참고로 분리했다. IO 선은 명령·상태 관계 요약이며 모든 IO 동작이 완료 대기를 한다는 뜻은 아니다.
