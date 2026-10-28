@@ -83,7 +83,7 @@ class Parser:
 for annotations in T['annotations'].values():
  for annotation in annotations:
   if annotation.get('text'):
-   annotation['text']=annotation['text'].replace('가 참/0이 아닌지 동안 본문을 반복한다.','가 0이 아닌 동안 반복한다.').replace('반복문를','반복문을')
+   annotation['text']=annotation['text'].replace('가 참/0이 아닌지 동안 본문을 반복한다.','가 0이 아닌 동안 반복한다.').replace('반복문를','반복문을').replace('자동 START 버튼','AUTO 탭 Run 버튼').replace('화면 START 버튼','AUTO 탭 Run 버튼')
 WAIT_NOTES={
  ('CDemoKitDlg::OnDestroy',415):('감시 스레드의 실행 표시가 아직 켜져 있는가?', '414행에서 m_bMonitorExe를 FALSE로 바꿔 감시 종료를 요청했습니다. 이 조건에서는 m_bThreadMonitor가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 감시 스레드가 종료 단계에서 이 표시를 FALSE로 바꾸면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),
  ('CDemoKitDlg::OnDestroy',432):('입력 감시 스레드의 실행 표시가 아직 켜져 있는가?', '431행에서 m_bIOExe를 FALSE로 바꿔 입력 감시 종료를 요청했습니다. m_bThreadIO가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 이 표시가 FALSE가 되면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),

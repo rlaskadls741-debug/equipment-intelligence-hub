@@ -32,3 +32,9 @@ node pc-tool/tests/execution-map.test.cjs
 - 첫 화면은 시작·초기화·감시·입력·자동 작업·수동 조작·정지·종료를 요약한 전체 조감도다. 화면 크기에 맞춰 전체를 표시하고, 확대와 함수 탐색을 제공한다.
 - 기존 설명 화면은 ‘학습 경로 안내’로 분리했다.
 - 자동 검사에 두 보기 방식의 분기 출구 방향, 조감도 단계·함수 참조·영역·선의 박스 관통 검사를 추가했다.
+
+## AUTO 탭 Run과 외부 START
+
+- 실제 화면 명칭: AUTO 탭 Run 버튼 → OnButtonAutoRun → StartAutoRun.
+- 외부 START 스위치: 입력 감시 → OnAutoRun → OnAutoRunUpdate → OnButtonAutoRun.
+- 두 입력은 OnButtonAutoRun에서 합류한다. 화면 Run은 외부 요청 메시지 전달 경로를 거치지 않는다.

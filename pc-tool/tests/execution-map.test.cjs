@@ -78,3 +78,14 @@ assert(monitorWait.note.includes('10 ms')&&monitorWait.note.includes('FALSE'),'m
 assert(!raw.includes('참/0이 아닌지 동안'),'malformed repeat wording removed from new map');
 assert(!raw.includes('반복문를'),'incorrect particle removed');
 console.log('PASS: wait conditions explain what repeats and when the wait ends.');
+
+const runButton=systemNodes.find(n=>n.id==='button'),externalRequest=systemNodes.find(n=>n.id==='request');
+assert.equal(runButton.title,'AUTO 탭 Run 버튼');
+assert.deepEqual(Array.from(runButton.fns),['CAutoDlg::OnButtonAutoRun']);
+assert(externalRequest.title.includes('외부 START'));
+assert(systemEdges.some(e=>e.a==='button'&&e.b==='autorun'),'Run directly joins common start handler');
+assert(!systemEdges.some(e=>e.a==='button'&&e.b==='request'),'Run does not go through external switch message path');
+assert(systemEdges.some(e=>e.a==='input'&&e.b==='request')&&systemEdges.some(e=>e.a==='request'&&e.b==='autorun'),'external START follows message path');
+assert(!raw.includes('화면 START 버튼'),'incorrect UI button label removed');
+assert(!raw.includes('자동 START 버튼'),'ambiguous UI button label removed');
+console.log('PASS: AUTO Run UI label and separate UI/external START paths.');
