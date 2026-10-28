@@ -2,6 +2,8 @@
 
 별도 실행 화면: [execution-map.html](../execution-map.html)
 
+제작 목적·설계 방향·수정 및 개선 이력: [execution-map-history.html](../execution-map-history.html)
+
 전체 실행 지도에서 시작점 선택 → 조건 경로 선택 → 호출 함수 진입 → 호출 위치로 복귀. 오른쪽 창에서 원문·해설·현재 함수와 호출 대상의 선언을 확인한다. 스레드 생성과 동기 메시지 전달, MFC 콜백을 직접 호출과 구분한다.
 
 기존 source-part1.txt / source-part2.txt의 control-trace 데이터를 읽어 214개 함수의 구조를 생성한다. 기존 TOOL과 원본 C++ 데이터는 수정하지 않는다. 생성된 HTML은 외부 라이브러리 없이 단독 실행한다.
