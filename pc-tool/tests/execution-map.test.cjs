@@ -98,3 +98,12 @@ const runSource=data.source[runFn.file].split('\n').slice(runFn.start-1,runFn.en
 assert(!/m_bInput\s*\[[^\]]+\]\s*=(?!=)/.test(runSource),'Run handler does not write DI input cache');
 assert(raw.includes('DI 조건 코드의 확인 범위'),'reference function view keeps uncertainty notice');
 console.log('PASS: Run source does not write DI input; reference-code scope stays visible.');
+const hwNodes=vm.runInContext('HW_NODES',ctx),hwEdges=vm.runInContext('HW_EDGES',ctx);
+for(const n of hwNodes){assert(n.fns.length&&n.fns.every(f=>data.functions[f]),'HW code reference '+n.id);assert(n.x+n.w<=1600&&n.y+n.h<=910,'HW bounds '+n.id);}
+for(let i=0;i<hwNodes.length;i++)for(let j=i+1;j<hwNodes.length;j++){const a=hwNodes[i],b=hwNodes[j];assert(!(a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y),'HW overlap');}
+for(const e of hwEdges){assert(hwNodes.some(n=>n.id===e.a)&&hwNodes.some(n=>n.id===e.b),'HW endpoints');}
+for(const [fn,command,on,off] of [['CAutoDlg::gAutoRunECatThread','ECatInverterTempCcwMove',483,540],['CAutoDlg::gAutoRunPM2QThread','PM2QInverterTempCwMove',566,608]]){const f=data.functions[fn],rs=data.source[f.file].split('\n');assert(rs[on-1].includes(command+'(true)'));assert(rs[off-1].includes(command+'(false)'));const loop=rs.findIndex((l,i)=>i>=f.start-1&&i<f.end&&l.includes('while ('));assert(on-1<loop&&loop<off-1,'inverter runs before loop and stops after loop');}
+assert.equal((((-0x1ff>>>0)<<16)|0x0f)>>>0,0xfe01000f);assert.equal(((0x1ff<<16)|0x0f)>>>0,0x01ff000f);
+assert(!systemNodes.find(n=>n.id==='output').fns.includes('CDemoKitDlg::SetAXWriteOutputDWord'),'general DO bit path separated from inverter direct DWORD calls');
+const inpos=data.functions['CAutoDlg::ECat_mmToMove'].ast.find(n=>n.kind==='while');assert(inpos.note.includes('Inpos')&&inpos.note.includes('모두 1'),'Inpos and InMotion completion explanations differ');
+console.log('PASS: hardware references/layout, inverter true/false call timing, DWORD values, and distinct IO paths.');

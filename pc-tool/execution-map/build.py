@@ -106,8 +106,13 @@ for key,f in T['functions'].items():
    override=WAIT_NOTES.get((key,n['line']))
    if override:n['title'],n['note']=override
    elif n['kind']=='while' and n['text'].replace(' ','')=='while(WaitForDone)':
-    n['title']='두 축의 이동 완료를 계속 확인해야 하는가?'
-    n['note']='WaitForDone이 TRUE인 동안 두 축의 InMotion 상태를 반복해서 읽습니다. 두 상태가 모두 0이면 본문에서 WaitForDone을 FALSE로 바꾸고 반복을 끝냅니다.'
+    body_text=' '.join(x.get('text','') for x in n.get('body',[]))
+    if 'AxmSignalReadInpos' in body_text:
+     n['title']='두 축의 위치 도달 신호를 기다리는가?'
+     n['note']='WaitForDone이 TRUE인 동안 두 축의 Inpos 신호를 반복해서 읽습니다. 두 상태가 모두 1이면 본문에서 WaitForDone을 FALSE로 바꾸고 반복을 끝냅니다.'
+    else:
+     n['title']='두 축의 이동 완료를 계속 확인해야 하는가?'
+     n['note']='WaitForDone이 TRUE인 동안 두 축의 InMotion 상태를 반복해서 읽습니다. 두 상태가 모두 0이면 본문에서 WaitForDone을 FALSE로 바꾸고 반복을 끝냅니다.'
    if n.get('body') is not None:enrich(n['body']);enrich(n.get('alt',[]))
  enrich(ast)
  F[key]={**f,'ast':ast}
