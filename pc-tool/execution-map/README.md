@@ -47,3 +47,8 @@ node pc-tool/tests/execution-map.test.cjs
 - 인버터 1: ECAT 자동 작업 483행 true → 모듈 2 DWORD 0xFE01000F. 루프 종료 후 540행 false → 0.
 - 인버터 2: PM2Q 자동 작업 566행 true → 모듈 3 DWORD 0x01FF000F. 루프 종료 후 608행 false → 0.
 - 자동 인버터 코드는 AxdoWriteOutportDword를 직접 호출한다. 일반 NX DO 비트 제어와 구분하며 출력 명령과 실제 동작 완료 판정을 구분한다.
+
+### 입출력 방향 표기
+
+- 출력: PC → DO 모듈 → 장치. 입력: 센서 → DI 모듈 입력 단자 → PC의 상태 읽기. DI에 명령을 쓰지 않는다.
+- 조감도의 IO 선은 신호 관계이며 함수 호출 순서가 아니다. 모션 축 이동을 일반 DO 명령으로 해석하지 않는다.
