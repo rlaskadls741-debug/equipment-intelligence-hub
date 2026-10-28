@@ -84,6 +84,15 @@ for annotations in T['annotations'].values():
  for annotation in annotations:
   if annotation.get('text'):
    annotation['text']=annotation['text'].replace('가 참/0이 아닌지 동안 본문을 반복한다.','가 0이 아닌 동안 반복한다.').replace('반복문를','반복문을').replace('자동 START 버튼','AUTO 탭 Run 버튼').replace('화면 START 버튼','AUTO 탭 Run 버튼')
+# Explain UI availability separately from automatic operation and servo state.
+RUN_BUTTON_NOTES={
+ 933:('중복 시작 방지를 위해 Run 버튼 클릭 잠금','Run 버튼을 다시 누르지 못하게 합니다. 서보나 자동운전을 끄는 처리가 아닙니다. 이미 실행 중인 OnButtonAutoRun은 계속 진행하여 다음 935행에서 StartAutoRun을 호출합니다.'),
+ 958:('Run 버튼 클릭 잠금 해제','STOP 처리에서 Run 버튼을 다시 누를 수 있게 합니다. 이 행 자체가 서보 ON/OFF나 자동운전 시작을 수행하지는 않습니다.')
+}
+for line,(title,note) in RUN_BUTTON_NOTES.items():
+ T['annotations']['AutoDlg.cpp'][line-1]['text']=title+'. '+note
+# Related diagrams use the same wording; preserve original C++ source.
+T['model']=json.loads(json.dumps(T['model'],ensure_ascii=False).replace('START 버튼 비활성화','중복 시작 방지를 위해 Run 버튼 클릭 잠금'))
 WAIT_NOTES={
  ('CDemoKitDlg::OnDestroy',415):('감시 스레드의 실행 표시가 아직 켜져 있는가?', '414행에서 m_bMonitorExe를 FALSE로 바꿔 감시 종료를 요청했습니다. 이 조건에서는 m_bThreadMonitor가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 감시 스레드가 종료 단계에서 이 표시를 FALSE로 바꾸면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),
  ('CDemoKitDlg::OnDestroy',432):('입력 감시 스레드의 실행 표시가 아직 켜져 있는가?', '431행에서 m_bIOExe를 FALSE로 바꿔 입력 감시 종료를 요청했습니다. m_bThreadIO가 TRUE인 동안 메시지를 큐에서 꺼내고 10 ms씩 쉬며 실행 표시를 다시 확인합니다. 이 표시가 FALSE가 되면 반복문을 빠져나가 다음 정리 처리를 진행합니다.'),
@@ -103,7 +112,8 @@ for key,f in T['functions'].items():
    if key=='CDemoKitApp::InitInstance' and n['line']==85:n['calls']+=[dict(target='CDemoKitDlg::OnInitDialog',line=85,kind='MFC 초기화 콜백')]
    ann=T['annotations'][f['file']][n['line']-1:n['end']]
    n['note']=n.get('note') or next((a['text'] for a in ann if a.get('kind') in ('code','declaration') and a.get('text')),'')
-   override=WAIT_NOTES.get((key,n['line']))
+   override=RUN_BUTTON_NOTES.get(n['line']) if f['file']=='AutoDlg.cpp' and key in ('CAutoDlg::OnButtonAutoRun','CAutoDlg::OnButtonAutoStop') else None
+   override=override or WAIT_NOTES.get((key,n['line']))
    if override:n['title'],n['note']=override
    elif n['kind']=='while' and n['text'].replace(' ','')=='while(WaitForDone)':
     body_text=' '.join(x.get('text','') for x in n.get('body',[]))
