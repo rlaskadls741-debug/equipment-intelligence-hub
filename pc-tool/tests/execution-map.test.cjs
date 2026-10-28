@@ -4,3 +4,11 @@ const g=vm.runInContext('buildGraph(F["CAutoDlg::StartAutoRun"])',ctx);assert.eq
 const auto=vm.runInContext('buildGraph(F["CAutoDlg::OnButtonAutoRun"])',ctx);const branch=auto.nodes.find(n=>n.kind==='if');assert.deepEqual(auto.edges.filter(e=>e.a===branch.id).map(e=>e.label),['예','아니오']);
 const th=vm.runInContext('buildGraph(F["CAutoDlg::gAutoRunECatThread"])',ctx);assert(th.edges.some(e=>e.loop));assert(th.nodes.some(n=>n.line===513&&n.calls.some(c=>c.target==='CAutoDlg::ECat_LoadingPosition_Go')));
 console.log(`PASS: ${Object.keys(data.functions).length} functions; ${nodes} nodes; ${edges} edges; source ranges, targets, branches, loopback, return, thread separation.`);
+const prep=th.nodes.find(n=>n.parts&&n.parts.some(p=>p.text.includes('m_bThreadECatAbort')));
+assert(prep,'ECAT preparation is grouped');
+assert.equal(prep.parts.length,6,'every preparation action remains visible');
+assert(prep.parts.every(p=>p.note&&p.line),'each action retains its own explanation and source');
+assert(prep.note.includes('ECAT 중단 요청 해제'));
+assert(prep.h>=prep.parts.length*52,'card grows to fit its actions');
+assert(!raw.includes('개 문장 · 변수 초기화·상태 변경·외부 호출 등'));
+console.log('PASS: grouped actions show concrete actions and preserve individual source explanations.');
