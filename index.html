@@ -142,6 +142,131 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
+      <details class="staticReport" id="static-261102" open>
+  <summary><span class="staticDate">11.02</span><span class="staticTitle">접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조</span><span class="staticAxis">전기·제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">EtherNet/IP</span><span class="tag">SPE</span><span class="tag">제어반</span><span class="tag">모터제어</span><span class="tag">접점배선</span></div><p>로크웰 오토메이션이 제어반의 푸시버튼·접촉기·과부하계전기를 전원과 통신이 함께 흐르는 평면 케이블에 연결하는 구성을 10월 27일 자동화 전시 핵심기술로 제시했습니다.</p></div>
+  <article class="reportBody staticContent">
+    <div class="newsArticle">
+      <header class="newsHeader">
+        <p class="newsKicker">제어반 배선·통신 통합 · 2026-11-02</p>
+        <h2>접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조</h2>
+        <p class="newsLead">로크웰 오토메이션은 10월 27일 미국 밀워키에서 발표한 Automation Fair 2026 전시기술에 EtherNet/IP 인캐비닛 솔루션을 포함했습니다. 이 구성은 제어반 안의 푸시버튼, 접촉기와 과부하계전기를 개별 접점선 대신 평면 케이블 한 가닥에 연결합니다. 케이블은 10BASE-T1S 통신, 통신장치용 전원과 접촉기 코일용 전원을 함께 전달합니다. 제어기는 각 장치를 네트워크 노드로 인식해 입력상태, 운전시간과 고장정보를 읽습니다.</p>
+      </header>
+      <section class="newsSection">
+        <h3>주요 내용</h3>
+        <p>인캐비닛 구간은 1834-AENTR 게이트웨이에서 시작합니다. 게이트웨이는 공장 EtherNet/IP 망과 제어반 내부 10BASE-T1S 구간을 연결합니다. 제어반 내부에서는 1486-CBL 평면 케이블이 최대 25m 구간에 최대 40개 노드를 멀티드롭 방식으로 연결합니다.</p>
+        <p>평면 케이블에는 통신용 단일 꼬임선, 통신 인터페이스용 NP 전원선, 접촉기 코일처럼 전력이 더 필요한 부하를 위한 SP 전원선과 장치 위치를 정하는 선이 들어갑니다. 작업자는 케이블 피복을 벗겨 단자를 압착하지 않고 전용 커넥터로 장치를 분기합니다.</p>
+      </section>
+      <dl class="newsFacts" aria-label="기술 핵심 정보">
+        <div><dt>기술 구조</dt><dd>게이트웨이가 표준 EtherNet/IP와 제어반 내부 10BASE-T1S를 변환하고, 평면 케이블이 통신·장치전원·코일전원을 각 노드에 분배합니다.</dd></div>
+        <div><dt>기존 방식과 차이</dt><dd>푸시버튼과 접촉기의 입력·출력 접점선을 단자대와 제어기 입출력 모듈까지 각각 배선하던 방식을 멀티드롭 네트워크로 바꿉니다.</dd></div>
+        <div><dt>현장 적용</dt><dd>모터기동기, 선택스위치, 표시등과 과부하계전기의 상태·진단정보를 제어기 태그로 읽는 제어반에 적용합니다.</dd></div>
+        <div><dt>관련 업체</dt><dd><a class="companyLink" href="https://www.rockwellautomation.com/ko-kr.html" target="_blank" rel="noopener noreferrer">로크웰 오토메이션 코리아</a>는 제어기, 모터제어기기, EtherNet/IP 네트워크와 인캐비닛 장치를 공급하고 국내 기술지원을 제공합니다.</dd></div>
+      </dl>
+      <section class="extendedArticle" aria-label="기술 상세">
+        <h2>기술 상세</h2>
+        <h3>선정 이유</h3>
+        <p>11월 2일 오전까지 최근 24시간 동안 설비 제어 분야에서 새 구조를 발표한 공식자료는 확인되지 않았습니다. 로크웰 오토메이션은 10월 27일 발표한 Automation Fair 2026 전시목록에서 인캐비닛 솔루션을 주요 제어기술로 다시 제시했습니다. 이번 리포트는 지난 일주일에 반복해서 제시된 제어반 축소와 장치진단 통합을 다룹니다.</p>
+        <p>기술의 차이는 단순한 배선절감에 머물지 않습니다. 기존 무전압 접점은 켜짐과 꺼짐만 제어기에 전달합니다. 인캐비닛 장치는 같은 배선구간에서 장치 식별정보, 운전상태와 정비정보를 EtherNet/IP 데이터로 보냅니다. 2026년 5월 확장판에는 140ME 모터보호 스위치와 E100 전자식 과부하계전기가 추가됐고, 100-E 접촉기 통신모듈과 보조전원 탭이 함께 제공됐습니다.</p>
+        <h3>기술 구조와 작동 과정</h3>
+        <ol>
+          <li>1834-AENTR 게이트웨이가 공장 EtherNet/IP 망의 제어기와 제어반 내부 평면 케이블을 연결합니다. 게이트웨이는 두 개의 RJ45 포트와 10BASE-T1S 포트를 사용합니다.</li>
+          <li>1486-CBL 평면 케이블이 제어반 내부를 직선으로 지나갑니다. 전용 1486-CON 커넥터가 케이블 중간에서 통신선과 전원선을 분기하므로 장치마다 별도 홈런 배선을 만들지 않습니다.</li>
+          <li>800F 통신 인터페이스는 푸시버튼, 선택스위치와 표시등의 상태를 읽습니다. 100-E·104-E 통신 인터페이스는 접촉기 코일을 구동하고 장치상태를 전송합니다.</li>
+          <li>E100 전자식 과부하계전기와 140ME·140MT 모터보호 장치는 전류 과부하와 차단상태를 통신모듈로 전달합니다. 제어기는 이 값을 장치별 태그에서 읽습니다.</li>
+          <li>Logix 5000 제어 프로젝트는 버스에 연결된 장치를 개별 노드로 표시하고 입출력 태그를 자동으로 만듭니다. 운전화면은 태그를 이용해 장치상태와 진단정보를 표시합니다.</li>
+          <li>SP 전원은 접촉기 코일을 켜고 끄는 부하전원으로 사용합니다. NP 전원은 통신 인터페이스를 계속 가동하므로 코일을 끈 상태에서도 장치상태와 진단정보를 읽을 수 있습니다.</li>
+        </ol>
+        <h3>기존 방식과 달라진 점</h3>
+        <ul>
+          <li>기존 제어반은 푸시버튼마다 입력선, 접촉기마다 출력선과 공통선을 단자대까지 개별 배선했습니다. 인캐비닛 구성은 여러 장치를 평면 케이블 한 가닥에 분기 연결합니다.</li>
+          <li>기존 접점신호는 작동 여부만 전달했습니다. 네트워크 장치는 제품 식별정보, 운전상태, 고장상태와 교체정보를 같은 EtherNet/IP 망에 제공합니다.</li>
+          <li>기존 입출력 모듈은 제어반 중앙에 채널을 모았습니다. 인캐비닛 인터페이스는 접촉기와 푸시버튼 가까이에서 신호를 통신데이터로 바꿉니다.</li>
+          <li>기존 증설은 단자대, 덕트와 입출력 채널의 여유를 먼저 확인했습니다. 인캐비닛 증설은 25m 케이블 길이, 40개 노드 한도와 전원용량을 기준으로 계산합니다.</li>
+        </ul>
+        <div class="advLimit" aria-label="장점과 한계">
+          <section>
+            <h4>장점</h4>
+            <ul>
+              <li>로크웰 오토메이션은 개별 접점배선과 비교해 배선시간을 최대 80% 줄일 수 있다고 설명합니다. 브라질 제어반 제작사 Volga는 공급사 공개사례에서 스타터와 패널 조작부의 조립시간이 65% 이상 줄었다고 밝혔습니다.</li>
+              <li>푸시버튼과 접촉기까지 장치 식별정보와 진단값을 제공하므로, 정비자는 도면의 선번호를 따라가기 전에 제어기 화면에서 고장장치를 확인할 수 있습니다.</li>
+              <li>통신전원과 코일전원이 분리돼 있어 모터기동 출력을 차단한 뒤에도 통신 인터페이스의 상태를 읽을 수 있습니다.</li>
+              <li>개별 입출력선, 중간 단자대와 덕트 사용량이 줄어 제어반 면적과 배선검사 항목을 줄일 수 있습니다.</li>
+            </ul>
+          </section>
+          <section>
+            <h4>한계</h4>
+            <ul>
+              <li>한 구간은 최대 25m와 40개 노드로 제한됩니다. 장치 수가 많거나 제어반이 분리된 설비는 게이트웨이와 구간을 추가해야 합니다.</li>
+              <li>평면 케이블이나 게이트웨이 고장은 같은 구간에 연결된 여러 장치의 통신에 영향을 줍니다. 케이블 분기와 예비부품 계획이 필요합니다.</li>
+              <li>지원장치는 로크웰 오토메이션이 제공하는 통신 인터페이스와 호환제품으로 제한됩니다. 기존 타사 접촉기와 표시기기는 개별 배선을 유지하거나 인터페이스를 별도로 구성해야 합니다.</li>
+              <li>비상정지와 안전문처럼 안전등급이 필요한 회로는 안전규격과 위험성평가에 맞는 별도 안전구성을 적용해야 합니다.</li>
+            </ul>
+          </section>
+        </div>
+        <h3>공개 적용 사례</h3>
+        <p>로크웰 오토메이션의 한국어 공식 발표에는 브라질의 전기·기계·자동화 제어 제조사 Volga 사례가 실렸습니다. Volga는 EtherNet/IP 인캐비닛 구성으로 스타터와 패널 조작부 배선을 1시간 안에 마쳤으며, 기존 구성보다 조립시간이 65% 이상 줄었다고 밝혔습니다. 이 수치는 공급사가 공개한 고객사 결과입니다.</p>
+        <p>제품구성은 1834-AENTR 게이트웨이, 1486-CBL 평면 케이블, 1486-CON 커넥터, 800F 푸시버튼 통신 인터페이스, 100-E·104-E 접촉기 통신 인터페이스, E100 과부하계전기와 140ME·140MT 모터보호 장치로 제시돼 있습니다.</p>
+        <h3>공정·PC 제어와 연결해 볼 부분</h3>
+        <p>PC 기반 설비에서 상위 PC는 생산조건과 운전명령을 제어기에 전달하고, 제어기는 모터기동기와 조작반 신호를 처리할 수 있습니다. 인캐비닛 구성을 적용하면 PC 통신방식은 바꾸지 않고 제어기 아래의 접점배선 구간만 네트워크 장치로 전환할 수 있습니다.</p>
+        <p>도입 대상은 배선점이 많고 같은 형태를 반복 제작하는 모터제어반이 적합합니다. 먼저 한 개 모터기동 회로와 조작반을 대상으로 개별 접점배선과 인캐비닛 배선을 나란히 구성합니다. 설계시간, 조립시간, 도통검사시간, 오결선 수, 제어반 사용면적과 고장탐지시간을 같은 기준으로 비교합니다.</p>
+        <h3>관련 업체</h3>
+        <p><a class="companyLink" href="https://www.rockwellautomation.com/ko-kr.html" target="_blank" rel="noopener noreferrer">로크웰 오토메이션 코리아</a>는 Allen-Bradley 제어기, 접촉기, 과부하계전기, 운전화면과 EtherNet/IP 네트워크 장치를 공급합니다. 국내 조직은 인캐비닛 장치 선정, 제어기 프로젝트 구성과 기술지원을 담당합니다.</p>
+        <p><a class="companyLink" href="https://www.odva.org/" target="_blank" rel="noopener noreferrer">ODVA</a>는 EtherNet/IP와 CIP 기술사양, 적합성 시험과 구현지침을 운영하는 국제 산업통신 협회입니다. 인캐비닛용 10BASE-T1S 통신과 매체 설치지침을 공식 기술자료로 제공합니다.</p>
+        <h3>사전검증 순서</h3>
+        <ol>
+          <li>동일한 접촉기·과부하계전기·푸시버튼으로 기존 접점배선 패널과 인캐비닛 패널을 각각 한 면씩 제작합니다. 설계도면 작성시간, 전선 수, 단자 수, 조립시간과 도통검사시간을 기록합니다.</li>
+          <li>인캐비닛 패널에 25m 평면 케이블과 40개 노드를 연결합니다. 제어기가 모든 노드의 입력을 10ms 주기로 읽도록 설정하고 8시간 동안 최대 갱신시간, 평균 갱신시간과 누락횟수를 측정합니다.</li>
+          <li>40개 노드의 입력을 1초마다 순서대로 바꿉니다. 제어기 태그와 실제 입력상태를 비교해 잘못된 노드번호, 상태불일치와 이벤트 순서오류를 기록합니다.</li>
+          <li>접촉기 코일을 1만 회 켜고 끕니다. SP 전원의 전압강하, 접촉기 응답시간, 게이트웨이 통신오류와 노드 재접속 횟수를 측정합니다.</li>
+          <li>E100 과부하 설정값을 넘는 시험전류를 전류주입기로 인가합니다. 계전기 동작시간, 제어기 진단태그 갱신시간과 운전화면 알람 표시시간을 각각 기록합니다.</li>
+          <li>평면 케이블을 게이트웨이에서 분리한 뒤 10초 후 다시 연결하는 시험을 20회 실시합니다. 통신고장 검출시간, 각 출력의 정지상태, 노드 재인식시간과 누락된 입력변화 수를 측정합니다.</li>
+          <li>게이트웨이와 통신 인터페이스를 예비품으로 교체합니다. 장치주소 재설정, 제어기 재인식과 정상운전 복귀에 걸린 시간 및 수동 입력항목을 기록합니다.</li>
+          <li>비상정지와 안전문 회로는 인캐비닛 일반 입출력에서 분리합니다. 안전제어기와 안전릴레이의 기존 정지시간이 유지되는지 위험성평가서의 시험조건으로 확인합니다.</li>
+        </ol>
+      </section>
+      <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+        <li id="term-261102-1"><b>EtherNet/IP (Ethernet Industrial Protocol)</b><span>표준 Ethernet과 CIP를 이용해 제어기, 입출력 장치와 모터제어기기가 실시간 데이터를 교환하는 산업통신 방식입니다.</span></li>
+        <li id="term-261102-2"><b>SPE (Single-Pair Ethernet)</b><span>한 쌍의 구리선으로 Ethernet 데이터를 전송하는 기술로 작은 장치를 네트워크에 연결할 때 케이블 크기와 배선량을 줄입니다.</span></li>
+        <li id="term-261102-3"><b>10BASE-T1S</b><span>한 쌍의 선으로 10Mbps Ethernet을 전송하고 여러 장치를 한 구간에 연결하는 IEEE 802.3cg 규격입니다.</span></li>
+        <li id="term-261102-4"><b>CIP (Common Industrial Protocol)</b><span>장치의 입출력, 설정, 진단과 안전데이터를 공통 객체로 표현하는 ODVA의 산업통신 규약입니다.</span></li>
+        <li id="term-261102-5"><b>ODVA (Open DeviceNet Vendors Association)</b><span>EtherNet/IP와 CIP 사양, 적합성 시험 및 설치지침을 관리하는 국제 산업통신 협회입니다.</span></li>
+        <li id="term-261102-6"><b>멀티드롭</b><span>하나의 통신 케이블 구간에 여러 장치를 분기해 차례로 연결하는 배선방식입니다.</span></li>
+        <li id="term-261102-7"><b>홈런 배선</b><span>각 현장장치의 신호선을 중앙 단자대나 입출력 모듈까지 개별로 직접 연결하는 배선방식입니다.</span></li>
+        <li id="term-261102-8"><b>게이트웨이</b><span>서로 다른 물리통신 구간이나 프로토콜 사이에서 데이터를 변환해 전달하는 장치입니다.</span></li>
+        <li id="term-261102-9"><b>NP (Network Power)</b><span>평면 케이블에서 통신 인터페이스와 네트워크 장치에 계속 공급하는 전원회로입니다.</span></li>
+        <li id="term-261102-10"><b>SP (Switched Power)</b><span>접촉기 코일처럼 제어명령에 따라 켜고 끄는 부하에 공급하는 전원회로입니다.</span></li>
+        <li id="term-261102-11"><b>RJ45 (Registered Jack 45)</b><span>산업용·사무용 Ethernet 케이블을 연결할 때 널리 사용하는 8접점 커넥터 형식입니다.</span></li>
+        <li id="term-261102-12"><b>Ethernet</b><span>장치가 주소와 프레임을 사용해 유선망에서 데이터를 교환하는 네트워크 기술입니다.</span></li>
+        <li id="term-261102-13"><b>Mbps (Megabits per second)</b><span>초당 전송하는 데이터량을 나타내며 10Mbps는 초당 1천만 비트입니다.</span></li>
+        <li id="term-261102-14"><b>IEEE (Institute of Electrical and Electronics Engineers)</b><span>전기·전자·통신 분야의 국제 기술표준을 제정하는 전문단체입니다.</span></li>
+        <li id="term-261102-15"><b>접촉기</b><span>제어전압으로 내부 코일을 여자해 모터와 히터 같은 전력부하의 주회로를 개폐하는 전기기기입니다.</span></li>
+        <li id="term-261102-16"><b>과부하계전기</b><span>모터전류가 설정값을 일정시간 넘으면 접촉기 출력을 차단하고 과부하 상태를 알리는 보호장치입니다.</span></li>
+        <li id="term-261102-17"><b>모터보호 스위치</b><span>모터회로의 과부하와 단락을 감지해 전원을 차단하는 보호기기입니다.</span></li>
+        <li id="term-261102-18"><b>입출력 태그</b><span>제어 프로그램이 현장장치의 입력상태와 출력명령을 이름으로 읽고 쓰는 데이터 항목입니다.</span></li>
+        <li id="term-261102-19"><b>Logix 5000 (제품명)</b><span>Allen-Bradley 제어기의 프로그램, 장치구성, 입출력 태그와 진단정보를 관리하는 제어 플랫폼입니다.</span></li>
+        <li id="term-261102-20"><b>1834-AENTR·1486-CBL·1486-CON (제품명)</b><span>로크웰 오토메이션이 공급하는 인캐비닛 게이트웨이, 평면 케이블과 분기 커넥터의 제품번호입니다.</span></li>
+        <li id="term-261102-21"><b>800F·100-E·104-E·E100·140ME·140MT (제품명)</b><span>푸시버튼, 접촉기, 과부하계전기와 모터보호 장치로 구성된 Allen-Bradley 제품군입니다.</span></li>
+        <li id="term-261102-22"><b>PC (Personal Computer)</b><span>생산조건, 운전명령, 화면과 설비데이터 처리를 담당하는 범용 컴퓨터입니다.</span></li>
+        <li id="term-261102-23"><b>Volga (회사명)</b><span>브라질에서 전기·기계·자동화 제어장비를 제작하는 로크웰 오토메이션 시스템 통합 협력사입니다.</span></li>
+      </ol></section></details>
+      <section class="sourcesSection">
+        <h3>공식 근거자료</h3>
+        <ol>
+          <li><a href="https://www.rockwellautomation.com/en-ca/company/news/press-releases/Rockwell-Automation-Unveils-Record-Breaking-Innovation-Lineup-at-Automation-Fair-2026.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, Automation Fair 2026 혁신기술 발표</a> · 2026-10-27</li>
+          <li><a href="https://www.rockwellautomation.com/en-dk/company/news/press-releases/Rockwell-Automation-Expands-EtherNetIP-In-cabinet-Solution-with-New-Motor-Control-and-Power-Connection-Capabilities.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, 인캐비닛 모터제어·전원연결 확장 발표</a> · 2026-05-14</li>
+          <li><a href="https://www.rockwellautomation.com/en-us/products/hardware/industrial-network-products/ethernet-ip-in-cabinet-solution.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, EtherNet/IP In-cabinet 제품자료</a> · 2026-11-02 확인</li>
+          <li><a href="https://www.rockwellautomation.com/en-se/docs/technical/eic/_online/1834-um001/1834-um001-ditamap/ethernet-ip-in-cabinet-system.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, EtherNet/IP In-cabinet 시스템 사용설명서</a> · 2025-04</li>
+          <li><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/td/1834-td001_-en-p.pdf" target="_blank" rel="noopener noreferrer">Rockwell Automation, 1834-TD001 시스템 사양서</a> · 2026-04</li>
+          <li><a href="https://www.odva.org/technology-standards/market-drivers/ethernetip-in-cabinet/" target="_blank" rel="noopener noreferrer">ODVA, EtherNet/IP In-Cabinet 기술 설명</a> · 2026-11-02 확인</li>
+          <li><a href="https://www.rockwellautomation.com/ko-kr/company/news/press-releases/ethernet-ip-in-cabinet.html" target="_blank" rel="noopener noreferrer">로크웰 오토메이션 코리아, 국내 출시와 Volga 적용사례</a> · 2025-05-20</li>
+        </ol>
+      </section>
+      <footer class="articleFooter"><p>작성자 김남인 · 선행제어기술팀 미래기술파트</p></footer>
+    </div>
+  </article>
+</details>
+
       <details class="staticReport" id="static-261101" open>
   <summary><span class="staticDate">11.01</span><span class="staticTitle">EtherCAT과 TSN을 한 FPGA에서 처리하는 산업용 통신 구조</span><span class="staticAxis">전기·제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">EtherCAT</span><span class="tag">TSN</span><span class="tag">FPGA</span><span class="tag">산업용이더넷</span><span class="tag">모션제어</span></div><p>마이크로칩이 EtherCAT 장치 통신과 1Gbps TSN 통신을 PolarFire FPGA 계열에 함께 제공하는 산업용 네트워크 구성을 공개했습니다.</p></div>
@@ -2989,6 +3114,7 @@
     reports.push({"id":"261030","date":"2026-10-30","title":"로직 제어와 컨테이너 앱을 한 장비에서 실행하는 IPC형 컨트롤러","axis":"전기·제어","category":"IPC형 소프트웨어 정의 제어","tags":["IPC제어","소프트웨어정의자동화","컨테이너","엣지컴퓨팅","HMI"],"summary":"로크웰 오토메이션이 Logix 제어엔진과 컨테이너 앱을 한 산업용 PC에서 실행하는 LogixEdge 컨트롤러를 공개했습니다. FactoryTalk Optix 운전화면과 분석 프로그램을 제어 계층에 함께 배치하며 2026년 4분기 공급을 시작합니다.","discovery":"Logix 제어엔진과 컨테이너 앱을 하나의 IPC형 컨트롤러에 결합하고 FactoryTalk Optix를 같은 장치에서 실행하는 제품 구조","why":"10월 27일 발표에서 Logix 제품군의 첫 IPC 기반 컨트롤러, 컨테이너 앱 동시 실행과 2026년 4분기 공급일정이 구체적으로 공개됐습니다.","study":"IPC형 제어기, Logix 제어엔진, 컨테이너 자원격리, FactoryTalk Optix HMI, 제어주기와 장애영향 측정","companies":"로크웰 오토메이션 코리아는 Allen-Bradley 제어기·구동장치와 FactoryTalk 운전화면·제조 소프트웨어를 공급하고 국내 제품선정과 기술지원을 제공","poc":"기존 컨트롤러와 엣지 PC에서 2ms 제어 태스크의 최대 주기와 CPU 사용률을 측정합니다. LogixEdge에 같은 제어논리를 적용한 뒤 FactoryTalk Optix가 태그 500개를 250ms마다 읽도록 설정합니다. 분석 컨테이너의 CPU 부하를 25%·50%·75%로 높이고 최대 제어주기, 주기초과 횟수와 화면 응답시간을 비교합니다.","caution":"공개 내용: IPC 기반 Logix 제어, 컨테이너 앱, FactoryTalk Optix 동시 실행과 2026년 4분기 공급. 현장 확인: CPU 자원분리, 지원 컨테이너·운영체제, 통신포트, 안전인증과 장애복구시간.","source_use":"10월 27일 로크웰 오토메이션 신기술 발표와 LogixEdge 공식 제품·전시·세션 자료를 중심으로 확인하고 FactoryTalk Optix 제품·기술문서를 보조근거로 사용","sourceCount":7,"weekly":{"topic":"제어와 앱을 묶은 IPC형 컨트롤러","change":"별도 엣지 PC 없이 제어기에서 화면·분석 앱을 실행합니다.","check":"제어주기와 컨테이너 부하·재시작 영향을 측정합니다."}});
     reports.push({"id":"261031","date":"2026-10-31","title":"배전반에 마이크로그리드 제어를 통합한 일체형 전력 제어반","axis":"전기·제어","category":"통합형 마이크로그리드 제어반","tags":["마이크로그리드","배전반","분산에너지","독립운전","전력제어"],"summary":"지멘스가 배전, 보호, 자동제어와 마이크로그리드 운전을 한 제어반에 결합한 MIS를 10월 29일 공개했습니다. SICAM A8000이 전력망, 발전기, 배터리와 태양광 설비를 감시하고 정전 때 독립운전으로 전환합니다.","discovery":"배전·보호장치와 SICAM A8000 마이크로그리드 제어기를 공장 조립·시험된 단일 스위치보드로 표준화한 제품 구조","why":"10월 29일 발표에서 자동 독립운전, 블랙스타트, 수요반응과 다업체 분산에너지 연동을 하나의 공장 조립형 배전반에 담은 구성이 새로 공개됐습니다.","study":"MIS 구성, SICAM A8000, 독립운전, 블랙스타트, 분산에너지 연동, 계통 전환시간과 부하 우선순위 시험","companies":"지멘스 코리아는 배전·보호기기, SICAM 전력자동화와 마이크로그리드 제어 솔루션을 공급하고 국내 기술상담을 제공","poc":"시험용 배전계통에 전력망, 발전기, 배터리와 태양광 모의전원을 연결합니다. 계통전압을 정상·저전압·정전 조건으로 바꾸고 독립운전 전환시간, 중요부하 전압저하시간과 차단기 동작순서를 측정합니다. 복전 후 계통 재연결시간과 배터리 충전상태 회복시간도 기록합니다.","caution":"공개 내용: 공장 조립형 MIS 구조, SICAM A8000 제어, 자동 독립운전·블랙스타트·수요반응 기능. 현장 확인: 국내 계통연계 규정, 정격전압·차단용량, 보호협조, 전환시간과 지원 분산에너지 통신규격.","source_use":"10월 29일 지멘스 발표와 MIS 공식 제품자료를 중심으로 확인하고 SICAM 제어기 자료와 웬델 공장 적용사례를 보조근거로 사용","sourceCount":6,"weekly":{"topic":"제어기를 내장한 마이크로그리드 배전반","change":"배전·보호·독립운전 제어를 한 제어반에서 처리합니다.","check":"정전 때 전환시간과 중요부하 전압저하를 측정합니다."}});
     reports.push({"id":"261101","date":"2026-11-01","title":"EtherCAT과 TSN을 한 FPGA에서 처리하는 산업용 통신 구조","axis":"전기·제어","category":"FPGA 기반 실시간 산업통신","tags":["EtherCAT","TSN","FPGA","산업용이더넷","모션제어"],"summary":"마이크로칩이 PolarFire FPGA와 SoC에 EtherCAT 장치 제어기와 1Gbps TSN 종단 기능을 결합한 산업용 통신 구성을 10월 29일 공개했습니다. 장비 내부의 주기통신과 상위 Ethernet 시간보장 통신을 한 반도체 계열에서 구현할 수 있습니다.","discovery":"EtherCAT 장치 제어기와 IEEE 802.1 TSN 종단 기능을 PolarFire FPGA·SoC의 프로그램 가능 논리와 개발도구에 함께 제공하는 통신 설계 구조","why":"10월 29일 발표에서 10·100·1000Mbps EtherCAT IP와 1Gbps TSN IP를 같은 PolarFire 계열에 제공하고 모션·로봇·비전용 평가구성까지 공개했습니다.","study":"EtherCAT 장치 제어기, TSN 시간동기·트래픽 예약, FPGA 병렬처리, PolarFire SoC, 통신지연과 지터 측정","companies":"마이크로칩테크놀로지코리아는 FPGA·마이크로컨트롤러·산업용 Ethernet 반도체와 개발도구를 공급하고 국내 설계·기술지원을 제공","poc":"PolarFire SoC 평가보드 두 대와 TSN 스위치를 연결하고 한 보드는 제어명령을, 다른 보드는 모터상태를 전송합니다. 영상 트래픽을 100·500·900Mbps로 높이면서 1ms 제어패킷의 최대지연, 지터, 누락률과 시간동기 오차를 측정합니다. EtherCAT 구간에서는 100축 모의데이터의 주기시간과 프레임 오류를 기록합니다.","caution":"공개 내용: PolarFire용 EtherCAT·TSN IP, 지원속도, 평가보드와 개발도구. 현장 확인: EtherCAT 적합성, TSN 스위치 상호운용성, IP 라이선스, 지원 프로파일과 실제 제어주기.","source_use":"10월 29일 마이크로칩 발표와 PolarFire 산업용 엣지·TSN 제품자료를 중심으로 확인하고 EtherCAT Technology Group 구현 안내를 대조","sourceCount":7,"weekly":{"topic":"EtherCAT·TSN 통합 통신 FPGA","change":"장비 주기통신과 상위 시간보장망을 한 칩에서 처리합니다.","check":"혼잡 조건에서 제어패킷 지연·지터·누락을 측정합니다."}});
+    reports.push({"id":"261102","date":"2026-11-02","title":"접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조","axis":"전기·제어","category":"제어반 배선·통신 통합","tags":["EtherNet/IP","SPE","제어반","모터제어","접점배선"],"summary":"로크웰 오토메이션은 10월 27일 제어반 안의 푸시버튼·접촉기·과부하계전기를 전원과 통신이 함께 흐르는 평면 케이블에 연결하는 EtherNet/IP 인캐비닛 구성을 다시 공개했습니다. 최대 25m 구간에 40개 장치를 연결하며, 각 장치의 상태와 진단값을 제어기에서 직접 읽습니다.","discovery":"푸시버튼·접촉기·과부하계전기의 개별 접점선을 10BASE-T1S 통신, 장치전원과 코일전원이 함께 들어간 평면 케이블 한 가닥으로 대체하는 제어반 배선 구조","why":"최근 24시간에 새 제어 구조를 발표한 공식자료는 확인되지 않았습니다. 10월 27일 로크웰 오토메이션이 자동화 전시 핵심구성으로 인캐비닛 솔루션을 다시 제시해, 이번 주 반복해서 나타난 제어반 배선·진단 통합 흐름을 선정했습니다.","study":"10BASE-T1S 멀티드롭 통신, 평면 케이블 전원분리, 게이트웨이, 자동 장치태그, 모터기동기 진단, 통신단절 시 출력상태","companies":"로크웰 오토메이션 코리아는 산업용 제어기, 모터제어기기, EtherNet/IP 네트워크와 제어반용 인캐비닛 장치를 공급하고 국내 기술지원을 제공","poc":"동일한 모터기동 회로를 개별 접점배선과 인캐비닛 평면 케이블로 각각 구성합니다. 조립시간, 배선점 수, 오결선 수, 패널 면적을 비교하고, 모터 열동 과부하와 접촉기 코일단선을 발생시켜 제어기 진단값의 탐지시간을 측정합니다. 25m 케이블과 40개 노드 조건에서는 8시간 동안 입력 갱신주기와 누락패킷 수를 기록합니다.","caution":"공개 내용: 25m·40노드 한계, 10BASE-T1S, 장치전원·코일전원 분리, 지원 접촉기·과부하계전기·푸시버튼. 현장 확인: 기존 안전회로 분리, 통신단절 출력상태, 교체부품 재고, 배선공수와 진단시간.","source_use":"10월 27일 로크웰 자동화 전시 발표를 최근 근거로 사용하고, 2026년 5월 확장 발표·제품사양·사용설명서와 ODVA 기술자료로 구조와 수치를 대조","sourceCount":7,"weekly":{"topic":"전원·통신 공용 케이블 제어반","change":"접점별 배선을 한 가닥의 전원·통신 케이블로 바꿉니다.","check":"25m·40노드에서 갱신주기와 통신누락을 측정합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -3347,7 +3473,7 @@
       261017:[18,19,14,14,15,9],261018:[18,18,13,14,15,9],261019:[18,18,16,14,14,9],261020:[18,18,14,15,14,9],
       261021:[18,18,17,14,14,9],261022:[18,19,16,15,15,9],261023:[19,19,17,15,15,9],261024:[18,19,18,15,15,9],
       261025:[19,19,19,14,15,9],261026:[19,19,19,15,15,9],261027:[19,18,18,14,15,9],261028:[20,19,18,15,15,9],261029:[20,19,18,15,15,9],261030:[19,19,18,15,15,9]
-    ,261031:[20,19,17,15,15,9],261101:[20,19,18,15,15,9]};
+    ,261031:[20,19,17,15,15,9],261101:[20,19,18,15,15,9],261102:[19,18,14,15,15,9]};
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
