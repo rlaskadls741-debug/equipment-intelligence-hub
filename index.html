@@ -142,6 +142,118 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
+      <details class="staticReport" id="static-261103" open>
+  <summary><span class="staticDate">11.03</span><span class="staticTitle">24·48V 배터리에 직접 연결하는 회생형 이동로봇 서보드라이브</span><span class="staticAxis">설비지능화</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">AGV</span><span class="tag">AMR</span><span class="tag">회생제동</span><span class="tag">서보드라이브</span><span class="tag">PROFIsafe</span></div><p>지멘스가 24·48V 배터리에 직접 연결해 주행·조향·승강축을 제어하고 감속 에너지를 배터리로 돌려보내는 이동로봇용 저전압 서보구동계를 11월 2일 공개했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">이동로봇 저전압 회생구동 · 2026-11-03</p>
+      <h2>24·48V 배터리에 직접 연결하는 회생형 이동로봇 서보드라이브</h2>
+      <p class="newsLead">지멘스는 11월 2일 독일 에를랑겐에서 Sinamics E210 변환기와 Simotics E-1EE1 서보모터를 공개했습니다. Sinamics E210은 24V 또는 48V 배터리에 직접 연결해 이동로봇의 주행, 조향, 승강과 보조축을 제어합니다. 감속할 때 모터가 만든 전력을 배터리로 돌려보내며, PROFINET IRT와 PROFIsafe를 통해 제어명령과 안전명령을 받습니다. Simotics E-1EE1은 14비트 BiSS-C 안전엔코더와 전자명판을 갖춰 위치를 측정하고 모터 설정값을 변환기로 전달합니다.</p>
+    </header>
+    <section class="newsSection">
+      <h3>주요 내용</h3>
+      <p>Sinamics E210은 배터리 전압을 별도의 승압·강압 장치에 먼저 보내지 않고 서보모터를 구동하는 저전압 변환기입니다. 이동로봇 제작사는 같은 구동기 계열로 바퀴, 조향기구, 리프트와 보조장치를 구성할 수 있습니다.</p>
+      <p>Simotics E-1EE1 서보모터는 축높이 40~63 규격으로 제공됩니다. 모터의 전자명판에는 형식과 설정정보가 저장되며 Sinamics E210이 이를 읽어 초기 파라미터를 설정합니다. 14비트 절대엔코더와 내부 이중채널 구조는 안전기능을 SIL 2 수준까지 지원합니다.</p>
+    </section>
+    <dl class="newsFacts" aria-label="기술 핵심 정보">
+      <div><dt>기술 구조</dt><dd>24·48V 배터리, 회생형 Sinamics E210 변환기, Simotics E-1EE1 서보모터와 안전통신을 하나의 이동로봇 구동계로 구성합니다.</dd></div>
+      <div><dt>기존 방식과 차이</dt><dd>배터리와 서보드라이브 사이의 별도 전압변환기를 줄이고, 모터정보·안전엔코더·회생제동을 지멘스 자동화 환경에서 함께 설정합니다.</dd></div>
+      <div><dt>현장 적용</dt><dd>AGV와 AMR의 구동바퀴, 조향축, 승강축과 보조축을 배터리 전압에서 직접 제어합니다.</dd></div>
+      <div><dt>관련 업체</dt><dd><a class="companyLink" href="https://www.siemens.com/kr/ko.html" target="_blank" rel="noopener noreferrer">한국지멘스</a>는 산업용 드라이브, 서보모터, 자동화 소프트웨어와 이동로봇 제어 솔루션을 공급합니다.</dd></div>
+    </dl>
+    <section class="extendedArticle" aria-label="기술 상세">
+      <h2>기술 상세</h2>
+      <h3>선정 이유</h3>
+      <p>11월 2일 공식 발표에서 이동로봇 구동계의 새 결합방식이 확인됐습니다. Sinamics E210은 24·48V 배터리 직결, 회생제동, PROFINET IRT와 PROFIsafe를 한 변환기에 넣었습니다. 새 Simotics E-1EE1은 14비트 안전 절대엔코더, 전자명판과 이중채널을 같은 모터에 구성했습니다.</p>
+      <p>기존 저전압 서보제품도 배터리 구동과 안전통신을 제공했습니다. 이번 발표에서 달라진 부분은 주행·조향·승강축에 필요한 높은 과부하 능력과 회생제동, 축높이 40~63 모터, 안전 절대위치와 SIMOVE 이동로봇 소프트웨어를 한 설계체계로 묶은 점입니다.</p>
+      <h3>기술 구조와 작동 과정</h3>
+      <ol>
+        <li>24V 또는 48V 배터리가 Sinamics E210의 직류 입력에 전력을 공급합니다. 변환기는 배터리 전압을 모터의 3상 전류로 바꿉니다.</li>
+        <li>상위 제어기가 PROFINET IRT로 바퀴속도, 조향각 또는 승강위치를 보냅니다. 통신주기는 여러 축의 명령과 실제값을 같은 시간기준으로 갱신합니다.</li>
+        <li>Simotics E-1EE1의 14비트 BiSS-C 엔코더가 회전자 절대위치를 측정합니다. 변환기는 위치값과 전류값으로 모터 토크와 속도를 조절합니다.</li>
+        <li>모터 전자명판이 모터형식과 파라미터를 Sinamics E210에 전달합니다. 시운전자는 TIA Portal에서 읽힌 값을 확인하고 축의 속도·가속도·전류 제한을 설정합니다.</li>
+        <li>차량이 감속하거나 경사로를 내려갈 때 모터가 발전기로 동작합니다. Sinamics E210은 발생한 전력을 직류입력으로 보내 배터리가 허용하는 범위에서 회수합니다.</li>
+        <li>안전제어기는 PROFIsafe로 안전정지 명령을 전달합니다. 변환기와 엔코더의 이중채널이 명령과 실제 움직임을 감시해 SIL 2 안전기능을 수행합니다.</li>
+        <li>SIMOVE는 차량제어, 안전속도, 항법과 상위 물류제어 기능을 모듈로 제공합니다. 제작사는 TIA Portal 프로젝트에 구동축과 차량기능을 함께 구성합니다.</li>
+      </ol>
+      <h3>기존 방식과 달라진 점</h3>
+      <ul>
+        <li>기존 이동로봇은 배터리 전압을 별도 직류변환기로 조정한 뒤 서보드라이브에 공급했습니다. E210은 24·48V 배터리에 직접 연결해 전력변환 단계를 줄입니다.</li>
+        <li>기존 구동계는 변환기, 모터, 엔코더와 안전기능을 제조사별 도구에서 설정했습니다. 이번 구성은 TIA Portal에서 드라이브와 안전통신을 함께 설정합니다.</li>
+        <li>기존 모터교체 후에는 모터 정수와 엔코더 설정을 수동 입력했습니다. E-1EE1의 전자명판은 모터정보를 변환기에 전달해 입력항목을 줄입니다.</li>
+        <li>기존 감속은 제동저항에서 에너지를 열로 소비하는 경우가 많았습니다. 회생형 E210은 배터리가 받을 수 있는 조건에서 감속에너지를 직류입력으로 돌려보냅니다.</li>
+      </ul>
+      <div class="advLimit" aria-label="장점과 한계">
+        <section><h4>장점</h4><ul>
+          <li>배터리 직결 구조는 별도 전압변환기, 배선과 설치공간을 줄여 이동로봇 구동함을 단순화합니다.</li>
+          <li>회생제동은 감속과 하강 때 발생한 전력을 배터리로 회수해 주행시간과 열관리에 유리합니다.</li>
+          <li>전자명판이 모터정보를 자동으로 읽어 모터교체와 초기 시운전 때 수동입력 오류를 줄입니다.</li>
+          <li>PROFINET IRT와 PROFIsafe가 일반 모션데이터와 안전데이터를 같은 산업통신망에서 전달합니다.</li>
+          <li>절대엔코더는 전원을 다시 켠 뒤에도 축 위치를 제공해 원점복귀 이동을 줄일 수 있습니다.</li>
+        </ul></section>
+        <section><h4>한계</h4><ul>
+          <li>배터리가 회생전력을 받을 수 없는 완전충전 상태에서는 제동에너지를 처리할 별도 대책이 필요합니다.</li>
+          <li>저전압에서 같은 출력을 내려면 전류가 커집니다. 케이블 굵기, 커넥터 정격과 변환기 냉각을 축별 최대전류에 맞춰 설계해야 합니다.</li>
+          <li>SIL 2는 구동부품의 지원수준입니다. 차량 전체의 안전등급은 스캐너, 제동장치, 제어로직과 기계구조를 포함해 평가합니다.</li>
+          <li>PROFINET IRT와 PROFIsafe를 적용하려면 상위 제어기, 네트워크 장치와 엔지니어링 도구가 해당 기능을 지원해야 합니다.</li>
+        </ul></section>
+      </div>
+      <h3>공개 적용 사례</h3>
+      <p>지멘스가 공개한 b-drives의 2026년 AGV 적용사례는 Simotics E-1EE1을 바퀴모듈에 사용했습니다. 공급사 자료는 eWheel 한 개가 최대 1,200kg 하중을 지지하고 정격의 최대 3배 과부하로 경사로와 불균일 바닥에서 출발한다고 설명합니다. 적용 범위는 E-1EE1 모터와 기존 구동조합입니다. E210 변환기의 회생효율과 정지성능은 별도 시험항목입니다.</p>
+      <p>SIMOVE 공식 구성은 차량제어, 레이저 기반 항법, 안전속도 감시와 다업체 차량군 관리를 모듈로 제공합니다. Sinamics E210은 이 구성에서 주행·조향·승강축의 구동기 역할을 맡습니다.</p>
+      <h3>공정·PC 제어와 연결해 볼 부분</h3>
+      <p>PC 기반 물류제어는 작업지시와 목적지를 차량제어기로 보내고, 차량제어기는 각 바퀴와 조향축을 짧은 주기로 제어합니다. E210은 축제어와 안전정지를 담당하고 PC는 차량상태, 배터리잔량, 위치와 작업완료를 상위 통신으로 수집하는 구조가 적합합니다.</p>
+      <p>도입검토는 전력과 정지성능을 분리해 진행합니다. 전력시험은 배터리 전압, 모터토크와 회생전력을 측정합니다. 안전시험은 속도별 정지시간·정지거리와 통신단절 후 출력상태를 측정합니다.</p>
+      <h3>관련 업체</h3>
+      <p><a class="companyLink" href="https://www.siemens.com/kr/ko.html" target="_blank" rel="noopener noreferrer">한국지멘스</a>는 Sinamics 드라이브, Simotics 모터, SIMATIC 제어기, TIA Portal과 SIMOVE 이동로봇 소프트웨어를 공급합니다. 국내 조직은 제품선정, 안전기능과 자동화 통합을 지원합니다.</p>
+      <p><a class="companyLink" href="https://www.b-drives.com/" target="_blank" rel="noopener noreferrer">b-drives</a>는 AGV와 AMR용 바퀴모듈과 저전압 구동계를 개발합니다. 지멘스 Simotics E-1EE1을 적용한 eWheel 사례를 제공했습니다.</p>
+      <h3>사전검증 순서</h3>
+      <ol>
+        <li>48V 배터리 모의전원, Sinamics E210, E-1EE1 모터와 모터시험기를 연결합니다. 전원전압을 42V·48V·54V로 설정하고 무부하 대기전력과 기동전류를 측정합니다.</li>
+        <li>모터시험기 부하를 정격토크의 0%·50%·100%로 바꿉니다. 각 조건에서 500rpm·1,000rpm·1,500rpm을 10분씩 운전하고 입력전력, 출력전력, 효율과 권선온도를 기록합니다.</li>
+        <li>1,500rpm에서 0rpm까지 1초·2초·3초로 감속합니다. 감속별 배터리 유입전력, 회수에너지와 직류전압 최고값을 측정합니다.</li>
+        <li>배터리 모의전원이 회생전력을 받는 조건과 받지 않는 조건을 만듭니다. 두 조건에서 감속시간, 과전압 발생과 보호정지 여부를 비교합니다.</li>
+        <li>시험차량을 0.5m/s·1.0m/s·1.5m/s로 주행시킵니다. PROFIsafe 안전정지 명령을 보내 명령수신부터 토크차단까지의 시간, 정지거리와 최종 위치오차를 20회씩 측정합니다.</li>
+        <li>PROFINET 케이블을 10초간 분리하는 시험을 20회 실시합니다. 통신고장 검출시간, 축 출력상태, 기계제동 동작과 재연결시간을 기록합니다.</li>
+        <li>같은 형식의 예비모터로 교체합니다. 전자명판 인식시간, 자동으로 읽은 파라미터, 수동입력 항목과 정상운전 복귀시간을 기록합니다.</li>
+        <li>주행·조향·승강 세 축을 동시에 운전합니다. 8시간 동안 제어주기, 위치오차, 통신누락, 변환기 최고온도와 배터리 소비전력을 기록합니다.</li>
+      </ol>
+    </section>
+    <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+      <li id="term-261103-1"><b>AGV (Automated Guided Vehicle)</b><span>자기선, 표식 또는 지도에 따라 자재를 운반하는 무인운반차입니다.</span></li>
+      <li id="term-261103-2"><b>AMR (Autonomous Mobile Robot)</b><span>센서와 지도를 사용해 위치를 계산하고 장애물을 피해 경로를 바꾸는 자율이동로봇입니다.</span></li>
+      <li id="term-261103-3"><b>ELV (Extra-Low Voltage)</b><span>감전위험을 낮추기 위해 제한한 저전압 범위로, 이번 제품은 24V와 48V 직류를 사용합니다.</span></li>
+      <li id="term-261103-4"><b>Sinamics E210 (제품명)</b><span>24·48V 배터리로 이동로봇의 서보축을 제어하고 감속에너지를 회수하는 지멘스 변환기입니다.</span></li>
+      <li id="term-261103-5"><b>Simotics E-1EE1 (제품명)</b><span>저전압 이동장치용으로 설계된 지멘스 서보모터 제품군입니다.</span></li>
+      <li id="term-261103-6"><b>PROFINET IRT (Process Field Network Isochronous Real Time)</b><span>여러 모션축의 데이터가 정해진 통신주기에 맞춰 전달되도록 시간을 예약하는 산업용 Ethernet 통신입니다.</span></li>
+      <li id="term-261103-7"><b>PROFIsafe (PROFINET Safety Profile)</b><span>PROFINET에서 비상정지와 안전속도 같은 안전데이터를 오류검사와 함께 전달하는 통신규격입니다.</span></li>
+      <li id="term-261103-8"><b>BiSS-C (Bidirectional Serial Synchronous Continuous)</b><span>엔코더가 절대위치와 상태정보를 드라이브에 직렬로 보내는 디지털 통신방식입니다.</span></li>
+      <li id="term-261103-9"><b>SIL (Safety Integrity Level)</b><span>안전기능이 요구될 때 실패할 가능성을 단계로 표시하는 IEC 61508 기준입니다.</span></li>
+      <li id="term-261103-10"><b>회생제동</b><span>감속할 때 모터를 발전기로 사용해 운동에너지를 전기에너지로 바꾸고 전원으로 돌려보내는 제동방식입니다.</span></li>
+      <li id="term-261103-11"><b>서보드라이브</b><span>엔코더 위치와 목표값을 비교해 모터 전류, 속도와 위치를 정밀하게 제어하는 장치입니다.</span></li>
+      <li id="term-261103-12"><b>절대엔코더</b><span>전원을 껐다 켠 뒤에도 축의 절대위치를 식별할 수 있는 위치센서입니다.</span></li>
+      <li id="term-261103-13"><b>전자명판</b><span>모터형식, 정격과 설정정보를 전자적으로 저장해 변환기가 자동으로 읽게 하는 기능입니다.</span></li>
+      <li id="term-261103-14"><b>TIA Portal (Totally Integrated Automation Portal)</b><span>지멘스 제어기, 드라이브, 운전화면과 안전기능을 한 프로젝트에서 설정하는 엔지니어링 소프트웨어입니다.</span></li>
+      <li id="term-261103-15"><b>SIMOVE (제품명)</b><span>차량제어, 항법, 안전속도 감시와 차량군 관리를 제공하는 지멘스 이동로봇 소프트웨어 제품군입니다.</span></li>
+      <li id="term-261103-16"><b>SIMATIC (제품군명)</b><span>지멘스의 산업용 제어기, 입출력 장치와 자동화 시스템 제품군입니다.</span></li>
+      <li id="term-261103-20"><b>PC (Personal Computer)</b><span>작업지시, 차량상태, 배터리와 물류흐름을 상위에서 관리하는 범용 컴퓨터입니다.</span></li>
+      <li id="term-261103-21"><b>IEC (International Electrotechnical Commission)</b><span>전기·전자·안전 분야의 국제표준을 제정하는 기구입니다.</span></li>
+      <li id="term-261103-22"><b>rpm (revolutions per minute)</b><span>모터축이 1분 동안 회전하는 횟수를 나타내는 속도단위입니다.</span></li>
+      <li id="term-261103-23"><b>b-drives (회사명)</b><span>독일에서 이동로봇용 전동바퀴와 저전압 드라이브를 개발하는 업체입니다.</span></li>
+    </ol></section></details>
+    <section class="sourcesSection"><h3>공식 근거자료</h3><ol>
+      <li><a href="https://press.siemens.com/global/en/pressrelease/siemens-launches-new-elv-drive-solution-agvs-and-mobile-robotics" target="_blank" rel="noopener noreferrer">Siemens, AGV·이동로봇용 ELV 구동계 발표</a> · 2026-11-02</li>
+      <li><a href="https://www.siemens.com/en-gb/products/simove/" target="_blank" rel="noopener noreferrer">Siemens, SIMOVE 이동로봇 자동화 제품자료</a> · 2026-11-03 확인</li>
+      <li><a href="https://press.siemens.com/global/en/pressrelease/versatile-seamless-across-system-safety-integrated-new-servo-drive-system-protective" target="_blank" rel="noopener noreferrer">Siemens, 기존 24·48V SIMATIC Micro-Drive 발표</a> · 2019-02-18</li>
+      <li><a href="https://cache.industry.siemens.com/dl/files/242/109999242/att_1356076/v1/1EE1_1EV1_op-instr_0126_en-US.pdf" target="_blank" rel="noopener noreferrer">Siemens, SIMOTICS E-1EE1 운전설명서</a> · 2026-01</li>
+      <li><a href="https://references.siemens.com/en/reference/-b-drives-gmbh?id=46023" target="_blank" rel="noopener noreferrer">Siemens, b-drives 이동로봇 구동 적용사례</a> · 2026</li>
+      <li><a href="https://sieportal.siemens.com/en-id/products-services/10597307" target="_blank" rel="noopener noreferrer">Siemens SiePortal, SIMOTICS E 제품정보</a> · 2026-11-03 확인</li>
+    </ol></section>
+    <footer class="articleFooter"><p>작성자 김남인 · 선행제어기술팀 미래기술파트</p></footer>
+  </div></article>
+</details>
+
       <details class="staticReport" id="static-261102" open>
   <summary><span class="staticDate">11.02</span><span class="staticTitle">접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조</span><span class="staticAxis">전기·제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">EtherNet/IP</span><span class="tag">SPE</span><span class="tag">제어반</span><span class="tag">모터제어</span><span class="tag">접점배선</span></div><p>로크웰 오토메이션이 제어반의 푸시버튼·접촉기·과부하계전기를 전원과 통신이 함께 흐르는 평면 케이블에 연결하는 구성을 10월 27일 자동화 전시 핵심기술로 제시했습니다.</p></div>
@@ -3115,6 +3227,7 @@
     reports.push({"id":"261031","date":"2026-10-31","title":"배전반에 마이크로그리드 제어를 통합한 일체형 전력 제어반","axis":"전기·제어","category":"통합형 마이크로그리드 제어반","tags":["마이크로그리드","배전반","분산에너지","독립운전","전력제어"],"summary":"지멘스가 배전, 보호, 자동제어와 마이크로그리드 운전을 한 제어반에 결합한 MIS를 10월 29일 공개했습니다. SICAM A8000이 전력망, 발전기, 배터리와 태양광 설비를 감시하고 정전 때 독립운전으로 전환합니다.","discovery":"배전·보호장치와 SICAM A8000 마이크로그리드 제어기를 공장 조립·시험된 단일 스위치보드로 표준화한 제품 구조","why":"10월 29일 발표에서 자동 독립운전, 블랙스타트, 수요반응과 다업체 분산에너지 연동을 하나의 공장 조립형 배전반에 담은 구성이 새로 공개됐습니다.","study":"MIS 구성, SICAM A8000, 독립운전, 블랙스타트, 분산에너지 연동, 계통 전환시간과 부하 우선순위 시험","companies":"지멘스 코리아는 배전·보호기기, SICAM 전력자동화와 마이크로그리드 제어 솔루션을 공급하고 국내 기술상담을 제공","poc":"시험용 배전계통에 전력망, 발전기, 배터리와 태양광 모의전원을 연결합니다. 계통전압을 정상·저전압·정전 조건으로 바꾸고 독립운전 전환시간, 중요부하 전압저하시간과 차단기 동작순서를 측정합니다. 복전 후 계통 재연결시간과 배터리 충전상태 회복시간도 기록합니다.","caution":"공개 내용: 공장 조립형 MIS 구조, SICAM A8000 제어, 자동 독립운전·블랙스타트·수요반응 기능. 현장 확인: 국내 계통연계 규정, 정격전압·차단용량, 보호협조, 전환시간과 지원 분산에너지 통신규격.","source_use":"10월 29일 지멘스 발표와 MIS 공식 제품자료를 중심으로 확인하고 SICAM 제어기 자료와 웬델 공장 적용사례를 보조근거로 사용","sourceCount":6,"weekly":{"topic":"제어기를 내장한 마이크로그리드 배전반","change":"배전·보호·독립운전 제어를 한 제어반에서 처리합니다.","check":"정전 때 전환시간과 중요부하 전압저하를 측정합니다."}});
     reports.push({"id":"261101","date":"2026-11-01","title":"EtherCAT과 TSN을 한 FPGA에서 처리하는 산업용 통신 구조","axis":"전기·제어","category":"FPGA 기반 실시간 산업통신","tags":["EtherCAT","TSN","FPGA","산업용이더넷","모션제어"],"summary":"마이크로칩이 PolarFire FPGA와 SoC에 EtherCAT 장치 제어기와 1Gbps TSN 종단 기능을 결합한 산업용 통신 구성을 10월 29일 공개했습니다. 장비 내부의 주기통신과 상위 Ethernet 시간보장 통신을 한 반도체 계열에서 구현할 수 있습니다.","discovery":"EtherCAT 장치 제어기와 IEEE 802.1 TSN 종단 기능을 PolarFire FPGA·SoC의 프로그램 가능 논리와 개발도구에 함께 제공하는 통신 설계 구조","why":"10월 29일 발표에서 10·100·1000Mbps EtherCAT IP와 1Gbps TSN IP를 같은 PolarFire 계열에 제공하고 모션·로봇·비전용 평가구성까지 공개했습니다.","study":"EtherCAT 장치 제어기, TSN 시간동기·트래픽 예약, FPGA 병렬처리, PolarFire SoC, 통신지연과 지터 측정","companies":"마이크로칩테크놀로지코리아는 FPGA·마이크로컨트롤러·산업용 Ethernet 반도체와 개발도구를 공급하고 국내 설계·기술지원을 제공","poc":"PolarFire SoC 평가보드 두 대와 TSN 스위치를 연결하고 한 보드는 제어명령을, 다른 보드는 모터상태를 전송합니다. 영상 트래픽을 100·500·900Mbps로 높이면서 1ms 제어패킷의 최대지연, 지터, 누락률과 시간동기 오차를 측정합니다. EtherCAT 구간에서는 100축 모의데이터의 주기시간과 프레임 오류를 기록합니다.","caution":"공개 내용: PolarFire용 EtherCAT·TSN IP, 지원속도, 평가보드와 개발도구. 현장 확인: EtherCAT 적합성, TSN 스위치 상호운용성, IP 라이선스, 지원 프로파일과 실제 제어주기.","source_use":"10월 29일 마이크로칩 발표와 PolarFire 산업용 엣지·TSN 제품자료를 중심으로 확인하고 EtherCAT Technology Group 구현 안내를 대조","sourceCount":7,"weekly":{"topic":"EtherCAT·TSN 통합 통신 FPGA","change":"장비 주기통신과 상위 시간보장망을 한 칩에서 처리합니다.","check":"혼잡 조건에서 제어패킷 지연·지터·누락을 측정합니다."}});
     reports.push({"id":"261102","date":"2026-11-02","title":"접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조","axis":"전기·제어","category":"제어반 배선·통신 통합","tags":["EtherNet/IP","SPE","제어반","모터제어","접점배선"],"summary":"로크웰 오토메이션은 10월 27일 제어반 안의 푸시버튼·접촉기·과부하계전기를 전원과 통신이 함께 흐르는 평면 케이블에 연결하는 EtherNet/IP 인캐비닛 구성을 다시 공개했습니다. 최대 25m 구간에 40개 장치를 연결하며, 각 장치의 상태와 진단값을 제어기에서 직접 읽습니다.","discovery":"푸시버튼·접촉기·과부하계전기의 개별 접점선을 10BASE-T1S 통신, 장치전원과 코일전원이 함께 들어간 평면 케이블 한 가닥으로 대체하는 제어반 배선 구조","why":"최근 24시간에 새 제어 구조를 발표한 공식자료는 확인되지 않았습니다. 10월 27일 로크웰 오토메이션이 자동화 전시 핵심구성으로 인캐비닛 솔루션을 다시 제시해, 이번 주 반복해서 나타난 제어반 배선·진단 통합 흐름을 선정했습니다.","study":"10BASE-T1S 멀티드롭 통신, 평면 케이블 전원분리, 게이트웨이, 자동 장치태그, 모터기동기 진단, 통신단절 시 출력상태","companies":"로크웰 오토메이션 코리아는 산업용 제어기, 모터제어기기, EtherNet/IP 네트워크와 제어반용 인캐비닛 장치를 공급하고 국내 기술지원을 제공","poc":"동일한 모터기동 회로를 개별 접점배선과 인캐비닛 평면 케이블로 각각 구성합니다. 조립시간, 배선점 수, 오결선 수, 패널 면적을 비교하고, 모터 열동 과부하와 접촉기 코일단선을 발생시켜 제어기 진단값의 탐지시간을 측정합니다. 25m 케이블과 40개 노드 조건에서는 8시간 동안 입력 갱신주기와 누락패킷 수를 기록합니다.","caution":"공개 내용: 25m·40노드 한계, 10BASE-T1S, 장치전원·코일전원 분리, 지원 접촉기·과부하계전기·푸시버튼. 현장 확인: 기존 안전회로 분리, 통신단절 출력상태, 교체부품 재고, 배선공수와 진단시간.","source_use":"10월 27일 로크웰 자동화 전시 발표를 최근 근거로 사용하고, 2026년 5월 확장 발표·제품사양·사용설명서와 ODVA 기술자료로 구조와 수치를 대조","sourceCount":7,"weekly":{"topic":"전원·통신 공용 케이블 제어반","change":"접점별 배선을 한 가닥의 전원·통신 케이블로 바꿉니다.","check":"25m·40노드에서 갱신주기와 통신누락을 측정합니다."}});
+    reports.push({"id":"261103","date":"2026-11-03","title":"24·48V 배터리에 직접 연결하는 회생형 이동로봇 서보드라이브","axis":"설비지능화","category":"이동로봇 저전압 회생구동","tags":["AGV","AMR","회생제동","서보드라이브","PROFIsafe"],"summary":"지멘스는 11월 2일 24·48V 배터리에 직접 연결하는 Sinamics E210 변환기와 Simotics E-1EE1 서보모터를 공개했습니다. 주행·조향·승강축을 한 저전압 구동계로 제어하고, 감속 에너지를 배터리로 돌려보내며 안전통신과 절대위치 엔코더를 함께 제공합니다.","discovery":"24·48V 배터리 직결 회생형 변환기, 14비트 안전 절대엔코더 서보모터, PROFINET IRT·PROFIsafe와 전자명판 자동설정을 이동로봇 구동계로 통합한 구조","why":"11월 2일 공식 발표에서 별도 전압변환기 없이 배터리에 직접 연결하고, 주행·조향·승강축의 회생제동·안전통신·모터 자동설정을 하나의 구동계로 제공한 변화가 확인됐습니다.","study":"24·48V 저전압 구동, 회생제동, PROFINET IRT, PROFIsafe, 14비트 BiSS-C 안전엔코더, 전자명판, 이동로봇 정지거리","companies":"한국지멘스 디지털 인더스트리는 산업용 드라이브, 서보모터, 자동화 소프트웨어와 이동로봇 제어 솔루션을 공급하고 국내 영업·기술지원을 제공","poc":"48V 배터리 모의전원과 모터 시험기를 연결합니다. 0·50·100% 부하에서 가속전류, 축 응답시간과 효율을 기록하고 감속 때 배터리로 돌아간 전력을 측정합니다. 0.5·1.0·1.5m/s에서 안전정지 명령을 보내 정지시간·정지거리·위치오차를 비교합니다.","caution":"공개 내용: 24·48V 직결, 회생형 변환기, PROFINET IRT·PROFIsafe, 14비트 안전엔코더, SIL 2 지원. 현장 확인: 정격출력, 회생전력 수용조건, 배터리 전압범위, 축별 정지거리와 열상승.","source_use":"11월 2일 지멘스 공식 발표를 중심으로 SIMOVE 제품자료, SIMOTICS E 제품자료·운전설명서와 2026년 이동로봇 적용사례를 대조","sourceCount":6,"weekly":{"topic":"배터리 직결 이동로봇 서보구동","change":"전압변환기 없이 24·48V 배터리에서 서보축을 구동합니다.","check":"속도별 정지거리와 감속 회생전력을 측정합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -3473,7 +3586,7 @@
       261017:[18,19,14,14,15,9],261018:[18,18,13,14,15,9],261019:[18,18,16,14,14,9],261020:[18,18,14,15,14,9],
       261021:[18,18,17,14,14,9],261022:[18,19,16,15,15,9],261023:[19,19,17,15,15,9],261024:[18,19,18,15,15,9],
       261025:[19,19,19,14,15,9],261026:[19,19,19,15,15,9],261027:[19,18,18,14,15,9],261028:[20,19,18,15,15,9],261029:[20,19,18,15,15,9],261030:[19,19,18,15,15,9]
-    ,261031:[20,19,17,15,15,9],261101:[20,19,18,15,15,9],261102:[19,18,14,15,15,9]};
+    ,261031:[20,19,17,15,15,9],261101:[20,19,18,15,15,9],261102:[19,18,14,15,15,9],261103:[20,19,18,15,15,9]};
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=92?'A+':n>=88?'A':n>=84?'B+':n>=80?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
