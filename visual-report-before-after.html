@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>리포트 시각자료 적용 전후 비교</title>
+  <style>
+    :root{--ink:#222;--muted:#666;--line:#c9c9c6;--paper:#fff;--soft:#f3f3f1;--accent:#741f2c;--dark:#292929}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;background:#ececea;color:var(--ink);font-family:Arial,"Malgun Gothic",sans-serif;font-size:15px;line-height:1.7}
+    a{color:#5e1722;text-underline-offset:3px}
+    .bar{background:var(--dark);color:#fff}.bar-inner{max-width:1120px;margin:auto;padding:13px 24px;display:flex;justify-content:space-between;gap:20px}.bar a{color:#fff}
+    main{max-width:1120px;margin:24px auto;background:var(--paper);border:1px solid #d3d3d0}
+    header.page{padding:38px clamp(22px,6vw,70px) 28px;border-bottom:1px solid var(--line)}
+    .kicker{margin:0 0 7px;color:var(--accent);font-weight:700}
+    h1{font-size:clamp(28px,4vw,42px);line-height:1.25;letter-spacing:-.035em;margin:0 0 14px}
+    .lead{font-size:17px;margin:0;max-width:920px}
+    .change-summary{padding:26px clamp(22px,6vw,70px);background:var(--soft);border-bottom:1px solid var(--line)}
+    .change-summary h2{margin:0 0 14px;font-size:21px}
+    .change-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .change{background:#fff;border:1px solid var(--line);padding:15px}.change b{display:block;color:var(--accent);margin-bottom:4px}
+    .switcher{position:sticky;top:0;z-index:5;display:flex;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:0 clamp(22px,6vw,70px)}
+    .switcher button{flex:1;border:0;border-bottom:4px solid transparent;background:#fff;padding:16px 10px;font:700 15px Arial,"Malgun Gothic",sans-serif;cursor:pointer}
+    .switcher button[aria-selected="true"]{border-color:var(--accent);color:var(--accent);background:#fafafa}
+    .panel{padding:34px clamp(22px,6vw,70px) 54px}.panel[hidden]{display:none}
+    .mode{display:inline-block;background:#333;color:#fff;padding:5px 10px;font-size:12px;font-weight:700;margin-bottom:12px}
+    .mode.after{background:var(--accent)}
+    .article-title{font-size:29px;line-height:1.35;margin:0 0 12px}.article-lead{font-size:17px;margin:0 0 25px}
+    h2.section{font-size:22px;margin:38px 0 12px;padding-bottom:8px;border-bottom:2px solid #333}
+    h3{font-size:18px;margin:26px 0 10px}
+    p{margin:0 0 15px}ol,ul{padding-left:23px}li{margin:7px 0}
+    .current-note{border-left:4px solid #777;background:#f4f4f2;padding:13px 15px;margin:20px 0 30px}
+    figure{margin:25px 0 36px;border:1px solid #aaa;background:#fafafa}
+    .fig-head{padding:13px 16px;background:#ededeb;border-bottom:1px solid #bbb;display:flex;justify-content:space-between;gap:15px}
+    .fig-head strong{font-size:16px}.fig-head span{font-size:12px;color:#666;text-align:right}
+    .canvas{padding:18px;overflow-x:auto}svg{display:block;width:100%;height:auto;min-width:760px}
+    figcaption{padding:12px 16px;background:#fff;border-top:1px solid #ccc;color:#555;font-size:13px}
+    .read{margin-top:-23px;margin-bottom:34px;padding:12px 15px;background:#f4f4f2;border-left:4px solid var(--accent);font-size:14px}
+    .test-list{counter-reset:item;list-style:none;padding:0}.test-list li{display:grid;grid-template-columns:35px 1fr;gap:10px;border-top:1px solid #ccc;padding:12px 0}.test-list li:before{counter-increment:item;content:counter(item);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700}
+    .diff{margin:0 clamp(22px,6vw,70px) 50px;border-top:3px solid #333;padding-top:24px}.diff h2{font-size:22px}.diff table{width:100%;border-collapse:collapse}.diff th,.diff td{border:1px solid #bbb;padding:12px;text-align:left;vertical-align:top}.diff th{background:#eee}
+    .sources{font-size:13px;color:#555}.sources li{margin:5px 0}
+    footer{padding:20px clamp(22px,6vw,70px);background:#292929;color:#ddd;font-size:12px}
+    @media(max-width:720px){body{font-size:14px}.bar-inner{padding:11px 15px}main{margin:0;border:0}header.page,.change-summary,.panel{padding-left:18px;padding-right:18px}.change-grid{grid-template-columns:1fr}.switcher{padding:0}.switcher button{font-size:14px}.article-title{font-size:24px}.fig-head{display:block}.fig-head span{display:block;text-align:left;margin-top:3px}.canvas{padding:10px}.diff{margin-left:18px;margin-right:18px;overflow-x:auto}.diff table{min-width:660px}}
+  </style>
+</head>
+<body>
+  <div class="bar"><div class="bar-inner"><span>설비 지능화 기술동향 · 수정 전후 예시</span><a href="./">허브로 돌아가기</a></div></div>
+  <main>
+    <header class="page">
+      <p class="kicker">11월 1일 리포트 적용 예시</p>
+      <h1>텍스트 중심 설명을 ‘기존 대비 무엇이 달라졌는지’ 보이는 기사로 변경</h1>
+      <p class="lead">같은 리포트 내용을 두 화면으로 구성했습니다. ‘현재 방식’은 기존 본문처럼 문장으로 기술 구조를 설명하고, ‘수정 후’는 첫 번째 그림에서 기존 하드웨어와 새 구조를 비교한 뒤 작동 흐름과 시험 위치를 추가합니다.</p>
+    </header>
+
+    <section class="change-summary">
+      <h2>수정 후 달라지는 점</h2>
+      <div class="change-grid">
+        <div class="change"><b>필수 비교도 1개</b>모든 리포트에서 기존 방식과 새 방식을 같은 화면에 표시합니다.</div>
+        <div class="change"><b>작동 흐름도 추가</b>장치·신호·전원·데이터의 이동 순서를 선과 화살표로 보여줍니다.</div>
+        <div class="change"><b>측정 위치 표시</b>사전검증 문장의 측정 장비와 위치를 그림 번호에 연결합니다.</div>
+      </div>
+    </section>
+
+    <nav class="switcher" aria-label="수정 전후 화면 선택">
+      <button id="tab-before" type="button" aria-selected="true" aria-controls="before">현재 방식</button>
+      <button id="tab-after" type="button" aria-selected="false" aria-controls="after">수정 후</button>
+    </nav>
+
+    <section class="panel" id="before" role="tabpanel" aria-labelledby="tab-before">
+      <span class="mode">현재 방식 · 글 중심</span>
+      <h2 class="article-title">EtherCAT과 TSN을 한 FPGA에서 처리하는 산업용 통신 구조</h2>
+      <p class="article-lead">마이크로칩은 10월 29일 PolarFire FPGA와 SoC용 산업통신 구성을 공개했습니다. Beckhoff EtherCAT IP는 장치 통신을 처리하고, 마이크로칩 TSN IP는 1Gbps Ethernet에서 제어패킷의 전송시각과 우선순위를 관리합니다.</p>
+      <div class="current-note"><b>현재 독자가 해야 하는 일</b><br>아래 문장을 읽은 뒤 EtherCAT 장치, FPGA 논리영역, 프로세서와 TSN 상위망의 위치를 머릿속으로 다시 배치해야 합니다.</div>
+      <h2 class="section">기술 구조와 작동 과정</h2>
+      <p>EtherCAT MainDevice가 전송한 프레임이 장비의 Ethernet 포트로 들어옵니다. PolarFire FPGA에 구현된 EtherCAT 장치 제어기가 프레임을 통과시키면서 해당 장비의 출력데이터를 읽고 입력데이터를 기록합니다.</p>
+      <p>FPGA 논리영역은 EtherCAT 프레임 처리와 모터제어, 센서 전처리 또는 영상입력 회로를 병렬로 실행합니다. PolarFire SoC의 프로세서는 EtherCAT 공정데이터를 장비상태, 알람과 생산정보로 변환합니다.</p>
+      <p>Linux 기반 TSN 소프트웨어가 이 데이터를 상위 Ethernet 망으로 전달합니다. PTP는 TSN 장치와 스위치의 시계를 맞추고, 시간인식 스케줄러는 제어패킷이 전송될 시간구간을 예약합니다.</p>
+      <h2 class="section">기존 방식과 달라진 점</h2>
+      <ul>
+        <li>기존 장비는 EtherCAT 장치 제어기, 일반 프로세서와 상위망 통신칩을 각각 배치했습니다.</li>
+        <li>새 구성은 EtherCAT 장치 제어기와 TSN 종단기능을 PolarFire 계열의 프로그램 가능 논리와 프로세서에 함께 배치합니다.</li>
+        <li>통신회로를 FPGA에서 병렬로 처리하므로 CPU 응용프로그램의 실행시간 변화와 통신 프레임 처리의 영향을 분리할 수 있습니다.</li>
+      </ul>
+      <h2 class="section">사전검증 순서</h2>
+      <ol>
+        <li>EtherCAT 장치와 TSN 상위망을 평가보드에 연결하고 통신주기와 시계오차를 기록합니다.</li>
+        <li>영상·로그 트래픽을 증가시키면서 EtherCAT 주기지연과 TSN 제어패킷 지연을 측정합니다.</li>
+        <li>EtherCAT 또는 TSN 케이블을 분리하고 고장 검출시간과 복구시간을 측정합니다.</li>
+      </ol>
+    </section>
+
+    <section class="panel" id="after" role="tabpanel" aria-labelledby="tab-after" hidden>
+      <span class="mode after">수정 후 · 기존 대비 시각화</span>
+      <h2 class="article-title">EtherCAT과 TSN을 한 FPGA에서 처리하는 산업용 통신 구조</h2>
+      <p class="article-lead">마이크로칩은 10월 29일 PolarFire FPGA와 SoC용 산업통신 구성을 공개했습니다. Beckhoff EtherCAT IP는 장치 통신을 처리하고, 마이크로칩 TSN IP는 1Gbps Ethernet에서 제어패킷의 전송시각과 우선순위를 관리합니다.</p>
+
+      <h2 class="section">기존 방식과 새 구조 비교</h2>
+      <figure>
+        <div class="fig-head"><strong>그림 1. 분리형 통신 하드웨어와 PolarFire 통합 구조</strong><span>모든 리포트에 들어가는 필수 비교도</span></div>
+        <div class="canvas">
+          <svg viewBox="0 0 960 410" role="img" aria-labelledby="f1t f1d">
+            <title id="f1t">기존 분리형 EtherCAT·TSN 구성과 PolarFire 통합 구성 비교</title>
+            <desc id="f1d">왼쪽은 EtherCAT 통신칩, CPU, TSN 통신칩이 분리된 구조이고 오른쪽은 PolarFire SoC 내부 FPGA 논리와 프로세서에 두 통신기능이 함께 배치된 구조</desc>
+            <defs><marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+            <rect x="15" y="20" width="445" height="360" fill="#fff" stroke="#999"/>
+            <text x="35" y="53" font-size="20" font-weight="700">기존: 통신 기능별 하드웨어 분리</text>
+            <rect x="45" y="116" width="105" height="72" fill="#f4f4f2" stroke="#333"/><text x="97" y="145" text-anchor="middle" font-size="14">EtherCAT</text><text x="97" y="166" text-anchor="middle" font-size="13">전용 통신부</text>
+            <rect x="185" y="116" width="105" height="72" fill="#f4f4f2" stroke="#333"/><text x="237" y="145" text-anchor="middle" font-size="14">일반 CPU</text><text x="237" y="166" text-anchor="middle" font-size="13">데이터 변환</text>
+            <rect x="325" y="116" width="105" height="72" fill="#f4f4f2" stroke="#333"/><text x="377" y="145" text-anchor="middle" font-size="14">TSN</text><text x="377" y="166" text-anchor="middle" font-size="13">통신 처리부</text>
+            <line x1="150" y1="152" x2="182" y2="152" stroke="#555" stroke-width="2" marker-end="url(#a1)"/><line x1="290" y1="152" x2="322" y2="152" stroke="#555" stroke-width="2" marker-end="url(#a1)"/>
+            <rect x="45" y="245" width="385" height="70" fill="#fff" stroke="#777"/><text x="237" y="272" text-anchor="middle" font-size="14">장치 간 인터페이스·보드 배선·개별 설정 필요</text><text x="237" y="296" text-anchor="middle" font-size="13" fill="#666">통신 기능이 늘면 부품과 연결지점도 증가</text>
+            <text x="35" y="92" font-size="12" fill="#666">서보·I/O</text><line x1="38" y1="99" x2="71" y2="115" stroke="#555" marker-end="url(#a1)"/><text x="365" y="92" font-size="12" fill="#666">상위 PC</text><line x1="391" y1="99" x2="391" y2="113" stroke="#555" marker-end="url(#a1)"/>
+
+            <rect x="500" y="20" width="445" height="360" fill="#fff" stroke="#999"/>
+            <text x="520" y="53" font-size="20" font-weight="700">개선: PolarFire SoC 안에 통합</text>
+            <rect x="540" y="86" width="365" height="230" rx="5" fill="#f5f5f3" stroke="#333" stroke-width="2"/>
+            <text x="722" y="113" text-anchor="middle" font-size="16" font-weight="700">PolarFire SoC</text>
+            <rect x="565" y="137" width="205" height="145" fill="#fff" stroke="#741f2c" stroke-width="2"/><text x="667" y="162" text-anchor="middle" font-size="14" font-weight="700" fill="#741f2c">FPGA 논리영역</text>
+            <rect x="585" y="181" width="75" height="68" fill="#f0f0ee" stroke="#333"/><text x="622" y="208" text-anchor="middle" font-size="12">EtherCAT</text><text x="622" y="227" text-anchor="middle" font-size="12">IP</text>
+            <rect x="675" y="181" width="75" height="68" fill="#f0f0ee" stroke="#333"/><text x="712" y="204" text-anchor="middle" font-size="12">모터·센서</text><text x="712" y="223" text-anchor="middle" font-size="12">병렬 처리</text>
+            <rect x="792" y="137" width="88" height="145" fill="#fff" stroke="#333"/><text x="836" y="178" text-anchor="middle" font-size="13">프로세서</text><text x="836" y="204" text-anchor="middle" font-size="12">상태 변환</text><text x="836" y="224" text-anchor="middle" font-size="12">TSN 전송</text><text x="836" y="250" text-anchor="middle" font-size="11" fill="#666">Linux</text>
+            <line x1="770" y1="210" x2="789" y2="210" stroke="#555" stroke-width="2" marker-end="url(#a1)"/>
+            <text x="520" y="343" font-size="13" fill="#555">차이: 통신회로와 데이터 처리를 한 반도체 계열에서 구성</text>
+          </svg>
+        </div>
+        <figcaption>독자는 본문을 읽기 전에 ‘전용 통신부 2개와 CPU를 나누던 방식이 FPGA 논리영역과 프로세서로 합쳐졌다’는 변화를 먼저 확인합니다.</figcaption>
+      </figure>
+      <div class="read"><b>기존 대비 달라진 점</b> EtherCAT 장치 통신과 TSN 상위통신을 서로 다른 칩에서 처리하던 구성을 PolarFire SoC의 FPGA 논리영역과 프로세서 안에 함께 배치합니다.</div>
+
+      <h2 class="section">데이터가 이동하는 순서</h2>
+      <figure>
+        <div class="fig-head"><strong>그림 2. EtherCAT 공정데이터가 TSN 상위망으로 전달되는 과정</strong><span>장치·신호·데이터 흐름도</span></div>
+        <div class="canvas">
+          <svg viewBox="0 0 960 330" role="img" aria-labelledby="f2t f2d">
+            <title id="f2t">EtherCAT 공정데이터에서 TSN 상위 PC까지의 처리 순서</title>
+            <desc id="f2d">서보와 입출력 모듈, EtherCAT IP, FPGA 병렬회로, 프로세서, TSN 기능, 상위 산업용 PC 순서로 데이터가 흐름</desc>
+            <defs><marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+            <g fill="#fff" stroke="#333" stroke-width="2">
+              <rect x="20" y="115" width="120" height="78"/><rect x="180" y="115" width="120" height="78"/><rect x="340" y="115" width="120" height="78"/><rect x="500" y="115" width="120" height="78"/><rect x="660" y="115" width="120" height="78"/><rect x="820" y="115" width="120" height="78"/>
+            </g>
+            <g text-anchor="middle" font-size="13"><text x="80" y="145">서보·I/O</text><text x="80" y="166">공정데이터</text><text x="240" y="143">EtherCAT IP</text><text x="240" y="165">프레임 처리</text><text x="400" y="143">FPGA 회로</text><text x="400" y="165">병렬 연산</text><text x="560" y="143">프로세서</text><text x="560" y="165">상태·알람 변환</text><text x="720" y="143">TSN 기능</text><text x="720" y="165">전송시간 관리</text><text x="880" y="143">상위 PC</text><text x="880" y="165">동시 수집</text></g>
+            <g stroke="#555" stroke-width="2" marker-end="url(#a2)"><line x1="140" y1="154" x2="177" y2="154"/><line x1="300" y1="154" x2="337" y2="154"/><line x1="460" y1="154" x2="497" y2="154"/><line x1="620" y1="154" x2="657" y2="154"/><line x1="780" y1="154" x2="817" y2="154"/></g>
+            <rect x="650" y="235" width="260" height="56" fill="#f1f1ef" stroke="#777"/><text x="780" y="258" text-anchor="middle" font-size="13">PTP 시각동기 + 시간인식 스케줄</text><text x="780" y="278" text-anchor="middle" font-size="12" fill="#666">제어패킷 전송구간 예약</text>
+            <line x1="720" y1="193" x2="750" y2="232" stroke="#741f2c" stroke-width="2" marker-end="url(#a2)"/>
+            <text x="480" y="63" text-anchor="middle" font-size="16" font-weight="700">장비 내부 EtherCAT</text><line x1="180" y1="75" x2="620" y2="75" stroke="#333" stroke-width="2"/>
+            <text x="800" y="63" text-anchor="middle" font-size="16" font-weight="700">상위 TSN Ethernet</text><line x1="660" y1="75" x2="940" y2="75" stroke="#741f2c" stroke-width="2"/>
+          </svg>
+        </div>
+        <figcaption>문장 속 기술용어를 한 줄의 처리 순서로 바꿉니다. EtherCAT은 장비 내부 주기데이터를 처리하고, 프로세서와 TSN 기능은 상태정보를 같은 시각기준으로 상위 PC에 전달합니다.</figcaption>
+      </figure>
+
+      <h2 class="section">사전검증 장비와 측정 위치</h2>
+      <figure>
+        <div class="fig-head"><strong>그림 3. 통신 주기와 복구시간 측정 위치</strong><span>본문 시험순서와 번호 연결</span></div>
+        <div class="canvas">
+          <svg viewBox="0 0 960 300" role="img" aria-labelledby="f3t f3d">
+            <title id="f3t">EtherCAT과 TSN 시험장비 및 측정 위치</title>
+            <desc id="f3d">EtherCAT MainDevice, PolarFire 평가보드, TSN 스위치, 상위 PC를 연결하고 세 측정지점을 번호로 표시</desc>
+            <defs><marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+            <g fill="#fff" stroke="#333" stroke-width="2"><rect x="35" y="105" width="155" height="78"/><rect x="265" y="90" width="175" height="108"/><rect x="525" y="105" width="150" height="78"/><rect x="760" y="105" width="155" height="78"/></g>
+            <g text-anchor="middle" font-size="13"><text x="112" y="136">EtherCAT</text><text x="112" y="157">MainDevice</text><text x="352" y="125">PolarFire SoC</text><text x="352" y="147">평가보드</text><text x="352" y="174" font-size="11" fill="#666">EtherCAT + TSN</text><text x="600" y="136">TSN 스위치</text><text x="600" y="157">PTP 동기</text><text x="837" y="136">상위 산업용 PC</text><text x="837" y="157">수집·기록</text></g>
+            <g stroke="#555" stroke-width="3" marker-end="url(#a3)"><line x1="190" y1="144" x2="262" y2="144"/><line x1="440" y1="144" x2="522" y2="144"/><line x1="675" y1="144" x2="757" y2="144"/></g>
+            <g><circle cx="225" cy="78" r="22" fill="#741f2c"/><circle cx="482" cy="78" r="22" fill="#741f2c"/><circle cx="717" cy="78" r="22" fill="#741f2c"/><g fill="#fff" text-anchor="middle" font-size="17" font-weight="700"><text x="225" y="84">1</text><text x="482" y="84">2</text><text x="717" y="84">3</text></g></g>
+            <g font-size="12" fill="#444"><text x="160" y="235">1 · EtherCAT 주기·지터</text><text x="400" y="235">2 · FPGA 처리지연·부하</text><text x="670" y="235">3 · TSN 지연·PTP 오차·복구시간</text></g>
+          </svg>
+        </div>
+        <figcaption>시험 항목을 번호와 위치로 연결합니다. ‘어디에서 무엇을 측정하는지’가 먼저 보이므로 긴 시험문장을 다시 읽는 횟수를 줄일 수 있습니다.</figcaption>
+      </figure>
+      <ol class="test-list">
+        <li><div><b>EtherCAT 구간</b><br>1ms 주기로 8시간 운전하며 실제 주기, 최대 지터와 누락 프레임을 기록합니다.</div></li>
+        <li><div><b>평가보드 내부</b><br>영상·센서 전처리 부하를 단계별로 높이고 EtherCAT 프레임 처리시간과 프로세서 사용률을 함께 기록합니다.</div></li>
+        <li><div><b>TSN 구간</b><br>일반 영상 트래픽을 증가시킨 뒤 제어패킷 지연, PTP 시계오차, 케이블 분리 후 복구시간을 측정합니다.</div></li>
+      </ol>
+
+      <h2 class="section">공식 근거자료</h2>
+      <ol class="sources">
+        <li><a href="https://www.microchip.com/en-us/about/news-releases/products/microchip-brings-ethercat-and-tsn-networking-solutions-to-polarfire-fpga-platform" target="_blank" rel="noopener noreferrer">Microchip, PolarFire EtherCAT·TSN 산업통신 발표</a> · 2026-10-29</li>
+        <li><a href="https://www.microchip.com/en-us/solutions/industrial/fpga/polarfire-fpgas-for-the-industrial-edge" target="_blank" rel="noopener noreferrer">Microchip, PolarFire 산업용 엣지 구성</a> · 2026-11-01 확인</li>
+        <li><a href="https://www.microchip.com/en-us/products/high-speed-networking-and-video/ethernet/tsn-technology" target="_blank" rel="noopener noreferrer">Microchip, TSN 기능·IEEE 표준 자료</a> · 2026-11-01 확인</li>
+        <li><a href="https://www.ethercat.org/en/faq.html" target="_blank" rel="noopener noreferrer">EtherCAT Technology Group, FPGA IP·장치 구현 안내</a> · 2026-11-01 확인</li>
+      </ol>
+    </section>
+
+    <section class="diff">
+      <h2>현재와 수정 후의 차이</h2>
+      <table>
+        <thead><tr><th>구분</th><th>현재 방식</th><th>수정 후</th></tr></thead>
+        <tbody>
+          <tr><td>기존 대비 변화</td><td>문단과 목록을 읽어 장치 배치를 추정</td><td>기존 분리형과 새 통합형을 첫 그림에서 직접 비교</td></tr>
+          <tr><td>작동 과정</td><td>EtherCAT·FPGA·프로세서·TSN 설명이 여러 문단에 분산</td><td>서보·I/O에서 상위 PC까지 한 줄의 데이터 흐름으로 표시</td></tr>
+          <tr><td>사전검증</td><td>측정항목은 있으나 측정 위치를 독자가 해석</td><td>시험장비 배치와 측정 위치를 1·2·3 번호로 연결</td></tr>
+          <tr><td>본문 분량</td><td>기술 설명 유지</td><td>본문은 줄이지 않고, 이해가 필요한 위치에 시각자료를 삽입</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <footer>표시 방식 검토용 예시 페이지 · 기존 허브 리포트와 방문·열람 집계는 변경하지 않음</footer>
+  </main>
+  <script>
+    const before=document.getElementById('before'),after=document.getElementById('after');
+    const b1=document.getElementById('tab-before'),b2=document.getElementById('tab-after');
+    function show(which){
+      const isAfter=which==='after';
+      before.hidden=isAfter;after.hidden=!isAfter;
+      b1.setAttribute('aria-selected',String(!isAfter));b2.setAttribute('aria-selected',String(isAfter));
+      window.scrollTo({top:document.querySelector('.switcher').offsetTop,behavior:'smooth'});
+    }
+    b1.addEventListener('click',()=>show('before'));b2.addEventListener('click',()=>show('after'));
+  </script>
+</body>
+</html>
