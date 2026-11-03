@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>시각자료 적용 예시 | 설비 지능화 기술동향</title>
+  <style>
+    :root{--ink:#202124;--muted:#666;--line:#d4d4d4;--soft:#f4f4f2;--accent:#7a2431;--paper:#fff}
+    *{box-sizing:border-box}
+    body{margin:0;background:#ececea;color:var(--ink);font-family:Arial,"Malgun Gothic",sans-serif;line-height:1.72;font-size:15px}
+    a{color:#5c1c27;text-underline-offset:3px}
+    .topbar{background:#242424;color:#fff}
+    .topbar-inner{max-width:1080px;margin:auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .topbar a{color:#fff;text-decoration:none;border-bottom:1px solid #aaa}
+    main{max-width:1080px;margin:24px auto;background:var(--paper);border:1px solid #d8d8d6}
+    article{padding:42px clamp(22px,6vw,76px) 56px}
+    .demo-note{border-left:4px solid var(--accent);background:var(--soft);padding:14px 16px;margin-bottom:30px}
+    .demo-note b{display:block;margin-bottom:3px}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:.02em;margin:0 0 8px}
+    h1{font-size:clamp(28px,4vw,42px);line-height:1.28;letter-spacing:-.035em;margin:0 0 18px}
+    .lead{font-size:18px;line-height:1.75;margin:0 0 30px;color:#333}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 18px;padding:13px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--muted);font-size:13px}
+    h2{font-size:23px;margin:44px 0 14px;padding-bottom:8px;border-bottom:2px solid #333}
+    h3{font-size:18px;margin:28px 0 10px}
+    p{margin:0 0 15px}
+    ul,ol{padding-left:22px;margin:10px 0 20px}
+    li{margin:7px 0}
+    figure{margin:26px 0 38px;border:1px solid #c8c8c5;background:#fafafa}
+    .figure-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:14px 17px;border-bottom:1px solid #d2d2cf;background:#f0f0ee}
+    .figure-head strong{font-size:16px}
+    .figure-head span{color:var(--muted);font-size:12px;text-align:right}
+    .visual{padding:20px;overflow-x:auto}
+    svg{display:block;width:100%;min-width:690px;height:auto}
+    figcaption{padding:12px 17px 15px;border-top:1px solid #d2d2cf;color:#555;font-size:13px;background:#fff}
+    .reading-guide{margin-top:-22px;margin-bottom:34px;padding:12px 15px;border-left:3px solid #444;background:#f6f6f4;font-size:14px}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+    .fact{border:1px solid #ccc;padding:15px;background:#fff}
+    .fact b{display:block;color:var(--accent);font-size:13px;margin-bottom:4px}
+    .fact span{font-size:19px;font-weight:700}
+    .split{display:grid;grid-template-columns:1fr 1fr;border:1px solid #ccc;margin:24px 0}
+    .split section{padding:18px 20px}
+    .split section+section{border-left:1px solid #bbb}
+    .split h3{margin-top:0}
+    .checklist li::marker{font-weight:700;color:var(--accent)}
+    .source-list{font-size:14px}
+    .source-list a{font-weight:700}
+    details{border-top:1px solid #bbb;border-bottom:1px solid #bbb;padding:13px 0;margin-top:30px}
+    summary{cursor:pointer;font-weight:700}
+    .terms{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;padding:16px 0 4px}
+    .term b{display:block;font-size:14px}.term span{color:#555;font-size:13px}
+    .policy{margin-top:42px;background:#282828;color:#fff;padding:24px}
+    .policy h2{border-color:#777;margin-top:0;color:#fff}
+    .policy li{margin:8px 0}
+    footer{padding-top:30px;color:#666;font-size:13px}
+    @media(max-width:720px){
+      body{font-size:14px}.topbar-inner{padding:11px 15px}main{margin:0;border:0}article{padding:26px 18px 40px}
+      .lead{font-size:16px}.facts{grid-template-columns:1fr}.split{grid-template-columns:1fr}.split section+section{border-left:0;border-top:1px solid #bbb}
+      .figure-head{display:block}.figure-head span{display:block;text-align:left;margin-top:3px}.visual{padding:12px}.terms{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar"><div class="topbar-inner"><span>설비 지능화 기술동향 · 시각자료 적용 예시</span><a href="./">허브로 돌아가기</a></div></div>
+  <main>
+    <article>
+      <div class="demo-note"><b>설문 의견 반영 예시</b>글만으로 구조를 상상하기 어려운 기술에는 본문 사이에 배선 비교도, 작동 흐름도, 시험 위치도를 넣습니다. 이 페이지는 표시 방식 확인용이며 기존 리포트와 방문·열람 집계에는 영향을 주지 않습니다.</div>
+
+      <p class="kicker">제어반 배선·통신 통합 · 2026-11-02</p>
+      <h1>접점 배선을 전원·통신 공용 케이블로 바꾼 제어반 구조</h1>
+      <p class="lead">로크웰 오토메이션의 EtherNet/IP 인캐비닛 구성은 제어반의 푸시버튼, 접촉기와 과부하계전기를 개별 접점선 대신 평면 케이블 한 가닥에 연결합니다. 1834-AENTR 게이트웨이가 공장 EtherNet/IP와 제어반 내부 10BASE-T1S 구간을 연결하고, 1486-CBL 케이블이 통신과 두 종류의 전원을 각 장치에 분배합니다.</p>
+      <div class="meta"><span>작성자 김남인</span><span>선행제어기술팀 미래기술파트</span><span>기술분류 전기·제어</span><span>공개자료 기준 2026-10-27</span></div>
+
+      <h2>기존 배선과 무엇이 달라졌나</h2>
+      <p>기존 제어반은 장치마다 입력선, 출력선과 공통선을 단자대와 입출력 모듈까지 각각 연결합니다. 인캐비닛 구성은 장치 가까이에서 접점신호를 통신 데이터로 바꾸고, 여러 장치를 평면 케이블에 분기 연결합니다.</p>
+
+      <figure>
+        <div class="figure-head"><strong>그림 1. 기존 접점배선과 인캐비닛 배선 비교</strong><span>직접 제작한 설명도 · 실제 배치도 아님</span></div>
+        <div class="visual">
+          <svg viewBox="0 0 920 360" role="img" aria-labelledby="fig1title fig1desc">
+            <title id="fig1title">기존 개별 접점배선과 평면 케이블 배선 비교</title>
+            <desc id="fig1desc">왼쪽은 장치별 선이 단자대와 입출력 모듈로 모이는 구조, 오른쪽은 게이트웨이와 평면 케이블에 장치가 분기되는 구조</desc>
+            <defs><marker id="arrow1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+            <rect x="12" y="10" width="430" height="335" fill="#fff" stroke="#999"/>
+            <text x="32" y="42" font-size="20" font-weight="700" fill="#222">기존: 장치별 개별 배선</text>
+            <rect x="40" y="86" width="116" height="56" rx="3" fill="#f2f2f0" stroke="#333"/><text x="98" y="110" text-anchor="middle" font-size="14">푸시버튼</text><text x="98" y="129" text-anchor="middle" font-size="12" fill="#666">입력 접점</text>
+            <rect x="40" y="164" width="116" height="56" rx="3" fill="#f2f2f0" stroke="#333"/><text x="98" y="188" text-anchor="middle" font-size="14">접촉기</text><text x="98" y="207" text-anchor="middle" font-size="12" fill="#666">출력 코일</text>
+            <rect x="40" y="242" width="116" height="56" rx="3" fill="#f2f2f0" stroke="#333"/><text x="98" y="266" text-anchor="middle" font-size="14">과부하계전기</text><text x="98" y="285" text-anchor="middle" font-size="12" fill="#666">고장 접점</text>
+            <rect x="205" y="118" width="94" height="150" fill="#fff" stroke="#333"/><text x="252" y="151" text-anchor="middle" font-size="14">단자대</text><line x1="218" y1="170" x2="286" y2="170" stroke="#aaa"/><line x1="218" y1="194" x2="286" y2="194" stroke="#aaa"/><line x1="218" y1="218" x2="286" y2="218" stroke="#aaa"/><line x1="218" y1="242" x2="286" y2="242" stroke="#aaa"/>
+            <rect x="343" y="130" width="76" height="125" fill="#fff" stroke="#333"/><text x="381" y="164" text-anchor="middle" font-size="14">I/O</text><text x="381" y="184" text-anchor="middle" font-size="14">모듈</text><text x="381" y="218" text-anchor="middle" font-size="12" fill="#666">채널별</text><text x="381" y="235" text-anchor="middle" font-size="12" fill="#666">결선</text>
+            <g stroke="#7a2431" stroke-width="2"><line x1="156" y1="101" x2="205" y2="145"/><line x1="156" y1="117" x2="205" y2="170"/><line x1="156" y1="179" x2="205" y2="194"/><line x1="156" y1="197" x2="205" y2="218"/><line x1="156" y1="257" x2="205" y2="242"/><line x1="156" y1="278" x2="205" y2="260"/><line x1="299" y1="150" x2="343" y2="150"/><line x1="299" y1="178" x2="343" y2="178"/><line x1="299" y1="206" x2="343" y2="206"/><line x1="299" y1="234" x2="343" y2="234"/></g>
+            <text x="229" y="325" font-size="13" fill="#555">장치 수가 늘면 선·단자·I/O 채널도 함께 증가</text>
+
+            <rect x="478" y="10" width="430" height="335" fill="#fff" stroke="#999"/>
+            <text x="498" y="42" font-size="20" font-weight="700" fill="#222">개선: 평면 케이블 분기</text>
+            <rect x="500" y="120" width="128" height="82" rx="3" fill="#f2f2f0" stroke="#333"/><text x="564" y="148" text-anchor="middle" font-size="14">1834-AENTR</text><text x="564" y="169" text-anchor="middle" font-size="13">게이트웨이</text><text x="564" y="189" text-anchor="middle" font-size="11" fill="#666">EtherNet/IP ↔ T1S</text>
+            <line x1="628" y1="161" x2="875" y2="161" stroke="#7a2431" stroke-width="12"/>
+            <text x="748" y="147" text-anchor="middle" font-size="12" fill="#5c1c27">1486-CBL 평면 케이블</text>
+            <g stroke="#555" stroke-width="2"><line x1="679" y1="161" x2="679" y2="232"/><line x1="754" y1="161" x2="754" y2="232"/><line x1="829" y1="161" x2="829" y2="232"/></g>
+            <g fill="#fff" stroke="#333"><rect x="640" y="232" width="78" height="55"/><rect x="715" y="232" width="78" height="55"/><rect x="790" y="232" width="78" height="55"/></g>
+            <g font-size="12" text-anchor="middle" fill="#222"><text x="679" y="255">푸시버튼</text><text x="679" y="273">인터페이스</text><text x="754" y="255">접촉기</text><text x="754" y="273">인터페이스</text><text x="829" y="255">과부하</text><text x="829" y="273">계전기</text></g>
+            <line x1="494" y1="80" x2="555" y2="117" stroke="#555" stroke-width="2" marker-end="url(#arrow1)"/><text x="494" y="70" font-size="13" fill="#555">공장 EtherNet/IP</text>
+            <text x="578" y="325" font-size="13" fill="#555">장치를 케이블 중간에 분기하고 상태·진단정보를 통신으로 전달</text>
+          </svg>
+        </div>
+        <figcaption>그림의 목적은 ‘선이 줄어든다’는 설명을 실제 결선 경로로 보여주는 것입니다. 제품 외형을 임의로 그리지 않고, 공개 문서에 나온 장치명과 연결 관계만 표시합니다.</figcaption>
+      </figure>
+      <div class="reading-guide"><b>그림을 먼저 보면</b> 기존 구조는 장치별 선이 중앙 단자대와 I/O 모듈로 모입니다. 개선 구조는 게이트웨이 뒤 평면 케이블에서 장치를 바로 분기합니다.</div>
+
+      <div class="facts">
+        <div class="fact"><b>공개 케이블 길이</b><span>최대 25m</span></div>
+        <div class="fact"><b>공개 연결 수</b><span>최대 40노드</span></div>
+        <div class="fact"><b>내부 통신</b><span>10BASE-T1S</span></div>
+      </div>
+
+      <h2>한 케이블에서 무엇이 흐르나</h2>
+      <p>1486-CBL에는 통신선과 두 종류의 전원선이 들어갑니다. NP 전원은 장치 통신 인터페이스를 가동합니다. SP 전원은 접촉기 코일처럼 전력이 더 필요한 부하에 사용합니다. 장치 위치를 정하는 선도 케이블에 포함됩니다.</p>
+
+      <figure>
+        <div class="figure-head"><strong>그림 2. 평면 케이블 내부 기능 구분</strong><span>공개 사양을 기능별로 재구성</span></div>
+        <div class="visual">
+          <svg viewBox="0 0 920 290" role="img" aria-labelledby="fig2title fig2desc">
+            <title id="fig2title">1486-CBL 평면 케이블 기능 구분</title><desc id="fig2desc">통신, 장치 전원, 부하 전원, 위치 지정 선이 각각 어떤 장치로 전달되는지 보여주는 그림</desc>
+            <rect x="45" y="55" width="830" height="155" rx="8" fill="#fff" stroke="#333" stroke-width="2"/>
+            <rect x="65" y="75" width="790" height="28" fill="#373737"/><text x="80" y="95" font-size="14" fill="#fff">10BASE-T1S 통신 · 장치 상태, 진단정보, 제어명령</text>
+            <rect x="65" y="113" width="790" height="28" fill="#777"/><text x="80" y="133" font-size="14" fill="#fff">NP 전원 · 통신 인터페이스 상시 전원</text>
+            <rect x="65" y="151" width="790" height="28" fill="#7a2431"/><text x="80" y="171" font-size="14" fill="#fff">SP 전원 · 접촉기 코일 등 부하 전원</text>
+            <rect x="65" y="189" width="790" height="11" fill="#b8b8b4"/>
+            <g stroke="#555" stroke-width="2"><line x1="250" y1="210" x2="250" y2="244"/><line x1="460" y1="210" x2="460" y2="244"/><line x1="670" y1="210" x2="670" y2="244"/></g>
+            <g font-size="13" text-anchor="middle"><text x="250" y="265">푸시버튼·표시등 인터페이스</text><text x="460" y="265">접촉기 통신 인터페이스</text><text x="670" y="265">과부하·모터보호 장치</text></g>
+            <text x="460" y="35" text-anchor="middle" font-size="17" font-weight="700">1486-CBL 평면 케이블</text>
+          </svg>
+        </div>
+        <figcaption>색은 카테고리 구분이 아니라 한 케이블 안의 기능을 구별하기 위한 최소 표시입니다. 본문에서는 약어 NP·SP의 역할을 바로 아래 문장으로 설명합니다.</figcaption>
+      </figure>
+
+      <h2>장점과 한계</h2>
+      <div class="split">
+        <section><h3>장점</h3><ul><li>장치별 접점선과 단자 수를 줄여 조립시간과 도면 복잡도를 낮춥니다.</li><li>접점의 켜짐·꺼짐 외에 장치 식별정보, 운전상태와 고장정보를 제어기에서 읽을 수 있습니다.</li><li>장치 가까이에서 신호를 통신 데이터로 바꾸므로 중앙 I/O 채널을 줄일 수 있습니다.</li></ul></section>
+        <section><h3>한계</h3><ul><li>한 구간은 공개 사양의 25m와 40노드 범위 안에서 설계해야 합니다.</li><li>평면 케이블이나 게이트웨이 고장이 여러 장치에 미치는 영향을 회로별로 계산해야 합니다.</li><li>NP·SP 전원용량과 접촉기 코일 기동전류를 장치 구성에 맞춰 확인해야 합니다.</li></ul></section>
+      </div>
+
+      <h2>현장에서는 어디를 측정하나</h2>
+      <p>시험은 케이블을 연결한 뒤 통신 여부만 보는 것으로 끝내지 않습니다. 게이트웨이에서 공장망 연결시간을 기록하고, 케이블 끝단에서는 통신 오류와 전압강하를 측정합니다. 접촉기 분기점에서는 코일 동작 때 SP 전압과 장치 응답시간을 확인합니다.</p>
+
+      <figure>
+        <div class="figure-head"><strong>그림 3. 사전검증 장비와 측정 위치</strong><span>시험 순서를 장비 위치에 표시</span></div>
+        <div class="visual">
+          <svg viewBox="0 0 920 330" role="img" aria-labelledby="fig3title fig3desc">
+            <title id="fig3title">인캐비닛 구성 사전검증 위치도</title><desc id="fig3desc">제어기, 게이트웨이, 평면 케이블, 장치 세 개와 측정지점 세 곳을 보여주는 그림</desc>
+            <defs><marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+            <g fill="#fff" stroke="#333" stroke-width="2"><rect x="35" y="115" width="125" height="70"/><rect x="220" y="105" width="145" height="90"/><rect x="520" y="55" width="120" height="58"/><rect x="520" y="135" width="120" height="58"/><rect x="520" y="215" width="120" height="58"/></g>
+            <g text-anchor="middle" font-size="14"><text x="97" y="145">Logix 5000</text><text x="97" y="165">제어기</text><text x="292" y="138">1834-AENTR</text><text x="292" y="158">게이트웨이</text><text x="292" y="178" font-size="11" fill="#666">공장망 ↔ T1S</text><text x="580" y="82">푸시버튼</text><text x="580" y="101">인터페이스</text><text x="580" y="162">접촉기</text><text x="580" y="181">인터페이스</text><text x="580" y="242">과부하</text><text x="580" y="261">계전기</text></g>
+            <line x1="160" y1="150" x2="217" y2="150" stroke="#555" stroke-width="3" marker-end="url(#arrow3)"/><text x="188" y="138" text-anchor="middle" font-size="11">EtherNet/IP</text>
+            <line x1="365" y1="150" x2="474" y2="150" stroke="#7a2431" stroke-width="12"/><line x1="474" y1="83" x2="474" y2="244" stroke="#7a2431" stroke-width="12"/>
+            <g stroke="#555" stroke-width="2" marker-end="url(#arrow3)"><line x1="480" y1="83" x2="517" y2="83"/><line x1="480" y1="163" x2="517" y2="163"/><line x1="480" y1="243" x2="517" y2="243"/></g>
+            <g><circle cx="292" cy="62" r="22" fill="#7a2431"/><text x="292" y="68" text-anchor="middle" font-size="18" fill="#fff" font-weight="700">1</text><circle cx="474" cy="292" r="22" fill="#7a2431"/><text x="474" y="298" text-anchor="middle" font-size="18" fill="#fff" font-weight="700">2</text><circle cx="692" cy="163" r="22" fill="#7a2431"/><text x="692" y="169" text-anchor="middle" font-size="18" fill="#fff" font-weight="700">3</text></g>
+            <g font-size="12" fill="#444"><text x="322" y="58">게이트웨이 연결·복구시간</text><text x="505" y="294">끝단 통신오류·전압강하</text><text x="722" y="158">접촉기 응답시간·SP 전압</text></g>
+            <path d="M474 272 L474 250" stroke="#555" stroke-width="2" marker-end="url(#arrow3)"/><path d="M670 163 L643 163" stroke="#555" stroke-width="2" marker-end="url(#arrow3)"/>
+          </svg>
+        </div>
+        <figcaption>시험 문장과 그림의 번호를 맞춥니다. 독자는 무엇을 어디에서 측정하는지 먼저 확인한 뒤 세부 시험조건을 읽을 수 있습니다.</figcaption>
+      </figure>
+
+      <ol class="checklist">
+        <li><b>게이트웨이 시험:</b> 제어기와 1834-AENTR의 전원을 켠 뒤 장치 인식시간을 기록합니다. 공장 EtherNet/IP 케이블을 10초간 분리하고 고장 검출시간과 재연결시간을 각각 20회 측정합니다.</li>
+        <li><b>케이블 끝단 시험:</b> 1486-CBL 시작점과 끝점의 NP·SP 전압을 무부하와 최대 부하에서 측정합니다. 케이블 길이와 장치 수를 함께 기록해 전압강하 기준을 정합니다.</li>
+        <li><b>접촉기 시험:</b> 접촉기 코일을 100회 켜고 끕니다. 제어기 명령 시각부터 보조접점 상태가 바뀌는 시각까지의 응답시간과 실패 횟수를 기록합니다.</li>
+      </ol>
+
+      <h2>공식 근거자료</h2>
+      <ol class="source-list">
+        <li><a href="https://www.rockwellautomation.com/en-ca/company/news/press-releases/Rockwell-Automation-Unveils-Record-Breaking-Innovation-Lineup-at-Automation-Fair-2026.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, Automation Fair 2026 혁신기술 발표</a> · 2026-10-27</li>
+        <li><a href="https://www.rockwellautomation.com/en-dk/company/news/press-releases/Rockwell-Automation-Expands-EtherNetIP-In-cabinet-Solution-with-New-Motor-Control-and-Power-Connection-Capabilities.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, 인캐비닛 모터제어·전원연결 확장 발표</a> · 2026-05-20</li>
+        <li><a href="https://www.rockwellautomation.com/en-se/docs/technical/eic/_online/1834-um001/1834-um001-ditamap/ethernet-ip-in-cabinet-system.html" target="_blank" rel="noopener noreferrer">Rockwell Automation, EtherNet/IP In-cabinet 시스템 사용설명서</a> · 제품 기술문서</li>
+        <li><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/td/1834-td001_-en-p.pdf" target="_blank" rel="noopener noreferrer">Rockwell Automation, 1834-TD001 시스템 사양서</a> · 제품 기술문서</li>
+        <li><a href="https://www.odva.org/technology-standards/market-drivers/ethernetip-in-cabinet/" target="_blank" rel="noopener noreferrer">ODVA, EtherNet/IP In-Cabinet 기술 설명</a> · 산업통신 표준단체</li>
+      </ol>
+
+      <details><summary>용어 설명</summary><div class="terms">
+        <div class="term"><b>EtherNet/IP (EtherNet Industrial Protocol)</b><span>표준 Ethernet 위에서 제어기와 산업장치의 입출력·진단 데이터를 전달하는 산업통신 규격입니다.</span></div>
+        <div class="term"><b>10BASE-T1S (10 Megabit Baseband Single Pair Short Reach)</b><span>한 쌍의 구리선으로 여러 장치를 짧은 구간에 연결하는 10Mbps Ethernet 방식입니다.</span></div>
+        <div class="term"><b>I/O (Input/Output)</b><span>센서 신호를 읽고 접촉기·밸브 등에 명령을 내리는 제어기의 입출력 기능입니다.</span></div>
+        <div class="term"><b>NP 전원 (Network Power)</b><span>푸시버튼과 접촉기 통신 인터페이스를 가동하는 네트워크 장치 전원입니다.</span></div>
+        <div class="term"><b>SP 전원 (Switched Power)</b><span>접촉기 코일처럼 켜고 끄는 부하에 공급하는 전원입니다.</span></div>
+        <div class="term"><b>멀티드롭</b><span>한 통신선에 여러 장치를 중간 분기 방식으로 연결하는 배선 구조입니다.</span></div>
+      </div></details>
+
+      <section class="policy">
+        <h2>앞으로의 시각자료 적용 기준</h2>
+        <ol>
+          <li>글만으로 배치·흐름·차이를 이해하기 어려운 리포트에만 그림을 넣습니다.</li>
+          <li>첫 번째 그림은 기존 방식과 새 방식의 차이를 보여줍니다.</li>
+          <li>두 번째 그림은 장치·신호·전원·데이터가 움직이는 순서를 보여줍니다.</li>
+          <li>현장 검증이 필요한 기술은 측정 장비와 측정 위치를 번호로 표시합니다.</li>
+          <li>공식 사진을 사용할 때는 출처와 촬영·발표 날짜를 적고 원문 링크를 연결합니다.</li>
+          <li>공식 사진이 없으면 제품 외형을 상상해 만들지 않고 공개 사양에 근거한 구조도를 직접 제작합니다.</li>
+        </ol>
+      </section>
+      <footer>예시 페이지 · 기존 허브의 운영 집계와 분리 · 작성자 김남인 / 선행제어기술팀 미래기술파트</footer>
+    </article>
+  </main>
+</body>
+</html>
