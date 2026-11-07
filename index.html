@@ -152,6 +152,189 @@
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
+
+      <details class="staticReport" id="static-261108" open>
+  <summary><span class="staticDate">11.08</span><span class="staticTitle">4축 모터제어·산업용 이더넷·리눅스를 한 칩에 묶은 실시간 MPU</span><span class="staticAxis">전기·제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">RZ/T2N</span><span class="tag">4축 모터제어</span><span class="tag">산업용 이더넷</span><span class="tag">Linux</span><span class="tag">실시간 MPU</span></div><p>르네사스는 리눅스 응용, 4축 모터제어와 산업용 이더넷을 서로 다른 코어에 나눠 실행하는 RZ/T2N을 11월 5일 양산 출시했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">PC·실시간 제어 통합 · 2026-11-08</p>
+      <h2>4축 모터제어·산업용 이더넷·리눅스를 한 칩에 묶은 실시간 MPU</h2>
+      <p class="newsLead">르네사스 일렉트로닉스는 11월 5일 일본 도쿄에서 64비트 마이크로프로세서 RZ/T2N의 양산을 시작했습니다. RZ/T2N은 최대 1.2GHz 듀얼 Cortex-A55가 리눅스 응용을 실행하고, 최대 800MHz 듀얼 Cortex-R52가 최대 4축 모터를 실시간으로 제어합니다. 같은 칩에 3포트 기가비트 이더넷 스위치, EtherCAT 장치제어기와 축당 2채널 엔코더 인터페이스를 넣어 응용처리용 프로세서, 모터제어용 마이크로컨트롤러와 통신칩을 한 소자로 합친 구조입니다.</p>
+    </header>
+
+    <section class="newsSection">
+      <h3>오늘 전체 흐름</h3>
+      <p>최근 일주일의 공식 발표에서는 장비 내부의 응용처리, 실시간 제어와 네트워크 기능을 별도 보드에 나누던 구성을 한 반도체 또는 한 모듈로 합치는 사례가 이어졌습니다. TI는 11월 5일 세 가지 산업용 이더넷을 부팅 때 선택하는 통신모듈을 공개했고, 르네사스는 같은 날 리눅스 응용과 4축 모터제어까지 한 칩에 넣은 RZ/T2N을 양산 출시했습니다.</p>
+      <p>실행일 직전 24시간에는 PC 제어와 실시간 모션 구조를 직접 바꾸는 추가 공식 발표가 제한적이었습니다. 오늘은 전날 다룬 외장 통신모듈과 달리 응용코어, 실시간코어, 모터 주변회로와 네트워크 스위치를 한 실리콘에 결합한 RZ/T2N을 선정했습니다. 르네사스는 11월 4일 4축 모터제어와 EtherCAT CiA 402 예제도 함께 공개해 보드 수준의 사전시험 절차를 만들 수 있습니다.</p>
+    </section>
+
+    <section class="newsSection">
+      <h3>주요 내용</h3>
+      <p><strong>확인된 사실:</strong> RZ/T2N은 응용처리용 Cortex-A55 두 개와 실시간 제어용 Cortex-R52 두 개를 사용합니다. 각 R52에는 오류정정기능을 갖춘 576KB 밀결합메모리가 배치됩니다. 모터 주변회로는 최대 4축을 제어하고 축마다 두 개의 직렬 엔코더 채널을 지원합니다. 네트워크부는 3포트 기가비트 스위치, 세 개의 기가비트 이더넷 제어기와 EtherCAT 장치제어기를 포함합니다.</p>
+      <p><strong>공급사 주장:</strong> 르네사스는 여러 칩을 한 칩으로 합치면 기판면적, 부품수와 개발기간을 줄일 수 있다고 설명합니다. 보도자료에는 절감률이나 종단 제어주기가 제시되지 않았습니다. RZ/T2N과 평가보드는 11월 5일부터 구매할 수 있으며 기능안전 소프트웨어는 2027년 하반기 제공 예정입니다.</p>
+      <p><strong>작성자 해석:</strong> 새 구조의 차이는 리눅스와 실시간 제어를 단순히 같은 칩에서 실행하는 데 그치지 않습니다. 응용코어와 R52 제어코어가 역할을 나누고, R52가 엔코더·PWM·전류변환 주변회로에 낮은 지연으로 접근하도록 설계됐습니다. 화면, 데이터기록과 상위통신이 몰려도 모터제어 연산을 별도 코어와 메모리에서 실행할 수 있는지가 현장시험의 중심 항목입니다.</p>
+    </section>
+
+    <dl class="newsFacts" aria-label="기술 핵심 정보">
+      <div><dt>기술 구조</dt><dd>듀얼 Cortex-A55는 리눅스 응용을 실행하고 듀얼 Cortex-R52는 4축 모터제어를 처리합니다. 칩 내부 스위치와 EtherCAT 장치제어기가 상위 네트워크를 연결합니다.</dd></div>
+      <div><dt>기존 방식과 차이</dt><dd>응용 프로세서, 모터제어 마이크로컨트롤러와 산업용 이더넷 통신칩으로 나누던 기능을 16×16mm 또는 21×21mm 한 패키지에 넣었습니다.</dd></div>
+      <div><dt>현장 적용</dt><dd>4축 로봇, 다축 서보드라이브, 모션제어기와 리눅스 기반 현장용 제어컴퓨터의 제어보드에 적용할 수 있습니다.</dd></div>
+      <div><dt>관련 업체</dt><dd><a class="companyLink" href="https://www.renesas.com/" target="_blank" rel="noopener noreferrer">르네사스 일렉트로닉스</a>가 RZ/T2N, 평가보드와 소프트웨어 예제를 공급합니다. <a class="companyLink" href="https://www.renesas.com/en/sample-buy/locations?country=South+Korea" target="_blank" rel="noopener noreferrer">한국 공급망 안내</a>에서 국내 공식 유통사와 기술접촉 경로를 확인할 수 있습니다.</dd></div>
+    </dl>
+
+    <section class="extendedArticle" aria-label="기술 상세">
+      <h2>기술 상세</h2>
+      <h3>선정 이유</h3>
+      <p>RZ/T2N은 동작주파수만 높인 프로세서가 아닙니다. 리눅스 응용코어, 실시간 제어코어, 4축 엔코더·PWM 주변회로, 산업용 이더넷 스위치와 중복통신 기능을 한 칩에 배치했습니다. 기존 다중칩 구성에서 칩 사이 버스와 별도 통신소프트웨어가 담당하던 경로를 칩 내부로 옮긴 점이 이번 발표의 구조적 변화입니다.</p>
+      <p>르네사스는 11월 4일 영구자석 동기모터 4축 벡터제어 예제와 EtherCAT CiA 402 기반 4축 기동 설명서를 공개했습니다. 공개 예제에는 위치·속도·토크 제어와 EtherCAT 운전모드가 포함됩니다. 다만 고객 양산설비의 성능수치는 공개되지 않았으므로 오늘 평가는 공식 사양과 평가보드 예제의 재현 가능성을 중심으로 책정했습니다.</p>
+
+      <h3>기존 방식과 새 방식 비교</h3>
+      <figure class="techVisual" aria-labelledby="visual-261108-title">
+        <h4 id="visual-261108-title">세 칩 분산 구조에서 응용·제어·통신 통합 구조로</h4>
+        <p>왼쪽은 리눅스 응용, 모터제어와 산업용 이더넷을 별도 칩이 담당하는 구성입니다. 오른쪽은 RZ/T2N 내부의 A55, R52와 네트워크 블록이 각 기능을 나눠 처리하는 구성입니다.</p>
+        <div class="techVisualScroll">
+          <svg viewBox="0 0 940 430" role="img" aria-labelledby="visual-261108-svg-title visual-261108-svg-desc">
+            <title id="visual-261108-svg-title">기존 다중칩 제어보드와 RZ/T2N 단일칩 구조 비교</title>
+            <desc id="visual-261108-svg-desc">기존에는 리눅스 응용 프로세서, 모터제어 마이크로컨트롤러, 산업용 이더넷 통신칩이 외부 버스로 연결됐습니다. 새 구조는 듀얼 A55, 듀얼 R52, 4축 모터 주변회로와 기가비트 이더넷 스위치를 한 칩에 넣습니다.</desc>
+            <rect x="18" y="24" width="430" height="360" rx="18" fill="#fff7ed" stroke="#e9a24f" stroke-width="2"/>
+            <rect x="492" y="24" width="430" height="360" rx="18" fill="#ecfdf5" stroke="#3aa485" stroke-width="2"/>
+            <text x="42" y="61" font-size="21" font-weight="800" fill="#8a4b08">기존: 기능별 3칩과 외부버스</text>
+            <rect x="52" y="90" width="165" height="66" rx="10" fill="#fff" stroke="#c77821"/><text x="134" y="116" text-anchor="middle" font-size="15" font-weight="700">응용 프로세서</text><text x="134" y="139" text-anchor="middle" font-size="13">Linux·화면·기록</text>
+            <rect x="248" y="90" width="165" height="66" rx="10" fill="#fff" stroke="#c77821"/><text x="330" y="116" text-anchor="middle" font-size="15" font-weight="700">모터제어 MCU</text><text x="330" y="139" text-anchor="middle" font-size="13">PWM·엔코더·전류</text>
+            <rect x="150" y="210" width="165" height="66" rx="10" fill="#fff" stroke="#c77821"/><text x="232" y="236" text-anchor="middle" font-size="15" font-weight="700">통신 프로세서</text><text x="232" y="259" text-anchor="middle" font-size="13">산업용 이더넷</text>
+            <path d="M217 123H246M285 158L250 208M180 158L214 208" stroke="#8a4b08" stroke-width="3" fill="none"/>
+            <text x="52" y="321" font-size="14" fill="#6b4b2f">• 칩 사이 데이터 복사와 시각 맞춤 필요</text><text x="52" y="349" font-size="14" fill="#6b4b2f">• 부품·전원·기판 배선이 기능별 증가</text>
+            <text x="516" y="61" font-size="21" font-weight="800" fill="#116b59">새 방식: RZ/T2N 한 칩</text>
+            <rect x="524" y="88" width="175" height="78" rx="10" fill="#fff" stroke="#168c80"/><text x="611" y="114" text-anchor="middle" font-size="15" font-weight="700">듀얼 Cortex-A55</text><text x="611" y="138" text-anchor="middle" font-size="13">최대 1.2GHz</text><text x="611" y="157" text-anchor="middle" font-size="13">Linux 응용</text>
+            <rect x="716" y="88" width="175" height="78" rx="10" fill="#fff" stroke="#168c80"/><text x="803" y="114" text-anchor="middle" font-size="15" font-weight="700">듀얼 Cortex-R52</text><text x="803" y="138" text-anchor="middle" font-size="13">최대 800MHz</text><text x="803" y="157" text-anchor="middle" font-size="13">실시간 제어</text>
+            <rect x="524" y="202" width="175" height="78" rx="10" fill="#d9f4ed" stroke="#168c80"/><text x="611" y="228" text-anchor="middle" font-size="15" font-weight="700">4축 주변회로</text><text x="611" y="251" text-anchor="middle" font-size="13">엔코더 8채널</text><text x="611" y="270" text-anchor="middle" font-size="13">PWM·ADC</text>
+            <rect x="716" y="202" width="175" height="78" rx="10" fill="#d9f4ed" stroke="#168c80"/><text x="803" y="228" text-anchor="middle" font-size="15" font-weight="700">이더넷 블록</text><text x="803" y="251" text-anchor="middle" font-size="13">3포트 1Gbps 스위치</text><text x="803" y="270" text-anchor="middle" font-size="13">EtherCAT 장치제어기</text>
+            <path d="M699 127H714M611 167V200M803 167V200" stroke="#116b59" stroke-width="3"/>
+            <text x="524" y="326" font-size="14" fill="#245b50">• 16×16mm 또는 21×21mm 패키지</text><text x="524" y="354" font-size="14" fill="#245b50">• 응용과 실시간 제어를 코어별 분리</text>
+          </svg>
+        </div>
+        <figcaption>직접 제작한 설명도·실제 배치도 아님. 수치 근거: 르네사스 RZ/T2N 제품 페이지와 2026-11-05 보도자료. 기존 구조는 르네사스가 비교 대상으로 제시한 다중칩 구성입니다.</figcaption>
+      </figure>
+
+      <h3>기술 구조와 작동 과정</h3>
+      <ol>
+        <li>듀얼 Cortex-A55가 리눅스를 실행하며 화면, 파일기록, 장비관리와 상위 응용을 처리합니다.</li>
+        <li>듀얼 Cortex-R52는 576KB 밀결합메모리에서 제어코드를 실행하고 엔코더 위치와 전류변환값을 읽습니다.</li>
+        <li>R52는 위치·속도·토크 연산 결과를 최대 4축의 PWM 출력에 반영합니다. 축마다 두 엔코더 채널을 사용할 수 있습니다.</li>
+        <li>칩 내부 3포트 기가비트 스위치와 EtherCAT 장치제어기가 네트워크 프레임을 처리합니다. 제품은 PROFINET 실시간·등시성 실시간, EtherNet/IP와 시간민감형 네트워크도 지원합니다.</li>
+        <li>응용코어는 모터상태와 진단값을 받아 저장하거나 상위 시스템에 전달하고, 실시간 제어코어는 정해진 주기의 모터연산을 계속 수행합니다.</li>
+      </ol>
+
+      <figure class="techVisual" aria-labelledby="flow-261108-title">
+        <h4 id="flow-261108-title">응용코어에서 4축 출력까지의 데이터 경로와 측정 위치</h4>
+        <p>위쪽은 리눅스 명령이 실시간 코어로 전달되는 순서입니다. 아래쪽 번호는 부하가 높아졌을 때 명령지연, 제어주기와 축간 동기오차를 측정할 위치입니다.</p>
+        <div class="techVisualScroll">
+          <svg viewBox="0 0 940 340" role="img" aria-labelledby="flow-261108-svg-title flow-261108-svg-desc">
+            <title id="flow-261108-svg-title">RZ/T2N 내부 데이터 흐름과 사전검증 측정 위치</title>
+            <desc id="flow-261108-svg-desc">산업용 이더넷 명령이 칩 내부 스위치와 A55 응용코어를 거쳐 R52 실시간코어로 전달되고, 엔코더와 전류 입력을 사용한 제어 결과가 4축 PWM으로 출력됩니다. 네 지점에서 지연과 동기오차를 측정합니다.</desc>
+            <defs><marker id="arr261108" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#2d6da3"/></marker></defs>
+            <rect x="18" y="88" width="145" height="78" rx="11" fill="#edf5fb" stroke="#2d6da3"/><text x="90" y="117" text-anchor="middle" font-size="15" font-weight="700">산업용 이더넷</text><text x="90" y="142" text-anchor="middle" font-size="13">명령·상태</text>
+            <rect x="200" y="78" width="155" height="98" rx="11" fill="#eaf7f5" stroke="#168c80"/><text x="277" y="108" text-anchor="middle" font-size="15" font-weight="700">3포트 스위치</text><text x="277" y="133" text-anchor="middle" font-size="13">1Gbps</text><text x="277" y="156" text-anchor="middle" font-size="13">EtherCAT ESC</text>
+            <rect x="392" y="78" width="155" height="98" rx="11" fill="#fff" stroke="#4b5563"/><text x="469" y="108" text-anchor="middle" font-size="15" font-weight="700">Cortex-A55</text><text x="469" y="133" text-anchor="middle" font-size="13">Linux 응용</text><text x="469" y="156" text-anchor="middle" font-size="13">화면·기록·통신</text>
+            <rect x="584" y="78" width="155" height="98" rx="11" fill="#fff6e6" stroke="#a86d16"/><text x="661" y="108" text-anchor="middle" font-size="15" font-weight="700">Cortex-R52</text><text x="661" y="133" text-anchor="middle" font-size="13">실시간 제어</text><text x="661" y="156" text-anchor="middle" font-size="13">각 코어 TCM 576KB</text>
+            <rect x="776" y="78" width="145" height="98" rx="11" fill="#fff7ed" stroke="#c77821"/><text x="848" y="108" text-anchor="middle" font-size="15" font-weight="700">4축 주변회로</text><text x="848" y="133" text-anchor="middle" font-size="13">엔코더 8채널</text><text x="848" y="156" text-anchor="middle" font-size="13">PWM·ADC</text>
+            <path d="M164 127H198M356 127H390M548 127H582M740 127H774" stroke="#2d6da3" stroke-width="3" marker-end="url(#arr261108)"/>
+            <circle cx="180" cy="100" r="16" fill="#0f2942"/><text x="180" y="106" text-anchor="middle" font-size="14" fill="#fff">1</text>
+            <circle cx="372" cy="100" r="16" fill="#0f2942"/><text x="372" y="106" text-anchor="middle" font-size="14" fill="#fff">2</text>
+            <circle cx="564" cy="100" r="16" fill="#0f2942"/><text x="564" y="106" text-anchor="middle" font-size="14" fill="#fff">3</text>
+            <circle cx="756" cy="100" r="16" fill="#0f2942"/><text x="756" y="106" text-anchor="middle" font-size="14" fill="#fff">4</text>
+            <text x="26" y="244" font-size="14" fill="#344054">① 네트워크 분석기: 프레임 지연·누락</text><text x="26" y="275" font-size="14" fill="#344054">② 운영체제 추적: 명령 전달시간</text>
+            <text x="475" y="244" font-size="14" fill="#344054">③ GPIO 토글: 제어연산 완료시간</text><text x="475" y="275" font-size="14" fill="#344054">④ 오실로스코프: PWM 주기·축간 편차</text>
+          </svg>
+        </div>
+        <figcaption>직접 제작한 설명도·실제 배치도 아님. 장치구조 근거: 르네사스 RZ/T2N 제품 페이지. 측정장비와 지점은 당사 사전검증용 제안입니다.</figcaption>
+      </figure>
+
+      <h3>기존 방식과 달라진 점</h3>
+      <p>기존 다축 제어보드는 응용 프로세서가 사용자화면과 데이터기록을 맡고, 별도 마이크로컨트롤러가 모터를 제어하며, 통신칩이 산업용 이더넷을 처리했습니다. 칩 사이 버스에는 명령과 상태값을 복사하고 각 장치의 시각을 맞추는 소프트웨어가 필요했습니다.</p>
+      <p>RZ/T2N은 세 기능을 한 칩 내부에 배치하되 실행자원은 분리했습니다. A55가 리눅스 응용을 처리하고 R52가 밀결합메모리에서 실시간 코드를 실행합니다. 칩 내부 이더넷 블록은 컨트롤러와 장치 양쪽 구성을 지원합니다. 한 하드웨어 기반에서 로봇제어기, 다축 서보와 네트워크 장치 제품군을 나눠 개발하려는 구조입니다.</p>
+
+      <h3>장점</h3>
+      <ul>
+        <li>응용처리, 4축 모터제어와 산업용 이더넷을 한 칩에 넣어 제어보드의 칩 사이 배선과 부품수를 줄일 수 있습니다.</li>
+        <li>실시간 코어가 전용 밀결합메모리와 모터 주변회로를 사용하므로 리눅스 응용부하와 제어주기의 영향을 분리해 설계할 수 있습니다.</li>
+        <li>EtherCAT 장치제어기, 3포트 스위치와 중복통신 기능을 내장해 외부 네트워크 소자를 줄일 수 있습니다.</li>
+      </ul>
+      <hr class="sectionDivider">
+      <h3>한계</h3>
+      <ul>
+        <li>한 칩에 기능이 모이면 전원, 온도와 메모리 대역폭이 공통 자원이 됩니다. 리눅스 부하가 제어코어와 네트워크에 미치는 영향은 최대부하에서 측정해야 합니다.</li>
+        <li>르네사스가 공개한 4축 예제는 평가보드 기반입니다. 고객 양산설비의 축간 동기오차, 제어주기와 장시간 가동률은 별도 자료가 필요합니다.</li>
+        <li>기능안전 소프트웨어는 2027년 하반기 제공 예정입니다. 현재 시점에서 안전기능을 RZ/T2N 한 칩만으로 구성한다고 판단하면 안 됩니다.</li>
+      </ul>
+
+      <h3>실제 적용 사례</h3>
+      <p>르네사스는 RZ/T2N 평가보드에서 영구자석 동기모터 4축의 위치·속도·토크를 제어하는 예제를 11월 4일 공개했습니다. 별도 EtherCAT CiA 402 예제는 주기적 동기 위치, 주기적 동기 속도, 프로파일 위치와 원점복귀 운전모드를 설명합니다. 이 사례는 상용 고객설비가 아니라 공급사가 평가보드에서 재현하도록 만든 기준구성입니다. 사전검증에서는 동일 예제를 기준점으로 사용하고 실제 모터, 엔코더와 부하조건을 바꿔 결과를 비교할 수 있습니다.</p>
+
+      <h3>당사 공정·PC 제어와 연결해 볼 부분</h3>
+      <p>현장용 PC가 사용자화면, 작업정보와 데이터기록을 처리하고 별도 모션제어기가 축제어를 맡는 설비에서 통합 가능성을 검토할 수 있습니다. RZ/T2N의 A55 응용부는 리눅스 기반 장비관리와 통신을 실행하고 R52는 모터제어를 담당합니다. 적용대상은 최대 4축이며, 범용 PC 프로그램을 그대로 옮기는 것이 아니라 필요한 장비응용을 임베디드 리눅스 환경에 맞춰 분리하는 작업이 필요합니다.</p>
+      <p>PC 제어 연계 여부는 평균 처리속도보다 최악조건에서 판단해야 합니다. 화면 갱신, 파일저장, 네트워크 송수신과 보안업데이트를 동시에 실행한 상태에서 R52의 제어주기, PWM 지터와 축간 동기오차가 허용범위를 지키는지 측정해야 합니다.</p>
+
+      <h3>사전검증 순서</h3>
+      <ol>
+        <li><strong>기준구성 재현:</strong> RZ/T2N 평가보드와 4개 인버터보드에 같은 등급의 영구자석 동기모터를 연결합니다. 르네사스 4축 예제를 실행해 각 축의 위치·속도 명령 추종오차와 제어주기를 기록합니다.</li>
+        <li><strong>리눅스 부하 시험:</strong> A55에서 화면 갱신, 초당 100MB 파일쓰기와 기가비트 이더넷 송수신을 차례로 추가합니다. 각 단계에서 R52 제어주기의 최대값, PWM 지터와 주기초과 횟수를 측정합니다.</li>
+        <li><strong>축간 동기 시험:</strong> 네 축에 같은 사인파 위치명령을 입력합니다. 엔코더 위치를 동시수집해 축간 최대 시각편차와 위치편차를 계산합니다.</li>
+        <li><strong>네트워크 시험:</strong> EtherCAT 주기를 250·500·1000마이크로초로 설정합니다. 프레임 지연, 누락수, 명령수신부터 PWM 반영까지의 최대시간을 측정합니다.</li>
+        <li><strong>오류분리 시험:</strong> 리눅스 응용 강제종료, 한 축 엔코더 단선과 이더넷 케이블 단선을 각각 발생시킵니다. 정상축의 제어유지 여부, 오류검출시간, 출력차단시간과 재기동시간을 기록합니다.</li>
+      </ol>
+
+      <h3>관련 업체와 접촉 경로</h3>
+      <ul>
+        <li><a class="companyLink" href="https://www.renesas.com/" target="_blank" rel="noopener noreferrer">르네사스 일렉트로닉스</a>는 산업용 마이크로프로세서, 평가보드, 모터제어·산업용 이더넷 예제와 개발도구를 공급합니다. <a class="companyLink" href="https://www.renesas.com/en/support" target="_blank" rel="noopener noreferrer">기술지원</a>에서 설계문의와 비공개 기술지원 티켓을 접수할 수 있습니다.</li>
+        <li><a class="companyLink" href="https://www.renesas.com/en/sample-buy/locations?country=South+Korea" target="_blank" rel="noopener noreferrer">르네사스 한국 공급망</a>은 국내 공식 유통사와 부가가치 판매사를 안내합니다. 평가보드, 인버터보드와 양산수량의 공급일정은 이 경로에서 확인할 수 있습니다.</li>
+      </ul>
+
+      <details class="glossary"><summary>용어 설명</summary>
+        <dl>
+          <div><dt>TI · Texas Instruments</dt><dd>산업용 통신모듈과 임베디드 제어용 반도체를 공급하는 미국 반도체 회사입니다.</dd></div>
+          <div><dt>GPIO · General-Purpose Input/Output</dt><dd>제어코드의 시작과 완료시각을 외부 계측기로 확인할 때 사용하는 범용 디지털 입출력 단자입니다.</dd></div>
+          <div><dt>Arm Cortex-A55 · 제품명</dt><dd>리눅스 응용처리를 맡는 64비트 Arm 프로세서 코어 제품명입니다.</dd></div>
+          <div><dt>Arm Cortex-R52 · 제품명</dt><dd>예측 가능한 실시간 제어와 기능안전 용도를 위해 설계된 Arm 프로세서 코어 제품명입니다.</dd></div>
+          <div><dt>MPU · Microprocessor Unit</dt><dd>운영체제와 복잡한 응용프로그램을 실행하도록 설계된 마이크로프로세서입니다.</dd></div>
+          <div><dt>MCU · Microcontroller Unit</dt><dd>프로세서, 메모리와 입출력 주변회로를 한 칩에 넣은 실시간 제어용 소자입니다.</dd></div>
+          <div><dt>CPU · Central Processing Unit</dt><dd>프로그램의 명령과 계산을 실행하는 중앙처리장치입니다.</dd></div>
+          <div><dt>PC · Personal Computer</dt><dd>화면, 데이터처리와 장비제어 응용을 실행하는 범용 컴퓨터입니다.</dd></div>
+          <div><dt>TCM · Tightly Coupled Memory</dt><dd>실시간 코어가 예측 가능한 지연으로 직접 접근하는 밀결합메모리입니다.</dd></div>
+          <div><dt>ECC · Error-Correcting Code</dt><dd>메모리 데이터의 비트 오류를 검출하고 일부 오류를 수정하는 기능입니다.</dd></div>
+          <div><dt>SRAM · Static Random-Access Memory</dt><dd>주기적인 재충전 없이 데이터를 유지하는 고속 반도체 메모리입니다.</dd></div>
+          <div><dt>LPDDR4 · Low-Power Double Data Rate 4</dt><dd>응용코어가 사용하는 저전력 외부 동적메모리 규격입니다.</dd></div>
+          <div><dt>GMAC · Gigabit Media Access Controller</dt><dd>기가비트 이더넷 프레임의 송수신을 제어하는 하드웨어 블록입니다.</dd></div>
+          <div><dt>ESC · EtherCAT SubDevice Controller</dt><dd>EtherCAT 장치가 순환 프레임에서 공정데이터를 읽고 쓰는 전용 제어기입니다.</dd></div>
+          <div><dt>PWM · Pulse-Width Modulation</dt><dd>펄스의 켜짐 시간을 바꿔 모터 인버터의 전압과 전류를 제어하는 방식입니다.</dd></div>
+          <div><dt>ADC · Analog-to-Digital Converter</dt><dd>전류와 전압 같은 아날로그 신호를 제어연산용 숫자로 바꾸는 회로입니다.</dd></div>
+          <div><dt>TSN · Time-Sensitive Networking</dt><dd>이더넷에서 전송시각과 대역폭을 관리해 중요한 데이터를 정해진 시간 안에 전달하는 표준기술입니다.</dd></div>
+          <div><dt>HSR · High-availability Seamless Redundancy</dt><dd>동일 프레임을 두 경로로 보내 단일 경로고장 때 통신중단을 피하는 중복방식입니다.</dd></div>
+          <div><dt>PRP · Parallel Redundancy Protocol</dt><dd>두 개의 독립 네트워크로 같은 데이터를 동시에 전송하는 중복통신 규격입니다.</dd></div>
+          <div><dt>FRER · Frame Replication and Elimination for Reliability</dt><dd>프레임을 여러 경로로 복제하고 수신부에서 중복을 제거해 신뢰성을 높이는 방식입니다.</dd></div>
+          <div><dt>PMSM · Permanent Magnet Synchronous Motor</dt><dd>회전자에 영구자석을 사용하고 고정자 자기장과 동기회전하는 모터입니다.</dd></div>
+          <div><dt>CiA 402 · CAN in Automation 402</dt><dd>서보드라이브의 상태전이와 위치·속도·토크 운전모드를 정의한 장치프로파일입니다.</dd></div>
+          <div><dt>EtherCAT · Ethernet for Control Automation Technology</dt><dd>이더넷 프레임을 장치가 통과시키며 실시간 공정데이터를 처리하는 산업용 통신규격입니다.</dd></div>
+          <div><dt>PROFINET · 제품명</dt><dd>PROFIBUS &amp; PROFINET International이 관리하는 산업용 이더넷 규격입니다. 공식 약어 풀이가 없는 규격명으로 표기합니다.</dd></div>
+          <div><dt>EtherNet/IP · EtherNet Industrial Protocol</dt><dd>일반 이더넷에서 Common Industrial Protocol 객체를 사용하는 산업용 통신규격입니다.</dd></div>
+          <div><dt>Linux · 제품명</dt><dd>장비관리, 화면과 데이터응용을 실행하는 공개형 운영체제 계열입니다.</dd></div>
+          <div><dt>RZ/T2N · 제품명</dt><dd>르네사스가 4축 모터제어, 응용처리와 산업용 이더넷을 통합한 마이크로프로세서 제품명입니다.</dd></div>
+        </dl>
+      </details>
+
+      <h3>공식 근거자료</h3>
+      <ol class="sourceList">
+        <li><a href="https://www.renesas.com/en/about/newsroom/new-rzt2n-mpu-integrates-motor-control-industrial-ethernet-and-application-processing-robots-and" target="_blank" rel="noopener noreferrer">르네사스, RZ/T2N 양산 출시 발표</a> — 2026-11-05.</li>
+        <li><a href="https://www.renesas.com/en/products/rz-t2n" target="_blank" rel="noopener noreferrer">르네사스, RZ/T2N 제품 페이지·사양·개발자료</a> — 2026-11-08 확인.</li>
+        <li><a href="https://www.renesas.com/en/products/rz-t2n?stPage=4&tab=software-tools" target="_blank" rel="noopener noreferrer">르네사스, RZ/T2N 4축 영구자석 동기모터 벡터제어 예제</a> — 2026-11-04.</li>
+        <li><a href="https://www.renesas.com/en/products/rz-t2n?stPage=4&tab=software-tools" target="_blank" rel="noopener noreferrer">르네사스, EtherCAT CiA 402 기반 4축 모터제어 기동 설명서</a> — 2026-11-04.</li>
+        <li><a href="https://www.renesas.com/en/design-resources/boards-kits/rz-t2n-evkit" target="_blank" rel="noopener noreferrer">르네사스, RZ/T2N 평가보드와 모터제어 확장보드</a> — 2026-11-08 확인.</li>
+      </ol>
+    </section>
+    <footer class="newsFooter"><span>김남인</span><span>선행제어기술팀 미래기술파트</span></footer>
+  </div></article>
+</details>
       <details class="staticReport" id="static-261107" open>
   <summary><span class="staticDate">11.07</span><span class="staticTitle">펌웨어로 3종 산업용 이더넷을 바꾸는 30×18mm 통신모듈</span><span class="staticAxis">전기·제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">TICS100MOD</span><span class="tag">산업용 이더넷</span><span class="tag">IO-Link</span><span class="tag">다중 프로토콜</span><span class="tag">분산 I/O</span></div><p>텍사스 인스트루먼트는 EtherCAT·PROFINET·EtherNet/IP 통신 스택을 한 모듈에 넣고 부팅 때 펌웨어로 통신방식을 선택하는 TICS100MOD를 공개했습니다.</p></div>
@@ -3951,6 +4134,7 @@
     reports.push({"id":"261105","date":"2026-11-05","title":"이상징후 탐지·과거 대응·가상시험을 한 화면에 묶은 ABB 제어실 AI","axis":"설비지능화","category":"AI 제어실 의사결정","tags":["ABB Ability","이상탐지","상황검색","공정예측","제어실"],"summary":"ABB는 11월 2일 제어실 운전자가 공정 이상징후를 조기에 찾고, 같은 설비의 과거 대응기록을 조회하며, 설정 변경 결과를 실행 전에 예측하는 ABB Ability Augmented Operator를 발표했습니다. 세 기능은 운전자가 사용하는 제어화면 안에서 한 흐름으로 제공되며 최종 설정 변경은 운전자가 결정합니다.","discovery":"다변수 이상탐지, 과거 사건·운전조치 검색과 공정변수의 미래값 예측을 제어실 운전 절차에 연결한 통합 응용제품","why":"ABB가 11월 2일 연구단계 기능을 Anomaly Detector, Knowledge Extractor, Process Predictor로 구성한 상용 소프트웨어 묶음으로 발표했습니다. 기존 경보·이력조회·모의계산을 각각 수행하던 절차를 한 제어실 화면에서 이어 쓰는 결합 방식이 달라졌습니다.","study":"이상탐지, 다변수 공정데이터, 상황검색, 공정예측, 가상시험, 공정이력, 경보·사건기록, 운전자 승인","companies":"ABB는 공정자동화, 분산제어시스템과 산업용 소프트웨어를 공급하며 ABB코리아를 통해 국내 영업·기술지원 문의를 받습니다.","poc":"시험용 공정모델에서 압력·온도·유량 세 변수를 정상범위에서 운전한 뒤 센서 편향과 밸브 응답지연을 각각 입력합니다. 기존 경보기와 새 이상탐지기의 최초 검출시각을 비교하고, 과거사례 검색의 상위 5건 적합률과 10분 뒤 공정변수 예측오차를 기록합니다. 운전자가 설정값을 바꾸기 전 가상시험 결과와 실제 시험결과의 차이도 측정합니다.","caution":"공개 내용: 세 응용기능의 역할, 기존 제어실 절차 통합, 공정변수의 분·시간 단위 예측, OKEA Draugen 해상설비 데이터 현장시험. 현장 확인: 지원 제어시스템, 데이터 보관기간, 이상탐지 재현율, 예측오차, 권고 생성시간과 설정 변경 승인방식.","source_use":"11월 2일 ABB 발표와 공식 제품 페이지를 중심으로 ABB 디지털화·AI 발표목록, OKEA Draugen 현장시험 설명과 ABB코리아 접촉 경로를 대조","sourceCount":5,"weekly":{"topic":"제어실 이상징후 대응 AI","change":"경보 확인 뒤 검색하던 일을 탐지·과거사례·예측으로 묶습니다.","check":"센서 편향을 넣고 탐지시각과 10분 예측오차를 측정합니다."}});
     reports.push({"id":"261106","date":"2026-11-06","title":"111피코초 타이머와 위치엔코더를 한 칩에 넣은 실시간 모터·전력 제어 MCU","axis":"전기·제어","category":"실시간 모터·전력 제어","tags":["STM32G5","모터제어","디지털전력","111피코초","혼합신호 MCU"],"summary":"ST마이크로일렉트로닉스는 11월 4일 280MHz 연산코어, 111피코초 고해상도 타이머, 5메가샘플 ADC, 위치엔코더와 16개 논리요소를 한 칩에 통합한 STM32G5를 공개했습니다. 전류·전압 측정부터 PWM 출력과 위치검출까지 같은 마이크로컨트롤러에서 처리해 고주파 전력변환기와 다축 모터제어 보드의 외부 논리회로를 줄이는 구조입니다.","discovery":"STM32G4보다 약 2배의 연산성능, 111피코초 12채널 타이머, 5메가샘플 ADC, 위치엔코더와 16요소 프로그래머블 논리를 한 혼합신호 MCU에 결합","why":"11월 4일 공식 발표에서 연산성능만 높인 것이 아니라 전력변환·모터제어에 필요한 측정, 위치검출, PWM과 사용자 논리를 같은 칩 안에 묶은 구조가 공개됐습니다. 기존 STM32G4의 184피코초 타이머·4메가샘플 ADC·단일 FMAC과 비교 가능한 수치가 제시됐습니다.","study":"실시간 제어, 고해상도 PWM, 위치엔코더, 아날로그 신호변환, 프로그래머블 논리, 디지털전력, 모터제어, 보안부팅","companies":"ST마이크로일렉트로닉스는 혼합신호 마이크로컨트롤러와 모터·전력 제어 개발도구를 공급하며 한국 법인과 국내 공식 대리점이 샘플·기술지원을 제공합니다.","poc":"STM32G4와 STM32G5 평가보드에 같은 전류센서와 엔코더 모의신호를 연결합니다. PWM 주파수를 20·50·100kHz로 높이며 전류샘플 시각편차, PWM 지터와 제어연산 완료시간을 비교합니다. 엔코더 입력주파수를 단계적으로 높여 위치누락률을 측정하고, 외부 논리회로를 칩 내부 PLAy로 옮긴 뒤 입력에서 PWM 차단까지의 지연을 기록합니다.","caution":"공개 내용: 280MHz, 1136 CoreMark, 111피코초 12채널 타이머, 5메가샘플 ADC, 20나노초 비교기, 위치엔코더, 16요소 PLAy와 보안기능. 현장 확인: 채널 동시사용 조건, 변환지연, PWM 지터, 엔코더 최대입력, 보드 온도와 실제 모터·전력단의 제어주기.","source_use":"11월 4일 ST 공식 발표와 제품 페이지를 중심으로 11월 3일 기술설명, STM32 통합플랫폼 발표와 국내 기술지원 경로를 대조","sourceCount":5,"weekly":{"topic":"한 칩 모터·전력 실시간 제어","change":"측정·위치검출·PWM·사용자 논리를 한 MCU에서 처리합니다.","check":"100kHz PWM에서 샘플 시각편차와 출력지터를 측정합니다."}});
     reports.push({"id":"261107","date":"2026-11-07","title":"펌웨어로 3종 산업용 이더넷을 바꾸는 30×18mm 통신모듈","axis":"전기·제어","category":"산업용 통신","tags":["TICS100MOD","산업용 이더넷","IO-Link","다중 프로토콜","분산 I/O"],"summary":"텍사스 인스트루먼트는 11월 5일 EtherCAT·PROFINET·EtherNet/IP 가운데 하나를 부팅 때 선택하는 30×18mm TICS100MOD와 두 채널 IO-Link 마스터 TIOM2212를 발표했습니다. 실시간 프레임 처리를 모듈 내부 전용코어에 맡기고 호스트 제어기에는 공통 SPI·QSPI 인터페이스를 제공해 고객별 통신보드 변경을 줄이는 구조입니다.","discovery":"30×18mm 모듈에 500MHz 듀얼코어, 두 개의 10/100Mbps 포트와 세 가지 인증 산업용 이더넷 스택을 넣고 부팅 펌웨어로 통신규격을 선택","why":"11월 5일 공식 발표는 프로토콜별 전용보드를 교체하던 방식에서 같은 호스트와 공통모듈을 유지하는 구조를 공개했습니다. 데이터시트가 EtherCAT 최소 50마이크로초, 모듈 크기, 온도범위와 인터페이스를 제시해 장비 통신설계의 차이를 수치로 비교할 수 있습니다.","study":"산업용 이더넷, 다중 프로토콜 모듈, 실시간 프레임 처리, IO-Link 마스터, 분산 I/O, 공통 호스트 인터페이스","companies":"텍사스 인스트루먼트는 산업용 통신 반도체·모듈과 개발도구를 공급하고 한국어 고객지원 센터를 운영합니다. 씨크코리아는 IO-Link 센서와 통합장치를 공급하며 SIG300 적용사례를 제시했습니다.","poc":"같은 호스트 보드에서 세 프로토콜을 차례로 부팅하고 256바이트 공정데이터의 순서와 단위를 비교합니다. EtherCAT 50·100·250마이크로초 주기에서 프레임 간격 편차, SPI 인터럽트 지연과 주기초과 횟수를 측정합니다. IO-Link COM3 센서값을 400마이크로초마다 바꾸며 PC 메모리 반영시간과 누락률을 기록합니다.","caution":"공개 내용: 30×18mm, 500MHz 듀얼코어, 10/100Mbps 2포트, 영하 40도~영상 85도, EtherCAT 최소 50마이크로초와 부팅 시 프로토콜 선택. 현장 확인: 프로토콜별 인증범위, 종단 제어주기, 호스트 부하영향, 오류복구시간과 양산공급 일정.","source_use":"11월 5일 TI 공식 발표와 TICS100MOD·TIOM2212 제품자료를 중심으로 8포트 IO-Link 참고설계, SICK 적용언급과 한국어 지원경로를 대조","sourceCount":5,"weekly":{"topic":"펌웨어 선택형 산업용 통신","change":"통신보드 교체 대신 부팅 펌웨어로 이더넷 규격을 정합니다.","check":"50μs 주기에서 프레임 편차와 SPI 지연을 측정합니다."}});
+    reports.push({"id":"261108","date":"2026-11-08","title":"4축 모터제어·산업용 이더넷·리눅스를 한 칩에 묶은 실시간 MPU","axis":"전기·제어","category":"PC·실시간 제어 통합","tags":["RZ/T2N","4축 모터제어","산업용 이더넷","Linux","실시간 MPU"],"summary":"르네사스는 11월 5일 최대 1.2GHz 듀얼 Cortex-A55, 800MHz 듀얼 Cortex-R52, 4축 모터 주변회로와 3포트 기가비트 이더넷 스위치를 한 칩에 넣은 RZ/T2N을 양산 출시했습니다. 리눅스 응용과 모터 실시간 제어를 코어별로 나눠 실행하며 응용 프로세서·모터제어 MCU·통신칩의 다중칩 구성을 줄이는 구조입니다.","discovery":"리눅스용 듀얼 A55, 실시간 제어용 듀얼 R52, 축당 2채널 엔코더와 4축 모터 주변회로, 산업용 이더넷 스위치를 한 64비트 MPU에 결합","why":"11월 5일 공식 발표는 통신모듈만 바꾼 것이 아니라 응용처리, 4축 모터제어와 네트워크를 한 칩에 결합했습니다. 11월 4일 4축 벡터제어와 EtherCAT CiA 402 예제가 공개돼 리눅스 부하와 실시간 제어의 분리효과를 평가보드에서 재현할 수 있습니다.","study":"비대칭 멀티코어, 임베디드 리눅스, 실시간 모터제어, 산업용 이더넷, 4축 동기제어, 엔코더 인터페이스, 네트워크 중복","companies":"르네사스 일렉트로닉스는 RZ/T2N, 평가보드, 인버터 확장보드와 모터·산업통신 예제를 공급하며 한국 법인과 국내 공식 유통망을 운영합니다.","poc":"평가보드와 4개 모터에 공식 4축 예제를 적용합니다. A55에서 화면갱신·초당 100MB 파일쓰기·기가비트 송수신을 추가하며 R52 제어주기, PWM 지터와 주기초과를 측정합니다. EtherCAT 250·500·1000마이크로초 주기에서 축간 시각편차와 명령수신부터 PWM 반영까지의 최대시간을 기록합니다.","caution":"공개 내용: 1.2GHz 듀얼 A55, 800MHz 듀얼 R52, 코어당 576KB TCM, 4축 모터제어, 엔코더 8채널, 3포트 기가비트 스위치와 양산 개시. 현장 확인: 리눅스 최대부하의 제어영향, 축간 동기오차, 칩 온도, 오류격리와 2027년 하반기 기능안전 소프트웨어 범위.","source_use":"11월 5일 르네사스 공식 발표와 RZ/T2N 제품사양을 중심으로 11월 4일 4축 모터·EtherCAT 예제, 평가보드와 국내 공급경로를 대조","sourceCount":5,"weekly":{"topic":"리눅스와 4축 제어를 한 칩에","change":"응용·모터제어·통신용 세 칩을 한 MPU로 합칩니다.","check":"A55 최대부하에서 PWM 지터와 축간 편차를 측정합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -4310,7 +4494,7 @@
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
