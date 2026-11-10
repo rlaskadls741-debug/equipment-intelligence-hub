@@ -152,6 +152,172 @@
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
+      <details class="staticReport" id="static-261111" open>
+  <summary><span class="staticDate">11.11</span><span class="staticTitle">AI 연산·비행제어·센서망·모터제어를 한 SDK로 묶은 분산 로봇 플랫폼</span><span class="staticAxis">로봇·인공지능 제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">분산 로봇 제어</span><span class="tag">공통 SDK</span><span class="tag">검증 참조설계</span><span class="tag">실시간 제어</span><span class="tag">피지컬 AI</span></div><p>NXP는 AI 연산, 비행관리, 100BASE-T1 센서망과 모터제어를 검증된 참조설계와 하나의 오픈소스 SDK로 묶은 통합 로봇 플랫폼을 11월 9일 공개했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">분산형 로봇 통합개발 · 2026-11-11</p>
+      <h2>AI 연산·비행제어·센서망·모터제어를 한 SDK로 묶은 분산 로봇 플랫폼</h2>
+      <p class="newsLead">NXP는 11월 9일 네덜란드 에인트호번에서 Neural Axis Architecture 기반 통합 로봇 플랫폼을 발표했습니다. 첫 참조구성은 i.MX 95 기반 NavQ95 자율연산·비행제어, i.MX RT1064 기반 Tropic 비행관리, MCX N947 기반 100BASE-T1 센서노드와 MCX A13 기반 AM32 전자식 속도제어기를 한 Robotics SDK로 묶습니다. 기존에는 각 보드의 운영체제·드라이버·통신을 개발자가 따로 조립했지만, 새 플랫폼은 검증된 하위시스템과 공통 소프트웨어 구성으로 통합경계를 바꿨습니다.</p>
+    </header>
+
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>최근 24시간에는 생산설비 제어구조를 새로 바꾼 공식발표가 많지 않았습니다. 최근 일주일 자료에서는 AI 연산을 한 보드에 더하는 방식보다 센서, 실시간 제어, 모터구동과 보안을 여러 처리장치에 나누고 공통 개발도구로 묶는 분산형 피지컬 AI 구조가 구체화됐습니다.</p></div>
+      <div><strong>주요 기술</strong><p>NXP Robotics SDK가 ROS 2, PX4, Zephyr와 AM32를 연결하고, NavQ95·Tropic·100BASE-T1 센서노드·전자식 속도제어기 참조설계를 한 개발환경에서 구성합니다.</p></div>
+      <div><strong>선정 이유</strong><p>기존 로봇 개발도구 발표와 달리 NXP는 11월 9일 개별 하위시스템의 장치명, 처리역할, 지원 공개 소프트웨어와 즉시 이용 가능한 드론 참조설계를 함께 공개했습니다. AI·비행·센서·모터 제어의 결합방식이 제품 목록이 아니라 재현 가능한 플랫폼 단위로 바뀐 점을 선정했습니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><strong>확인된 사실:</strong> NXP는 Robotics SDK와 드론용 참조설계를 현재 제공하고 있습니다. 공식 개발페이지는 ROS 2, PX4, Zephyr RTOS와 AM32를 지원하며, 100BASE-T1 센서망과 장치 간 통신을 공통 개발환경에서 구성하도록 안내합니다.</p>
+    <p><strong>공급사 주장:</strong> NXP는 개별 하위시스템을 통합하고 검증하는 기간을 수개월에서 수일 또는 수주로 줄이며, 기본 드론 기능은 참조설계와 SDK를 이용해 30분 안에 구성할 수 있다고 설명합니다. 이 시간은 초기 기능 구성 기준이며 비행안전 승인이나 공정별 성능검증 시간은 아닙니다.</p>
+    <p><strong>작성자 해석:</strong> 이번 발표의 새 구조는 큰 AI 프로세서 하나가 모든 신호를 처리하는 중앙집중형이 아닙니다. i.MX 95는 자율연산과 상위 비행제어를 맡고, i.MX RT1064는 결정성 비행관리를 수행합니다. MCX N947 센서노드는 현장 센서망을 처리하고, MCX A13 전자식 속도제어기는 모터 명령을 실행합니다. 공통 SDK가 각 처리장치의 소프트웨어와 통신을 묶어 기능별 실시간 요구를 분리하면서 응용개발 경로를 통일합니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <ol>
+      <li>센서노드는 100BASE-T1을 통해 카메라·거리·상태 신호를 상위 연산계층에 전달합니다.</li>
+      <li>NavQ95의 i.MX 95 프로세서는 센서정보로 위치와 주변환경을 계산하고 자율이동 경로를 만듭니다.</li>
+      <li>Tropic 비행관리장치의 i.MX RT1064는 자세·비행상태와 실시간 제어조건을 관리합니다.</li>
+      <li>비행제어 명령은 전자식 속도제어기로 전달되고, MCX A13은 AM32 펌웨어로 모터 구동신호를 생성합니다.</li>
+      <li>Robotics SDK는 각 장치의 드라이버, 미들웨어, 참조응용과 설정도구를 공통 개발환경에서 제공합니다.</li>
+      <li>개발자는 모터제어 한 기능부터 시작한 뒤 AI 인지, 항법과 센서망을 같은 플랫폼에 단계적으로 추가합니다.</li>
+    </ol>
+
+    <figure class="techVisual">
+      <figcaption><strong>개별 보드 조립과 공통 SDK 기반 분산 로봇 구조 비교</strong><span>왼쪽은 AI 연산·비행관리·센서·모터 보드마다 드라이버와 통신을 따로 통합하는 기존 방식을, 오른쪽은 네 참조설계를 공통 SDK와 검증된 공개 소프트웨어로 묶는 구조를 보여줍니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
+      <div class="techVisualScroll">
+      <svg viewBox="0 0 1040 500" role="img" aria-labelledby="v261111t v261111d">
+        <title id="v261111t">기존 개별 통합 방식과 NXP 통합 로봇 플랫폼 비교</title>
+        <desc id="v261111d">기존 방식은 네 하위시스템마다 운영체제, 드라이버와 통신을 따로 조립합니다. 새 방식은 NavQ95, Tropic, 100BASE-T1 센서노드와 AM32 속도제어기를 Robotics SDK로 묶습니다.</desc>
+        <rect x="15" y="20" width="480" height="450" rx="18" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/>
+        <text x="255" y="58" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">기존 방식: 보드별 통합</text>
+        <rect x="55" y="95" width="170" height="72" rx="11" fill="#e2e8f0" stroke="#64748b"/><text x="140" y="125" text-anchor="middle" font-size="16" font-weight="700">AI 연산 보드</text><text x="140" y="149" text-anchor="middle" font-size="13">드라이버·모델 별도</text>
+        <rect x="285" y="95" width="170" height="72" rx="11" fill="#e2e8f0" stroke="#64748b"/><text x="370" y="125" text-anchor="middle" font-size="16" font-weight="700">비행제어 보드</text><text x="370" y="149" text-anchor="middle" font-size="13">RTOS·제어 별도</text>
+        <rect x="55" y="205" width="170" height="72" rx="11" fill="#e2e8f0" stroke="#64748b"/><text x="140" y="235" text-anchor="middle" font-size="16" font-weight="700">센서망 보드</text><text x="140" y="259" text-anchor="middle" font-size="13">통신변환 별도</text>
+        <rect x="285" y="205" width="170" height="72" rx="11" fill="#e2e8f0" stroke="#64748b"/><text x="370" y="235" text-anchor="middle" font-size="16" font-weight="700">모터제어 보드</text><text x="370" y="259" text-anchor="middle" font-size="13">ESC 펌웨어 별도</text>
+        <rect x="75" y="335" width="360" height="90" rx="12" fill="#fff7ed" stroke="#f59e0b"/>
+        <text x="255" y="367" text-anchor="middle" font-size="16" font-weight="700">통합지점이 개발팀마다 다름</text>
+        <text x="255" y="394" text-anchor="middle" font-size="14">인터페이스·버전·오류처리를 반복 검증</text>
+
+        <rect x="525" y="20" width="500" height="450" rx="18" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+        <text x="775" y="58" text-anchor="middle" font-size="22" font-weight="700" fill="#1e3a8a">새 방식: 검증 하위시스템 + 공통 SDK</text>
+        <rect x="560" y="88" width="190" height="82" rx="11" fill="#dbeafe" stroke="#2563eb"/><text x="655" y="118" text-anchor="middle" font-size="15" font-weight="700">NavQ95 · i.MX 95</text><text x="655" y="143" text-anchor="middle" font-size="13">AI 연산·자율비행</text>
+        <rect x="800" y="88" width="190" height="82" rx="11" fill="#dcfce7" stroke="#16a34a"/><text x="895" y="118" text-anchor="middle" font-size="15" font-weight="700">Tropic · i.MX RT1064</text><text x="895" y="143" text-anchor="middle" font-size="13">결정성 비행관리</text>
+        <rect x="560" y="205" width="190" height="82" rx="11" fill="#fef3c7" stroke="#d97706"/><text x="655" y="235" text-anchor="middle" font-size="15" font-weight="700">MCX N947 센서노드</text><text x="655" y="260" text-anchor="middle" font-size="13">100BASE-T1 센서망</text>
+        <rect x="800" y="205" width="190" height="82" rx="11" fill="#fee2e2" stroke="#dc2626"/><text x="895" y="235" text-anchor="middle" font-size="15" font-weight="700">MCX A13 · AM32</text><text x="895" y="260" text-anchor="middle" font-size="13">전자식 모터 속도제어</text>
+        <rect x="585" y="340" width="380" height="88" rx="12" fill="#ede9fe" stroke="#7c3aed"/>
+        <text x="775" y="372" text-anchor="middle" font-size="17" font-weight="700">NXP Robotics SDK</text>
+        <text x="775" y="399" text-anchor="middle" font-size="14">ROS 2 · PX4 · Zephyr · AM32 · 공통 설정도구</text>
+        <path d="M655 170 V340 M895 170 V340 M655 287 V340 M895 287 V340" stroke="#7c3aed" stroke-width="3"/>
+      </svg>
+      </div>
+      <p class="visualSource">구성 근거: NXP 2026-11-09 공식발표와 Robotics SDK 공식페이지의 NavQ95, Tropic, MCX N947 센서노드, MCX A13 속도제어기 및 지원 소프트웨어 목록을 반영했습니다.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>기존 드론·이동로봇 시제품은 AI 컴퓨터, 비행제어기, 센서 게이트웨이와 모터제어기를 선정한 뒤 각 제조사의 보드지원패키지와 공개 프로젝트를 개발자가 직접 맞췄습니다. 인터페이스가 바뀌면 메시지 형식, 시각동기, 펌웨어 버전과 오류처리를 다시 시험해야 했습니다.</p>
+    <p>NXP 플랫폼은 개별 장치를 한 칩으로 합치지 않습니다. 기능별 처리장치를 유지하되 참조 하드웨어와 공개 소프트웨어 조합을 공급사가 검증하고, 공통 SDK에서 드라이버·미들웨어·참조응용·설정도구를 제공합니다. 설비개발자는 한 기능에서 시작해 전체 자율시스템으로 확장할 수 있으며, 통합시험의 기준구성을 고정할 수 있습니다.</p>
+
+    <h3>장점</h3>
+    <ul>
+      <li>AI 연산과 실시간 모터제어를 서로 다른 처리장치에 배치해 추론부하가 모터제어 주기를 직접 점유하는 위험을 줄일 수 있습니다.</li>
+      <li>지원 소프트웨어와 참조설계의 조합이 공개돼 개발팀이 동일한 기준구성에서 오류를 재현할 수 있습니다.</li>
+      <li>모터제어 한 기능부터 AI 인지와 항법까지 단계적으로 추가하므로 시험범위를 기능별로 나눌 수 있습니다.</li>
+      <li>ROS 2·PX4·Zephyr·AM32를 공통 SDK에 포함해 공개 생태계의 기존 도구와 시험자산을 활용할 수 있습니다.</li>
+    </ul>
+    <hr>
+    <h3>한계</h3>
+    <ul>
+      <li>30분은 초기 드론 기능 구성에 관한 공급사 기준이며 제어주기, 비행시간과 고장복구 성능을 보증하는 수치가 아닙니다.</li>
+      <li>NavQ95와 일부 참조장치는 사전생산 단계이므로 양산형식, 장기공급과 기능안전 인증범위를 구매 전에 확인해야 합니다.</li>
+      <li>여러 처리장치가 메시지를 교환하므로 시각동기 오차, 네트워크 지연과 메시지 손실이 전체 제어성능을 결정합니다.</li>
+      <li>현재 즉시 제공되는 참조구성은 드론 중심이며 서비스로봇과 자율이동로봇 지원은 2027년 하반기 이후 추가될 예정입니다.</li>
+    </ul>
+
+    <h3>실제 적용 사례</h3>
+    <p>NXP Modular Drone Platform은 AI 연산·비행제어용 NavQ95, 비행관리용 Tropic, 100BASE-T1 센서노드와 AM32 전자식 속도제어기를 결합한 첫 참조응용입니다. 드론 물류업체 blueflite와 영상·무인시스템 업체 Orqa는 공식발표에서 빠른 시제품 개발과 처리장치 간 예측 가능한 저지연 통신이 필요하다고 밝혔습니다. 공개된 적용결과는 개발 플랫폼 평가와 파트너 의견이며, 생산현장의 작업성공률이나 장기간 가동률 수치는 제시되지 않았습니다.</p>
+
+    <h3>당사 공정·PC 제어와 연결해 볼 부분</h3>
+    <p>일반 자율이동·검사설비에서는 PC가 제품번호, 작업지시와 결과이력을 관리하고, 분산 로봇 플랫폼이 센서처리·경로판단·실시간 모터제어를 맡는 경계를 검토할 수 있습니다. 첫 시험은 이동축 2~4개와 카메라 또는 거리센서 한 종류로 제한합니다. PC에서 작업명령을 보낸 시각부터 플랫폼의 경로수신, 모터명령과 완료응답까지 동일한 시각기준으로 기록하면 상위제어 지연과 로봇 내부 지연을 분리할 수 있습니다.</p>
+
+    <figure class="techVisual">
+      <figcaption><strong>분산 로봇 플랫폼의 현장 측정 위치</strong><span>PC 작업지시부터 센서, AI·항법, 실시간 제어, 모터명령과 완료응답까지 여섯 지점의 시각을 기록합니다. 각 처리장치의 평균값보다 최대 지연과 메시지 손실을 우선 확인합니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
+      <div class="techVisualScroll">
+      <svg viewBox="0 0 1080 320" role="img" aria-labelledby="m261111t m261111d">
+        <title id="m261111t">NXP 분산 로봇 플랫폼 사전검증 측정 위치</title>
+        <desc id="m261111d">PC 작업지시, 센서노드 입력, NavQ95 AI와 항법, Tropic 실시간 제어, AM32 모터명령, 완료응답에서 시각과 메시지 상태를 측정합니다.</desc>
+        <rect x="20" y="70" width="145" height="78" rx="10" fill="#e2e8f0" stroke="#475569"/><text x="92" y="101" text-anchor="middle" font-size="15" font-weight="700">P1 PC 지시</text><text x="92" y="126" text-anchor="middle" font-size="12">명령·송신시각</text>
+        <rect x="195" y="70" width="145" height="78" rx="10" fill="#fef3c7" stroke="#d97706"/><text x="267" y="101" text-anchor="middle" font-size="15" font-weight="700">P2 센서노드</text><text x="267" y="126" text-anchor="middle" font-size="12">입력·전송시각</text>
+        <rect x="370" y="70" width="145" height="78" rx="10" fill="#dbeafe" stroke="#2563eb"/><text x="442" y="101" text-anchor="middle" font-size="15" font-weight="700">P3 NavQ95</text><text x="442" y="126" text-anchor="middle" font-size="12">AI·경로 완료</text>
+        <rect x="545" y="70" width="145" height="78" rx="10" fill="#dcfce7" stroke="#16a34a"/><text x="617" y="101" text-anchor="middle" font-size="15" font-weight="700">P4 Tropic</text><text x="617" y="126" text-anchor="middle" font-size="12">제어명령 생성</text>
+        <rect x="720" y="70" width="145" height="78" rx="10" fill="#fee2e2" stroke="#dc2626"/><text x="792" y="101" text-anchor="middle" font-size="15" font-weight="700">P5 AM32 ESC</text><text x="792" y="126" text-anchor="middle" font-size="12">모터명령 반영</text>
+        <rect x="895" y="70" width="145" height="78" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="967" y="101" text-anchor="middle" font-size="15" font-weight="700">P6 완료응답</text><text x="967" y="126" text-anchor="middle" font-size="12">상태·수신시각</text>
+        <path d="M165 109 H195 M340 109 H370 M515 109 H545 M690 109 H720 M865 109 H895" stroke="#334155" stroke-width="4"/>
+        <rect x="250" y="220" width="580" height="65" rx="12" fill="#f8fafc" stroke="#64748b"/>
+        <text x="540" y="247" text-anchor="middle" font-size="15" font-weight="700">측정값: P1~P6 최대 지연 · 메시지 손실 · 제어주기 초과 · 복구시간</text>
+        <text x="540" y="271" text-anchor="middle" font-size="13">시험조건: AI 부하 25% 단계 증가, 센서단선, 100BASE-T1 프레임 손실, 모터부하 변화</text>
+      </svg>
+      </div>
+    </figure>
+
+    <h3>사전검증 순서</h3>
+    <ol>
+      <li><strong>기준구성 고정:</strong> NavQ95, Tropic, 센서노드와 AM32 속도제어기의 보드개정, 펌웨어, SDK와 공개 소프트웨어 버전을 기록합니다.</li>
+      <li><strong>단독기능 시험:</strong> 센서노드, 비행관리와 모터제어를 각각 1만 주기 실행합니다. 입력누락, 제어주기 초과와 모터명령 손실 건수를 측정합니다.</li>
+      <li><strong>통합지연 시험:</strong> P1 작업지시부터 P6 완료응답까지 1만 회 기록합니다. 구간별 평균·99.9백분위·최대 지연과 시각편차를 계산합니다.</li>
+      <li><strong>AI 부하 시험:</strong> NavQ95의 AI 처리부하를 25% 단위로 높입니다. P3 처리시간, P4 제어주기와 P5 모터명령 손실이 기준을 넘는지 확인합니다.</li>
+      <li><strong>통신오류 시험:</strong> 센서케이블 단선과 100BASE-T1 프레임 손실을 각각 발생시킵니다. 오류검출, 안전상태 전환과 정상복구까지의 최대시간을 기록합니다.</li>
+      <li><strong>상위 PC 연계 시험:</strong> 정상명령, 중복명령과 순서가 바뀐 명령을 각각 1,000회 전송합니다. 로봇이 중복실행하지 않고 명시한 오류응답을 반환하는지 확인합니다.</li>
+      <li><strong>확대판정:</strong> 최대지연, 명령손실, 안전상태 전환과 8시간 연속운전 온도가 공정 기준값 이내일 때 다음 센서와 축을 추가합니다.</li>
+    </ol>
+
+    <h3>관련 업체와 접촉 경로</h3>
+    <ul>
+      <li><a class="companyLink" href="https://www.nxp.com/company/about-nxp/worldwide-locations/korea:KOREA" target="_blank" rel="noopener noreferrer">NXP 코리아</a>는 국내 영업·기술지원을 운영합니다. 문의할 때 대상 로봇 형식, 축 수, 센서 인터페이스, 목표 제어주기와 평가할 참조보드를 함께 전달할 수 있습니다.</li>
+      <li><a class="companyLink" href="https://www.nxp.com/company/about-nxp/contact-us:CONTACTUS" target="_blank" rel="noopener noreferrer">NXP 기술지원</a>은 제품정보, 설계지원과 영업연결 창구를 제공합니다. Robotics SDK의 지원버전, 참조설계 공급상태와 장기지원 범위를 확인할 수 있습니다.</li>
+    </ul>
+
+    <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+      <li id="term-261111-1"><b>AI (Artificial Intelligence)</b><span>센서정보에서 대상과 상태를 판단하고 로봇의 다음 행동을 계산하는 인공지능 기술입니다.</span></li>
+      <li id="term-261111-2"><b>PC (Personal Computer)</b><span>작업지시, 제품번호와 결과이력을 관리하는 범용 컴퓨터입니다.</span></li>
+      <li id="term-261111-3"><b>SDK (Software Development Kit)</b><span>드라이버, 미들웨어, 참조응용과 설정도구를 묶어 응용개발에 제공하는 소프트웨어 개발도구입니다.</span></li>
+      <li id="term-261111-4"><b>ROS 2 (Robot Operating System 2)</b><span>로봇의 장치와 응용이 메시지를 교환하도록 통신·실행도구를 제공하는 공개 소프트웨어 체계입니다.</span></li>
+      <li id="term-261111-5"><b>PX4 (공개 프로젝트명)</b><span>드론과 무인장치의 비행제어와 자동항법에 사용하는 공개 소프트웨어 프로젝트입니다.</span></li>
+      <li id="term-261111-6"><b>RTOS (Real-Time Operating System)</b><span>정해진 시간 안에 제어작업을 실행하도록 우선순위와 실행주기를 관리하는 실시간 운영체제입니다.</span></li>
+      <li id="term-261111-7"><b>ESC (Electronic Speed Controller)</b><span>비행제어기의 명령을 받아 모터의 회전속도를 조절하는 전자식 속도제어기입니다.</span></li>
+      <li id="term-261111-8"><b>AMR (Autonomous Mobile Robot)</b><span>센서와 지도를 이용해 경로를 판단하고 이동하는 자율이동로봇입니다.</span></li>
+      <li id="term-261111-9"><b>MCU (Microcontroller Unit)</b><span>프로세서, 메모리와 제어용 입출력을 한 칩에 넣어 센서·모터 제어를 실행하는 마이크로제어기입니다.</span></li>
+      <li id="term-261111-10"><b>MPU (Microprocessor Unit)</b><span>리눅스와 복잡한 응용을 실행하도록 외부메모리와 연결해 사용하는 마이크로프로세서입니다.</span></li>
+      <li id="term-261111-11"><b>NPU (Neural Processing Unit)</b><span>신경망 추론의 행렬계산을 전용회로로 빠르게 처리하는 인공지능 연산장치입니다.</span></li>
+      <li id="term-261111-12"><b>VMU (Vehicle Management Unit)</b><span>이동체의 상태, 실시간 제어와 장치 간 명령을 관리하는 제어장치입니다.</span></li>
+      <li id="term-261111-13"><b>FMU (Flight Management Unit)</b><span>비행체의 자세, 항법과 비행상태를 실시간으로 관리하는 제어장치입니다.</span></li>
+      <li id="term-261111-14"><b>100BASE-T1 (통신규격명)</b><span>한 쌍의 구리선으로 초당 100메가비트 이더넷을 전송하는 차량·로봇용 통신규격입니다.</span></li>
+      <li id="term-261111-15"><b>AM32 (공개 펌웨어명)</b><span>드론용 전자식 속도제어기에서 모터구동을 실행하는 공개 펌웨어 프로젝트입니다.</span></li>
+      <li id="term-261111-16"><b>Zephyr (공개 운영체제명)</b><span>마이크로제어기와 연결장치용으로 제공되는 공개 실시간 운영체제입니다.</span></li>
+      <li id="term-261111-17"><b>NavQ95 (제품명)</b><span>i.MX 95 프로세서로 AI 자율연산과 비행제어를 결합한 NXP 참조보드입니다.</span></li>
+      <li id="term-261111-18"><b>Tropic (제품명)</b><span>i.MX RT1064를 사용해 이동체·비행체 관리를 수행하는 NXP 참조장치입니다.</span></li>
+      <li id="term-261111-19"><b>NXP (회사명)</b><span>자동차·산업·통신용 반도체와 소프트웨어를 공급하며 이번 통합 로봇 플랫폼을 발표한 기업입니다.</span></li>
+      <li id="term-261111-20"><b>i.MX 95 (제품명)</b><span>NavQ95에서 AI 자율연산과 비행제어를 실행하는 NXP 응용프로세서 제품군입니다.</span></li>
+      <li id="term-261111-21"><b>i.MX RT1064 (제품명)</b><span>Tropic 장치에서 결정성 비행관리를 실행하는 NXP 크로스오버 마이크로제어기입니다.</span></li>
+      <li id="term-261111-22"><b>MCX N947 (제품명)</b><span>100BASE-T1 센서노드에서 센서 입력과 통신을 처리하는 NXP 마이크로제어기입니다.</span></li>
+      <li id="term-261111-23"><b>MCX A13 (제품명)</b><span>AM32 전자식 속도제어기에서 모터구동을 실행하는 NXP 마이크로제어기입니다.</span></li>
+      <li id="term-261111-24"><b>Neural Axis Architecture (기술구조명)</b><span>추론, 조정과 반사동작을 서로 다른 처리계층에 분산해 연결하는 NXP의 피지컬 AI 구조입니다.</span></li>
+      <li id="term-261111-25"><b>피지컬 AI (Physical Artificial Intelligence)</b><span>센서로 실제 환경을 인지하고 계산결과를 로봇의 물리동작으로 실행하는 인공지능 시스템입니다.</span></li>
+    </ol></section></details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://www.nxp.com/company/about-nxp/newsroom/NW-NXP-UNVEILS-ROBOTICS-PHYSICAL-AI" target="_blank" rel="noopener noreferrer">NXP, Unified Robotics Platform 공식발표</a><span>2026-11-09 · 분산형 Neural Axis Architecture, 네 드론 참조설계, 공통 SDK, 30분 초기기능과 향후 지원범위</span></li>
+      <li><a href="https://www.nxp.com/design/design-center/software/embedded-software/robotics-sdk-an-open-source-development-stack-for-drones-amrs-and-humanoid-robots:ROBOTICS-SDK" target="_blank" rel="noopener noreferrer">NXP Robotics SDK 공식페이지</a><span>확인 2026-11-11 · 지원 공개 소프트웨어, 미들웨어, 통신, 개발환경과 참조보드 목록</span></li>
+      <li><a href="https://www.nxp.com/design/design-center/development-boards-and-designs/MODULAR-DRONE-PLATFORM" target="_blank" rel="noopener noreferrer">NXP Modular Drone Platform</a><span>확인 2026-11-11 · AI 연산, 비행제어, 센서망과 추진계 참조설계 구성</span></li>
+      <li><a href="https://www.nxp.com/company/about-nxp/smarter-world-videos/PROTOTYPE-DRONES-NXP-ROBOTICS-PLATFORM-VID" target="_blank" rel="noopener noreferrer">NXP, Prototype Drones with the NXP Robotics Platform</a><span>2026-11-05 · 하드웨어 선택, 통합 SDK와 비행시험의 세 단계 적용경로</span></li>
+      <li><a href="https://www.nxp.com/company/about-nxp/worldwide-locations/korea:KOREA" target="_blank" rel="noopener noreferrer">NXP 코리아 공식페이지</a><span>확인 2026-11-11 · 국내 영업·기술지원 접촉경로</span></li>
+    </ol>
+    <p class="reportAuthor">김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+
       <details class="staticReport" id="static-261110" open>
   <summary><span class="staticDate">11.10</span><span class="staticTitle">수백 대 로봇 실증과 컴퓨팅·전원 통합을 맞물린 피지컬 AI 개발</span><span class="staticAxis">로봇·인공지능 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">피지컬 AI</span><span class="tag">생산라인 실증</span><span class="tag">로봇 컴퓨팅</span><span class="tag">지능형 전원분배</span><span class="tag">양방향 공동개발</span></div><p>Aptiv는 TARS·Shanghai Electric 로봇 수백 대를 자사 생산라인에 단계 배치하고, 현장 운전결과로 로봇을 개선하면서 자사 컴퓨팅·전원분배 기술을 두 회사의 로봇 양산설계에 다시 넣는 공동개발 구조를 발표했습니다.</p></div>
@@ -4464,6 +4630,7 @@
     reports.push({"id":"261108","date":"2026-11-08","title":"4축 모터제어·산업용 이더넷·리눅스를 한 칩에 묶은 실시간 MPU","axis":"전기·제어","category":"PC·실시간 제어 통합","tags":["RZ/T2N","4축 모터제어","산업용 이더넷","Linux","실시간 MPU"],"summary":"르네사스는 11월 5일 최대 1.2GHz 듀얼 Cortex-A55, 800MHz 듀얼 Cortex-R52, 4축 모터 주변회로와 3포트 기가비트 이더넷 스위치를 한 칩에 넣은 RZ/T2N을 양산 출시했습니다. 리눅스 응용과 모터 실시간 제어를 코어별로 나눠 실행하며 응용 프로세서·모터제어 MCU·통신칩의 다중칩 구성을 줄이는 구조입니다.","discovery":"리눅스용 듀얼 A55, 실시간 제어용 듀얼 R52, 축당 2채널 엔코더와 4축 모터 주변회로, 산업용 이더넷 스위치를 한 64비트 MPU에 결합","why":"11월 5일 공식 발표는 통신모듈만 바꾼 것이 아니라 응용처리, 4축 모터제어와 네트워크를 한 칩에 결합했습니다. 11월 4일 4축 벡터제어와 EtherCAT CiA 402 예제가 공개돼 리눅스 부하와 실시간 제어의 분리효과를 평가보드에서 재현할 수 있습니다.","study":"비대칭 멀티코어, 임베디드 리눅스, 실시간 모터제어, 산업용 이더넷, 4축 동기제어, 엔코더 인터페이스, 네트워크 중복","companies":"르네사스 일렉트로닉스는 RZ/T2N, 평가보드, 인버터 확장보드와 모터·산업통신 예제를 공급하며 한국 법인과 국내 공식 유통망을 운영합니다.","poc":"평가보드와 4개 모터에 공식 4축 예제를 적용합니다. A55에서 화면갱신·초당 100MB 파일쓰기·기가비트 송수신을 추가하며 R52 제어주기, PWM 지터와 주기초과를 측정합니다. EtherCAT 250·500·1000마이크로초 주기에서 축간 시각편차와 명령수신부터 PWM 반영까지의 최대시간을 기록합니다.","caution":"공개 내용: 1.2GHz 듀얼 A55, 800MHz 듀얼 R52, 코어당 576KB TCM, 4축 모터제어, 엔코더 8채널, 3포트 기가비트 스위치와 양산 개시. 현장 확인: 리눅스 최대부하의 제어영향, 축간 동기오차, 칩 온도, 오류격리와 2027년 하반기 기능안전 소프트웨어 범위.","source_use":"11월 5일 르네사스 공식 발표와 RZ/T2N 제품사양을 중심으로 11월 4일 4축 모터·EtherCAT 예제, 평가보드와 국내 공급경로를 대조","sourceCount":5,"weekly":{"topic":"리눅스와 4축 제어를 한 칩에","change":"응용·모터제어·통신용 세 칩을 한 MPU로 합칩니다.","check":"A55 최대부하에서 PWM 지터와 축간 편차를 측정합니다."}});
     reports.push({"id":"261109","date":"2026-11-09","title":"안전 PLC 앱과 1ms 드라이브 링크를 한 제어기에 묶은 소프트웨어 안전제어","axis":"전기·제어","category":"소프트웨어 기반 기능안전","tags":["기능안전","Safety PLC 앱","SafeMotion","1ms 안전링크","분산 안전 I/O"],"summary":"보쉬렉스로스는 ctrlX CORE X5·X7에서 Safety PLC 앱을 실행하고, ctrlX DRIVE의 31개 SafeMotion 기능을 전용 안전링크로 호출하는 구성을 SPS 2026 공개항목에 포함했습니다. 전용 링크는 최대 16축에서 1ms, 최대 32축에서 2ms의 보장 버스주기를 제공합니다.","discovery":"별도 안전 CPU 대신 제어기 운영체제의 Safety PLC 앱이 안전논리를 실행하고 전용 링크로 최대 32축 드라이브 안전기능과 축별 피드백을 교환","why":"11월 3일 공식발표는 안전·드라이브·소프트웨어 확장구성을 함께 제시했습니다. 10월 13일 공개된 앱형 안전제어와 1ms 전용 링크를 대조하면 안전논리의 실행위치와 드라이브 안전신호 경로가 기존 별도 안전 CPU 방식에서 달라집니다.","study":"소프트웨어 기반 기능안전, 드라이브 SafeMotion, 전용 안전통신, 분산 안전 I/O, 최대 정지시간, 공통원인고장","companies":"보쉬렉스로스 코리아는 ctrlX CORE, ctrlX DRIVE, 안전제어와 엔지니어링 도구를 공급하며 국내 영업상담과 파트너 연결경로를 운영합니다.","poc":"16축 구성에서 비상정지와 도어입력을 각각 1,000회 발생시킵니다. 입력접점부터 드라이브 토크차단까지의 최대시간과 축간 편차를 측정하고, 안전링크 단선·프레임 오류·일반 CPU 최대부하에서 안전상태 전환과 주기초과를 기록합니다.","caution":"공개 내용: Safety PLC 앱, 31개 SafeMotion 기능, 16축 1ms·32축 2ms 링크주기와 SIL 3·PL e 사양. 현장 확인: 앱 인증버전, 센서부터 토크차단까지의 최대시간, 축간 편차, 공통원인고장과 혼합장치 지원범위.","source_use":"11월 3일 SPS 발표를 중심으로 10월 13일 안전포트폴리오 발표, ctrlX SAFETY 기술사양·FAQ·제품정보와 국내 공식 접촉경로를 대조","sourceCount":6,"weekly":{"topic":"운영체제 앱형 다축 안전제어","change":"별도 안전 CPU 대신 제어기 앱이 안전논리를 실행합니다.","check":"16축에서 입력부터 토크차단까지 최대시간을 측정합니다."}});
     reports.push({"id":"261110","date":"2026-11-10","title":"수백 대 로봇 실증과 컴퓨팅·전원 통합을 맞물린 피지컬 AI 개발","axis":"로봇·인공지능 제어","category":"생산라인 실증형 피지컬 AI","tags":["피지컬 AI","생산라인 실증","로봇 컴퓨팅","지능형 전원분배","양방향 공동개발"],"summary":"Aptiv는 TARS·Shanghai Electric 로봇 수백 대를 자사 생산라인에 단계 배치하고, 현장 운전결과로 로봇을 개선하면서 자사 컴퓨팅·전원분배 기술을 두 회사의 로봇 양산설계에 다시 넣는 공동개발 구조를 발표했습니다.","discovery":"파트너 로봇 수백 대를 실제 생산라인에 배치해 운전결과로 플랫폼을 개선하고, 제조사 컴퓨팅·지능형 전원분배를 다시 파트너 로봇의 초기 생산설계에 통합","why":"5월 공동개발 의향 발표와 달리 11월 6일 공식발표는 수백 대의 단계 배치와 2026년 말 초기 생산 일정을 추가했습니다. 로봇 현장실증과 컴퓨팅·전원 설계가 양방향으로 이어지는 구조가 구체화됐습니다.","study":"피지컬 AI, 생산라인 실증, 로봇 컴퓨팅, 지능형 전원분배, 응용 이식성, 대규모 변경관리","companies":"한국 앱티브는 국내 사업과 기술거점을 운영하며, Aptiv 산업용 로봇 공식페이지는 컴퓨팅·전원·연결기술의 적용범위와 문의경로를 제공합니다.","poc":"기존 셀과 신규 셀을 30일 병행운전합니다. 작업성공률, P1 작업지시부터 P4 완료까지의 최대주기, 비계획정지시간, 복구시간과 전원오류 후 안전상태를 로봇별로 비교합니다.","caution":"공개 내용: TARS·Shanghai Electric 로봇 수백 대의 단계 배치, 생산현장 정보의 시스템 개선 활용, Aptiv 컴퓨팅·전원분배 통합과 2026년 말 초기 생산계획. 현장 확인: 로봇 형식·공정별 투입대수, 작업성공률, 최대 제어주기, 전력품질, 안전등급과 비계획정지시간.","source_use":"11월 6일 Aptiv 공식발표를 중심으로 CIIE 행사정보, Aptiv 산업용 로봇 기술범위, 8월 피지컬 AI 컴퓨팅 발표와 한국 공식 접촉경로를 대조","sourceCount":5,"weekly":{"topic":"생산라인 실증형 로봇 개발","change":"납품 검수에서 수백 대 운전과 설계개선의 순환으로 바뀝니다.","check":"30일간 정지·복구·작업성공률을 로봇별로 비교합니다."}});
+    reports.push({"id":"261111","date":"2026-11-11","title":"AI 연산·비행제어·센서망·모터제어를 한 SDK로 묶은 분산 로봇 플랫폼","axis":"로봇·인공지능 제어","category":"분산형 로봇 통합개발","tags":["분산 로봇 제어","공통 SDK","검증 참조설계","실시간 제어","피지컬 AI"],"summary":"NXP는 AI 연산, 비행관리, 100BASE-T1 센서망과 모터제어를 검증된 참조설계와 하나의 오픈소스 SDK로 묶은 통합 로봇 플랫폼을 11월 9일 공개했습니다.","discovery":"NavQ95 자율연산, Tropic 실시간 비행관리, 100BASE-T1 센서노드와 AM32 모터제어기를 검증된 참조설계와 공통 SDK로 결합","why":"기존 로봇 개발도구 발표와 달리 11월 9일 공식자료는 개별 장치명, 처리역할, 지원 공개 소프트웨어와 즉시 이용 가능한 드론 참조설계를 함께 공개했습니다. AI·비행·센서·모터의 결합방식이 재현 가능한 플랫폼 단위로 바뀌었습니다.","study":"분산 로봇 제어, Robotics SDK, 실시간 운영체제, 센서망, 모터제어, 처리장치 간 시각동기","companies":"NXP 코리아는 국내 영업·기술지원을 운영하며, NXP 기술지원은 Robotics SDK 지원버전과 참조설계 공급상태 확인경로를 제공합니다.","poc":"P1 PC 작업지시부터 P6 완료응답까지 1만 회 기록합니다. AI 부하를 25% 단위로 높이며 구간별 99.9백분위·최대지연, 제어주기 초과, 메시지 손실과 센서단선 후 복구시간을 측정합니다.","caution":"공개 내용: 네 드론 참조설계, ROS 2·PX4·Zephyr·AM32를 포함한 공통 SDK, 30분 초기기능과 현재 이용 가능 상태. 현장 확인: 처리장치 간 최대지연, 시각편차, 제어주기, 메시지 손실, 장기공급, 기능안전 인증과 2027년 하반기 추가 지원범위.","source_use":"11월 9일 NXP 공식발표를 중심으로 Robotics SDK, Modular Drone Platform, 11월 5일 적용영상과 국내 공식 접촉경로를 대조","sourceCount":5,"weekly":{"topic":"분산 로봇 통합개발","change":"개별 보드 통합에서 검증 하위시스템과 공통 SDK 조립으로 바뀝니다.","check":"센서 지연·제어주기·모터명령 손실을 지점별로 측정합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -4823,7 +4990,7 @@
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
