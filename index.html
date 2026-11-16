@@ -182,9 +182,9 @@
       <li>안전입력이 정상으로 돌아와도 안전제어기의 재시작 조건과 작업자 확인이 충족될 때까지 출력은 차단상태를 유지합니다. 재기동 후에는 압력복구시간, 밸브상태와 진단정보를 확인합니다.</li>
     </ol>
 
-    <figure class="reportVisual" aria-labelledby="visual-261116-1-title">
+    <figure class="techVisual reportVisual" aria-labelledby="visual-261116-1-title">
       <figcaption><strong id="visual-261116-1-title">안전배선과 공압 차단점이 이동한 위치</strong><span>윗줄은 중앙 안전함에서 세 공압구역까지 개별 배선하고 주공급을 함께 배기하는 기존 구성입니다. 아랫줄은 CIP Safety망과 공압 주배관은 공유하되 각 밸브터미널의 안전모듈이 구역별 출력을 끊는 구성입니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 980 520" role="img" aria-labelledby="visual-261116-1-svg-title visual-261116-1-desc">
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 980 520" role="img" aria-labelledby="visual-261116-1-svg-title visual-261116-1-desc">
         <title id="visual-261116-1-svg-title">중앙 안전배선과 밸브터미널 분산 안전제어의 배선·공압 차단점 비교</title>
         <desc id="visual-261116-1-desc">기존 구성은 중앙 안전 I/O에서 세 밸브구역까지 안전선을 각각 배선하고 주공급 배기밸브가 전체 구역을 감압합니다. 새 구성은 CIP Safety 통신선을 세 밸브터미널과 공유하고 각 CPX-AP-A 안전모듈의 출력이 해당 구역의 밸브, 파일럿공기, 배기밸브 또는 외부 STO를 제어합니다.</desc>
         <defs>
@@ -249,9 +249,9 @@
       <p class="visualNote">수치 근거: Festo 공식발표의 모듈당 안전입력 6점·안전출력 3점, 최대 4모듈·입력 24점·출력 12점을 표시했습니다. 구역 2만 차단하는 장면은 구역별 안전상태를 설명하기 위한 예시이며, 실제 차단범위는 위험성평가와 안전논리로 정합니다.</p>
     </figure>
 
-    <figure class="reportVisual" aria-labelledby="visual-261116-2-title">
+    <figure class="techVisual reportVisual" aria-labelledby="visual-261116-2-title">
       <figcaption><strong id="visual-261116-2-title">안전요구가 공압동작을 멈추기까지의 시간 순서</strong><span>장치 연결도를 다시 그리지 않고, 안전입력 변화부터 메시지 검사·안전출력 차단·공압상태 변화·재시작 승인까지를 시간축으로 읽도록 구성했습니다. 직접 제작한 설명도·실제 시간값 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 980 500" role="img" aria-labelledby="visual-261116-2-svg-title visual-261116-2-desc">
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 980 500" role="img" aria-labelledby="visual-261116-2-svg-title visual-261116-2-desc">
         <title id="visual-261116-2-svg-title">CIP Safety 공압제어의 안전요구 처리 순서도</title>
         <desc id="visual-261116-2-desc">비상정지 또는 라이트커튼 신호가 바뀌면 안전제어기가 CIP Safety 메시지를 만들고 CPX-AP-A가 시각, 장치식별자, 안전 CRC와 중복정보를 검사합니다. 정상 메시지일 때 안전출력 3점이 밸브구역, 파일럿공기, 배기밸브 또는 외부 STO를 안전상태로 바꾸며, 입력이 복귀해도 작업자 재시작 승인 전까지 출력은 차단됩니다.</desc>
         <defs><marker id="n261116-2-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
@@ -326,9 +326,9 @@
     <p>일반 PC 제어설비에서는 PC가 정상동작 명령과 상태수집을 담당하더라도 안전입력과 공압 안전출력은 인증된 안전제어기와 CIP Safety 모듈이 처리합니다. PC는 밸브구역의 안전상태, 압력과 진단정보를 읽어 화면에 표시하지만 안전출력을 우회하거나 강제하지 않습니다.</p>
     <p>여러 공압공정이 한 장비에 섞인 경우 제품이 남아 있는 구역은 PUS로 작업압력을 유지하고, 작업자 접근구역은 빠른 배기로 잔압을 제거하는 혼합구성을 검토할 수 있습니다. 위험성평가에서 구역별 안전상태와 요구정지시간을 정한 뒤 실제 압력과 재기동을 측정해야 합니다.</p>
 
-    <figure class="reportVisual" aria-labelledby="visual-261116-3-title">
+    <figure class="techVisual reportVisual" aria-labelledby="visual-261116-3-title">
       <figcaption><strong id="visual-261116-3-title">공압 안전구역 사전검증 장비·측정점 배치</strong><span>공정 배치 안에 P1~P5를 놓고 각 위치에서 무엇을 어떤 장비로 측정하는지 표시했습니다. 신호시간과 실제 압력·동작을 한 시간축으로 맞춰 안전요구부터 위험동작 정지까지 확인합니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 980 560" role="img" aria-labelledby="visual-261116-3-svg-title visual-261116-3-desc">
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 980 560" role="img" aria-labelledby="visual-261116-3-svg-title visual-261116-3-desc">
         <title id="visual-261116-3-svg-title">CPX-AP-A CIP Safety 사전검증의 시험장비와 P1부터 P5까지의 측정 위치</title>
         <desc id="visual-261116-3-desc">시험셀 왼쪽의 비상정지와 라이트커튼에서 P1 접점시각을 측정하고, 안전망 분기점 P2에서 패킷시각과 오류주입을 기록합니다. CPX-AP-A의 P3 안전출력 전압, 밸브구역의 P4 압력, 실린더와 서보의 P5 움직임을 데이터수집장치의 공통 시간축에 저장합니다. 인접구역 압력도 별도 센서로 기록합니다.</desc>
         <defs><marker id="n261116-3-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
