@@ -183,42 +183,119 @@
     </ol>
 
     <figure class="reportVisual" aria-labelledby="visual-261116-1-title">
-      <figcaption><strong id="visual-261116-1-title">중앙 안전배선과 밸브터미널 분산 안전 비교</strong><span>왼쪽은 중앙 안전 I/O에서 밸브구역까지 개별 배선하고 전체 공기를 배출하는 구성이며, 오른쪽은 밸브터미널의 안전모듈이 구역별 출력과 외부 STO를 직접 제어하는 구성입니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 920 390" role="img" aria-labelledby="visual-261116-1-svg-title visual-261116-1-desc">
-        <title id="visual-261116-1-svg-title">기존 중앙 안전 I/O와 CPX-AP-A CIP Safety 분산구조 비교</title>
-        <desc id="visual-261116-1-desc">기존 구조는 중앙 안전 I/O와 공압배기밸브를 긴 개별배선으로 연결하고 기계 전체를 감압합니다. 새 구조는 밸브터미널에 입력 6점과 출력 3점의 CIP Safety 모듈을 장착해 공압구역, 파일럿공기, 배기밸브와 외부 STO를 구역별로 제어합니다.</desc>
-        <rect x="15" y="20" width="430" height="345" rx="16" fill="#fff" stroke="#555"/><rect x="475" y="20" width="430" height="345" rx="16" fill="#fff" stroke="#111" stroke-width="2"/>
-        <text x="35" y="52" font-size="19" font-weight="700">기존: 중앙 안전함·개별배선</text><text x="495" y="52" font-size="19" font-weight="700">새 방식: 밸브 가까운 안전 I/O</text>
-        <rect x="35" y="82" width="125" height="65" rx="8" fill="#eee" stroke="#555"/><text x="58" y="109" font-size="15">안전제어기</text><text x="51" y="133" font-size="13">중앙 안전 I/O</text>
-        <rect x="305" y="72" width="115" height="85" rx="8" fill="#fafafa" stroke="#555"/><text x="329" y="101" font-size="15">공압밸브</text><text x="320" y="126" font-size="13">전체 배기·차단</text><text x="324" y="146" font-size="13">긴 개별배선</text>
-        <path d="M160 103H305M160 124H305M160 145H305" stroke="#555" stroke-width="2" marker-end="url(#a261116)"/>
-        <rect x="130" y="220" width="200" height="78" rx="8" fill="#fafafa" stroke="#555"/><text x="159" y="248" font-size="14">전체압력 배출 뒤 재가압</text><text x="150" y="274" font-size="14">구역별 상태·오류 분리 어려움</text>
-        <path d="M362 157V190H230V220" fill="none" stroke="#555" stroke-width="3" marker-end="url(#a261116)"/>
-        <rect x="495" y="82" width="120" height="65" rx="8" fill="#eee" stroke="#111"/><text x="512" y="109" font-size="15">안전제어기</text><text x="511" y="133" font-size="13">CIP Safety망</text>
-        <rect x="650" y="62" width="225" height="105" rx="9" fill="#f5f5f5" stroke="#111" stroke-width="2"/><text x="688" y="91" font-size="15" font-weight="700">CPX-AP-A 안전모듈</text><text x="674" y="116" font-size="13">입력 6점 또는 이중채널 3점</text><text x="704" y="140" font-size="13">안전출력 3점</text><text x="690" y="160" font-size="12">VTUX·MPA-S·VTSA 장착</text>
-        <path d="M615 114H650" stroke="#111" stroke-width="4" marker-end="url(#a261116)"/>
-        <rect x="525" y="220" width="330" height="90" rx="8" fill="#fafafa" stroke="#111"/><text x="548" y="246" font-size="14">밸브구역 · 파일럿공기 · 배기밸브 · 외부 STO</text><text x="574" y="272" font-size="14">최대 4모듈 · 입력 24점 · 출력 12점</text><text x="582" y="296" font-size="13">구역별 기동금지와 압력유지 선택</text>
-        <path d="M762 167V220" stroke="#111" stroke-width="4" marker-end="url(#a261116)"/>
-        <defs><marker id="a261116" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
+      <figcaption><strong id="visual-261116-1-title">안전배선과 공압 차단점이 이동한 위치</strong><span>윗줄은 중앙 안전함에서 세 공압구역까지 개별 배선하고 주공급을 함께 배기하는 기존 구성입니다. 아랫줄은 CIP Safety망과 공압 주배관은 공유하되 각 밸브터미널의 안전모듈이 구역별 출력을 끊는 구성입니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
+      <div class="visualScroll"><svg viewBox="0 0 980 520" role="img" aria-labelledby="visual-261116-1-svg-title visual-261116-1-desc">
+        <title id="visual-261116-1-svg-title">중앙 안전배선과 밸브터미널 분산 안전제어의 배선·공압 차단점 비교</title>
+        <desc id="visual-261116-1-desc">기존 구성은 중앙 안전 I/O에서 세 밸브구역까지 안전선을 각각 배선하고 주공급 배기밸브가 전체 구역을 감압합니다. 새 구성은 CIP Safety 통신선을 세 밸브터미널과 공유하고 각 CPX-AP-A 안전모듈의 출력이 해당 구역의 밸브, 파일럿공기, 배기밸브 또는 외부 STO를 제어합니다.</desc>
+        <defs>
+          <marker id="n261116-1-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker>
+          <marker id="n261116-1-air" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#666"/></marker>
+        </defs>
+        <text x="24" y="31" font-size="18" font-weight="700">기존 구조 — 중앙에서 배선하고 주공급을 한 번에 배기</text>
+        <rect x="24" y="48" width="932" height="192" rx="10" fill="#fff" stroke="#777"/>
+        <rect x="45" y="76" width="150" height="86" rx="8" fill="#eee" stroke="#333"/>
+        <text x="72" y="103" font-size="15" font-weight="700">중앙 안전함</text>
+        <text x="61" y="127" font-size="13">안전제어기·안전 I/O</text>
+        <text x="68" y="148" font-size="12">구역별 개별 안전선</text>
+        <rect x="226" y="87" width="118" height="64" rx="8" fill="#fafafa" stroke="#555"/>
+        <text x="248" y="112" font-size="14" font-weight="700">주공급 배기</text>
+        <text x="242" y="134" font-size="12">세 구역 동시 감압</text>
+        <path d="M195 92C320 55 435 66 535 93M195 119H535M195 146C320 183 435 173 535 145" fill="none" stroke="#222" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="351" y="76" font-size="12">긴 개별 안전배선 3계통</text>
+        <path d="M344 119H922" stroke="#777" stroke-width="5" marker-end="url(#n261116-1-air)"/>
+        <text x="360" y="139" font-size="11">공압 주배관</text>
+        <g>
+          <rect x="535" y="70" width="122" height="112" rx="8" fill="#f7f7f7" stroke="#555"/>
+          <text x="568" y="94" font-size="14" font-weight="700">공압구역 1</text>
+          <rect x="552" y="105" width="88" height="32" rx="5" fill="#fff" stroke="#777"/><text x="569" y="126" font-size="12">일반 밸브</text>
+          <path d="M596 137V164" stroke="#555" marker-end="url(#n261116-1-arrow)"/><text x="548" y="176" font-size="11">실린더·그리퍼</text>
+          <rect x="670" y="70" width="122" height="112" rx="8" fill="#f7f7f7" stroke="#555"/>
+          <text x="703" y="94" font-size="14" font-weight="700">공압구역 2</text>
+          <rect x="687" y="105" width="88" height="32" rx="5" fill="#fff" stroke="#777"/><text x="704" y="126" font-size="12">일반 밸브</text>
+          <path d="M731 137V164" stroke="#555" marker-end="url(#n261116-1-arrow)"/><text x="683" y="176" font-size="11">실린더·그리퍼</text>
+          <rect x="805" y="70" width="122" height="112" rx="8" fill="#f7f7f7" stroke="#555"/>
+          <text x="838" y="94" font-size="14" font-weight="700">공압구역 3</text>
+          <rect x="822" y="105" width="88" height="32" rx="5" fill="#fff" stroke="#777"/><text x="839" y="126" font-size="12">일반 밸브</text>
+          <path d="M866 137V164" stroke="#555" marker-end="url(#n261116-1-arrow)"/><text x="818" y="176" font-size="11">실린더·그리퍼</text>
+        </g>
+        <rect x="535" y="195" width="392" height="28" rx="5" fill="#eee" stroke="#777"/>
+        <text x="593" y="214" font-size="13">한 구역의 안전요구에도 전체 배기·전체 재가압</text>
+
+        <text x="24" y="276" font-size="18" font-weight="700">새 구조 — 통신은 공유하고 안전출력은 밸브 가까이 분산</text>
+        <rect x="24" y="293" width="932" height="203" rx="10" fill="#fff" stroke="#222" stroke-width="2"/>
+        <rect x="45" y="322" width="150" height="78" rx="8" fill="#eee" stroke="#222"/>
+        <text x="70" y="348" font-size="15" font-weight="700">안전제어기</text>
+        <text x="62" y="373" font-size="13">CIP Safety 논리</text>
+        <path d="M195 341H922" stroke="#111" stroke-width="4" marker-end="url(#n261116-1-arrow)"/>
+        <text x="347" y="331" font-size="12">EtherNet/IP 공용선 · CIP Safety 메시지</text>
+        <path d="M195 390H922" stroke="#777" stroke-width="5" marker-end="url(#n261116-1-air)"/>
+        <text x="349" y="410" font-size="11">공압 주배관은 유지</text>
+        <g>
+          <rect x="292" y="314" width="185" height="151" rx="8" fill="#f8f8f8" stroke="#555"/>
+          <text x="343" y="337" font-size="14" font-weight="700">공압구역 1</text>
+          <rect x="314" y="350" width="141" height="45" rx="6" fill="#fff" stroke="#111"/><text x="329" y="370" font-size="12" font-weight="700">CPX-AP-A 안전모듈</text><text x="337" y="387" font-size="11">입력 6점 · 출력 3점</text>
+          <path d="M385 395V425" stroke="#222" marker-end="url(#n261116-1-arrow)"/><text x="322" y="447" font-size="11">밸브·파일럿·배기·STO</text>
+          <rect x="496" y="314" width="185" height="151" rx="8" fill="#eee" stroke="#111" stroke-width="2"/>
+          <text x="547" y="337" font-size="14" font-weight="700">공압구역 2</text>
+          <rect x="518" y="350" width="141" height="45" rx="6" fill="#fff" stroke="#111"/><text x="533" y="370" font-size="12" font-weight="700">CPX-AP-A 안전모듈</text><text x="541" y="387" font-size="11">안전요구 수신</text>
+          <path d="M589 395V425" stroke="#111" stroke-width="3" marker-end="url(#n261116-1-arrow)"/><text x="520" y="447" font-size="11" font-weight="700">구역 2만 차단·배기</text>
+          <rect x="700" y="314" width="185" height="151" rx="8" fill="#f8f8f8" stroke="#555"/>
+          <text x="751" y="337" font-size="14" font-weight="700">공압구역 3</text>
+          <rect x="722" y="350" width="141" height="45" rx="6" fill="#fff" stroke="#111"/><text x="737" y="370" font-size="12" font-weight="700">CPX-AP-A 안전모듈</text><text x="745" y="387" font-size="11">압력유지 조건</text>
+          <path d="M793 395V425" stroke="#222" marker-end="url(#n261116-1-arrow)"/><text x="728" y="447" font-size="11">허용 시 압력 유지</text>
+        </g>
+        <text x="55" y="477" font-size="12">최대 4모듈 구성: 안전입력 24점 · 안전출력 12점</text>
       </svg></div>
-      <p class="visualNote">수치 근거: Festo 공식발표의 안전입력 6점·출력 3점, 최대 4모듈·입력 24점·출력 12점과 세 밸브터미널 제품군을 표시했습니다. 에너지절감률과 정지응답시간은 공개되지 않아 넣지 않았습니다.</p>
+      <p class="visualNote">수치 근거: Festo 공식발표의 모듈당 안전입력 6점·안전출력 3점, 최대 4모듈·입력 24점·출력 12점을 표시했습니다. 구역 2만 차단하는 장면은 구역별 안전상태를 설명하기 위한 예시이며, 실제 차단범위는 위험성평가와 안전논리로 정합니다.</p>
     </figure>
 
     <figure class="reportVisual" aria-labelledby="visual-261116-2-title">
-      <figcaption><strong id="visual-261116-2-title">안전입력에서 공압구역 차단까지의 신호 흐름</strong><span>일반 제어통신과 같은 배선을 쓰더라도 안전메시지는 종단장치가 무결성을 확인하고 안전출력이 실제 공압에 작용합니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 920 280" role="img" aria-labelledby="visual-261116-2-svg-title visual-261116-2-desc">
-        <title id="visual-261116-2-svg-title">CIP Safety 공압 안전제어의 입력·통신·출력 흐름</title>
-        <desc id="visual-261116-2-desc">비상정지와 라이트커튼 신호가 안전제어기로 들어가고 CIP Safety 메시지가 같은 EtherNet/IP망을 지나 CPX-AP-A 안전모듈에 도착합니다. 안전출력은 밸브구역, 파일럿공기, 배기밸브와 서보 STO를 제어합니다.</desc>
-        <rect x="20" y="88" width="135" height="78" rx="9" fill="#eee" stroke="#333"/><text x="45" y="116" font-size="15" font-weight="700">안전 입력장치</text><text x="37" y="140" font-size="13">비상정지·라이트커튼</text>
-        <rect x="190" y="88" width="135" height="78" rx="9" fill="#fafafa" stroke="#333"/><text x="213" y="116" font-size="15" font-weight="700">안전제어기</text><text x="210" y="140" font-size="13">안전논리·재시작조건</text>
-        <rect x="360" y="70" width="185" height="114" rx="9" fill="#f5f5f5" stroke="#111" stroke-width="2"/><text x="391" y="101" font-size="15" font-weight="700">EtherNet/IP 배선</text><text x="386" y="127" font-size="13">CIP Safety: 시각·식별자</text><text x="387" y="151" font-size="13">안전 CRC·중복정보</text><text x="403" y="173" font-size="12">일반통신과 공존</text>
-        <rect x="580" y="70" width="150" height="114" rx="9" fill="#fafafa" stroke="#111"/><text x="600" y="101" font-size="15" font-weight="700">CPX 안전모듈</text><text x="596" y="127" font-size="13">입력상태·메시지검사</text><text x="606" y="151" font-size="13">안전출력 3점</text>
-        <rect x="765" y="88" width="135" height="78" rx="9" fill="#eee" stroke="#333"/><text x="786" y="116" font-size="15" font-weight="700">공압·구동 출력</text><text x="781" y="140" font-size="13">밸브구역·배기·STO</text>
-        <path d="M155 127H190M325 127H360M545 127H580M730 127H765" stroke="#111" stroke-width="4" marker-end="url(#b261116)"/>
-        <text x="255" y="232" font-size="13">통신오류나 입력불일치가 생기면 위험구역을 정의한 안전상태로 전환</text>
-        <defs><marker id="b261116" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
+      <figcaption><strong id="visual-261116-2-title">안전요구가 공압동작을 멈추기까지의 시간 순서</strong><span>장치 연결도를 다시 그리지 않고, 안전입력 변화부터 메시지 검사·안전출력 차단·공압상태 변화·재시작 승인까지를 시간축으로 읽도록 구성했습니다. 직접 제작한 설명도·실제 시간값 아님.</span></figcaption>
+      <div class="visualScroll"><svg viewBox="0 0 980 500" role="img" aria-labelledby="visual-261116-2-svg-title visual-261116-2-desc">
+        <title id="visual-261116-2-svg-title">CIP Safety 공압제어의 안전요구 처리 순서도</title>
+        <desc id="visual-261116-2-desc">비상정지 또는 라이트커튼 신호가 바뀌면 안전제어기가 CIP Safety 메시지를 만들고 CPX-AP-A가 시각, 장치식별자, 안전 CRC와 중복정보를 검사합니다. 정상 메시지일 때 안전출력 3점이 밸브구역, 파일럿공기, 배기밸브 또는 외부 STO를 안전상태로 바꾸며, 입력이 복귀해도 작업자 재시작 승인 전까지 출력은 차단됩니다.</desc>
+        <defs><marker id="n261116-2-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
+        <text x="190" y="30" font-size="13">시간 진행 →</text>
+        <path d="M190 40H945" stroke="#222" stroke-width="2" marker-end="url(#n261116-2-arrow)"/>
+        <g font-size="12" text-anchor="middle">
+          <text x="230" y="59">t0</text><text x="365" y="59">t1</text><text x="510" y="59">t2</text><text x="650" y="59">t3</text><text x="790" y="59">t4</text><text x="920" y="59">t5</text>
+        </g>
+        <g stroke="#aaa" stroke-dasharray="4 5">
+          <path d="M230 67V425"/><path d="M365 67V425"/><path d="M510 67V425"/><path d="M650 67V425"/><path d="M790 67V425"/><path d="M920 67V425"/>
+        </g>
+        <g>
+          <rect x="20" y="78" width="940" height="78" rx="7" fill="#fafafa" stroke="#bbb"/>
+          <rect x="20" y="165" width="940" height="78" rx="7" fill="#fff" stroke="#bbb"/>
+          <rect x="20" y="252" width="940" height="78" rx="7" fill="#fafafa" stroke="#bbb"/>
+          <rect x="20" y="339" width="940" height="86" rx="7" fill="#fff" stroke="#bbb"/>
+        </g>
+        <g font-size="14" font-weight="700">
+          <text x="40" y="108">안전 입력장치</text><text x="40" y="129" font-size="12" font-weight="400">비상정지·라이트커튼</text>
+          <text x="40" y="195">안전제어기</text><text x="40" y="216" font-size="12" font-weight="400">안전논리·메시지 생성</text>
+          <text x="40" y="282">CPX-AP-A</text><text x="40" y="303" font-size="12" font-weight="400">메시지 검사·안전출력</text>
+          <text x="40" y="369">공압구역·구동부</text><text x="40" y="390" font-size="12" font-weight="400">밸브·배기·외부 STO</text>
+        </g>
+        <rect x="205" y="96" width="74" height="40" rx="20" fill="#222"/><text x="242" y="121" fill="#fff" text-anchor="middle" font-size="13" font-weight="700">입력 OFF</text>
+        <path d="M242 136V185H347" fill="none" stroke="#222" stroke-width="3" marker-end="url(#n261116-2-arrow)"/>
+        <rect x="347" y="183" width="142" height="42" rx="6" fill="#eee" stroke="#333"/><text x="418" y="201" text-anchor="middle" font-size="12" font-weight="700">안전요구 판단</text><text x="418" y="217" text-anchor="middle" font-size="11">CIP Safety 메시지 생성</text>
+        <path d="M489 204H510V270" fill="none" stroke="#222" stroke-width="3" marker-end="url(#n261116-2-arrow)"/>
+        <rect x="497" y="270" width="178" height="43" rx="6" fill="#fff" stroke="#111" stroke-width="2"/><text x="586" y="288" text-anchor="middle" font-size="12" font-weight="700">종단 무결성 검사</text><text x="586" y="305" text-anchor="middle" font-size="11">시각·식별자·CRC·중복정보</text>
+        <path d="M675 291H720" stroke="#222" stroke-width="3" marker-end="url(#n261116-2-arrow)"/>
+        <rect x="720" y="270" width="120" height="43" rx="6" fill="#222"/><text x="780" y="287" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">안전출력 OFF</text><text x="780" y="304" fill="#fff" text-anchor="middle" font-size="11">출력 3점</text>
+        <path d="M780 313V360" stroke="#222" stroke-width="3" marker-end="url(#n261116-2-arrow)"/>
+        <rect x="715" y="360" width="150" height="48" rx="6" fill="#eee" stroke="#333"/><text x="790" y="379" text-anchor="middle" font-size="12" font-weight="700">구역 안전상태 전환</text><text x="790" y="397" text-anchor="middle" font-size="11">기동금지 또는 압력배출</text>
+        <path d="M279 116H865" stroke="#777" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="547" y="103" text-anchor="middle" font-size="11">입력이 복귀해도 출력은 자동 복귀하지 않음</text>
+        <rect x="858" y="183" width="86" height="42" rx="6" fill="#fff" stroke="#333"/><text x="901" y="201" text-anchor="middle" font-size="11" font-weight="700">작업자 확인</text><text x="901" y="217" text-anchor="middle" font-size="10">재시작 조건</text>
+        <path d="M901 225V270" stroke="#222" marker-end="url(#n261116-2-arrow)"/>
+        <text x="902" y="296" text-anchor="middle" font-size="11">조건 충족 뒤</text><text x="902" y="312" text-anchor="middle" font-size="11">출력 재허용</text>
+
+        <path d="M586 313V448" stroke="#555" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#n261116-2-arrow)"/>
+        <rect x="399" y="441" width="374" height="43" rx="6" fill="#fafafa" stroke="#555"/>
+        <text x="586" y="459" text-anchor="middle" font-size="12" font-weight="700">식별자 불일치·오래된 메시지·CRC 오류</text>
+        <text x="586" y="476" text-anchor="middle" font-size="11">메시지 폐기 → 정의된 안전상태 유지 → 진단정보 기록</text>
       </svg></div>
-      <p class="visualNote">구조 근거: ODVA는 CIP Safety가 시각표시, 생산식별자, 안전 CRC와 데이터 중복으로 전송오류를 검출하고, 안전기기 종단에서 메시지 무결성을 확인한다고 설명합니다.</p>
+      <p class="visualNote">읽는 방법: t0~t5는 처리 순서를 나누기 위한 표시이며 공개 응답시간 수치가 아닙니다. 실제 설비에서는 P1 입력변화부터 P3 안전출력, P4 압력변화와 P5 실제동작 정지까지 동일 시간기준으로 측정합니다.</p>
     </figure>
 
     <h3>기존 방식과 달라진 점</h3>
@@ -250,20 +327,65 @@
     <p>여러 공압공정이 한 장비에 섞인 경우 제품이 남아 있는 구역은 PUS로 작업압력을 유지하고, 작업자 접근구역은 빠른 배기로 잔압을 제거하는 혼합구성을 검토할 수 있습니다. 위험성평가에서 구역별 안전상태와 요구정지시간을 정한 뒤 실제 압력과 재기동을 측정해야 합니다.</p>
 
     <figure class="reportVisual" aria-labelledby="visual-261116-3-title">
-      <figcaption><strong id="visual-261116-3-title">공압 안전구역 사전검증 측정 위치</strong><span>P1 안전입력부터 P5 실제동작까지 신호시간과 압력을 함께 측정합니다. 시험장비와 측정위치를 나타낸 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
-      <div class="visualScroll"><svg viewBox="0 0 920 345" role="img" aria-labelledby="visual-261116-3-svg-title visual-261116-3-desc">
-        <title id="visual-261116-3-svg-title">CPX-AP-A CIP Safety 시험의 신호·압력·동작 측정 위치</title>
-        <desc id="visual-261116-3-desc">P1은 비상정지 입력, P2는 안전네트워크 메시지, P3은 안전출력 전압, P4는 밸브구역 압력, P5는 실린더 움직임과 서보토크를 측정합니다. 인접 안전구역의 압력과 복구시간도 함께 기록합니다.</desc>
-        <rect x="25" y="85" width="130" height="85" rx="9" fill="#eee" stroke="#333"/><text x="48" y="113" font-size="15" font-weight="700">P1 안전입력</text><text x="39" y="138" font-size="13">비상정지·라이트커튼</text><text x="48" y="158" font-size="12">접점전환 시각</text>
-        <rect x="190" y="85" width="145" height="85" rx="9" fill="#fafafa" stroke="#333"/><text x="218" y="113" font-size="15" font-weight="700">P2 안전망</text><text x="206" y="138" font-size="13">요청·응답·오류주입</text><text x="215" y="158" font-size="12">패킷시각 기록</text>
-        <rect x="370" y="65" width="175" height="125" rx="9" fill="#f5f5f5" stroke="#111" stroke-width="2"/><text x="395" y="95" font-size="15" font-weight="700">CPX-AP-A 모듈</text><text x="395" y="122" font-size="13">P3 안전출력 전압</text><text x="396" y="146" font-size="13">구역별 진단상태</text><text x="401" y="169" font-size="12">모듈 1~4대 부하</text>
-        <rect x="580" y="85" width="140" height="85" rx="9" fill="#fafafa" stroke="#333"/><text x="608" y="113" font-size="15" font-weight="700">P4 공압구역</text><text x="596" y="138" font-size="13">차단·잔압·인접압력</text><text x="606" y="158" font-size="12">압력센서 기록</text>
-        <rect x="755" y="85" width="140" height="85" rx="9" fill="#eee" stroke="#333"/><text x="784" y="113" font-size="15" font-weight="700">P5 실제동작</text><text x="769" y="138" font-size="13">실린더 이동·서보토크</text><text x="776" y="158" font-size="12">재기동 여부</text>
-        <path d="M155 127H190M335 127H370M545 127H580M720 127H755" stroke="#111" stroke-width="4" marker-end="url(#c261116)"/>
-        <rect x="140" y="240" width="640" height="70" rx="9" fill="#fafafa" stroke="#111"/><text x="175" y="267" font-size="14">시험: 비상정지·라이트커튼 각 100회, 통신단절, 전원복구, 최대 24입력·12출력 구성</text><text x="210" y="293" font-size="14">합격: 위험동작·예기치 않은 재기동 0회, 요구정지시간 이내, 진단누락 0회</text>
-        <defs><marker id="c261116" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
+      <figcaption><strong id="visual-261116-3-title">공압 안전구역 사전검증 장비·측정점 배치</strong><span>공정 배치 안에 P1~P5를 놓고 각 위치에서 무엇을 어떤 장비로 측정하는지 표시했습니다. 신호시간과 실제 압력·동작을 한 시간축으로 맞춰 안전요구부터 위험동작 정지까지 확인합니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
+      <div class="visualScroll"><svg viewBox="0 0 980 560" role="img" aria-labelledby="visual-261116-3-svg-title visual-261116-3-desc">
+        <title id="visual-261116-3-svg-title">CPX-AP-A CIP Safety 사전검증의 시험장비와 P1부터 P5까지의 측정 위치</title>
+        <desc id="visual-261116-3-desc">시험셀 왼쪽의 비상정지와 라이트커튼에서 P1 접점시각을 측정하고, 안전망 분기점 P2에서 패킷시각과 오류주입을 기록합니다. CPX-AP-A의 P3 안전출력 전압, 밸브구역의 P4 압력, 실린더와 서보의 P5 움직임을 데이터수집장치의 공통 시간축에 저장합니다. 인접구역 압력도 별도 센서로 기록합니다.</desc>
+        <defs><marker id="n261116-3-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#222"/></marker></defs>
+        <rect x="25" y="64" width="180" height="336" rx="10" fill="#fafafa" stroke="#333" stroke-width="2"/>
+        <text x="49" y="91" font-size="16" font-weight="700">공통 시간축 기록장치</text>
+        <rect x="45" y="112" width="140" height="49" rx="6" fill="#fff" stroke="#777"/><text x="60" y="132" font-size="12" font-weight="700">디지털 입력 기록</text><text x="60" y="150" font-size="11">P1 접점 · P3 전압</text>
+        <rect x="45" y="177" width="140" height="49" rx="6" fill="#fff" stroke="#777"/><text x="60" y="197" font-size="12" font-weight="700">안전망 패킷 기록</text><text x="60" y="215" font-size="11">P2 요청·응답·오류</text>
+        <rect x="45" y="242" width="140" height="49" rx="6" fill="#fff" stroke="#777"/><text x="60" y="262" font-size="12" font-weight="700">압력 기록계</text><text x="60" y="280" font-size="11">P4 구역·인접 압력</text>
+        <rect x="45" y="307" width="140" height="49" rx="6" fill="#fff" stroke="#777"/><text x="60" y="327" font-size="12" font-weight="700">고속영상·위치값</text><text x="60" y="345" font-size="11">P5 실린더·서보동작</text>
+        <text x="49" y="383" font-size="11">모든 채널의 시각을 맞춰</text><text x="49" y="398" font-size="11">입력→출력→압력→동작을 비교</text>
+
+        <rect x="230" y="64" width="725" height="336" rx="10" fill="#fff" stroke="#222" stroke-width="2" stroke-dasharray="8 5"/>
+        <text x="251" y="91" font-size="16" font-weight="700">시험셀 경계</text>
+        <rect x="260" y="112" width="125" height="78" rx="8" fill="#eee" stroke="#333"/>
+        <text x="287" y="136" font-size="13" font-weight="700">비상정지</text><text x="279" y="156" font-size="11">라이트커튼</text><text x="277" y="176" font-size="11">이중채널 입력</text>
+        <circle cx="374" cy="118" r="18" fill="#222"/><text x="374" y="123" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">P1</text>
+        <path d="M385 151H455" stroke="#222" stroke-width="3" marker-end="url(#n261116-3-arrow)"/>
+        <circle cx="446" cy="118" r="18" fill="#222"/><text x="446" y="123" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">P2</text>
+        <rect x="455" y="112" width="150" height="78" rx="8" fill="#fafafa" stroke="#333"/>
+        <text x="480" y="136" font-size="13" font-weight="700">안전제어기·망탭</text><text x="479" y="157" font-size="11">CIP Safety 메시지</text><text x="481" y="176" font-size="11">단절·오류메시지 주입</text>
+        <path d="M605 151H650" stroke="#222" stroke-width="3" marker-end="url(#n261116-3-arrow)"/>
+        <rect x="650" y="100" width="176" height="104" rx="8" fill="#eee" stroke="#111" stroke-width="2"/>
+        <text x="674" y="126" font-size="14" font-weight="700">CPX-AP-A 안전모듈</text>
+        <text x="675" y="149" font-size="11">입력 6점 또는 이중채널 3점</text>
+        <text x="699" y="168" font-size="11">안전출력 3점</text>
+        <text x="690" y="187" font-size="11">진단정보·안전상태</text>
+        <circle cx="813" cy="106" r="18" fill="#222"/><text x="813" y="111" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">P3</text>
+        <path d="M738 204V252" stroke="#222" stroke-width="3" marker-end="url(#n261116-3-arrow)"/>
+        <rect x="650" y="252" width="176" height="68" rx="8" fill="#fafafa" stroke="#333"/>
+        <text x="682" y="276" font-size="13" font-weight="700">구역 밸브·배기밸브</text><text x="680" y="297" font-size="11">파일럿공기 또는 외부 STO</text>
+        <path d="M826 286H900" stroke="#222" stroke-width="3" marker-end="url(#n261116-3-arrow)"/>
+        <rect x="857" y="222" width="74" height="128" rx="8" fill="#fff" stroke="#333"/>
+        <text x="873" y="249" font-size="12" font-weight="700">실린더</text>
+        <path d="M873 276H915" stroke="#333" stroke-width="7"/><rect x="909" y="263" width="10" height="27" fill="#555"/>
+        <text x="869" y="324" font-size="11">또는 서보</text>
+        <circle cx="916" cy="228" r="18" fill="#222"/><text x="916" y="233" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">P5</text>
+
+        <path d="M265 365H900" stroke="#777" stroke-width="5" marker-end="url(#n261116-3-arrow)"/>
+        <text x="284" y="356" font-size="11">공압 주공급</text>
+        <circle cx="738" cy="365" r="18" fill="#222"/><text x="738" y="370" fill="#fff" text-anchor="middle" font-size="12" font-weight="700">P4</text>
+        <path d="M738 347V320" stroke="#555" stroke-width="2"/>
+        <rect x="420" y="328" width="152" height="52" rx="7" fill="#fff" stroke="#777"/>
+        <text x="440" y="348" font-size="12" font-weight="700">인접 안전구역 압력</text><text x="438" y="367" font-size="11">차단구역과 동시에 기록</text>
+
+        <g stroke="#777" stroke-width="1.5" stroke-dasharray="5 4" fill="none">
+          <path d="M374 118C230 118 210 128 185 136"/><path d="M446 118C240 170 220 195 185 201"/><path d="M813 106C330 55 230 95 185 136"/><path d="M738 365C420 430 250 300 185 266"/><path d="M916 228C440 465 280 370 185 331"/>
+        </g>
+
+        <text x="25" y="438" font-size="16" font-weight="700">합격 판단에 남길 기록</text>
+        <rect x="25" y="455" width="292" height="74" rx="8" fill="#fafafa" stroke="#555"/>
+        <text x="44" y="479" font-size="13" font-weight="700">반복동작</text><text x="44" y="501" font-size="12">비상정지·라이트커튼 각 100회</text><text x="44" y="518" font-size="12">위험동작 0회</text>
+        <rect x="344" y="455" width="292" height="74" rx="8" fill="#fafafa" stroke="#555"/>
+        <text x="363" y="479" font-size="13" font-weight="700">예기치 않은 기동</text><text x="363" y="501" font-size="12">입력 복귀 뒤 작업자 확인 전 0회</text><text x="363" y="518" font-size="12">인접구역 압력저하 함께 기록</text>
+        <rect x="663" y="455" width="292" height="74" rx="8" fill="#fafafa" stroke="#555"/>
+        <text x="682" y="479" font-size="13" font-weight="700">통신·최대구성</text><text x="682" y="501" font-size="12">오류메시지의 안전상태·진단 확인</text><text x="682" y="518" font-size="12">4모듈·입력 24점·출력 12점 시험</text>
       </svg></div>
-      <p class="visualNote">합격기준의 요구정지시간과 잔압한계는 장비 위험성평가에서 정합니다. PL e·Category 4·SIL 3 인증은 제품의 적용가능 범위이며 개별 기계의 전체 안전등급을 자동으로 보장하지 않습니다.</p>
+      <p class="visualNote">측정 위치: P1 입력접점, P2 안전망 패킷, P3 안전출력 전압, P4 공압구역 압력, P5 실제동작입니다. 시험값은 위험성평가에서 정한 요구정지시간·허용잔압과 비교하며, 공개자료에 없는 응답시간이나 압력 합격값은 임의로 넣지 않았습니다.</p>
     </figure>
 
     <h3>사전검증 순서</h3>
