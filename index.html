@@ -152,7 +152,221 @@
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
-      <details class="staticReport" id="static-261117" open>
+      <details class="staticReport" id="static-261118" open>
+  <summary><span class="staticDate">11.18</span><span class="staticTitle">실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화</span><span class="staticAxis">PC 제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">Festo AX Controls</span><span class="tag">CEPE</span><span class="tag">PLCnext Technology</span><span class="tag">Python 비전</span><span class="tag">60축 모션</span></div><p>Festo는 11월 17일 PLCnext Technology 기반의 Festo AX Controls를 공개하며 실시간 제어·모션, Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 한 구조에 배치한 두 고객 사례를 제시했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">개방형 실시간 엣지 제어 · 2026-11-18</p>
+      <h2>실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화</h2>
+      <p class="newsLead">Festo는 11월 17일 SPS 2026 사전발표에서 Festo AX Controls의 실행구조와 고객 적용사례를 공개했습니다. PLCnext Technology 기반의 실시간 Linux가 제어·모션 태스크를 실행하고, 같은 CEPE 엣지 제어기에서 Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 함께 운영합니다. 식품설비에서는 CODESYS가 모션을, Python이 비전과 분석을 맡았고, 인쇄·포장설비에서는 CEPE가 60축을 넘는 동기축을 낮은 밀리초 주기로 제어했습니다.</p>
+    </header>
+
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>최근 공식자료는 제어기와 엣지 컴퓨터를 단순히 한 상자에 넣는 단계에서, 실시간 태스크와 일반 소프트웨어가 어떤 데이터공간을 공유하고 실제 고객설비에서 역할을 어떻게 나누는지 공개하는 단계로 이동했습니다.</p></div>
+      <div><strong>주요 기술</strong><p>Festo AX Controls는 실시간 Linux, 실행·동기화 관리자, 전역 데이터공간과 컨테이너 실행계층을 사용합니다. CODESYS 모션, Python 비전, 웹 HMI와 제3자 앱은 같은 하드웨어를 사용하지만 실행경로와 데이터교환 방식은 분리합니다.</p></div>
+      <div><strong>선정 이유</strong><p>10월 30일 리포트는 LogixEdge의 제어·컨테이너 동시 실행 구조를 다뤘습니다. 이번 발표는 식품라인의 CODESYS·Python 역할분리와 60축 초과 동기모션 사례를 추가해 개방형 PC 제어의 실제 적용범위와 검증항목을 구체화했습니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><b>확인된 사실.</b> Festo는 2026년 11월 17일 Festo AX Controls를 실시간 제어, 모션, 시각화, AI와 클라우드 연결을 결합하는 개방형 자동화 플랫폼으로 발표했습니다. 하드웨어는 소형 CECC-AX, 모듈형 CPX-R과 고성능 CEPE로 확장됩니다. Festo AX OS는 Phoenix Contact의 PLCnext Technology를 기반으로 하며, IEC 61131-3 제어와 C/C++·C#·Python 계열 애플리케이션을 같은 플랫폼에서 사용할 수 있습니다.</p>
+    <p><b>공급사 공개 사례.</b> 식품산업 고객 프로젝트는 CEPE 한 대에 영상처리, 모션제어, HMI와 클라우드 연결을 배치했습니다. CODESYS가 모션태스크를 실행하고 Python 애플리케이션이 영상처리와 데이터 분석을 맡았습니다. 인쇄·포장산업 고객 프로젝트에서는 CEPE가 60개가 넘는 축을 동기화했으며, Festo는 제어주기를 낮은 밀리초 범위로 설명했습니다.</p>
+    <p><b>작성자 해석.</b> 새로 확인된 변화는 ‘한 장비에서 여러 소프트웨어를 실행한다’는 일반 설명이 아닙니다. 제어태스크는 실시간 실행관리자가 주기를 보장하고, 서로 다른 언어의 프로그램은 주기 일관성을 가진 데이터공간에서 값을 교환하며, Python과 제3자 앱은 컨테이너·서비스 계층에서 확장됩니다. 실제 도입 판단은 기능 수보다 자원격리, 데이터 시점과 장애경계를 측정하는 데 달려 있습니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <p>PLCnext Technology의 실행·동기화 관리자는 각 코어에서 실시간 태스크의 순서와 주기를 관리합니다. 전역 데이터공간은 IEC 61131-3 프로그램, 고급언어 프로그램, 필드버스와 시스템 서비스가 같은 주기의 공정값을 읽도록 중간층을 제공합니다. Linux 서비스와 OCI 컨테이너는 Python, Node-RED와 제3자 애플리케이션을 실행하고, 웹 HMI·OPC UA·클라우드 연결이 제어데이터를 사용합니다.</p>
+    <p>현장 작동은 네 단계로 나뉩니다. 첫째, 필드버스가 축위치·속도와 센서값을 실시간 태스크로 전달합니다. 둘째, CODESYS 모션태스크가 목표값을 계산해 서보축에 보냅니다. 셋째, 전역 데이터공간이 같은 주기의 상태값을 Python 비전·분석과 HMI에 전달합니다. 넷째, 분석결과가 제어로 돌아갈 때에는 데이터 시점과 허용범위를 확인한 뒤 별도 변수로 반영합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261118a-title">
+      <figcaption><strong id="fig261118a-title">그림 1. 장비 통합보다 중요한 변화는 실시간 경로와 앱 경로의 분리입니다</strong><span>왼쪽은 제어기·비전PC·HMI·게이트웨이가 각각 데이터를 복사합니다. 오른쪽은 CEPE 내부의 실시간 영역과 앱 영역이 전역 데이터공간을 사이에 두고 값을 교환합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 940 430" role="img" aria-labelledby="fig261118a-svg-title fig261118a-svg-desc">
+        <title id="fig261118a-svg-title">분리형 자동화와 Festo AX Controls 통합구조 비교</title>
+        <desc id="fig261118a-svg-desc">기존 구조는 제어기, 비전 컴퓨터, HMI, 클라우드 게이트웨이가 각각 케이블로 연결됩니다. 새 구조는 CEPE 안에서 실시간 모션 영역과 Python·HMI·컨테이너 영역을 전역 데이터공간이 연결합니다.</desc>
+        <defs><marker id="arr261118a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#56697f"/></marker></defs>
+        <rect x="18" y="28" width="402" height="362" rx="18" fill="#f7f8fa" stroke="#cbd3dc"/>
+        <text x="40" y="64" font-size="22" font-weight="700" fill="#28384a">기존 분리형 구성</text>
+        <rect x="48" y="104" width="132" height="62" rx="10" fill="#fff" stroke="#718196"/><text x="114" y="130" text-anchor="middle" font-size="16">전용 제어기</text><text x="114" y="151" text-anchor="middle" font-size="13">모션·I/O</text>
+        <rect x="240" y="104" width="132" height="62" rx="10" fill="#fff" stroke="#718196"/><text x="306" y="130" text-anchor="middle" font-size="16">비전 PC</text><text x="306" y="151" text-anchor="middle" font-size="13">Python 분석</text>
+        <rect x="48" y="224" width="132" height="62" rx="10" fill="#fff" stroke="#718196"/><text x="114" y="250" text-anchor="middle" font-size="16">HMI PC</text><text x="114" y="271" text-anchor="middle" font-size="13">화면·이력</text>
+        <rect x="240" y="224" width="132" height="62" rx="10" fill="#fff" stroke="#718196"/><text x="306" y="250" text-anchor="middle" font-size="16">게이트웨이</text><text x="306" y="271" text-anchor="middle" font-size="13">클라우드 연결</text>
+        <path d="M180 135 H240 M114 166 V224 M306 166 V224 M180 255 H240" stroke="#b45d58" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arr261118a)"/>
+        <rect x="48" y="324" width="324" height="42" rx="9" fill="#fff0ed" stroke="#d98b84"/><text x="210" y="350" text-anchor="middle" font-size="15" fill="#753833">장비별 데이터복사 · 별도 업데이트 · 케이블 증가</text>
+
+        <rect x="446" y="28" width="476" height="362" rx="18" fill="#f2f8f6" stroke="#98c4b7"/>
+        <text x="470" y="64" font-size="22" font-weight="700" fill="#214e43">Festo AX Controls · CEPE</text>
+        <rect x="480" y="94" width="408" height="92" rx="12" fill="#eef3ff" stroke="#607fb5"/>
+        <text x="500" y="121" font-size="16" font-weight="700" fill="#304f82">앱·서비스 영역</text>
+        <rect x="500" y="137" width="102" height="34" rx="7" fill="#fff" stroke="#7891bd"/><text x="551" y="159" text-anchor="middle" font-size="13">Python 비전</text>
+        <rect x="616" y="137" width="102" height="34" rx="7" fill="#fff" stroke="#7891bd"/><text x="667" y="159" text-anchor="middle" font-size="13">OCI 앱</text>
+        <rect x="732" y="137" width="132" height="34" rx="7" fill="#fff" stroke="#7891bd"/><text x="798" y="159" text-anchor="middle" font-size="13">웹 HMI·클라우드</text>
+        <rect x="480" y="208" width="408" height="48" rx="8" fill="#fff4cf" stroke="#c49a2c"/>
+        <text x="684" y="238" text-anchor="middle" font-size="17" font-weight="700" fill="#6d5412">GDS · 같은 주기의 공정값 공유</text>
+        <rect x="480" y="278" width="408" height="72" rx="12" fill="#e9f3ed" stroke="#4c8767"/>
+        <text x="500" y="305" font-size="16" font-weight="700" fill="#28593f">실시간 영역</text>
+        <text x="684" y="333" text-anchor="middle" font-size="15">ESM 주기관리 → CODESYS 모션 → EtherCAT 축</text>
+        <path d="M551 186 V208 M667 186 V208 M798 186 V208 M551 256 V278 M684 256 V278 M817 256 V278" stroke="#56697f" stroke-width="3" marker-end="url(#arr261118a)"/>
+        <path d="M888 314 H914" stroke="#3c7458" stroke-width="3" marker-end="url(#arr261118a)"/><text x="901" y="300" text-anchor="middle" font-size="12">축</text>
+      </svg></div>
+      <p class="visualNote">읽는 법: 오른쪽 아래의 실시간 영역이 모션주기를 책임지고, 위쪽 앱 영역은 전역 데이터공간을 통해 공정값을 받습니다. 직접 제작한 설명도이며 실제 배치도는 아닙니다.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>기존 분리형 설비는 모션제어기, 비전PC, HMI와 클라우드 게이트웨이가 각자 운영체제·데이터 사본·통신경로를 가집니다. 장비를 추가할 때마다 변수매핑과 배선, 업데이트 절차도 늘어납니다. Festo AX Controls는 이 기능을 한 Linux 기반 제어플랫폼으로 모으되, 실시간 태스크와 일반 앱을 같은 실행영역에 섞지 않습니다. 실행관리자와 전역 데이터공간이 주기와 데이터 시점을 관리하고, 컨테이너 계층이 Python과 제3자 앱의 배포경계를 만듭니다.</p>
+    <p>10월 30일 다룬 IPC형 LogixEdge도 제어와 컨테이너를 한 장치에 배치했습니다. 이번 자료에서 추가된 사실은 개방형 PLCnext 생태계, CODESYS·Python의 실제 역할분리, 식품라인의 비전·HMI·클라우드 통합과 60축 초과 동기모션 고객사례입니다. 따라서 새 원리의 등장이 아니라 개방형 통합제어가 실제 복합설비로 확장된 후속 변화로 보는 편이 정확합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261118b-title">
+      <figcaption><strong id="fig261118b-title">그림 2. 공식 발표가 공개한 두 고객 적용범위</strong><span>식품설비는 기능의 역할분리를, 인쇄·포장설비는 동기축 규모와 제어주기 범위를 보여줍니다. 두 사례를 하나의 설비로 합쳐 읽지 않도록 분리했습니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 940 390" role="img" aria-labelledby="fig261118b-svg-title fig261118b-svg-desc">
+        <title id="fig261118b-svg-title">식품 비전 프로젝트와 60축 초과 포장 프로젝트</title>
+        <desc id="fig261118b-svg-desc">왼쪽 식품라인에서는 카메라와 컨베이어를 CEPE가 연결하며 CODESYS 모션과 Python 영상분석이 역할을 나눕니다. 오른쪽 인쇄·포장설비에서는 CEPE를 중심으로 60개가 넘는 동기축이 낮은 밀리초 제어주기로 연결됩니다.</desc>
+        <defs><marker id="arr261118b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#52677d"/></marker></defs>
+        <rect x="18" y="28" width="432" height="330" rx="18" fill="#f5f8fb" stroke="#b9c7d6"/>
+        <text x="42" y="64" font-size="21" font-weight="700" fill="#2c4259">식품라인 · 기능 역할분리</text>
+        <rect x="52" y="102" width="118" height="58" rx="10" fill="#fff" stroke="#6e8195"/><text x="111" y="127" text-anchor="middle" font-size="15">상부 카메라</text><text x="111" y="148" text-anchor="middle" font-size="13">제품 영상</text>
+        <path d="M111 160 V202" stroke="#52677d" stroke-width="3" marker-end="url(#arr261118b)"/>
+        <rect x="46" y="202" width="280" height="58" rx="10" fill="#fff" stroke="#6e8195"/>
+        <circle cx="86" cy="231" r="15" fill="#d8e2ec"/><circle cx="286" cy="231" r="15" fill="#d8e2ec"/>
+        <path d="M104 231 H268" stroke="#6e8195" stroke-width="7"/><text x="186" y="224" text-anchor="middle" font-size="14">식품 컨베이어</text>
+        <rect x="212" y="96" width="202" height="92" rx="12" fill="#edf5f1" stroke="#4e8769"/>
+        <text x="313" y="121" text-anchor="middle" font-size="16" font-weight="700">CEPE</text>
+        <text x="313" y="146" text-anchor="middle" font-size="14">CODESYS: 모션</text>
+        <text x="313" y="168" text-anchor="middle" font-size="14">Python: 영상·분석</text>
+        <path d="M170 131 H212 M313 188 V202" stroke="#52677d" stroke-width="3" marker-end="url(#arr261118b)"/>
+        <rect x="212" y="286" width="202" height="42" rx="9" fill="#eef3ff" stroke="#718bb8"/><text x="313" y="312" text-anchor="middle" font-size="14">웹 HMI · 클라우드 연결</text>
+        <path d="M313 260 V286" stroke="#52677d" stroke-width="3" marker-end="url(#arr261118b)"/>
+
+        <rect x="474" y="28" width="448" height="330" rx="18" fill="#f8f7f2" stroke="#cdc2a2"/>
+        <text x="498" y="64" font-size="21" font-weight="700" fill="#55451f">인쇄·포장설비 · 동기모션 규모</text>
+        <circle cx="698" cy="205" r="68" fill="#edf5f1" stroke="#4e8769" stroke-width="3"/>
+        <text x="698" y="195" text-anchor="middle" font-size="18" font-weight="700">CEPE</text><text x="698" y="220" text-anchor="middle" font-size="14">동기모션</text>
+        <g fill="#fff" stroke="#9c7b2f">
+          <circle cx="698" cy="102" r="16"/><circle cx="760" cy="119" r="16"/><circle cx="803" cy="162" r="16"/><circle cx="820" cy="224" r="16"/><circle cx="803" cy="286" r="16"/><circle cx="760" cy="329" r="16"/>
+          <circle cx="636" cy="119" r="16"/><circle cx="593" cy="162" r="16"/><circle cx="576" cy="224" r="16"/><circle cx="593" cy="286" r="16"/><circle cx="636" cy="329" r="16"/>
+        </g>
+        <g stroke="#9c7b2f" stroke-width="2">
+          <path d="M698 137 V118"/><path d="M746 147 L753 133"/><path d="M766 183 L788 168"/><path d="M766 224 H804"/><path d="M766 248 L788 280"/><path d="M746 263 L753 315"/>
+          <path d="M650 147 L643 133"/><path d="M630 183 L608 168"/><path d="M630 224 H592"/><path d="M630 248 L608 280"/><path d="M650 263 L643 315"/>
+        </g>
+        <text x="698" y="83" text-anchor="middle" font-size="15" font-weight="700" fill="#6b5220">60축 초과</text>
+        <rect x="520" y="304" width="150" height="34" rx="8" fill="#fff4cf" stroke="#c49a2c"/><text x="595" y="326" text-anchor="middle" font-size="13">낮은 밀리초 주기</text>
+        <text x="842" y="315" text-anchor="middle" font-size="13" fill="#6b5220">원은 축 묶음을 뜻함</text>
+      </svg></div>
+      <p class="visualNote">수치 근거: Festo 2026년 11월 17일 공식발표의 ‘60개 초과 동기축’과 ‘낮은 밀리초 범위’를 사용했습니다. 축 배치와 식품 형상은 직접 제작한 설명이며 실제 기계배치가 아닙니다.</p>
+    </figure>
+
+    <h4>장점</h4>
+    <ul>
+      <li>모션·비전·HMI가 같은 데이터공간을 사용해 장치별 변수복사와 시각 불일치를 줄일 수 있습니다.</li>
+      <li>IEC 61131-3, CODESYS와 Python을 기능에 맞게 나누어 제어기술자와 소프트웨어 개발자가 같은 설비를 병행 개발할 수 있습니다.</li>
+      <li>OCI 컨테이너와 제3자 앱을 사용하면 비전·분석기능을 제어프로그램 전체와 분리해 배포할 수 있습니다.</li>
+      <li>CECC-AX부터 CEPE까지 하드웨어 등급을 나누면서 동일한 AX 구조를 유지할 수 있습니다.</li>
+    </ul>
+    <hr>
+    <h4>한계</h4>
+    <ul>
+      <li>Festo는 60축 초과와 낮은 밀리초 범위를 공개했지만 정확한 주기, 축부하와 추종오차는 공개하지 않았습니다.</li>
+      <li>식품 프로젝트의 처리량, 영상판정 정확도와 통합 전후 장비수 감소량은 공개되지 않았습니다.</li>
+      <li>Python·HMI·컨테이너가 CPU·메모리·저장장치를 함께 사용하므로 자원상한과 장애격리를 설정하지 않으면 실시간 태스크에 영향을 줄 수 있습니다.</li>
+      <li>PLCnext Store와 제3자 앱을 사용하면 앱서명, 취약점, 업데이트주기와 장기지원 책임을 별도로 관리해야 합니다.</li>
+    </ul>
+
+    <h3>현장 적용</h3>
+    <p><b>당사 공정·PC 제어와 연결해 볼 부분.</b> 일반 모션·비전 설비에서 실시간 축제어는 ESM 태스크에 두고, Python 영상처리와 데이터 분석은 별도 앱 영역에 배치할 수 있습니다. PC 제어 로거는 카메라 촬영시각, GDS 기록시각, 모션태스크 시작·종료, 축명령과 실제위치, HMI 표시시각을 하나의 시각축에 저장해야 합니다. 이 기록은 ‘한 장비에서 실행된다’는 사실보다 영상판정이 어느 제어주기의 제품에 대응하는지 보여줍니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261118c-title">
+      <figcaption><strong id="fig261118c-title">그림 3. 사전검증은 기능 목록이 아니라 자원충돌 시험표로 구성합니다</strong><span>Python 부하, 카메라 입력, 컨테이너 재시작과 통신단절을 각각 넣고 실시간 제어와 데이터시점을 동시에 측정합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 940 360" role="img" aria-labelledby="fig261118c-svg-title fig261118c-svg-desc">
+        <title id="fig261118c-svg-title">Festo AX Controls 사전검증 입력조건과 측정값 행렬</title>
+        <desc id="fig261118c-svg-desc">행에는 기준운전, Python 부하, 카메라 입력증가, 컨테이너 재시작, 네트워크 단절이 있고 열에는 최대제어주기, 주기초과, 축동기오차, 데이터나이, HMI 복구시간이 있습니다.</desc>
+        <rect x="20" y="28" width="900" height="300" rx="14" fill="#fff" stroke="#b8c2ce"/>
+        <rect x="20" y="28" width="900" height="58" rx="14" fill="#eef2f6"/>
+        <text x="128" y="63" text-anchor="middle" font-size="16" font-weight="700">시험 입력</text>
+        <text x="325" y="54" text-anchor="middle" font-size="14" font-weight="700">최대 제어주기</text><text x="325" y="73" text-anchor="middle" font-size="12">1·2·4ms 설정별</text>
+        <text x="465" y="54" text-anchor="middle" font-size="14" font-weight="700">주기초과</text><text x="465" y="73" text-anchor="middle" font-size="12">횟수</text>
+        <text x="595" y="54" text-anchor="middle" font-size="14" font-weight="700">축동기오차</text><text x="595" y="73" text-anchor="middle" font-size="12">최대값</text>
+        <text x="725" y="54" text-anchor="middle" font-size="14" font-weight="700">GDS 데이터나이</text><text x="725" y="73" text-anchor="middle" font-size="12">촬영→사용</text>
+        <text x="855" y="54" text-anchor="middle" font-size="14" font-weight="700">HMI 복구</text><text x="855" y="73" text-anchor="middle" font-size="12">초</text>
+        <g stroke="#c9d0d8"><path d="M250 28 V328 M395 28 V328 M530 28 V328 M660 28 V328 M790 28 V328"/><path d="M20 86 H920 M20 134 H920 M20 182 H920 M20 230 H920 M20 278 H920"/></g>
+        <g font-size="14" fill="#2d3d4f">
+          <text x="38" y="116">① 기준운전 · 앱 정지</text>
+          <text x="38" y="164">② Python CPU 50·100%</text>
+          <text x="38" y="212">③ 카메라 30·60fps</text>
+          <text x="38" y="260">④ 컨테이너 100회 재시작</text>
+          <text x="38" y="308">⑤ 네트워크 5초 단절</text>
+        </g>
+        <g font-size="22" text-anchor="middle" fill="#4e7d69">
+          <text x="325" y="118">●</text><text x="465" y="118">●</text><text x="595" y="118">●</text><text x="725" y="118">●</text><text x="855" y="118">●</text>
+          <text x="325" y="166">●</text><text x="465" y="166">●</text><text x="595" y="166">●</text><text x="725" y="166">●</text><text x="855" y="166">●</text>
+          <text x="325" y="214">●</text><text x="465" y="214">●</text><text x="595" y="214">●</text><text x="725" y="214">●</text><text x="855" y="214">●</text>
+          <text x="325" y="262">●</text><text x="465" y="262">●</text><text x="595" y="262">●</text><text x="725" y="262">●</text><text x="855" y="262">●</text>
+          <text x="325" y="310">●</text><text x="465" y="310">●</text><text x="595" y="310">●</text><text x="725" y="310">●</text><text x="855" y="310">●</text>
+        </g>
+      </svg></div>
+      <p class="visualNote">●는 반드시 같은 시각기준으로 기록할 항목입니다. 30·60fps, CPU 50·100%, 5초 단절과 100회 재시작은 사전검증 입력조건이며 공급사 성능수치가 아닙니다.</p>
+    </figure>
+
+    <h4>사전검증 순서</h4>
+    <ol>
+      <li>Python·HMI·클라우드 앱을 정지하고 1ms·2ms·4ms 제어주기별 최대주기, 지터와 축동기오차를 기준값으로 저장합니다.</li>
+      <li>Python 영상처리의 CPU 사용률을 50%와 100%로 제한해 각 조건을 30분 운전하고 제어주기 초과가 0회인지 확인합니다.</li>
+      <li>카메라 입력을 30fps와 60fps로 바꾸고 촬영시각부터 GDS 저장, 제어사용과 HMI 표시까지의 데이터나이를 측정합니다.</li>
+      <li>Python 컨테이너를 100회 정지·재시작해 모션태스크 지속, 데이터품질 표시와 HMI 복구시간을 기록합니다.</li>
+      <li>클라우드·상위망을 5초씩 20회 끊고 필드버스 모션의 연속운전, 로컬 HMI와 누락데이터 재전송 여부를 확인합니다.</li>
+      <li>앱서명 오류, 만료된 패키지와 권한초과 컨테이너를 투입해 설치차단, 감사기록과 기존 제어운전 유지를 확인합니다.</li>
+    </ol>
+
+    <h3>관련 업체</h3>
+    <p><a href="https://www.festo.com/kr/ko" target="_blank" rel="noopener noreferrer"><b>한국훼스토</b></a>는 CEPE, Festo AX Controls, 모션·공압 자동화와 국내 기술지원을 제공합니다. <a href="https://www.festo.com/kr/ko/e/solutions/automation-technologies/festo-ax-controls-id_2057387" target="_blank" rel="noopener noreferrer">Festo AX Controls 국내 제품 페이지</a>의 문의양식에서 CEPE 사양, CODESYS·Python 구성과 공동검증 범위를 요청할 수 있으며 고객지원 연락처는 1666-0202입니다.</p>
+    <p><a href="https://www.phoenixcontact.com/ko-kr/" target="_blank" rel="noopener noreferrer"><b>피닉스컨택트 코리아</b></a>는 기반기술인 PLCnext Technology, 실시간 Linux, GDS와 컨테이너 구조를 지원합니다. <a href="https://www.phoenixcontact.com/ko-kr/service-and-support/contact" target="_blank" rel="noopener noreferrer">국내 문의 페이지</a>에서 1899-2166 또는 sales@phoenixcontact.co.kr로 호환성·실시간 태스크·보안구성을 문의할 수 있습니다.</p>
+
+    <details class="termBox"><summary>용어 설명</summary>
+      <dl>
+        <dt>AI · Artificial Intelligence</dt><dd>영상과 공정데이터에서 상태·판정·최적화값을 계산하는 인공지능입니다.</dd>
+        <dt>PC · Personal Computer</dt><dd>이 리포트에서는 비전·HMI·분석 또는 제어프로그램을 실행하는 산업용 컴퓨터를 포함합니다.</dd>
+        <dt>PLC · Programmable Logic Controller</dt><dd>산업 설비의 논리·순서·모션을 정해진 주기로 실행하는 프로그램 가능 제어기입니다.</dd>
+        <dt>IEC · International Electrotechnical Commission</dt><dd>IEC 61131-3은 PLC 프로그래밍 언어의 국제표준입니다.</dd>
+        <dt>OS · Operating System</dt><dd>하드웨어 자원과 프로그램 실행을 관리하는 운영체제입니다.</dd>
+        <dt>CPU · Central Processing Unit</dt><dd>제어태스크와 앱의 명령을 실행하는 중앙처리장치입니다.</dd>
+        <dt>IPC · Industrial Personal Computer</dt><dd>산업환경에서 제어·비전·HMI·분석 프로그램을 실행하도록 설계한 산업용 PC입니다.</dd>
+        <dt>I/O · Input/Output</dt><dd>센서 입력과 액추에이터 출력 신호를 뜻합니다.</dd>
+        <dt>SPS · Smart Production Solutions</dt><dd>Festo가 2026년 11월 사전발표를 낸 독일 산업자동화 전시회 이름입니다.</dd>
+        <dt>ESM · Execution and Synchronization Manager</dt><dd>PLCnext Technology에서 코어별 실시간 태스크의 순서와 주기를 관리하는 실행·동기화 관리자입니다.</dd>
+        <dt>GDS · Global Data Space</dt><dd>서로 다른 언어의 프로그램과 필드버스가 주기 일관성을 가진 공정값을 교환하는 전역 데이터공간입니다.</dd>
+        <dt>OCI · Open Container Initiative</dt><dd>애플리케이션을 이식 가능한 컨테이너 형식으로 배포하기 위한 공개 규격입니다.</dd>
+        <dt>API · Application Programming Interface</dt><dd>프로그램이 다른 프로그램의 기능과 데이터를 정해진 형식으로 호출하는 인터페이스입니다.</dd>
+        <dt>HMI · Human Machine Interface</dt><dd>작업자가 설비상태를 보고 명령을 입력하는 화면과 소프트웨어입니다.</dd>
+        <dt>SCADA · Supervisory Control and Data Acquisition</dt><dd>설비상태 감시, 데이터수집, 경보와 이력을 처리하는 상위 감시제어 시스템입니다.</dd>
+        <dt>OPC UA · Open Platform Communications Unified Architecture</dt><dd>설비와 상위 소프트웨어가 구조화된 데이터를 교환하는 산업용 통신규격입니다.</dd>
+        <dt>C/C++·C#</dt><dd>실시간 또는 일반 소프트웨어를 개발하는 프로그래밍 언어명입니다.</dd>
+        <dt>CODESYS</dt><dd>IEC 61131-3 제어프로그램과 모션기능을 개발·실행하는 제품명입니다.</dd>
+        <dt>Node-RED</dt><dd>흐름도 방식으로 장치·API·온라인 서비스를 연결하는 제품명입니다.</dd>
+        <dt>CECC-AX·CPX-R</dt><dd>Festo AX Controls의 소형 제어기와 모듈형 제어 시스템 제품명입니다.</dd>
+        <dt>PLCnext Technology</dt><dd>Phoenix Contact의 실시간 Linux 기반 개방형 제어플랫폼 제품명입니다.</dd>
+        <dt>Festo AX Controls</dt><dd>Festo의 개방형 실시간 자동화 플랫폼 제품명입니다. AX는 제품명 일부이며 별도 정식 약어가 제시되지 않았습니다.</dd>
+        <dt>CEPE</dt><dd>Festo AX Controls의 고성능 엣지 제어기 제품명입니다.</dd>
+        <dt>Python</dt><dd>영상처리, 데이터분석과 AI 애플리케이션에 널리 쓰이는 프로그래밍 언어명입니다.</dd>
+        <dt>Linux</dt><dd>Festo AX OS와 PLCnext Technology의 기반이 되는 공개 운영체제 계열명입니다.</dd>
+      </dl>
+    </details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://press.festo.com/en-gb/node/5247" target="_blank" rel="noopener noreferrer">Festo, Open automation for the AI era with Festo AX Controls</a> — 2026-11-17.</li>
+      <li><a href="https://www.festo.com/kr/ko/e/solutions/automation-technologies/festo-ax-controls-id_2057387" target="_blank" rel="noopener noreferrer">한국훼스토, Festo AX Controls 실시간 플랫폼</a> — 2026-11-18 확인.</li>
+      <li><a href="https://www.phoenixcontact.com/en-us/products/plcnext-technology" target="_blank" rel="noopener noreferrer">Phoenix Contact, PLCnext Technology</a> — 실시간 Linux·ESM·GDS·Podman 구조, 2026-11-18 확인.</li>
+      <li><a href="https://www.phoenixcontact.com/assets/b0e8523d-a9e7-48d4-9332-68b1f9620bbd/epaper/EN_PLCnext_Technology_LoRes.pdf" target="_blank" rel="noopener noreferrer">Phoenix Contact, PLCnext Technology Architecture</a> — 구조 설명용 보조 근거, 2026-11-18 확인.</li>
+      <li><a href="https://press.festo.com/en-gb/technologies-and-products-1/festo-adds-the-first-edge-device" target="_blank" rel="noopener noreferrer">Festo, Festo adds the first edge device</a> — CEPE 구조 설명, 2025-11-03.</li>
+      <li><a href="https://www.festo.com/kr/ko/e/support/find-your-sales-partner-id_35195" target="_blank" rel="noopener noreferrer">한국훼스토 공식 지원·대리점 안내</a> — 2026-11-18 확인.</li>
+    </ol>
+    <p class="byline">김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+
+      <details class="staticReport" id="static-261117">
   <summary><span class="staticDate">11.17</span><span class="staticTitle">기존 제어기 위에서 1~10ms마다 AI 보정값을 심사하는 그림자 학습 제어</span><span class="staticAxis">인공지능 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">그림자 학습</span><span class="tag">강화학습</span><span class="tag">다중 심사기</span><span class="tag">실시간 AI 제어</span><span class="tag">산업용 엣지</span></div><p>Siemens Research는 기존 제어기의 기준값을 유지한 채 AI가 보정값을 제안하고, 학습에 참여하지 않은 여러 심사기가 모두 동의할 때만 1~10ms 제어주기에 반영하는 그림자 학습 구조를 11월 16일 공개했습니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -5681,6 +5895,7 @@
     reports.push({"id":"261115","date":"2026-11-15","title":"제어기 진단·로그·공정값을 AI 에이전트에 표준 도구로 여는 현장 MCP","axis":"설비 지능화","category":"현장 AI 진단 인터페이스","tags":["MCP","PLCnext Control","AI 에이전트","진단데이터","접근통제"],"summary":"Phoenix Contact는 11월 13일 PLCnext Control에서 직접 실행되는 MCP 앱을 공개했습니다. 이 앱은 장치·펌웨어, 런타임·상태, 진단, 파일·로그, OPC UA 공정값, 이벤트·알람을 AI 에이전트에 한 표준 인터페이스로 제공합니다.","discovery":"제어기 안의 MCP 앱이 활성화된 PLCnext 서비스를 호출해 장치정보·상태·진단·로그·공정값·알람과 선택 기능을 인증·역할·암호화·로그·호출량 제한 아래 AI 에이전트에 제공하는 구조","why":"최근 24시간에 더 큰 제어구조 발표는 확인되지 않았습니다. 11월 13일 발표는 상위 서버의 AI 에이전트가 아니라 제어기 내부 앱이 실제 자동화 문맥을 MCP로 내보낸 첫 구체 구조를 공개했습니다. 10월 26일 작업조정 플랫폼과 10월 27일 현장 AI 에이전트보다 데이터 출처와 접근경계가 한 단계 아래에서 명시됐습니다.","study":"MCP 도구목록, PLCnext 서비스 연결, OPC UA 공정값, 역할별 권한, 암호화 통신, 요청기록, 호출량 제한, 제어주기 영향","companies":"Phoenix Contact Korea는 PLCnext Control과 MCP 앱의 국내 공급범위, 지원버전과 기술지원을 문의할 수 있는 공식 연락처를 제공합니다.","poc":"읽기전용·엔지니어·관리자 역할로 같은 진단질의를 50회씩 호출합니다. 허용자료, 거부율, 응답시간, 제어태스크 최대 실행시간, 누락주기와 보안로그를 비교합니다.","caution":"공개 내용: 일곱 데이터 범주와 선택 기능, 인증·역할·암호화·로그·호출량 제한. 현장 확인: 지원 제어기·펌웨어, 활성 도구목록, 쓰기 가능 기능, 응답지연, 제어주기와 장애복구.","source_use":"11월 13일 Phoenix Contact 발표와 보도자료 원문을 중심으로 PLCnext 2026.6 보안문서, MCP 공식 규격과 한국 연락처를 대조","sourceCount":5,"weekly":{"topic":"제어기 안의 AI 진단창구","change":"서비스별 조회에서 MCP 한 창구로 진단자료를 모읍니다.","check":"읽기전용 계정에서 허용자료·응답시간·차단로그를 잽니다."}});
     reports.push({"id":"261116","date":"2026-11-16","title":"밸브터미널에 안전 I/O를 붙여 공압구역별 예기치 않은 기동을 막는 분산 안전제어","axis":"전기·제어","category":"분산 공압 기능안전","tags":["CIP Safety","안전 I/O","공압 밸브터미널","예기치 않은 기동 방지","분산 안전제어"],"summary":"Festo는 Automation Fair 개막 주간에 CPX-AP-A CIP Safety 모듈을 공개했습니다. 모듈 한 대는 안전입력 6점과 안전출력 3점을 제공하고 밸브터미널에 직접 장착돼 공압구역, 파일럿공기, 배기밸브와 외부 STO를 제어합니다.","discovery":"VTUX·MPA-S·VTSA 밸브터미널에 CIP Safety 모듈을 직접 장착하고, 한 모듈의 안전입력 6점·출력 3점으로 밸브구역과 외부 STO를 제어하며 최대 4모듈·입력 24점·출력 12점까지 확장하는 구조","why":"11월 16일 Automation Fair가 시작됐고 최근 일주일 공식자료에서 안전기능을 밸브터미널 가까이 옮긴 구체 사양이 공개됐습니다. 11월 9일 리포트가 제어기 내부의 안전논리 실행위치를 바꿨다면, 오늘 기술은 안전 I/O와 공압 차단위치를 밸브구역으로 분산하고 작업압력을 유지한 채 재기동을 막습니다.","study":"CIP Safety 오류검출, 안전입력 이중화, 안전출력과 밸브구역, 파일럿공기, 배기, STO, 잔압, 정지시간, 재기동 방지","companies":"Festo Korea는 CPX-AP-A와 밸브터미널, 공압 안전회로의 국내 공급·기술지원을 제공하며 ODVA는 CIP Safety 규격과 적합성 자료를 운영합니다.","poc":"비상정지와 라이트커튼 입력을 100회씩 발생시킵니다. 안전출력 차단시간, 구역압력, 잔압, 예기치 않은 재기동, 인접구역 압력저하와 정상복구시간을 측정합니다.","caution":"공개 내용: 한 모듈 입력 6점·출력 3점, 최대 4모듈, PL e·Category 4·SIL 3, 2027년 공급예정. 현장 확인: 응답시간, 지원 안전제어기, 안전거리, 잔압 기준과 국내 인증·공급일정.","source_use":"11월 10일 Festo 공식발표와 11월 16일 행사자료를 중심으로 CPX-AP-A 제품자료, ODVA CIP Safety 규격, PUS 응용문서와 한국 연락처를 대조","sourceCount":6,"weekly":{"topic":"밸브 가까이 둔 공압 안전","change":"별도 안전함에서 밸브터미널 직접 안전제어로 바뀝니다.","check":"비상정지 뒤 잔압·재기동 차단·복구시간을 잽니다."}});
   reports.push({"id":"261117","date":"2026-11-17","title":"기존 제어기 위에서 1~10ms마다 AI 보정값을 심사하는 그림자 학습 제어","axis":"인공지능 제어","category":"실시간 적응형 AI 제어","tags":["그림자 학습","강화학습","다중 심사기","실시간 AI 제어","산업용 엣지"],"summary":"Siemens Research는 기존 제어기의 기준값을 유지한 채 AI가 보정값을 제안하고, 학습에 참여하지 않은 여러 심사기가 모두 동의할 때만 1~10ms 제어주기에 반영하는 그림자 학습 구조를 11월 16일 공개했습니다.","discovery":"기존 제어기를 계속 운전하면서 AI 행위자가 보정값을 제안하고, 학습에 참여하지 않은 여러 심사기가 매 주기 전원 동의할 때만 기준값에 더하는 실시간 결합 구조","why":"11월 16일 Siemens Research가 실기기 운전 중 학습과 적용을 분리한 제어구조와 카트폴·합류 컨베이어 시험을 공개했습니다. 기존 보고서의 가상시험·승인 절차와 달리, 오늘 기술은 1~10ms 제어주기 안에서 기존 출력과 AI 보정값을 다중 심사기로 선택하는 실행경로 자체를 바꿉니다.","study":"기존 제어기 기준값, 강화학습 행위자, 독립 심사기 전원 동의, 1~10ms 추론주기, 산업용 엣지 학습, 기준값 복귀, 지연과 지터","companies":"Siemens Korea는 산업용 엣지·AI 추론·자동화 제품의 국내 기술지원과 도입상담을 제공합니다. 한국지멘스 디지털 인더스트리 기술지원센터에서 제어주기, 지원 하드웨어와 공동검증 범위를 문의할 수 있습니다.","poc":"1ms·5ms·10ms 주기로 기준제어와 AI 보정경로를 각각 운전합니다. 추론시간, 통신지연, 지터, 심사기 불일치 때 기준값 유지, 하중·마찰 변화 뒤 정착시간과 품질편차를 같은 시각축으로 측정합니다.","caution":"공개 내용: 카트폴은 5분 뒤 짧은 균형, 30분 이내 연속 직립을 보였고 합류 컨베이어는 보지 못한 길이·질량·마찰의 제품을 시험했습니다. 현장 확인: 심사기 판정기준, 최악지연, 정량 생산성, 기능안전 연동과 장시간 안정성.","source_use":"11월 16일 Siemens Research 발표를 중심으로 AI Motion, AI Inference Server v2.8 문서, 그림자 모드 강화학습 논문과 한국지멘스 연락처를 대조","sourceCount":6,"weekly":{"topic":"그림자 학습 AI 제어","change":"고정 제어값에 AI 보정값을 심사해 실시간 반영합니다.","check":"1~10ms 주기에서 지연·오보정·기준값 복귀를 잽니다."}});
+  reports.push({"id":"261118","date":"2026-11-18","title":"실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화","axis":"PC 제어","category":"개방형 실시간 엣지 제어","tags":["Festo AX Controls","CEPE","PLCnext Technology","Python 비전","60축 모션"],"summary":"Festo는 11월 17일 PLCnext Technology 기반의 Festo AX Controls를 공개하며 실시간 제어·모션, Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 한 구조에 배치한 두 고객 사례를 제시했습니다.","discovery":"실시간 Linux의 ESM·GDS로 제어태스크를 지키면서 Python·컨테이너 앱과 HMI·클라우드를 같은 CEPE 엣지 제어기에서 실행하고, 식품 비전과 60축 초과 동기모션에 적용한 구조","why":"10월 30일 리포트가 제어와 컨테이너 앱의 동시 실행을 제품구조로 다뤘다면, 11월 17일 Festo 발표는 개방형 데이터공간과 실행계층, CODESYS·Python의 역할분리, 식품라인과 60축 초과 포장설비 적용을 공개했습니다. 새로운 원리로 꾸미지 않고 실제 적용으로 구체화된 후속 변화를 선정했습니다.","study":"실시간 Linux, ESM 태스크 스케줄링, GDS 주기일관 데이터교환, CODESYS 모션, Python 비전, OCI 컨테이너, 웹 HMI, 자원격리와 장애복구","companies":"한국훼스토는 Festo AX Controls와 CEPE의 국내 상담·기술지원을 제공하며, 피닉스컨택트 코리아는 기반기술인 PLCnext Technology와 실시간 Linux·컨테이너 구조를 지원합니다.","poc":"1ms·2ms·4ms 제어주기에서 Python 비전입력을 30fps·60fps로 올리고 CPU 부하를 0%·50%·100%로 바꿉니다. 최대주기, 지터, 주기초과, 축동기오차, GDS 데이터나이와 HMI 복구시간을 공통시각으로 기록합니다.","caution":"공개 내용: 식품라인에서 CODESYS 모션과 Python 비전·분석을 CEPE에 통합했고, 인쇄·포장 고객설비에서 60축 초과를 낮은 밀리초 주기로 동기제어했습니다. 현장 확인: 정확한 주기, 축부하, CPU·메모리 배분, Python 장애격리와 국내 공급사양.","source_use":"11월 17일 Festo 공식발표를 중심으로 한국훼스토 AX Controls 제품자료, Phoenix Contact PLCnext 구조문서, CEPE 발표와 국내 연락처를 대조","sourceCount":6,"weekly":{"topic":"개방형 실시간 엣지 제어","change":"전용 제어기·비전PC·HMI를 한 실시간 구조에 묶습니다.","check":"Python 부하 100%에서 주기초과와 축동기오차를 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -6040,7 +6255,7 @@
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
