@@ -9,12 +9,7 @@
 .study-notepad label{display:block;margin:0 0 10px;font-weight:750}
 .study-notepad select{display:block;width:100%;margin:0 0 12px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font:inherit;font-size:13px}
 .study-notepad select:focus-visible{outline:3px solid #378bc9;outline-offset:3px}
-.study-notepad textarea{display:block;min-height:260px;height:clamp(260px,calc(100dvh - 460px),760px);max-height:max(260px,calc(100dvh - 150px))}
-.study-hardware{margin:0 0 14px;padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:#f4f8fb}
-.study-hardware h2{margin:0 0 6px;font-size:14px;line-height:1.35}
-.study-hardware dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;row-gap:6px;font-size:12px;line-height:1.55}
-.study-hardware dt{color:var(--green);font-weight:750}
-.study-hardware dd{margin:0;overflow-wrap:anywhere}
+.study-notepad textarea{display:block;min-height:260px;height:clamp(260px,calc(100dvh - 215px),760px);max-height:max(260px,calc(100dvh - 150px));white-space:pre-wrap;tab-size:2}
 .study-notepad .study-memo-label{font-size:13px;margin-bottom:6px}
 .study-notepad button{margin-top:10px;text-align:left}
 .study-notepad .hint{margin:8px 0 0}
@@ -23,16 +18,8 @@
 <aside class="study-notepad" aria-label="학습 메모">
 <label for="noteDate">학습 메모</label>
 <select id="noteDate"></select>
-<section class="study-hardware" aria-labelledby="studyHardwareTitle">
-  <h2 id="studyHardwareTitle">설비와 신호 흐름</h2>
-  <dl>
-    <dt>설비 동작</dt><dd id="hardwareAction"></dd>
-    <dt>신호 경로</dt><dd id="hardwareSignal"></dd>
-    <dt>저장·판단</dt><dd id="hardwareFeedback"></dd>
-  </dl>
-</section>
-<label class="study-memo-label" for="studyNote">복습 해설·내 메모</label>
-<textarea id="studyNote" placeholder="이해한 내용이나 다음에 확인할 내용을 적으세요." aria-describedby="noteSaveStatus"></textarea>
+<label class="study-memo-label" for="studyNote">설비와 신호 흐름·복습 메모</label>
+<textarea id="studyNote" wrap="soft" placeholder="이해한 내용이나 다음에 확인할 내용을 적으세요." aria-describedby="noteSaveStatus"></textarea>
 <button type="button" id="addStudyExplanations" hidden>복습 해설 추가</button>
 <p class="hint" id="noteSaveStatus" role="status">이 브라우저에 자동 저장됩니다.</p>
 </aside>
@@ -41,8 +28,26 @@
 'use strict';
 const PLAN=JSON.parse(document.getElementById('study-data').textContent),KEY='pc-control-study-2026-10-v1';
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state={checked:{},notes:{}},filter='all',storageOK=true;
-try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved==='object'){if(saved.checked&&typeof saved.checked==='object'&&!Array.isArray(saved.checked))for(const d of PLAN)for(let i=0;i<d.tasks.length;i++){const k=d.date+'-'+i;if(saved.checked[k]===true)state.checked[k]=true;}if(saved.notes&&typeof saved.notes==='object')for(const d of PLAN)if(typeof saved.notes[d.date]==='string')state.notes[d.date]=saved.notes[d.date];}}catch{storageOK=false;}
+const state = {checked:{}, notes:{}, unifiedNotes:{}};
+let filter = 'all', storageOK = true;
+try {
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved && typeof saved === 'object') {
+    for (const day of PLAN) {
+      const date = day.date;
+      day.tasks.forEach((_, i) => {
+        const key = date + '-' + i;
+        if (saved.checked?.[key] === true) state.checked[key] = true;
+      });
+      if (typeof saved.notes?.[date] === 'string') {
+        state.notes[date] = saved.notes[date];
+        if (saved.unifiedNotes?.[date] === true) state.unifiedNotes[date] = true;
+      }
+    }
+  }
+} catch {
+  storageOK = false;
+}
 const count=d=>d.tasks.reduce((n,_,i)=>n+(state.checked[d.date+'-'+i]===true?1:0),0);
 function unitMarkup(d,u,i){const k=d.date+'-'+i;return `<li class="unit"><details class="lesson-unit" ${i===0?'open':''}><summary><span class="unit-no">${i+1}</span><strong>${esc(u.title)}</strong><span class="unit-toggle">설명 열기</span></summary><div class="lesson-content"><h3>① 설명 읽기</h3><p>${esc(u.explain)}</p><h3>② 실제 코드와 연결</h3>${u.snippets.map(sn=>`<div class="source-label">${esc(sn.file)} · ${sn.start}${sn.end!==sn.start?'–'+sn.end:''}행 · 원문 발췌</div><pre><code>${esc(sn.code)}</code></pre>`).join('')}<h3>③ 직접 따라가기</h3><p class="practice">${esc(u.practice)}</p><details class="answer"><summary>④ 해설 확인 · 먼저 설명해 본 뒤 열기</summary><p>${esc(u.answer)}</p></details></div></details><label class="checkpoint"><input type="checkbox" data-key="${k}" ${state.checked[k]?'checked':''}><span>${i+1}. ${esc(u.title)} — 코드와 실행 경로를 설명할 수 있다</span></label></li>`;}
 $('days').innerHTML=PLAN.map((d,dayIndex)=>`<details class="day" id="day-${d.date}" ${dayIndex===0?'open':''}><summary><div class="date"><b>${d.date.slice(5).replace('-','/')}</b><span>${d.weekday}요일 · ${dayIndex+1}회차</span></div><div class="day-heading"><div class="stage">${esc(d.stage)}</div><h2>${esc(d.title)}</h2></div><div class="count"><span data-count="${d.date}"></span><progress data-progress="${d.date}" max="${d.tasks.length}" aria-label="${d.date} 진행률"></progress></div><span class="chevron" aria-hidden="true">▼</span></summary><div class="body"><div class="lesson-intro"><span class="stage">오늘의 위치</span><p>${esc(d.lesson.location)}</p><b>학습 목표</b><p>${esc(d.lesson.goal)}</p><span class="hint">설명과 예제를 읽고 → 상황을 대입해 따라가고 → 해설로 확인한 뒤 체크하세요.</span></div><a class="code-link" target="_blank" rel="noopener" href="execution-map.html#fn=${encodeURIComponent(d.fn)}">전체 함수 흐름도 열기 ↗ ${esc(d.fn)}</a><ol class="tasks">${d.lesson.units.map((u,i)=>unitMarkup(d,u,i)).join('')}</ol></div></details>`).join('');
@@ -83,6 +88,21 @@ function noteText(date) {
   ).join('\n\n');
   return saved.replace(previous, () => expanded);
 }
+function hardwareText(date) {
+  const parts = hardwareByDate[date];
+  if (!parts) return '';
+  const labels = ['설비 동작', '신호 경로', '저장·판단'];
+  return '설비와 신호 흐름\n\n' + parts.map((part, i) =>
+    '  ' + labels[i] + '\n    ' + part
+  ).join('\n\n');
+}
+function editableNoteText(date) {
+  if (state.unifiedNotes[date]) return state.notes[date];
+
+  const hardware = hardwareText(date);
+  const note = noteText(date);
+  return hardware && note ? hardware + '\n\n' + note : hardware || note;
+}
 function updateExplanationsButton() {
   const text = explanationText(noteDate.value);
   addStudyExplanations.hidden = !text || studyNote.value.includes(text);
@@ -95,18 +115,16 @@ for (const d of PLAN) {
 }
 function showNote(date) {
   noteDate.value = date;
-  const [action, signal, feedback] = hardwareByDate[date];
-  $('hardwareAction').textContent = action;
-  $('hardwareSignal').textContent = signal;
-  $('hardwareFeedback').textContent = feedback;
-  studyNote.value = noteText(date);
+  studyNote.value = editableNoteText(date);
   studyNote.scrollTop = 0;
   updateExplanationsButton();
   noteSaveStatus.textContent = storageOK ? '이 브라우저에 자동 저장됩니다.' : '자동 저장을 사용할 수 없습니다.';
 }
 noteDate.addEventListener('change', () => showNote(noteDate.value));
 function saveStudyNote() {
-  state.notes[noteDate.value] = studyNote.value;
+  const date = noteDate.value;
+  state.notes[date] = studyNote.value;
+  state.unifiedNotes[date] = true;
   save();
   updateExplanationsButton();
   noteSaveStatus.textContent = storageOK ? '자동 저장됨' : '자동 저장을 사용할 수 없습니다.';
