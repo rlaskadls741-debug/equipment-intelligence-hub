@@ -151,8 +151,179 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
+<details class="staticReport" id="static-261119" open>
+  <summary><span class="staticDate">11.19</span><span class="staticTitle">강화학습 제어와 소프트센서를 DCS 표준 기능으로 편입한 CENTUM R7.02</span><span class="staticAxis">인공지능 제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">CENTUM R7.02</span><span class="tag">AI Control</span><span class="tag">AI Estimation</span><span class="tag">FKDPP</span><span class="tag">소프트센서</span></div><p>요꼬가와전기는 11월 19일 CENTUM R7.02를 출시해 강화학습 제어모델을 현장제어소의 표준 제어블록으로 실행하고, 품질값을 추정하는 소프트센서 결과와 기여변수를 기존 운전화면에 함께 표시하도록 했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">DCS 내장형 자율제어 · 2026-11-19</p>
+      <h2>강화학습 제어와 소프트센서를 DCS 표준 기능으로 편입한 CENTUM R7.02</h2>
+      <p class="newsLead">요꼬가와전기는 2026년 11월 19일 CENTUM R7.02를 출시했습니다. 새 버전은 FKDPP 강화학습 모델을 현장제어소의 AI 제어블록에서 직접 실행하고, 자율제어소가 온도·압력·유량으로 농도와 조성 같은 품질값을 추정하도록 구성했습니다. 운전자는 기존 운전화면에서 AI 조작량, 추정값, 경보와 각 공정변수의 기여도를 함께 확인합니다.</p>
+    </header>
 
-      <details class="staticReport" id="static-261118" open>
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>이번 주 공식자료는 AI를 설비 밖 분석서버에 두는 방식보다, 실시간 제어기·운전화면·안전기능 안에 실행경로와 책임범위를 넣는 방향을 반복해서 제시했습니다. CENTUM R7.02는 그중 공정제어 블록과 소프트센서의 장치 위치를 가장 구체적으로 공개했습니다.</p></div>
+      <div><strong>주요 기술</strong><p>현장제어소는 FKDPP 모델을 참조해 조작변수를 계산하고, 자율제어소는 현재 공정데이터로 직접 측정하기 어려운 품질값과 입력변수별 기여도를 계산합니다. 현장인터페이스는 두 결과를 기존 그래픽·추세·경보·페이스플레이트에 표시합니다.</p></div>
+      <div><strong>선정 이유</strong><p>2023년 서비스는 학습모델을 전용 엣지 제어기에 설치했습니다. 11월 19일 출시판은 모델을 DCS 현장제어소의 표준 패키지 블록으로 옮기고, 품질추정과 설명정보까지 같은 운전환경에 편입했습니다. 별도 AI 장치에서 표준 제어기능으로 바뀐 실행구조를 선정했습니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><b>확인된 사실.</b> 요꼬가와전기는 11월 17일 CENTUM R7.02를 발표하고 11월 19일 출시했습니다. AI Control은 FKDPP로 만든 제어모델을 현장제어소에 가져와 표준 AI 제어블록이 계산에 사용합니다. AI Estimation은 자율제어소가 온도·압력·유량의 현재값을 기계학습 모델에 입력해 농도·조성과 같은 품질값을 추정하고, 각 입력변수가 결과에 미친 기여도를 함께 출력합니다.</p>
+    <p><b>공급사 설명.</b> 요꼬가와전기는 비선형 공정, 품질·생산량·에너지 사이의 상충조건, 예측하기 어려운 외란에서 AI Control이 운전자 수동조작을 줄일 수 있다고 설명합니다. AI Estimation은 실험실 분석이나 주기 측정 때문에 늦게 확인되던 품질변화를 연속 추정해 운전판단 시간을 줄이는 기능으로 제시했습니다.</p>
+    <p><b>작성자 해석.</b> 이번 변화의 중심은 새 AI 알고리즘이 아니라 실행위치입니다. 2023년에는 FKDPP 모델을 별도 엣지 제어기에 설치하는 서비스가 공개됐습니다. R7.02는 모델 계산을 DCS 현장제어소의 표준 블록으로 옮기고, 조작·감시·경보를 기존 운전도구에 결합했습니다. PC 기반 상위분석은 모델학습·성능감시를 맡고, 실시간 조작량 계산은 공정제어 계층에 남기는 분업이 명확해졌습니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <p>AI Control은 먼저 공정 시뮬레이터에서 실제 설비의 반응을 재현하고 FKDPP가 반복학습으로 제어모델을 만듭니다. 고객이 모델의 유효성과 안전기능을 평가한 뒤 엔지니어링 환경에서 모델을 현장제어소로 내려보냅니다. 운전 중 현장제어소의 AI 제어블록은 압력·온도·유량·액위와 목표조건을 읽고, 모델이 제시한 조작량을 밸브에 출력합니다. 운전자는 현장인터페이스에서 조작량·경보·추세를 기존 PID 제어와 같은 방식으로 감시합니다.</p>
+    <p>AI Estimation은 과거 공정값과 실험실 품질값의 상관관계로 추정모델을 학습합니다. 운전 중 자율제어소는 현재 공정값으로 농도·조성을 계산하고 입력변수별 기여도를 붙입니다. 현장인터페이스는 추정값과 기여도를 공정 추세 옆에 표시하므로, 운전자는 실험실 결과가 도착하기 전 공정변화를 먼저 확인할 수 있습니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261119a-title">
+      <figcaption><strong id="fig261119a-title">그림 1. 실험실 대기·수동보정에서 DCS 안의 두 실시간 경로로 바뀝니다</strong><span>증류탑의 센서와 밸브를 기준으로 읽으면, 새 구조가 어디서 품질을 추정하고 어디서 조작량을 계산하는지 바로 구분됩니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 980 510" role="img" aria-labelledby="fig261119a-svg-title fig261119a-svg-desc">
+        <title id="fig261119a-svg-title">기존 실험실 분석과 수동보정 구조, CENTUM R7.02의 AI 제어·추정 구조 비교</title>
+        <desc id="fig261119a-svg-desc">왼쪽은 증류탑 시료를 실험실로 보내 결과를 기다린 뒤 운전자가 밸브를 보정합니다. 오른쪽은 현장제어소가 밸브 조작량을 계산하고 자율제어소가 품질값과 기여도를 추정해 현장인터페이스에 함께 표시합니다.</desc>
+        <defs><marker id="arr261119a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52677d"/></marker></defs>
+        <rect x="15" y="20" width="455" height="465" rx="20" fill="#faf7f4" stroke="#d3c4b8"/>
+        <text x="38" y="57" font-size="22" font-weight="700" fill="#5a4033">기존 방식 · 분석 후 수동보정</text>
+        <path d="M105 125h72l18 48v160l-18 48h-72l-18-48V173Z" fill="#fff" stroke="#846c5e" stroke-width="3"/>
+        <line x1="92" y1="202" x2="190" y2="202" stroke="#b79d8b" stroke-width="2"/><line x1="92" y1="262" x2="190" y2="262" stroke="#b79d8b" stroke-width="2"/><line x1="92" y1="322" x2="190" y2="322" stroke="#b79d8b" stroke-width="2"/>
+        <text x="141" y="108" text-anchor="middle" font-size="15">증류탑</text>
+        <circle cx="213" cy="205" r="10" fill="#d88265"/><text x="232" y="210" font-size="14">온도·압력·유량</text>
+        <path d="M195 290H250" stroke="#52677d" stroke-width="3" marker-end="url(#arr261119a)"/>
+        <rect x="255" y="255" width="158" height="72" rx="12" fill="#fff" stroke="#9b7864"/><text x="334" y="282" text-anchor="middle" font-size="16" font-weight="700">시료 채취·실험실</text><text x="334" y="307" text-anchor="middle" font-size="14">농도 결과 대기</text>
+        <path d="M334 327V369H240" fill="none" stroke="#52677d" stroke-width="3" marker-end="url(#arr261119a)"/>
+        <rect x="242" y="350" width="171" height="68" rx="12" fill="#fff1ed" stroke="#c97565"/><text x="327" y="377" text-anchor="middle" font-size="16" font-weight="700">운전자 판단</text><text x="327" y="401" text-anchor="middle" font-size="14">밸브 수동보정</text>
+        <path d="M242 386H190" stroke="#c45d4e" stroke-width="4" marker-end="url(#arr261119a)"/>
+        <path d="M80 407h123" stroke="#846c5e" stroke-width="6"/><path d="M128 390l26 17-26 17Z" fill="#fff" stroke="#846c5e" stroke-width="3"/><path d="M154 390l-26 17 26 17Z" fill="#fff" stroke="#846c5e" stroke-width="3"/>
+        <text x="38" y="460" font-size="14" fill="#745243">품질 확인이 간헐적이고 보정은 사람의 판단에 의존</text>
+
+        <rect x="495" y="20" width="470" height="465" rx="20" fill="#f1f8f5" stroke="#9bc5b4"/>
+        <text x="520" y="57" font-size="22" font-weight="700" fill="#214f41">CENTUM R7.02 · 제어와 추정 분업</text>
+        <path d="M550 125h72l18 48v160l-18 48h-72l-18-48V173Z" fill="#fff" stroke="#39735e" stroke-width="3"/>
+        <line x1="537" y1="202" x2="635" y2="202" stroke="#87b2a1" stroke-width="2"/><line x1="537" y1="262" x2="635" y2="262" stroke="#87b2a1" stroke-width="2"/><line x1="537" y1="322" x2="635" y2="322" stroke="#87b2a1" stroke-width="2"/>
+        <text x="586" y="108" text-anchor="middle" font-size="15">증류탑</text>
+        <circle cx="658" cy="205" r="10" fill="#2d8a68"/><text x="678" y="210" font-size="14">공정센서</text>
+        <rect x="715" y="94" width="210" height="86" rx="12" fill="#eaf1ff" stroke="#6685b4"/><text x="820" y="122" text-anchor="middle" font-size="16" font-weight="700">ACS · AI Estimation</text><text x="820" y="147" text-anchor="middle" font-size="14">농도·조성 + 기여도</text><text x="820" y="168" text-anchor="middle" font-size="12">연속 소프트센서</text>
+        <path d="M668 205H694V137H715" fill="none" stroke="#52677d" stroke-width="3" marker-end="url(#arr261119a)"/>
+        <rect x="715" y="224" width="210" height="86" rx="12" fill="#e7f5eb" stroke="#43805c"/><text x="820" y="252" text-anchor="middle" font-size="16" font-weight="700">FCS · AI Control</text><text x="820" y="277" text-anchor="middle" font-size="14">FKDPP 모델 참조</text><text x="820" y="298" text-anchor="middle" font-size="12">밸브 조작량 계산</text>
+        <path d="M668 222H694V267H715" fill="none" stroke="#52677d" stroke-width="3" marker-end="url(#arr261119a)"/>
+        <path d="M715 285H675V407H638" fill="none" stroke="#2d7a56" stroke-width="4" marker-end="url(#arr261119a)"/>
+        <path d="M525 407h128" stroke="#39735e" stroke-width="6"/><path d="M574 390l26 17-26 17Z" fill="#fff" stroke="#39735e" stroke-width="3"/><path d="M600 390l-26 17 26 17Z" fill="#fff" stroke="#39735e" stroke-width="3"/>
+        <rect x="715" y="352" width="210" height="80" rx="12" fill="#fff8df" stroke="#b79736"/><text x="820" y="380" text-anchor="middle" font-size="16" font-weight="700">HIS · 기존 운전화면</text><text x="820" y="404" text-anchor="middle" font-size="14">추세·경보·페이스플레이트</text>
+        <path d="M820 180V224M820 310V352" stroke="#52677d" stroke-width="3" marker-end="url(#arr261119a)"/>
+        <text x="520" y="460" font-size="14" fill="#315c4e">추정은 ACS, 실시간 조작량은 FCS, 판단정보는 HIS에 표시</text>
+      </svg></div>
+      <p class="visualNote">읽는 법: 증류탑 오른쪽의 두 경로를 분리해 보십시오. 위쪽 ACS는 품질을 추정하고, 아래쪽 FCS는 밸브 조작량을 계산합니다. 직접 제작한 설명도이며 실제 배치도는 아닙니다.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>기존 PID와 고급공정제어는 미리 정한 제어식과 모델에 따라 조작량을 계산합니다. 비선형성이 크거나 목표가 서로 충돌하는 공정에서는 운전자가 상황별 보정을 맡았습니다. 품질값은 실험실 분석이 끝난 뒤 확인되는 경우가 많아 공정변화와 조치 사이에 시간이 생겼습니다. 별도 엣지 AI를 쓰면 모델 실행기, 통신매핑과 감시화면을 추가로 관리해야 했습니다.</p>
+    <p>R7.02에서는 FKDPP 모델을 현장제어소의 표준 블록이 참조하고, 기존 현장인터페이스가 AI 블록의 상태·경보·추세를 표시합니다. 품질추정은 자율제어소가 맡아 실시간 제어계산과 분석계산의 장치 경계를 유지합니다. 따라서 PC 제어팀은 상위 PC에 AI 조작루프를 새로 만드는 대신, 시뮬레이터 학습·모델 승인·성능감시·이력분석을 담당하는 구조를 검토할 수 있습니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261119b-title">
+      <figcaption><strong id="fig261119b-title">그림 2. 두 AI 기능은 같은 화면에 보이지만 계산장치는 다릅니다</strong><span>파란 경로는 품질추정, 초록 경로는 밸브제어입니다. 운전화면에서 합쳐 보인다는 이유로 두 계산주기와 장애경계를 하나로 취급하면 안 됩니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 980 430" role="img" aria-labelledby="fig261119b-svg-title fig261119b-svg-desc">
+        <title id="fig261119b-svg-title">AI Estimation과 AI Control의 장치별 데이터 흐름</title>
+        <desc id="fig261119b-svg-desc">상단 파란 경로는 공정데이터와 실험실 값을 학습한 모델을 자율제어소가 실행해 품질 추정과 기여도를 현장인터페이스에 보냅니다. 하단 초록 경로는 시뮬레이터에서 학습한 FKDPP 모델을 현장제어소가 실행해 밸브 조작량을 공정에 보냅니다.</desc>
+        <defs><marker id="arr261119b1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#5679ad"/></marker><marker id="arr261119b2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#3e7d5a"/></marker></defs>
+        <text x="25" y="45" font-size="20" font-weight="700" fill="#365c91">품질추정 경로</text>
+        <rect x="25" y="70" width="170" height="76" rx="12" fill="#f2f6fc" stroke="#6d88b0"/><text x="110" y="99" text-anchor="middle" font-size="15" font-weight="700">과거 데이터</text><text x="110" y="123" text-anchor="middle" font-size="13">공정값 + 실험실 품질</text>
+        <rect x="240" y="70" width="170" height="76" rx="12" fill="#f2f6fc" stroke="#6d88b0"/><text x="325" y="99" text-anchor="middle" font-size="15" font-weight="700">추정모델 학습</text><text x="325" y="123" text-anchor="middle" font-size="13">상관관계 학습</text>
+        <rect x="455" y="70" width="170" height="76" rx="12" fill="#e7effb" stroke="#5278af"/><text x="540" y="99" text-anchor="middle" font-size="15" font-weight="700">ACS 실행</text><text x="540" y="123" text-anchor="middle" font-size="13">현재 공정값 입력</text>
+        <rect x="670" y="70" width="170" height="76" rx="12" fill="#e7effb" stroke="#5278af"/><text x="755" y="99" text-anchor="middle" font-size="15" font-weight="700">추정값·기여도</text><text x="755" y="123" text-anchor="middle" font-size="13">농도·조성·영향변수</text>
+        <path d="M195 108H240M410 108H455M625 108H670" stroke="#5679ad" stroke-width="4" marker-end="url(#arr261119b1)"/>
+
+        <line x1="20" y1="205" x2="960" y2="205" stroke="#cfd7df" stroke-width="2" stroke-dasharray="8 6"/>
+        <text x="25" y="250" font-size="20" font-weight="700" fill="#2f684b">실시간 제어 경로</text>
+        <rect x="25" y="275" width="170" height="76" rx="12" fill="#f0f7f3" stroke="#5a8a70"/><text x="110" y="304" text-anchor="middle" font-size="15" font-weight="700">공정 시뮬레이터</text><text x="110" y="328" text-anchor="middle" font-size="13">설비 반응 재현</text>
+        <rect x="240" y="275" width="170" height="76" rx="12" fill="#f0f7f3" stroke="#5a8a70"/><text x="325" y="304" text-anchor="middle" font-size="15" font-weight="700">FKDPP 학습</text><text x="325" y="328" text-anchor="middle" font-size="13">제어모델 생성</text>
+        <rect x="455" y="275" width="170" height="76" rx="12" fill="#e4f2e9" stroke="#3f7a59"/><text x="540" y="304" text-anchor="middle" font-size="15" font-weight="700">FCS AI 블록</text><text x="540" y="328" text-anchor="middle" font-size="13">조작량 계산</text>
+        <rect x="670" y="275" width="170" height="76" rx="12" fill="#e4f2e9" stroke="#3f7a59"/><text x="755" y="304" text-anchor="middle" font-size="15" font-weight="700">밸브·공정</text><text x="755" y="328" text-anchor="middle" font-size="13">MV 출력·PV 회귀</text>
+        <path d="M195 313H240M410 313H455M625 313H670" stroke="#3e7d5a" stroke-width="4" marker-end="url(#arr261119b2)"/>
+        <path d="M840 108H900V313H840" fill="none" stroke="#b18b31" stroke-width="3"/>
+        <rect x="855" y="165" width="100" height="88" rx="12" fill="#fff8df" stroke="#b18b31"/><text x="905" y="194" text-anchor="middle" font-size="15" font-weight="700">HIS</text><text x="905" y="217" text-anchor="middle" font-size="12">추세·경보</text><text x="905" y="237" text-anchor="middle" font-size="12">페이스플레이트</text>
+        <text x="25" y="400" font-size="14" fill="#506070">ACS: 품질추정 │ FCS: 실시간 조작 │ HIS: 두 결과의 통합 감시</text>
+      </svg></div>
+      <p class="visualNote">수치 근거: 공식 제품자료는 AI Control 모델이 FCS에서 실행되고 AI Estimation 모델이 ACS에서 실행된다고 명시합니다. 직접 제작한 기능도이며 실제 네트워크 배치도는 아닙니다.</p>
+    </figure>
+
+    <h3>장점</h3>
+    <ul><li>AI 조작량 계산이 현장제어소의 표준 블록에서 실행되므로 기존 DCS 감시·경보·장기운영 절차를 재사용할 수 있습니다.</li><li>농도·조성의 연속 추정값과 기여변수가 함께 표시되어 실험실 결과 사이의 공정변화를 운전자가 먼저 확인할 수 있습니다.</li><li>2022년 화학공장 실증은 FKDPP가 증류공정을 35일 연속 자율제어했고, 2023년 공식 채택 뒤 계절변화를 포함한 연간 운전으로 확대됐습니다.</li></ul>
+    <hr class="sectionDivider">
+    <h3>한계</h3>
+    <ul><li>공식자료는 FCS와 ACS의 모델 실행위치를 공개했지만 제어주기, 계산부하와 추정오차 수치는 공개하지 않았습니다.</li><li>시뮬레이터가 실제 공정의 외란과 제한조건을 충분히 재현하지 못하면 학습모델의 조작량 범위를 현장에서 다시 제한해야 합니다.</li><li>소프트센서는 원료·촉매·센서 교정상태가 바뀌면 입력분포가 달라지므로 실험실 기준값과의 오차감시가 필요합니다.</li></ul>
+
+    <h3>현장 적용</h3>
+    <p><b>실제 적용사례.</b> 요꼬가와전기와 ENEOS Materials는 일본 욧카이치 화학공장의 증류탑에서 2022년 35일 연속 FKDPP 자율제어를 실시했습니다. 제어대상은 증류탑 액위였고 AI가 두 밸브를 조작해 폐열 사용을 늘렸습니다. 2023년 공식 채택 발표는 겨울과 여름을 포함한 1년 검증에서 안정운전과 에너지 최적화를 확인했다고 밝혔습니다. 11월 17일 발표는 이 설비가 이후 4년 넘게 안정운전을 이어왔다고 설명했습니다.</p>
+    <p><b>당사 공정·PC 제어와 연결해 볼 부분.</b> PC는 공정 시뮬레이터, 모델학습, 실험실 기준값 결합, 오차추세와 모델버전 관리를 맡고 실시간 조작량은 FCS에 남기는 역할분리를 검토할 수 있습니다. 첫 대상은 PID로 유지하기 어렵고 운전자가 반복 보정하는 비선형 온도·압력·유량 루프가 적합합니다. 소프트센서는 분석주기가 긴 농도·점도·조성 가운데 현재 공정변수와 상관관계를 확보한 항목부터 적용범위를 정할 수 있습니다.</p>
+
+    <h3>사전검증 순서</h3>
+    <ol><li><b>기준선 수집:</b> 기존 PID 운전에서 목표편차, 밸브 이동량, 경보횟수, 에너지 사용량과 실험실 품질값을 같은 시각축으로 4주 이상 수집합니다.</li><li><b>모델 재현성 시험:</b> 공정 시뮬레이터에 정상운전, 원료변화, 센서편차와 최대 외란을 각각 입력합니다. FKDPP 조작량이 밸브 상·하한과 변화율 제한을 넘는지 기록합니다.</li><li><b>추정오차 시험:</b> ACS 추정값과 실험실 기준값을 동일 시료시각으로 맞춥니다. 평균절대오차, 최대오차와 95백분위 오차를 제품 품질허용폭과 비교합니다.</li><li><b>주기·부하 시험:</b> FCS의 AI 블록을 목표 주기로 실행하면서 CPU 부하를 단계적으로 높입니다. 최대주기, 지터, 주기초과 횟수와 통신단절 뒤 복구시간을 기록합니다.</li><li><b>제한운전:</b> AI 조작범위를 기존 PID 출력의 승인범위 안으로 제한하고 운전자 승인 후 투입합니다. 목표편차·에너지·밸브 이동량을 기존 제어와 동일 생산조건에서 비교합니다.</li><li><b>확대판정:</b> 품질허용폭, 안전인터록 무동작, 주기초과 0회와 합의한 에너지 절감목표를 동시에 만족할 때 다음 루프로 확대합니다.</li></ol>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261119c-title">
+      <figcaption><strong id="fig261119c-title">그림 3. 현장시험은 조작루프와 품질추정 오차를 따로 측정합니다</strong><span>밸브 제어성능은 FCS 입·출력에서, 소프트센서 정확도는 ACS 추정값과 동일시각 실험실 결과 사이에서 측정합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 980 360" role="img" aria-labelledby="fig261119c-svg-title fig261119c-svg-desc">
+        <title id="fig261119c-svg-title">CENTUM R7.02 사전검증 측정 위치</title>
+        <desc id="fig261119c-svg-desc">왼쪽 공정센서에서 FCS AI 제어블록과 밸브를 거쳐 공정으로 돌아가는 루프에 주기, 지터, 조작량 측정점을 표시합니다. 위쪽 ACS 추정값과 실험실 기준값 사이에는 동일 시료시각의 추정오차 측정점을 표시합니다.</desc>
+        <defs><marker id="arr261119c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#4f667a"/></marker></defs>
+        <rect x="25" y="175" width="150" height="72" rx="36" fill="#f5f7fa" stroke="#718295"/><text x="100" y="205" text-anchor="middle" font-size="16" font-weight="700">공정센서</text><text x="100" y="228" text-anchor="middle" font-size="13">PV 시각·노이즈</text>
+        <rect x="245" y="160" width="190" height="102" rx="14" fill="#e7f4eb" stroke="#3f7a59"/><text x="340" y="192" text-anchor="middle" font-size="17" font-weight="700">FCS AI 제어블록</text><text x="340" y="218" text-anchor="middle" font-size="14">주기·지터·CPU</text><text x="340" y="241" text-anchor="middle" font-size="14">MV 상·하한</text>
+        <path d="M175 211H245" stroke="#4f667a" stroke-width="4" marker-end="url(#arr261119c)"/>
+        <rect x="505" y="175" width="150" height="72" rx="12" fill="#fff6e2" stroke="#b28b34"/><text x="580" y="205" text-anchor="middle" font-size="16" font-weight="700">조절밸브</text><text x="580" y="228" text-anchor="middle" font-size="13">이동량·포화</text>
+        <path d="M435 211H505" stroke="#4f667a" stroke-width="4" marker-end="url(#arr261119c)"/>
+        <rect x="725" y="175" width="200" height="72" rx="12" fill="#f8f1ed" stroke="#a87962"/><text x="825" y="205" text-anchor="middle" font-size="16" font-weight="700">실제 공정</text><text x="825" y="228" text-anchor="middle" font-size="13">목표편차·에너지</text>
+        <path d="M655 211H725" stroke="#4f667a" stroke-width="4" marker-end="url(#arr261119c)"/>
+        <path d="M825 247V310H100V247" fill="none" stroke="#778899" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#arr261119c)"/>
+
+        <rect x="250" y="35" width="180" height="72" rx="12" fill="#eaf1fc" stroke="#587cac"/><text x="340" y="64" text-anchor="middle" font-size="16" font-weight="700">ACS 추정값</text><text x="340" y="87" text-anchor="middle" font-size="13">농도·조성·기여도</text>
+        <rect x="550" y="35" width="180" height="72" rx="12" fill="#fff" stroke="#76889a"/><text x="640" y="64" text-anchor="middle" font-size="16" font-weight="700">실험실 기준값</text><text x="640" y="87" text-anchor="middle" font-size="13">동일 시료시각</text>
+        <line x1="430" y1="71" x2="550" y2="71" stroke="#c25050" stroke-width="5"/><circle cx="490" cy="71" r="19" fill="#fff" stroke="#c25050" stroke-width="3"/><text x="490" y="77" text-anchor="middle" font-size="20" font-weight="700" fill="#a23b3b">Δ</text>
+        <text x="490" y="126" text-anchor="middle" font-size="14" fill="#923f3f">평균·최대·95백분위 추정오차</text>
+        <path d="M100 175V118H340V107" fill="none" stroke="#587cac" stroke-width="3" marker-end="url(#arr261119c)"/>
+      </svg></div>
+      <p class="visualNote">합격기준은 사내 품질허용폭과 제어주기에 맞춰 정합니다. 그림의 측정항목은 공식 구조를 바탕으로 직접 제작한 시험 위치도이며 실제 배치도는 아닙니다.</p>
+    </figure>
+
+    <h3>관련 업체</h3>
+    <p><a href="https://www.yokogawa.com/kr/" target="_blank" rel="noopener noreferrer"><b>한국요꼬가와전기</b></a>는 CENTUM DCS, 공정제어 엔지니어링과 국내 기술지원을 제공합니다. 견적·기술지원은 <a href="https://www.yokogawa.com/kr/contact/" target="_blank" rel="noopener noreferrer">공식 문의창구</a>에서 AI Control, AI Estimation, FCS·ACS 구성과 교육·시범적용 범위를 지정해 접수할 수 있습니다.</p>
+    <p><a href="https://www.yokogawa.com/" target="_blank" rel="noopener noreferrer"><b>Yokogawa Electric Corporation</b></a>은 CENTUM R7.02와 FKDPP를 개발한 공급사입니다. 공개자료 확인 뒤 국내 지사에 대상 공정의 센서목록, 기존 PID 성능, 실험실 분석주기와 필요한 추정오차를 전달하면 적용성 검토 범위를 구체화할 수 있습니다.</p>
+
+    <details class="termGuide"><summary>용어 설명</summary>
+      <dl>
+        <dt>AI · Artificial Intelligence</dt><dd>공정데이터에서 제어행동이나 품질추정 규칙을 학습하는 인공지능입니다.</dd>
+        <dt>PC · Personal Computer</dt><dd>모델학습·시뮬레이션·이력분석처럼 실시간 제어 밖의 계산을 맡는 개인용 컴퓨터 계열 장치입니다.</dd>
+        <dt>CPU · Central Processing Unit</dt><dd>제어블록과 통신태스크를 실행하는 중앙처리장치입니다.</dd>
+        <dt>DCS · Distributed Control System</dt><dd>현장제어소와 운전화면을 분산 배치해 플랜트 전체를 감시·제어하는 분산제어시스템입니다.</dd>
+        <dt>FKDPP · Factorial Kernel Dynamic Policy Programming</dt><dd>요꼬가와전기와 나라첨단과학기술대학원이 공동개발한 강화학습 기반 자율제어 알고리즘입니다.</dd>
+        <dt>FCS · Field Control Station</dt><dd>현장 신호를 읽고 PID 또는 AI 제어블록을 주기적으로 실행해 밸브 조작량을 출력하는 현장제어소입니다.</dd>
+        <dt>ACS · Autonomous Control Station</dt><dd>학습된 추정모델로 현재 공정의 품질값과 기여변수를 계산하는 자율제어소입니다.</dd>
+        <dt>HIS · Human Interface Station</dt><dd>운전자가 그래픽, 추세, 경보와 페이스플레이트로 공정상태를 감시하는 현장인터페이스입니다.</dd>
+        <dt>PID · Proportional–Integral–Derivative Control</dt><dd>현재오차, 누적오차와 오차변화율을 조합해 조작량을 계산하는 비례·적분·미분 제어입니다.</dd>
+        <dt>APC · Advanced Process Control</dt><dd>공정모델과 다변수 제약조건을 사용해 운전을 최적화하는 고급공정제어입니다.</dd>
+        <dt>PV · Process Variable</dt><dd>온도·압력·유량처럼 공정에서 측정한 현재값입니다.</dd>
+        <dt>MV · Manipulated Variable</dt><dd>밸브 개도처럼 제어기가 공정상태를 바꾸기 위해 출력하는 조작변수입니다.</dd>
+        <dt>소프트센서</dt><dd>직접 연속측정하기 어려운 농도·조성을 다른 공정변수로 실시간 추정하는 모델입니다.</dd>
+        <dt>CENTUM R7.02·OpreX</dt><dd>요꼬가와전기의 DCS 제품 버전과 산업자동화·제어 솔루션 상표명입니다.</dd>
+      </dl>
+    </details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://www.yokogawa.com/news/press-releases/2026/2026-11-17/" target="_blank" rel="noopener noreferrer">Yokogawa, CENTUM R7.02 with AI Control and AI Estimation</a> · 2026-11-17 발표, 2026-11-19 출시</li>
+      <li><a href="https://www.yokogawa.com/solutions/products-and-services/control/control-and-safety-system/distributed-control-systems-dcs/centum/" target="_blank" rel="noopener noreferrer">CENTUM R7.02 제품 기능과 FCS·ACS 실행구조</a> · 2026-11 기능갱신</li>
+      <li><a href="https://www.yokogawa.com/news/press-releases/2023/2023-03-30/" target="_blank" rel="noopener noreferrer">ENEOS Materials 화학공장 FKDPP 공식 채택</a> · 2023-03-30</li>
+      <li><a href="https://www.yokogawa.com/ca/news/press-releases/2022/2022-03-22/" target="_blank" rel="noopener noreferrer">화학공장 35일 연속 자율제어 실증</a> · 2022-03-22</li>
+      <li><a href="https://www.yokogawa.com/special/artificial-intelligence/" target="_blank" rel="noopener noreferrer">Yokogawa Industrial Physical AI·FKDPP 공식 설명</a> · 2026-11-19 확인</li>
+      <li><a href="https://www.yokogawa.com/kr/contact/" target="_blank" rel="noopener noreferrer">한국요꼬가와전기 견적·기술지원 문의</a> · 2026-11-19 확인</li>
+    </ol>
+    <p class="byline">작성자 김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+
+      <details class="staticReport" id="static-261118">
   <summary><span class="staticDate">11.18</span><span class="staticTitle">실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화</span><span class="staticAxis">PC 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">Festo AX Controls</span><span class="tag">CEPE</span><span class="tag">PLCnext Technology</span><span class="tag">Python 비전</span><span class="tag">60축 모션</span></div><p>Festo는 11월 17일 PLCnext Technology 기반의 Festo AX Controls를 공개하며 실시간 제어·모션, Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 한 구조에 배치한 두 고객 사례를 제시했습니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -5896,6 +6067,7 @@
     reports.push({"id":"261116","date":"2026-11-16","title":"밸브터미널에 안전 I/O를 붙여 공압구역별 예기치 않은 기동을 막는 분산 안전제어","axis":"전기·제어","category":"분산 공압 기능안전","tags":["CIP Safety","안전 I/O","공압 밸브터미널","예기치 않은 기동 방지","분산 안전제어"],"summary":"Festo는 Automation Fair 개막 주간에 CPX-AP-A CIP Safety 모듈을 공개했습니다. 모듈 한 대는 안전입력 6점과 안전출력 3점을 제공하고 밸브터미널에 직접 장착돼 공압구역, 파일럿공기, 배기밸브와 외부 STO를 제어합니다.","discovery":"VTUX·MPA-S·VTSA 밸브터미널에 CIP Safety 모듈을 직접 장착하고, 한 모듈의 안전입력 6점·출력 3점으로 밸브구역과 외부 STO를 제어하며 최대 4모듈·입력 24점·출력 12점까지 확장하는 구조","why":"11월 16일 Automation Fair가 시작됐고 최근 일주일 공식자료에서 안전기능을 밸브터미널 가까이 옮긴 구체 사양이 공개됐습니다. 11월 9일 리포트가 제어기 내부의 안전논리 실행위치를 바꿨다면, 오늘 기술은 안전 I/O와 공압 차단위치를 밸브구역으로 분산하고 작업압력을 유지한 채 재기동을 막습니다.","study":"CIP Safety 오류검출, 안전입력 이중화, 안전출력과 밸브구역, 파일럿공기, 배기, STO, 잔압, 정지시간, 재기동 방지","companies":"Festo Korea는 CPX-AP-A와 밸브터미널, 공압 안전회로의 국내 공급·기술지원을 제공하며 ODVA는 CIP Safety 규격과 적합성 자료를 운영합니다.","poc":"비상정지와 라이트커튼 입력을 100회씩 발생시킵니다. 안전출력 차단시간, 구역압력, 잔압, 예기치 않은 재기동, 인접구역 압력저하와 정상복구시간을 측정합니다.","caution":"공개 내용: 한 모듈 입력 6점·출력 3점, 최대 4모듈, PL e·Category 4·SIL 3, 2027년 공급예정. 현장 확인: 응답시간, 지원 안전제어기, 안전거리, 잔압 기준과 국내 인증·공급일정.","source_use":"11월 10일 Festo 공식발표와 11월 16일 행사자료를 중심으로 CPX-AP-A 제품자료, ODVA CIP Safety 규격, PUS 응용문서와 한국 연락처를 대조","sourceCount":6,"weekly":{"topic":"밸브 가까이 둔 공압 안전","change":"별도 안전함에서 밸브터미널 직접 안전제어로 바뀝니다.","check":"비상정지 뒤 잔압·재기동 차단·복구시간을 잽니다."}});
   reports.push({"id":"261117","date":"2026-11-17","title":"기존 제어기 위에서 1~10ms마다 AI 보정값을 심사하는 그림자 학습 제어","axis":"인공지능 제어","category":"실시간 적응형 AI 제어","tags":["그림자 학습","강화학습","다중 심사기","실시간 AI 제어","산업용 엣지"],"summary":"Siemens Research는 기존 제어기의 기준값을 유지한 채 AI가 보정값을 제안하고, 학습에 참여하지 않은 여러 심사기가 모두 동의할 때만 1~10ms 제어주기에 반영하는 그림자 학습 구조를 11월 16일 공개했습니다.","discovery":"기존 제어기를 계속 운전하면서 AI 행위자가 보정값을 제안하고, 학습에 참여하지 않은 여러 심사기가 매 주기 전원 동의할 때만 기준값에 더하는 실시간 결합 구조","why":"11월 16일 Siemens Research가 실기기 운전 중 학습과 적용을 분리한 제어구조와 카트폴·합류 컨베이어 시험을 공개했습니다. 기존 보고서의 가상시험·승인 절차와 달리, 오늘 기술은 1~10ms 제어주기 안에서 기존 출력과 AI 보정값을 다중 심사기로 선택하는 실행경로 자체를 바꿉니다.","study":"기존 제어기 기준값, 강화학습 행위자, 독립 심사기 전원 동의, 1~10ms 추론주기, 산업용 엣지 학습, 기준값 복귀, 지연과 지터","companies":"Siemens Korea는 산업용 엣지·AI 추론·자동화 제품의 국내 기술지원과 도입상담을 제공합니다. 한국지멘스 디지털 인더스트리 기술지원센터에서 제어주기, 지원 하드웨어와 공동검증 범위를 문의할 수 있습니다.","poc":"1ms·5ms·10ms 주기로 기준제어와 AI 보정경로를 각각 운전합니다. 추론시간, 통신지연, 지터, 심사기 불일치 때 기준값 유지, 하중·마찰 변화 뒤 정착시간과 품질편차를 같은 시각축으로 측정합니다.","caution":"공개 내용: 카트폴은 5분 뒤 짧은 균형, 30분 이내 연속 직립을 보였고 합류 컨베이어는 보지 못한 길이·질량·마찰의 제품을 시험했습니다. 현장 확인: 심사기 판정기준, 최악지연, 정량 생산성, 기능안전 연동과 장시간 안정성.","source_use":"11월 16일 Siemens Research 발표를 중심으로 AI Motion, AI Inference Server v2.8 문서, 그림자 모드 강화학습 논문과 한국지멘스 연락처를 대조","sourceCount":6,"weekly":{"topic":"그림자 학습 AI 제어","change":"고정 제어값에 AI 보정값을 심사해 실시간 반영합니다.","check":"1~10ms 주기에서 지연·오보정·기준값 복귀를 잽니다."}});
   reports.push({"id":"261118","date":"2026-11-18","title":"실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화","axis":"PC 제어","category":"개방형 실시간 엣지 제어","tags":["Festo AX Controls","CEPE","PLCnext Technology","Python 비전","60축 모션"],"summary":"Festo는 11월 17일 PLCnext Technology 기반의 Festo AX Controls를 공개하며 실시간 제어·모션, Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 한 구조에 배치한 두 고객 사례를 제시했습니다.","discovery":"실시간 Linux의 ESM·GDS로 제어태스크를 지키면서 Python·컨테이너 앱과 HMI·클라우드를 같은 CEPE 엣지 제어기에서 실행하고, 식품 비전과 60축 초과 동기모션에 적용한 구조","why":"10월 30일 리포트가 제어와 컨테이너 앱의 동시 실행을 제품구조로 다뤘다면, 11월 17일 Festo 발표는 개방형 데이터공간과 실행계층, CODESYS·Python의 역할분리, 식품라인과 60축 초과 포장설비 적용을 공개했습니다. 새로운 원리로 꾸미지 않고 실제 적용으로 구체화된 후속 변화를 선정했습니다.","study":"실시간 Linux, ESM 태스크 스케줄링, GDS 주기일관 데이터교환, CODESYS 모션, Python 비전, OCI 컨테이너, 웹 HMI, 자원격리와 장애복구","companies":"한국훼스토는 Festo AX Controls와 CEPE의 국내 상담·기술지원을 제공하며, 피닉스컨택트 코리아는 기반기술인 PLCnext Technology와 실시간 Linux·컨테이너 구조를 지원합니다.","poc":"1ms·2ms·4ms 제어주기에서 Python 비전입력을 30fps·60fps로 올리고 CPU 부하를 0%·50%·100%로 바꿉니다. 최대주기, 지터, 주기초과, 축동기오차, GDS 데이터나이와 HMI 복구시간을 공통시각으로 기록합니다.","caution":"공개 내용: 식품라인에서 CODESYS 모션과 Python 비전·분석을 CEPE에 통합했고, 인쇄·포장 고객설비에서 60축 초과를 낮은 밀리초 주기로 동기제어했습니다. 현장 확인: 정확한 주기, 축부하, CPU·메모리 배분, Python 장애격리와 국내 공급사양.","source_use":"11월 17일 Festo 공식발표를 중심으로 한국훼스토 AX Controls 제품자료, Phoenix Contact PLCnext 구조문서, CEPE 발표와 국내 연락처를 대조","sourceCount":6,"weekly":{"topic":"개방형 실시간 엣지 제어","change":"전용 제어기·비전PC·HMI를 한 실시간 구조에 묶습니다.","check":"Python 부하 100%에서 주기초과와 축동기오차를 잽니다."}});
+reports.push({"id":"261119","date":"2026-11-19","title":"강화학습 제어와 소프트센서를 DCS 표준 기능으로 편입한 CENTUM R7.02","axis":"인공지능 제어","category":"DCS 내장형 자율제어","tags":["CENTUM R7.02","AI Control","AI Estimation","FKDPP","소프트센서"],"summary":"요꼬가와전기는 11월 19일 CENTUM R7.02를 출시해 강화학습 제어모델을 현장제어소의 표준 제어블록으로 실행하고, 품질값을 추정하는 소프트센서 결과와 기여변수를 기존 운전화면에 함께 표시하도록 했습니다.","discovery":"FKDPP 제어모델을 FCS 표준 블록에서 실행하고 ACS가 품질 추정과 기여도를 계산해 기존 HIS에 통합하는 DCS 내장형 AI 실행구조","why":"2023년 서비스는 학습모델을 전용 엣지 제어기에 설치했습니다. 11월 19일 출시판은 모델을 DCS 현장제어소의 표준 패키지 블록으로 옮기고 품질추정과 설명정보까지 같은 운전환경에 편입했습니다. 새 알고리즘이 아니라 실행위치와 운영도구가 바뀐 후속 변화를 선정했습니다.","study":"FKDPP 강화학습, FCS AI 제어블록, ACS 소프트센서, HIS 통합감시, 시뮬레이터 학습, 모델 제한운전, 추정오차와 제어주기 측정","companies":"한국요꼬가와전기는 CENTUM DCS, AI Control·AI Estimation의 국내 상담과 기술지원을 제공합니다.","poc":"기존 PID와 같은 생산조건에서 목표편차·밸브 이동량·에너지를 비교합니다. ACS 추정값은 동일 시료시각의 실험실 값과 맞춰 평균·최대·95백분위 오차를 계산하고, FCS는 최대주기·지터·주기초과를 기록합니다.","caution":"공개 내용: FKDPP 모델의 FCS 실행, 추정모델의 ACS 실행, HIS 통합감시와 35일 화학공장 실증. 현장 확인: 제어주기, CPU 부하, 모델 조작범위, 품질추정 오차와 국내 공급구성.","source_use":"11월 17일 발표와 11월 19일 출시 제품자료를 중심으로 2022년 실증, 2023년 공식채택, FKDPP 공식설명과 국내 문의창구를 대조","sourceCount":6,"weekly":{"topic":"DCS 내장형 자율제어","change":"AI 조작량을 외부 서버 대신 현장제어소가 계산합니다.","check":"외란 입력 때 주기초과와 품질추정 오차를 함께 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -6255,7 +6427,7 @@
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
