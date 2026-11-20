@@ -151,7 +151,179 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
-<details class="staticReport" id="static-261120" open>
+<details class="staticReport" id="static-261121" open>
+  <summary><span class="staticDate">11.21</span><span class="staticTitle">PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트</span><span class="staticAxis">인공지능 제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">Eigen Engineering Agent</span><span class="tag">TIA Portal</span><span class="tag">프로젝트 문맥</span><span class="tag">자기검증</span><span class="tag">장치 일괄설정</span></div><p>Siemens는 11월 18일 인도에서 Eigen Engineering Agent의 16개 고객 시범적용을 공개했습니다. 에이전트는 TIA Portal 프로젝트의 장치·논리·HMI 관계를 읽고 코드, 화면, 드라이브와 PROFINET 설정을 생성한 뒤 컴파일 오류와 프로젝트 제약을 다시 확인합니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">프로젝트 내장형 자동화 엔지니어링 · 2026-11-21</p>
+      <h2>PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트</h2>
+      <p class="newsLead">Siemens는 2026년 11월 18일 인도 뉴델리에서 Eigen Engineering Agent의 현지 출시와 16개 고객 시범적용을 발표했습니다. 이 에이전트는 TIA Portal 프로젝트 안의 기능블록, 사용자정의 데이터형, HMI 화면과 장치관계를 읽고 SCL·LAD 코드, WinCC Unified 화면동작, 드라이브 매개변수와 PROFINET 구성을 생성합니다. 생성 뒤에는 다단계 추론과 자기수정으로 컴파일 오류와 프로젝트 제약을 다시 확인합니다.</p>
+    </header>
+
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>이번 주 공식자료는 AI가 문서답변을 만드는 단계에서 실제 엔지니어링 도구의 기능을 실행하는 단계로 이동했습니다. 11월 18일 Siemens 발표는 기계설계뿐 아니라 제어논리·HMI·드라이브·산업통신까지 프로젝트 문맥 안에서 생성하고 검증한 고객결과를 공개했습니다.</p></div>
+      <div><strong>주요 기술</strong><p>Eigen Engineering Agent는 TIA Portal의 기능블록, 데이터형, 화면과 장치구성을 읽습니다. 기계설명·전기도면·장치목록을 프로젝트 구조와 태그로 바꾸고, SCL·LAD 코드와 시험루틴을 만든 뒤 컴파일 오류를 수정합니다.</p></div>
+      <div><strong>선정 이유</strong><p>11월 20일 리포트는 MCP로 기계설계·시뮬레이션·제조준비 도구를 연결한 그리퍼 사례였습니다. 이번 발표는 실제 자동화 프로젝트에서 코드·HMI·장치설정·문서화가 함께 바뀌고, 인도 16개 고객과 두 고객사의 정량효과가 추가됐습니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><b>확인된 사실.</b> Siemens는 11월 18일 Eigen Engineering Agent가 인도 16개 고객의 자동화 엔지니어링에 시범 적용됐다고 발표했습니다. 에이전트는 TIA Portal V19 이상과 연결되며 프로젝트의 기능블록, 사용자정의 데이터형, HMI 화면과 상호관계를 읽습니다. 지원범위는 SCL·LAD 코드 생성과 수정, 시험논리 작성, 컴파일 오류 수정, WinCC Unified용 JavaScript 생성, SINAMICS 드라이브 일괄설정, 장치목록 기반 하드웨어 구성과 PROFINET 토폴로지 설정입니다.</p>
+    <p><b>공급사 주장.</b> Siemens는 수동 작업보다 AI 작업흐름이 2~5배 빠르고, 전체 해법 품질이 최대 80% 높으며, 엔지니어링 효율이 최대 50% 향상된다고 제시했습니다. 이 수치는 2026년 4월 공개한 19개국 100개 이상 고객 시범적용을 기반으로 하지만, 작업별 표본수와 측정조건은 공개 페이지에 제시하지 않았습니다.</p>
+    <p><b>고객 공개내용.</b> 인도 포장기계 제조사 Pelican Rotoflex는 차세대 인쇄·가공장비의 코드생성, 문서화, 기존 코드해석과 문제해결에 에이전트를 사용했습니다. 자동화업체 Z System Intelligent Controls는 코드이해, 논리생성, 검증과 자동문서화에 적용했고, 반복 엔지니어링 작업을 50% 넘게 줄이고 생산성을 20~30% 높였다고 밝혔습니다.</p>
+    <p><b>작성자 해석.</b> 일반 AI 코딩도구와 다른 지점은 프로젝트의 장치구성과 변수관계를 입력문맥으로 사용한다는 점입니다. 전기도면·장치목록·기계설명이 실제 TIA Portal 장치, 태그, 기능블록과 화면에 연결되고, 생성한 결과가 프로젝트에서 컴파일됩니다. 도입판단은 답변 품질보다 장치 매핑 정확도, 컴파일 성공, 안전코드 변경통제와 실제 입출력 일치율로 해야 합니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <p>첫째, 에이전트는 현재 프로젝트의 하드웨어, 네트워크, 기능블록, 사용자정의 데이터형, 태그와 HMI 화면관계를 읽습니다. 둘째, 엔지니어가 기계의 공정단계, 장치목록과 동작조건을 입력하면 Siemens Automation Framework에 맞춘 프로젝트 구조를 생성합니다. 셋째, XML·AML 형식의 전기설계 파일이나 표형식 장치목록에서 장치명과 연결정보를 가져와 하드웨어와 PROFINET 토폴로지를 구성합니다.</p>
+    <p>넷째, 에이전트는 SCL 또는 LAD 코드, 시험루틴, HMI용 JavaScript와 드라이브 매개변수를 만듭니다. 다섯째, 생성한 코드를 프로젝트에서 컴파일하고 오류가 있으면 메시지와 프로젝트 제약을 읽어 수정합니다. 여섯째, 엔지니어가 변경목록과 시험결과를 검토한 뒤 시뮬레이션·가상시운전 또는 제한된 현장시험으로 신호와 동작을 확인합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261121a-title">
+      <figcaption><strong id="fig261121a-title">그림 1. 일반 AI의 코드 복사에서 프로젝트 안의 장치·신호 변경으로 이동합니다</strong><span>왼쪽은 채팅 답변을 엔지니어가 프로젝트에 옮깁니다. 오른쪽은 에이전트가 실제 장치구성과 태그관계를 읽고 코드·화면·설정을 같은 프로젝트에서 변경합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 1000 520" role="img" aria-labelledby="fig261121a-svg-title fig261121a-svg-desc">
+        <title id="fig261121a-svg-title">일반 AI 코딩지원과 Eigen Engineering Agent의 프로젝트 내장형 작업 비교</title>
+        <desc id="fig261121a-svg-desc">왼쪽은 일반 AI가 프로젝트를 모른 채 코드문장을 출력하고 엔지니어가 TIA Portal에 복사해 장치와 태그를 맞춥니다. 오른쪽은 에이전트가 실제 프로젝트의 장치, 네트워크, 기능블록과 HMI 관계를 읽어 코드와 설정을 생성하고 컴파일 결과로 수정합니다.</desc>
+        <defs><marker id="arr261121a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <rect x="15" y="20" width="455" height="475" rx="20" fill="#faf7f4" stroke="#d4c4b8"/>
+        <text x="40" y="58" font-size="22" font-weight="700" fill="#5a4033">기존 · 프로젝트 밖 AI 답변</text>
+        <path d="M55 95h175a16 16 0 0116 16v72a16 16 0 01-16 16h-70l-25 25 6-25H55a16 16 0 01-16-16v-72a16 16 0 0116-16Z" fill="#fff" stroke="#9a7a69"/>
+        <text x="143" y="127" text-anchor="middle" font-size="15" font-weight="700">“모터 시퀀스 코드 작성”</text><text x="143" y="154" text-anchor="middle" font-size="13">프로젝트 구조·장치명 없음</text>
+        <rect x="282" y="95" width="145" height="104" rx="14" fill="#fff" stroke="#9a7a69"/><text x="354" y="126" text-anchor="middle" font-size="16" font-weight="700">일반 AI</text><text x="354" y="153" text-anchor="middle" font-size="13">코드문장 출력</text><text x="354" y="176" text-anchor="middle" font-size="13">검증은 별도</text>
+        <path d="M246 147H282" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121a)"/>
+        <rect x="55" y="270" width="372" height="145" rx="15" fill="#fff" stroke="#9a7a69"/><text x="75" y="300" font-size="16" font-weight="700">엔지니어가 수동으로 맞춤</text>
+        <text x="82" y="330" font-size="14">① 장치명·태그 치환</text><text x="82" y="357" font-size="14">② 기능블록·데이터형 연결</text><text x="250" y="330" font-size="14">③ HMI 태그 연결</text><text x="250" y="357" font-size="14">④ 컴파일·오류수정</text><text x="82" y="389" font-size="14">⑤ 드라이브·통신 별도 설정</text>
+        <path d="M354 199V245H241V270" fill="none" stroke="#52677d" stroke-width="4" marker-end="url(#arr261121a)"/>
+        <rect x="55" y="438" width="372" height="36" rx="8" fill="#fff0ed" stroke="#ce7667"/><text x="241" y="461" text-anchor="middle" font-size="14" fill="#7a3d35">복사 뒤 프로젝트 문맥과 실제 장치를 사람이 다시 검증</text>
+
+        <rect x="495" y="20" width="490" height="475" rx="20" fill="#f1f8f5" stroke="#99c5b3"/>
+        <text x="520" y="58" font-size="22" font-weight="700" fill="#214f41">새 방식 · 프로젝트 내장형 에이전트</text>
+        <rect x="535" y="88" width="170" height="128" rx="14" fill="#eaf1fc" stroke="#5f7fa8"/><text x="620" y="117" text-anchor="middle" font-size="16" font-weight="700">프로젝트 문맥</text><text x="620" y="144" text-anchor="middle" font-size="13">장치·PROFINET</text><text x="620" y="168" text-anchor="middle" font-size="13">FB·UDT·태그</text><text x="620" y="192" text-anchor="middle" font-size="13">HMI 화면관계</text>
+        <circle cx="815" cy="152" r="78" fill="#fff8df" stroke="#b39536" stroke-width="3"/><text x="815" y="137" text-anchor="middle" font-size="16" font-weight="700">Eigen</text><text x="815" y="161" text-anchor="middle" font-size="16" font-weight="700">Engineering Agent</text><text x="815" y="187" text-anchor="middle" font-size="13">추론 → 생성 → 자기수정</text>
+        <path d="M705 152H737" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121a)"/>
+        <rect x="535" y="285" width="410" height="135" rx="16" fill="#fff" stroke="#4f8065"/><text x="740" y="313" text-anchor="middle" font-size="16" font-weight="700">같은 TIA Portal 프로젝트에 반영</text>
+        <rect x="555" y="335" width="82" height="48" rx="8" fill="#e7f4eb" stroke="#4f8065"/><text x="596" y="364" text-anchor="middle" font-size="13">SCL·LAD</text>
+        <rect x="650" y="335" width="82" height="48" rx="8" fill="#e7f4eb" stroke="#4f8065"/><text x="691" y="364" text-anchor="middle" font-size="13">HMI·JS</text>
+        <rect x="745" y="335" width="82" height="48" rx="8" fill="#e7f4eb" stroke="#4f8065"/><text x="786" y="364" text-anchor="middle" font-size="13">드라이브</text>
+        <rect x="840" y="335" width="82" height="48" rx="8" fill="#e7f4eb" stroke="#4f8065"/><text x="881" y="356" text-anchor="middle" font-size="12">장치·</text><text x="881" y="373" text-anchor="middle" font-size="12">네트워크</text>
+        <path d="M815 230V267H740V285" fill="none" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121a)"/>
+        <path d="M740 420V455H815V230" fill="none" stroke="#4f8065" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arr261121a)"/>
+        <text x="610" y="461" font-size="14" fill="#315c4e">컴파일 오류와 프로젝트 제약을 읽어 결과를 다시 수정</text>
+      </svg></div>
+      <p class="visualNote">읽는 법: 오른쪽 위의 에이전트는 프로젝트 문맥을 읽고 아래 네 종류의 산출물을 같은 프로젝트에 반영합니다. 직접 제작한 설명도·실제 배치도 아님. 실제 TIA Portal 화면은 아닙니다.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>기존 생성형 AI는 사용자가 입력한 코드조각과 일반지식으로 답을 만들기 때문에 실제 프로젝트의 태그명, 기능블록 관계, 장치주소와 화면연결을 알지 못합니다. 엔지니어가 답을 복사한 뒤 장치와 변수를 치환하고 컴파일 오류를 수정합니다. 하드웨어, 네트워크, 드라이브와 HMI 설정은 서로 다른 화면에서 반복 입력합니다.</p>
+    <p>Eigen Engineering Agent는 TIA Portal 프로젝트를 작업공간으로 사용합니다. 전기설계 파일과 장치목록을 실제 하드웨어·네트워크 구성으로 바꾸고, 같은 장치와 태그를 코드와 HMI에서 참조합니다. 생성한 코드가 컴파일되지 않으면 오류메시지와 프로젝트 제약을 읽어 수정합니다. 11월 20일 다룬 그리퍼 에이전트가 여러 기계설계 도구를 연결했다면, 이번 구조는 자동화 프로젝트 내부의 장치·신호·논리·화면 일관성을 다룹니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261121b-title">
+      <figcaption><strong id="fig261121b-title">그림 2. 장치 한 대가 전기도면에서 제어논리와 화면까지 같은 이름으로 이어집니다</strong><span>모터 M01을 따라가면 전기설계 파일, PROFINET 장치, PLC 태그, 드라이브 매개변수와 HMI 표시가 어떤 순서로 생성되는지 볼 수 있습니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 1040 465" role="img" aria-labelledby="fig261121b-svg-title fig261121b-svg-desc">
+        <title id="fig261121b-svg-title">전기설계와 장치목록에서 제어프로젝트 산출물로 이어지는 데이터 흐름</title>
+        <desc id="fig261121b-svg-desc">전기설계 XML 또는 AML과 표형식 장치목록에서 모터 M01 정보를 읽고 PROFINET 장치구성, PLC 태그와 기능블록, 드라이브 매개변수, HMI 화면태그와 자동문서를 같은 장치식별자로 생성합니다.</desc>
+        <defs><marker id="arr261121b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <rect x="25" y="45" width="210" height="150" rx="16" fill="#f7f3ed" stroke="#9e806d"/>
+        <text x="130" y="75" text-anchor="middle" font-size="17" font-weight="700">입력자료</text>
+        <path d="M60 100h60v70H60Z" fill="#fff" stroke="#816959" stroke-width="2"/><path d="M70 115h40M70 130h40M70 145h30" stroke="#b09b8e" stroke-width="2"/><text x="90" y="188" text-anchor="middle" font-size="12">XML·AML 전기도면</text>
+        <path d="M145 100h60v70h-60Z" fill="#fff" stroke="#816959" stroke-width="2"/><path d="M145 122h60M145 144h60M165 100v70M185 100v70" stroke="#b09b8e" stroke-width="1.5"/><text x="175" y="188" text-anchor="middle" font-size="12">장치목록</text>
+        <rect x="70" y="225" width="120" height="68" rx="10" fill="#fff8df" stroke="#b39536"/><text x="130" y="251" text-anchor="middle" font-size="16" font-weight="700">장치 M01</text><text x="130" y="276" text-anchor="middle" font-size="13">모터·드라이브·주소</text>
+        <path d="M130 195V225" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121b)"/>
+
+        <circle cx="380" cy="210" r="105" fill="#eaf1fc" stroke="#5d7fab" stroke-width="3"/>
+        <text x="380" y="175" text-anchor="middle" font-size="18" font-weight="700">Eigen Agent</text><text x="380" y="202" text-anchor="middle" font-size="14">장치식별자·관계 추출</text><text x="380" y="226" text-anchor="middle" font-size="14">프로젝트 표준 적용</text><text x="380" y="250" text-anchor="middle" font-size="14">생성·컴파일·수정</text>
+        <path d="M190 259H270" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121b)"/>
+
+        <rect x="545" y="35" width="190" height="78" rx="12" fill="#eef7f1" stroke="#4d8064"/><text x="640" y="64" text-anchor="middle" font-size="15" font-weight="700">하드웨어·PROFINET</text><text x="640" y="89" text-anchor="middle" font-size="13">장치주소·토폴로지</text>
+        <rect x="800" y="35" width="190" height="78" rx="12" fill="#eef7f1" stroke="#4d8064"/><text x="895" y="64" text-anchor="middle" font-size="15" font-weight="700">PLC 논리</text><text x="895" y="89" text-anchor="middle" font-size="13">태그·FB·SCL·LAD</text>
+        <rect x="545" y="175" width="190" height="78" rx="12" fill="#eef7f1" stroke="#4d8064"/><text x="640" y="204" text-anchor="middle" font-size="15" font-weight="700">SINAMICS 설정</text><text x="640" y="229" text-anchor="middle" font-size="13">축·매개변수 일괄적용</text>
+        <rect x="800" y="175" width="190" height="78" rx="12" fill="#eef7f1" stroke="#4d8064"/><text x="895" y="204" text-anchor="middle" font-size="15" font-weight="700">WinCC Unified</text><text x="895" y="229" text-anchor="middle" font-size="13">HMI 태그·JavaScript</text>
+        <rect x="545" y="315" width="190" height="78" rx="12" fill="#f5f2fb" stroke="#7c6aa3"/><text x="640" y="344" text-anchor="middle" font-size="15" font-weight="700">시험·문서</text><text x="640" y="369" text-anchor="middle" font-size="13">테스트루틴·주석</text>
+        <rect x="800" y="315" width="190" height="78" rx="12" fill="#f5f2fb" stroke="#7c6aa3"/><text x="895" y="344" text-anchor="middle" font-size="15" font-weight="700">검토목록</text><text x="895" y="369" text-anchor="middle" font-size="13">변경·오류·승인상태</text>
+        <path d="M485 167L545 74M485 190L800 74M485 210H545M485 230L800 214M455 295L545 354M470 280L800 354" stroke="#52687a" stroke-width="3" marker-end="url(#arr261121b)"/>
+        <rect x="545" y="420" width="445" height="30" rx="8" fill="#fff8df" stroke="#b39536"/><text x="767" y="441" text-anchor="middle" font-size="13">M01 장치명이 네트워크·코드·드라이브·화면·문서에서 일치하는지 대조</text>
+      </svg></div>
+      <p class="visualNote">공식 기능목록을 장치 M01의 데이터흐름으로 재구성했습니다. 직접 제작한 설명도·실제 배치도 아님. 실제 프로젝트 이름이나 Siemens 소프트웨어 화면은 아닙니다.</p>
+    </figure>
+
+    <h3>장점</h3>
+    <ul><li>장치목록, 네트워크, 제어태그와 HMI 태그를 같은 프로젝트 문맥으로 생성해 반복입력과 이름 불일치를 줄일 수 있습니다.</li><li>기존 기능블록과 데이터형의 관계를 읽으므로 새 엔지니어가 낯선 프로젝트의 구조와 논리를 파악하는 시간을 줄일 수 있습니다.</li><li>코드생성 뒤 컴파일과 오류수정을 같은 작업흐름에 넣어 단순 코드제안보다 검토 가능한 산출물에 가깝습니다.</li></ul>
+    <hr class="sectionDivider">
+    <h3>한계</h3>
+    <ul><li>공개된 2~5배 속도, 최대 80% 품질향상과 50% 효율향상은 Siemens 집계이며 작업종류·표본·평가기준이 공개되지 않았습니다.</li><li>컴파일 성공은 실제 입출력 주소, 안전조건과 기계동작이 맞다는 뜻이 아니므로 시뮬레이션과 현장 신호시험을 대체하지 못합니다.</li><li>안전프로그램, 드라이브 제한값과 네트워크 주소를 에이전트가 변경할 때에는 대상별 쓰기권한과 승인절차를 분리해야 합니다.</li></ul>
+
+    <h3>현장 적용</h3>
+    <p><b>실제 적용사례.</b> Pelican Rotoflex는 인쇄·가공장비의 차세대 자동화 소프트웨어 개발에 Eigen Engineering Agent를 사용했습니다. 공개 범위는 코드생성, 문서화, 코드해석과 특정 문제해결입니다. Z System Intelligent Controls는 PLC 코드이해, 논리생성, 검증과 자동문서화에 적용해 반복작업 50% 이상 감소와 생산성 20~30% 향상을 제시했습니다. Siemens는 2026년 4월 전 세계 19개국 100개 이상 고객, 11월 인도 16개 고객의 시범적용을 공개했습니다.</p>
+    <p><b>당사 공정·PC 제어와 연결해 볼 부분.</b> 신규 프로젝트 전체를 한 번에 생성하기보다 장치목록 일괄등록, 태그·주석 생성, 기존 코드설명과 HMI 태그 대조처럼 결과를 수치로 확인할 수 있는 반복작업부터 적용하는 편이 적합합니다. PC는 프로젝트 복사본, 입력자료, 에이전트 변경이력, 컴파일·시뮬레이션 결과를 관리하고, 실제 설비 반영은 승인된 버전만 수행하도록 경계를 정할 수 있습니다.</p>
+
+    <h3>사전검증 순서</h3>
+    <ol><li><b>비교 프로젝트 준비:</b> 모터 10대, 디지털 입출력 40점, HMI 화면 5개가 포함된 기준 프로젝트 복사본을 만들고 장치·태그·화면 연결의 정답표를 작성합니다.</li><li><b>읽기 정확도 시험:</b> 에이전트가 기능블록, 데이터형, 장치와 HMI 관계를 설명하게 합니다. 누락·오연결 건수를 정답표와 비교합니다.</li><li><b>장치 일괄설정 시험:</b> 동일한 표형식 장치목록으로 PROFINET 장치, 주소와 태그를 생성합니다. 장치수, 주소중복, 태그누락과 수동설정 시간을 기록합니다.</li><li><b>코드 생성·수정 시험:</b> 정상조건, 인터록 3개와 고장복귀 조건을 입력해 SCL·LAD를 생성합니다. 컴파일 오류수, 시험루틴 통과율과 수동수정 횟수를 측정합니다.</li><li><b>화면·드라이브 시험:</b> HMI 태그 50개와 드라이브 10축의 매개변수를 일괄생성합니다. 태그 연결률, 매개변수 일치율과 잘못된 쓰기 건수를 확인합니다.</li><li><b>가상시운전:</b> 입력신호 정상·단선·상충조건을 각각 주입합니다. 출력순서, 인터록, 경보문구와 복귀동작을 기준 프로젝트와 비교합니다.</li><li><b>효율 판정:</b> 수동과 에이전트 방식의 총시간, 오류수, 수정횟수와 승인소요시간을 비교합니다. 정확도·안전기준을 만족한 작업유형만 확대합니다.</li></ol>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261121c-title">
+      <figcaption><strong id="fig261121c-title">그림 3. 에이전트 품질은 다섯 개 검사대에서 따로 측정합니다</strong><span>코드가 만들어졌다는 한 항목으로 평가하지 않고 장치주소, 컴파일, 신호동작, 화면태그와 변경이력을 독립적으로 확인합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll">
+      <svg viewBox="0 0 1030 465" role="img" aria-labelledby="fig261121c-svg-title fig261121c-svg-desc">
+        <title id="fig261121c-svg-title">자동화 엔지니어링 에이전트의 사전검증 검사대</title>
+        <desc id="fig261121c-svg-desc">프로젝트 복사본을 장치와 주소 검사, 코드 컴파일, 시뮬레이션 입출력, HMI 태그 대조, 변경이력 검토의 다섯 검사대로 보내 각각 일치율과 오류수를 측정합니다.</desc>
+        <defs><marker id="arr261121c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <rect x="25" y="55" width="180" height="110" rx="15" fill="#fff8df" stroke="#b39536"/><text x="115" y="86" text-anchor="middle" font-size="16" font-weight="700">프로젝트 복사본</text><text x="115" y="113" text-anchor="middle" font-size="13">모터 10대 · I/O 40점</text><text x="115" y="137" text-anchor="middle" font-size="13">HMI 화면 5개</text>
+        <path d="M205 110H265" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121c)"/>
+        <rect x="275" y="40" width="710" height="375" rx="20" fill="#f7f9fb" stroke="#c2ced8"/>
+        <text x="300" y="75" font-size="18" font-weight="700" fill="#344c62">에이전트 생성본 검사대</text>
+
+        <rect x="310" y="105" width="190" height="105" rx="14" fill="#eaf1fc" stroke="#617fa7"/><text x="405" y="135" text-anchor="middle" font-size="15" font-weight="700">① 장치·주소</text><path d="M342 157h50v30h-50Zm70 0h50v30h-50Z" fill="#fff" stroke="#617fa7"/><path d="M392 172h20" stroke="#617fa7" stroke-width="3"/><text x="405" y="202" text-anchor="middle" font-size="12">누락·중복·토폴로지</text>
+        <rect x="535" y="105" width="190" height="105" rx="14" fill="#eaf1fc" stroke="#617fa7"/><text x="630" y="135" text-anchor="middle" font-size="15" font-weight="700">② 코드·컴파일</text><path d="M570 155h120v35H570Z" fill="#fff" stroke="#617fa7"/><text x="630" y="178" text-anchor="middle" font-size="13">0 오류?</text><text x="630" y="202" text-anchor="middle" font-size="12">오류수·수정횟수</text>
+        <rect x="760" y="105" width="190" height="105" rx="14" fill="#eaf1fc" stroke="#617fa7"/><text x="855" y="135" text-anchor="middle" font-size="15" font-weight="700">③ 신호·동작</text><circle cx="810" cy="172" r="17" fill="#6fad84"/><circle cx="855" cy="172" r="17" fill="#d97560"/><circle cx="900" cy="172" r="17" fill="#f0c648"/><text x="855" y="202" text-anchor="middle" font-size="12">정상·단선·상충 입력</text>
+
+        <rect x="420" y="270" width="190" height="105" rx="14" fill="#eef7f1" stroke="#4e8064"/><text x="515" y="300" text-anchor="middle" font-size="15" font-weight="700">④ HMI·드라이브</text><rect x="455" y="320" width="120" height="30" rx="5" fill="#fff" stroke="#4e8064"/><path d="M475 326v18m25-18v18m25-18v18m25-18v18" stroke="#9bbba9"/><text x="515" y="367" text-anchor="middle" font-size="12">태그·매개변수 일치율</text>
+        <rect x="665" y="270" width="190" height="105" rx="14" fill="#eef7f1" stroke="#4e8064"/><text x="760" y="300" text-anchor="middle" font-size="15" font-weight="700">⑤ 변경·승인</text><path d="M715 320h90M715 338h65M715 356h78" stroke="#4e8064" stroke-width="3"/><circle cx="800" cy="320" r="8" fill="#6fad84"/><text x="760" y="367" text-anchor="middle" font-size="12">변경근거·검토자·버전</text>
+
+        <path d="M405 210V240H515V270M630 210V240H515M855 210V240H760V270" fill="none" stroke="#7d8e9e" stroke-width="3" marker-end="url(#arr261121c)"/>
+        <rect x="25" y="235" width="210" height="145" rx="14" fill="#fff" stroke="#9d7f6e"/><text x="130" y="266" text-anchor="middle" font-size="16" font-weight="700">수동 기준선</text><text x="50" y="298" font-size="13">· 총 엔지니어링 시간</text><text x="50" y="323" font-size="13">· 오류·수정 횟수</text><text x="50" y="348" font-size="13">· 승인 소요시간</text>
+        <path d="M235 310H275" stroke="#52687a" stroke-width="4" marker-end="url(#arr261121c)"/>
+        <text x="515" y="442" text-anchor="middle" font-size="14">정확도·안전기준을 먼저 만족한 뒤 시간단축 효과를 판정</text>
+      </svg></div>
+      <p class="visualNote">시험조건과 측정위치를 이해하도록 구성했습니다. 직접 제작한 설명도·실제 배치도 아님. 실제 TIA Portal 또는 시험설비 화면은 아닙니다. 모터·I/O·화면 수는 비교시험을 위한 제안조건입니다.</p>
+    </figure>
+
+    <h3>관련 업체</h3>
+    <p><a href="https://www.siemens.com/ko-kr/" target="_blank" rel="noopener noreferrer"><b>한국지멘스</b></a>는 TIA Portal, WinCC Unified, SINAMICS와 PROFINET의 국내 기술지원과 교육을 제공합니다. <a href="https://www.siemens.com/ko-kr/contact/digital-industries-service-south-korea/" target="_blank" rel="noopener noreferrer">Digital Industries 기술지원</a>에 사용 중인 TIA Portal 버전, 프로젝트 규모, 적용하려는 코드·화면·장치설정 범위와 국내 제공여부를 지정해 문의할 수 있습니다.</p>
+    <p><a href="https://www.pelican.in/" target="_blank" rel="noopener noreferrer"><b>Pelican Rotoflex</b></a>는 인쇄·가공장비의 자동화 소프트웨어 개발에 에이전트를 적용한 고객사입니다. <a href="https://www.zsystem.in/" target="_blank" rel="noopener noreferrer"><b>Z System Intelligent Controls</b></a>는 자동화 설계·통합업체로 코드이해·논리생성·검증·문서화의 정량효과를 공개했습니다.</p>
+
+    <details class="termGuide"><summary>용어 설명</summary>
+      <dl>
+        <dt>AI · Artificial Intelligence</dt><dd>프로젝트 문맥을 읽고 엔지니어링 작업을 생성·검증·수정하는 인공지능입니다.</dd>
+              <dt>PC · Personal Computer</dt><dd>자동화 프로젝트를 편집하고 시험도구를 실행하는 범용 컴퓨터입니다.</dd>
+              <dt>MCP · Model Context Protocol</dt><dd>인공지능이 외부 설계도구의 기능과 데이터를 정해진 방식으로 호출하는 통신규약입니다.</dd>
+        <dt>PLC · Programmable Logic Controller</dt><dd>입력신호와 제어논리를 주기적으로 실행해 설비출력을 제어하는 장치입니다.</dd>
+        <dt>HMI · Human–Machine Interface</dt><dd>운전자가 설비상태, 경보와 명령을 확인하는 화면입니다.</dd>
+        <dt>SCL · Structured Control Language</dt><dd>Siemens 제어프로그램에서 사용하는 구조화된 텍스트 언어입니다.</dd>
+        <dt>LAD · Ladder Diagram</dt><dd>전기 릴레이 회로와 비슷한 모양으로 제어논리를 작성하는 언어입니다.</dd>
+        <dt>FB · Function Block</dt><dd>상태와 입출력을 가진 재사용 가능한 제어기능 블록입니다.</dd>
+        <dt>UDT · User-Defined Data Type</dt><dd>장치나 공정데이터를 일정한 항목으로 묶은 사용자정의 데이터형입니다.</dd>
+        <dt>I/O · Input/Output</dt><dd>센서 입력과 액추에이터 출력 등 제어장치가 주고받는 현장신호입니다.</dd>
+        <dt>XML · Extensible Markup Language</dt><dd>장치·속성·관계를 구조화해 전달하는 확장표시언어입니다.</dd>
+        <dt>AML · Automation Markup Language</dt><dd>자동화설비의 장치와 엔지니어링 정보를 교환하기 위한 표준 데이터형식입니다.</dd>
+        <dt>PROFINET · Process Field Network</dt><dd>제어기, 원격입출력과 드라이브를 실시간 이더넷으로 연결하는 산업통신입니다.</dd>
+        <dt>JavaScript</dt><dd>WinCC Unified 화면의 동적동작을 구현하는 프로그래밍 언어입니다.</dd>
+        <dt>TIA Portal·WinCC Unified·SINAMICS·Eigen Engineering Agent</dt><dd>Siemens의 자동화 엔지니어링, 화면, 드라이브와 AI 에이전트 제품명입니다.</dd>
+      </dl>
+    </details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://press.siemens.com/in/en/pressrelease/siemens-launches-eigen-engineering-agent-india-enabling-ai-real-world" target="_blank" rel="noopener noreferrer">Siemens India, Eigen Engineering Agent 출시·16개 고객 적용</a> · 2026-11-18</li>
+      <li><a href="https://press.siemens.com/global/en/pressrelease/siemens-launches-eigen-engineering-agent-bringing-purpose-built-ai-industrial" target="_blank" rel="noopener noreferrer">Siemens 글로벌 출시·19개국 100개 이상 시범적용</a> · 2026-04-20</li>
+      <li><a href="https://www.siemens.com/en-us/company/insights/industrial-ai-changes-automation-engineers-work/" target="_blank" rel="noopener noreferrer">Siemens, 자동화 엔지니어링 AI의 10개 작업유형</a> · 2026-10-20 확인</li>
+      <li><a href="https://www.dex.siemens.com/industrialsoftware/automation-software/eigen-engineering-agent" target="_blank" rel="noopener noreferrer">Siemens 공식 제품 기능·TIA Portal V19 이상 연동</a> · 2026-11-21 확인</li>
+      <li><a href="https://cache.industry.siemens.com/dl/files/391/109987391/att_1345288/v3/109987391_AutomationFramework_Basic_DOC_V2_2_2_en.pdf" target="_blank" rel="noopener noreferrer">Siemens Automation Framework Basic</a> · 2025-10</li>
+      <li><a href="https://www.siemens.com/ko-kr/contact/digital-industries-service-south-korea/" target="_blank" rel="noopener noreferrer">한국지멘스 Digital Industries 기술지원</a> · 2026-11-21 확인</li>
+    </ol>
+    <p class="byline">작성자 김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+<details class="staticReport" id="static-261120">
   <summary><span class="staticDate">11.20</span><span class="staticTitle">작업 요구를 로봇 그리퍼 설계·검증·제조준비로 넘기는 에이전트형 엔지니어링</span><span class="staticAxis">인공지능 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">Agentic AI</span><span class="tag">MCP</span><span class="tag">적층제조</span><span class="tag">로봇 그리퍼</span><span class="tag">가상검증</span></div><p>Siemens와 AGIBOT는 11월 19일 Formnext 2026에서 작업 대상과 동작을 문장으로 입력하면 AI 에이전트가 그리퍼 선택, 형상수정, 시뮬레이션, 로봇 인터페이스 검증과 적층제조 준비를 순서대로 실행하는 흐름을 공개했습니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -6238,6 +6410,7 @@
   reports.push({"id":"261118","date":"2026-11-18","title":"실시간 모션·Python 비전·컨테이너 앱을 한 Linux 제어기에 묶은 개방형 자동화","axis":"PC 제어","category":"개방형 실시간 엣지 제어","tags":["Festo AX Controls","CEPE","PLCnext Technology","Python 비전","60축 모션"],"summary":"Festo는 11월 17일 PLCnext Technology 기반의 Festo AX Controls를 공개하며 실시간 제어·모션, Python 비전·데이터 분석, 웹 HMI와 클라우드 연결을 한 구조에 배치한 두 고객 사례를 제시했습니다.","discovery":"실시간 Linux의 ESM·GDS로 제어태스크를 지키면서 Python·컨테이너 앱과 HMI·클라우드를 같은 CEPE 엣지 제어기에서 실행하고, 식품 비전과 60축 초과 동기모션에 적용한 구조","why":"10월 30일 리포트가 제어와 컨테이너 앱의 동시 실행을 제품구조로 다뤘다면, 11월 17일 Festo 발표는 개방형 데이터공간과 실행계층, CODESYS·Python의 역할분리, 식품라인과 60축 초과 포장설비 적용을 공개했습니다. 새로운 원리로 꾸미지 않고 실제 적용으로 구체화된 후속 변화를 선정했습니다.","study":"실시간 Linux, ESM 태스크 스케줄링, GDS 주기일관 데이터교환, CODESYS 모션, Python 비전, OCI 컨테이너, 웹 HMI, 자원격리와 장애복구","companies":"한국훼스토는 Festo AX Controls와 CEPE의 국내 상담·기술지원을 제공하며, 피닉스컨택트 코리아는 기반기술인 PLCnext Technology와 실시간 Linux·컨테이너 구조를 지원합니다.","poc":"1ms·2ms·4ms 제어주기에서 Python 비전입력을 30fps·60fps로 올리고 CPU 부하를 0%·50%·100%로 바꿉니다. 최대주기, 지터, 주기초과, 축동기오차, GDS 데이터나이와 HMI 복구시간을 공통시각으로 기록합니다.","caution":"공개 내용: 식품라인에서 CODESYS 모션과 Python 비전·분석을 CEPE에 통합했고, 인쇄·포장 고객설비에서 60축 초과를 낮은 밀리초 주기로 동기제어했습니다. 현장 확인: 정확한 주기, 축부하, CPU·메모리 배분, Python 장애격리와 국내 공급사양.","source_use":"11월 17일 Festo 공식발표를 중심으로 한국훼스토 AX Controls 제품자료, Phoenix Contact PLCnext 구조문서, CEPE 발표와 국내 연락처를 대조","sourceCount":6,"weekly":{"topic":"개방형 실시간 엣지 제어","change":"전용 제어기·비전PC·HMI를 한 실시간 구조에 묶습니다.","check":"Python 부하 100%에서 주기초과와 축동기오차를 잽니다."}});
 reports.push({"id":"261119","date":"2026-11-19","title":"강화학습 제어와 소프트센서를 DCS 표준 기능으로 편입한 CENTUM R7.02","axis":"인공지능 제어","category":"DCS 내장형 자율제어","tags":["CENTUM R7.02","AI Control","AI Estimation","FKDPP","소프트센서"],"summary":"요꼬가와전기는 11월 19일 CENTUM R7.02를 출시해 강화학습 제어모델을 현장제어소의 표준 제어블록으로 실행하고, 품질값을 추정하는 소프트센서 결과와 기여변수를 기존 운전화면에 함께 표시하도록 했습니다.","discovery":"FKDPP 제어모델을 FCS 표준 블록에서 실행하고 ACS가 품질 추정과 기여도를 계산해 기존 HIS에 통합하는 DCS 내장형 AI 실행구조","why":"2023년 서비스는 학습모델을 전용 엣지 제어기에 설치했습니다. 11월 19일 출시판은 모델을 DCS 현장제어소의 표준 패키지 블록으로 옮기고 품질추정과 설명정보까지 같은 운전환경에 편입했습니다. 새 알고리즘이 아니라 실행위치와 운영도구가 바뀐 후속 변화를 선정했습니다.","study":"FKDPP 강화학습, FCS AI 제어블록, ACS 소프트센서, HIS 통합감시, 시뮬레이터 학습, 모델 제한운전, 추정오차와 제어주기 측정","companies":"한국요꼬가와전기는 CENTUM DCS, AI Control·AI Estimation의 국내 상담과 기술지원을 제공합니다.","poc":"기존 PID와 같은 생산조건에서 목표편차·밸브 이동량·에너지를 비교합니다. ACS 추정값은 동일 시료시각의 실험실 값과 맞춰 평균·최대·95백분위 오차를 계산하고, FCS는 최대주기·지터·주기초과를 기록합니다.","caution":"공개 내용: FKDPP 모델의 FCS 실행, 추정모델의 ACS 실행, HIS 통합감시와 35일 화학공장 실증. 현장 확인: 제어주기, CPU 부하, 모델 조작범위, 품질추정 오차와 국내 공급구성.","source_use":"11월 17일 발표와 11월 19일 출시 제품자료를 중심으로 2022년 실증, 2023년 공식채택, FKDPP 공식설명과 국내 문의창구를 대조","sourceCount":6,"weekly":{"topic":"DCS 내장형 자율제어","change":"AI 조작량을 외부 서버 대신 현장제어소가 계산합니다.","check":"외란 입력 때 주기초과와 품질추정 오차를 함께 잽니다."}});
 reports.push({"id":"261120","date":"2026-11-20","title":"작업 요구를 로봇 그리퍼 설계·검증·제조준비로 넘기는 에이전트형 엔지니어링","axis":"인공지능 제어","category":"에이전트형 설비 엔지니어링","tags":["Agentic AI","MCP","적층제조","로봇 그리퍼","가상검증"],"summary":"Siemens와 AGIBOT는 11월 19일 Formnext 2026에서 작업 대상과 동작을 문장으로 입력하면 AI 에이전트가 그리퍼 선택, 형상수정, 시뮬레이션, 로봇 인터페이스 검증과 적층제조 준비를 순서대로 실행하는 흐름을 공개했습니다.","discovery":"대상물과 작업설명을 설계변수로 바꾸고 MCP로 Designcenter·시뮬레이션·로봇 인터페이스 검증·적층제조 준비기능을 호출하는 에이전트형 엔지니어링","why":"11월 19일 TIA Portal 발표는 소프트웨어 갱신과 다중코어 실행이 중심이었습니다. Formnext 시연은 AI가 여러 엔지니어링 도구의 실제 설계산출물을 바꾸고 제조준비까지 전달하는 결합방식을 로봇 그리퍼로 공개했습니다. 최근 일주일간 반복된 에이전트형 자동화 가운데 작동과정이 가장 구체적인 후속 변화를 선정했습니다.","study":"MCP 도구호출, 작업조건 구조화, 그리퍼 유형선택, Designcenter 형상수정, 접촉·간섭 시뮬레이션, 로봇 장착검증, 적층제조와 후처리, 물리 파지시험","companies":"한국지멘스는 자동화·설계소프트웨어와 적층제조 디지털 흐름의 국내 상담을 제공하며, EOS와 AM Solutions는 적응형 생산셀의 적층제조와 후처리 기술을 제공합니다.","poc":"원통·직육면체·비대칭 대상물에서 수동설계품과 에이전트설계품의 개발시간, 파일수정, 설계·출력 치수편차, 파지력, 미끄럼, 반복위치오차와 100회 성공률을 같은 로봇 조건으로 비교합니다.","caution":"공개 내용: Formnext에서 그리퍼 선택·형상수정·가상검증·제조준비 흐름을 시연했고 에를랑겐 적응형 생산셀은 구축 중입니다. 현장 확인: 도구권한, 설계변수 제한, 시뮬레이션 오차, 출력치수와 파지 성공률.","source_use":"11월 16일 Siemens 발표와 11월 19일 Formnext 공식 시연일정을 중심으로 Siemens 적층제조 자료, EOS 적응형 생산사례와 한국지멘스 문의창구를 대조","sourceCount":6,"weekly":{"topic":"작업맞춤 그리퍼 자동설계","change":"작업문장이 설계·검증·제조준비 도구호출로 이어집니다.","check":"출력치수와 100회 파지 성공률을 수동설계품과 비교합니다."}});
+reports.push({"id":"261121","date":"2026-11-21","title":"PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트","axis":"인공지능 제어","category":"프로젝트 내장형 자동화 엔지니어링","tags":["Eigen Engineering Agent","TIA Portal","프로젝트 문맥","자기검증","장치 일괄설정"],"summary":"Siemens는 11월 18일 인도에서 Eigen Engineering Agent의 16개 고객 시범적용을 공개했습니다. 에이전트는 TIA Portal 프로젝트의 장치·논리·HMI 관계를 읽고 코드, 화면, 드라이브와 PROFINET 설정을 생성한 뒤 컴파일 오류와 프로젝트 제약을 다시 확인합니다.","discovery":"전기도면·장치목록과 TIA Portal의 FB·UDT·HMI 관계를 읽어 SCL·LAD, 화면, 드라이브·PROFINET 설정을 생성하고 컴파일 오류를 자기수정하는 프로젝트 내장형 에이전트","why":"11월 20일 리포트는 MCP로 기계설계·시뮬레이션·제조준비 도구를 연결했습니다. 11월 18일 Siemens 발표는 실제 자동화 프로젝트의 코드·HMI·장치설정·문서화가 함께 바뀌고, 인도 16개 고객과 두 고객사의 정량효과가 추가됐습니다. 최근 24시간에 더 큰 구조 변화가 없어 이번 주 반복 흐름의 구체적 후속을 선정했습니다.","study":"TIA Portal 프로젝트 문맥, FB·UDT 관계, SCL·LAD 생성, 컴파일 자기수정, WinCC Unified JavaScript, SINAMICS 일괄설정, PROFINET 토폴로지, 변경권한과 승인","companies":"한국지멘스는 TIA Portal·WinCC Unified·SINAMICS·PROFINET의 국내 기술지원과 교육을 제공하며, Pelican Rotoflex와 Z System Intelligent Controls는 공개 적용 고객사입니다.","poc":"모터 10대·I/O 40점·HMI 5화면 기준 프로젝트에서 장치·주소·태그 연결률, 컴파일 오류, 신호시험 통과율, 매개변수 일치율, 총시간과 수정횟수를 수동작업과 비교합니다.","caution":"공개 내용: 인도 16개 고객과 전 세계 19개국 100개 이상 시범적용, 두 고객사의 적용범위와 공급사 정량효과. 현장 확인: 국내 제공범위, 장치매핑 정확도, 안전코드 쓰기권한, 실제 I/O와 가상시험 일치율.","source_use":"11월 18일 Siemens India 공식발표를 중심으로 4월 글로벌 출시, 공식 기능목록, Automation Framework와 한국지멘스 기술지원 경로를 대조","sourceCount":6,"weekly":{"topic":"프로젝트 안의 자동화 설계 AI","change":"AI가 장치·논리·화면관계를 읽고 설정까지 생성합니다.","check":"장치매핑과 신호시험 통과율을 수동작업과 비교합니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -6591,13 +6764,14 @@ reports.push({"id":"261120","date":"2026-11-20","title":"작업 요구를 로봇
       260927:[14,15,10,13,13,8],260928:[14,15,12,13,13,8],260929:[15,15,14,13,13,8],260930:[15,15,15,13,13,8],
       261001:[15,15,13,13,13,8],261002:[14,15,14,12,12,8],261003:[15,15,14,13,13,8],261004:[13,15,10,13,13,8],
       261005:[12,15,6,13,13,8],261006:[13,15,13,13,13,8],261007:[14,15,11,13,13,8],261008:[16,16,15,13,13,8],
+      261009:[15,15,14,12,11,8],261010:[16,16,15,14,12,8],261011:[15,15,14,12,12,8],261012:[17,16,15,14,13,8],261013:[16,17,16,14,13,8],261014:[16,16,15,14,12,8],261015:[17,16,15,14,12,8],261016:[17,17,16,14,13,8],261017:[17,16,15,13,13,8],261018:[18,17,16,14,13,8],
       
       
       261019:[15,15,15,12,12,8],261020:[15,15,13,13,12,8],
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
