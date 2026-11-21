@@ -151,7 +151,157 @@
   </main>
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
-<details class="staticReport" id="static-261121" open>
+
+<details class="staticReport" id="static-261122" open>
+  <summary><span class="staticDate">11.22</span><span class="staticTitle">반도체가 전류를 끊고 기계접점이 절연하는 1,500V 양방향 DC 콘택터</span><span class="staticAxis">전기·제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">SIRIUS 3QC1</span><span class="tag">1,500V DC</span><span class="tag">하이브리드 스위칭</span><span class="tag">양방향 전력</span><span class="tag">갈바닉 절연</span></div><p>Siemens는 11월 20일 반도체가 개폐전류를 처리하고 기계접점이 저손실 통전과 절연을 맡는 SIRIUS 3QC1을 발표했습니다. 제품은 최대 1,500V DC·600A를 양방향으로 개폐하며, 공급사는 15만 회 이상의 전기적 수명을 제시했습니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">고전압 DC 스위칭 · 2026-11-22</p>
+      <h2>반도체가 전류를 끊고 기계접점이 절연하는 1,500V 양방향 DC 콘택터</h2>
+      <p class="newsLead">Siemens는 2026년 11월 20일 독일 뮌헨에서 SIRIUS 3QC1 고용량 직류 콘택터를 발표했습니다. 이 장치는 반도체 분기가 직류전류를 아크 없이 끊고, 기계접점이 정상운전 때 전류를 낮은 손실로 흘리며 개방 뒤 갈바닉 절연을 제공합니다. 최대 정격은 IEC 기준 1,500V DC·600A이고, 300A·400A·500A·600A 네 전류등급과 24V DC 제어전원을 사용합니다.</p>
+    </header>
+
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>최근 24시간 공식발표에서 설비 제어의 가장 구체적인 구조 변화는 고전압 직류 개폐부에 반도체와 기계접점을 함께 배치한 것입니다. 배터리·태양광·회생부하가 만드는 양방향 전력은 그대로 두고, 개폐 때 생기는 아크와 접점마모를 반도체 분기로 줄입니다.</p></div>
+      <div><strong>주요 기술</strong><p>SIRIUS 3QC1은 정상 통전 때 기계접점을 사용하고, 개방 명령 때 반도체가 전류를 넘겨받아 차단한 뒤 기계접점을 분리합니다. 최대 1,500V DC·600A, 15만 회 이상 개폐, -25~60°C, 습도 95% 조건을 공급사가 공개했습니다.</p></div>
+      <div><strong>선정 이유</strong><p>4월 공개된 반도체 차단기와 고빈도 고체스위치는 보호와 반복개폐를 전자식으로 처리했습니다. 11월 20일 발표는 600A급 주회로에서 저손실 통전·무아크 개폐·물리적 절연을 한 장치에 결합하고 양방향 충방전을 지원한 후속 변화입니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><b>확인된 사실.</b> SIRIUS 3QC1은 IEC 기준 최대 1,500V DC·600A와 UL 기준 최대 1,000V DC를 다룹니다. 24V DC 제어입력을 받고, 전류방향과 관계없이 개폐하며, 본체의 상태·상태진단 LED로 운전정보를 표시합니다. 공급사가 제시한 사용환경은 -25°C에서 60°C, 상대습도 최대 95%입니다.</p>
+    <p><b>공급사 주장.</b> Siemens는 반도체가 실제 차단을 맡아 기계접점의 아크와 마모를 줄이므로 1,500V DC에서 15만 회 이상의 전기적 수명을 확보한다고 설명합니다. 직류망 전체에서는 변환단계를 줄여 에너지를 최대 8%, 도체와 구성품 재료를 최대 50% 절감할 수 있다고 제시했습니다. 이 두 절감수치는 개별 콘택터 성능이 아니라 직류 배전구조에 대한 공급사 계산입니다.</p>
+    <p><b>작성자 해석.</b> 기술의 차별점은 반도체 콘택터를 추가한 데 있지 않습니다. 정상 통전의 도통손실은 기계접점으로 낮추고, 전류가 끊기는 짧은 구간은 반도체가 담당하며, 정비에 필요한 가시적 절연은 다시 기계접점이 보장하도록 역할을 나눈 점입니다. 설비 적용성은 정격표보다 실제 인덕턴스에서의 개방시간, 잔류전압, 온도상승과 고장모드로 판단해야 합니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <p>정상운전에서는 주 기계접점이 닫혀 배터리 또는 직류모선의 전류를 부하로 전달합니다. 개방 명령이 들어오면 내부 제어회로가 반도체 분기를 켜 전류가 흐를 경로를 만듭니다. 기계접점이 열릴 때 전류는 반도체 분기로 이동하므로 접점 사이에 지속아크가 형성되는 조건을 줄입니다. 이어 반도체가 전류를 끊고, 열린 기계접점은 전원과 부하 사이의 갈바닉 절연을 유지합니다.</p>
+    <p>충전과 방전이 바뀌는 배터리 저장장치에서는 전류방향이 반전됩니다. 3QC1은 극성을 고정하지 않는 양방향 개폐구조를 사용하므로 충전회로와 방전회로에 서로 다른 콘택터를 배치할 필요를 줄입니다. Siemens는 100kW 표준 전력랙과 최대 375kW·300A·1,500V 고출력랙, 최대 1,000kW 충전설비를 적용범위로 제시했습니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261122a-title">
+      <figcaption><strong id="fig261122a-title">그림 1. 직류 아크를 기계접점에서 반도체 분기로 옮겨 끊습니다</strong><span>왼쪽은 기계접점이 고전압 직류를 직접 끊으며 아크가 이어지는 구조입니다. 오른쪽은 반도체가 차단구간을 맡고 기계접점은 저손실 통전과 물리적 절연을 담당합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 1040 520" role="img" aria-labelledby="fig261122a-svg-title fig261122a-svg-desc">
+        <title id="fig261122a-svg-title">기계식 직류 콘택터와 반도체·기계식 하이브리드 콘택터 비교</title>
+        <desc id="fig261122a-svg-desc">왼쪽은 배터리와 부하 사이의 단일 기계접점이 1,500볼트 직류를 직접 열어 접점 사이에 아크가 발생합니다. 오른쪽은 기계접점과 병렬 반도체 분기가 역할을 나눠 반도체가 전류를 끊고 기계접점이 절연합니다.</desc>
+        <defs><marker id="arr261122a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <rect x="18" y="25" width="475" height="465" rx="22" fill="#fff6f2" stroke="#d19a83"/>
+        <text x="48" y="66" font-size="22" font-weight="700" fill="#703e2d">기존 · 기계접점이 직접 차단</text>
+        <circle cx="88" cy="180" r="48" fill="#fff" stroke="#6b7880" stroke-width="3"/><text x="88" y="174" text-anchor="middle" font-size="15" font-weight="700">DC 전원</text><text x="88" y="198" text-anchor="middle" font-size="13">배터리·모선</text>
+        <line x1="136" y1="180" x2="230" y2="180" stroke="#37474f" stroke-width="7"/>
+        <circle cx="238" cy="180" r="8" fill="#37474f"/><circle cx="335" cy="180" r="8" fill="#37474f"/><line x1="238" y1="180" x2="312" y2="135" stroke="#37474f" stroke-width="7"/>
+        <path d="M272 166q15-34 30 0q15 34 30 0" fill="none" stroke="#f15a3a" stroke-width="6"/><text x="286" y="117" text-anchor="middle" font-size="15" fill="#a43e28">지속아크·접점마모</text>
+        <line x1="343" y1="180" x2="405" y2="180" stroke="#37474f" stroke-width="7"/><rect x="405" y="137" width="58" height="86" rx="8" fill="#eaf1fc" stroke="#5f7fa8"/><text x="434" y="174" text-anchor="middle" font-size="13">부하</text><text x="434" y="196" text-anchor="middle" font-size="12">인버터</text>
+        <rect x="55" y="285" width="400" height="125" rx="14" fill="#fff" stroke="#d19a83"/><text x="78" y="318" font-size="16" font-weight="700">직류는 자연 영점이 없습니다</text><text x="78" y="349" font-size="14">접점이 벌어져도 전류가 계속 흐르며 아크가 유지됩니다.</text><text x="78" y="378" font-size="14">소호부와 극성별 배선이 커지고 접점 교체주기가 짧아집니다.</text>
+        <rect x="520" y="25" width="502" height="465" rx="22" fill="#f1f8f5" stroke="#86b7a2"/>
+        <text x="550" y="66" font-size="22" font-weight="700" fill="#214f41">새 방식 · SIRIUS 3QC1 하이브리드</text>
+        <circle cx="590" cy="180" r="48" fill="#fff" stroke="#6b7880" stroke-width="3"/><text x="590" y="174" text-anchor="middle" font-size="15" font-weight="700">DC 전원</text><text x="590" y="198" text-anchor="middle" font-size="13">양방향</text>
+        <line x1="638" y1="180" x2="680" y2="180" stroke="#37474f" stroke-width="7"/>
+        <circle cx="688" cy="180" r="7" fill="#37474f"/><circle cx="790" cy="180" r="7" fill="#37474f"/><line x1="688" y1="180" x2="766" y2="138" stroke="#37474f" stroke-width="7"/><text x="739" y="112" text-anchor="middle" font-size="14" font-weight="700">기계접점</text><text x="739" y="215" text-anchor="middle" font-size="13">저손실 통전·절연</text>
+        <path d="M688 180V290H790V180" fill="none" stroke="#5865a8" stroke-width="5"/><rect x="715" y="248" width="50" height="45" rx="6" fill="#ebeafd" stroke="#5865a8"/><text x="740" y="276" text-anchor="middle" font-size="12">반도체</text>
+        <line x1="797" y1="180" x2="900" y2="180" stroke="#37474f" stroke-width="7"/><rect x="900" y="137" width="72" height="86" rx="8" fill="#eaf1fc" stroke="#5f7fa8"/><text x="936" y="174" text-anchor="middle" font-size="13">부하</text><text x="936" y="196" text-anchor="middle" font-size="12">충·방전</text>
+        <path d="M670 330H825" stroke="#4f8065" stroke-width="4" marker-end="url(#arr261122a)"/><text x="747" y="355" text-anchor="middle" font-size="13">개방 때 전류를 반도체로 전환</text>
+        <rect x="560" y="395" width="420" height="64" rx="12" fill="#fff8df" stroke="#b39536"/><text x="770" y="422" text-anchor="middle" font-size="15" font-weight="700">1,500V DC · 600A · 양방향</text><text x="770" y="447" text-anchor="middle" font-size="13">공급사 공개수명 15만 회 이상</text>
+      </svg></div>
+      <p class="visualNote">수치 근거는 Siemens의 2026년 11월 20일 발표와 제품 페이지입니다. 직접 제작한 설명도·실제 배치도 아님.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>기존 기계식 직류 콘택터는 접점이 고전압 전류를 직접 끊습니다. 직류에는 교류처럼 주기적인 전류 영점이 없어 접점이 벌어진 뒤에도 아크가 이어질 수 있습니다. 제조사는 소호구조, 영구자석과 극성지정으로 아크를 처리하므로 장치가 커지고 충·방전 방향에 따라 배선조건이 달라집니다.</p>
+    <p>3QC1은 개폐기능을 분담합니다. 기계접점은 정상전류를 흘려 반도체의 상시 도통손실을 피하고, 반도체는 접점 개방구간의 전류를 맡아 아크를 줄입니다. 마지막에 기계접점이 열린 상태를 유지하므로 반도체 누설전류만으로는 만들기 어려운 갈바닉 절연도 확보합니다. 충전과 회생 때 전류방향이 바뀌어도 같은 장치가 개폐합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261122b-title">
+      <figcaption><strong id="fig261122b-title">그림 2. 개방 명령 뒤 전류경로가 네 단계로 바뀝니다</strong><span>기계접점과 반도체의 역할이 동시에 바뀌지 않습니다. 전류를 반도체로 옮긴 뒤 접점을 열고, 마지막에 반도체를 꺼 절연상태를 만듭니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 1080 470" role="img" aria-labelledby="fig261122b-svg-title fig261122b-svg-desc">
+        <title id="fig261122b-svg-title">하이브리드 직류 콘택터의 개방 순서와 전류파형</title>
+        <desc id="fig261122b-svg-desc">정상 통전, 반도체 전류전환, 기계접점 개방, 반도체 차단과 갈바닉 절연의 네 단계를 위쪽 회로상태와 아래쪽 전류파형으로 표시합니다.</desc>
+        <defs><marker id="arr261122b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <line x1="95" y1="80" x2="980" y2="80" stroke="#7a8b94" stroke-width="4" marker-end="url(#arr261122b)"/>
+        <text x="90" y="55" font-size="14">개방명령 이전</text><text x="960" y="55" text-anchor="end" font-size="14">절연완료</text>
+        <g>
+          <circle cx="150" cy="180" r="62" fill="#e9f5ed" stroke="#4f8065" stroke-width="3"/><text x="150" y="154" text-anchor="middle" font-size="15" font-weight="700">① 정상 통전</text><text x="150" y="181" text-anchor="middle" font-size="13">기계접점 닫힘</text><text x="150" y="205" text-anchor="middle" font-size="13">반도체 꺼짐</text>
+          <circle cx="405" cy="180" r="62" fill="#fff8df" stroke="#b39536" stroke-width="3"/><text x="405" y="154" text-anchor="middle" font-size="15" font-weight="700">② 전류 전환</text><text x="405" y="181" text-anchor="middle" font-size="13">반도체 켜짐</text><text x="405" y="205" text-anchor="middle" font-size="13">전류경로 이동</text>
+          <circle cx="660" cy="180" r="62" fill="#fff0ed" stroke="#ce7667" stroke-width="3"/><text x="660" y="154" text-anchor="middle" font-size="15" font-weight="700">③ 접점 개방</text><text x="660" y="181" text-anchor="middle" font-size="13">접점전류 감소</text><text x="660" y="205" text-anchor="middle" font-size="13">아크 억제</text>
+          <circle cx="915" cy="180" r="62" fill="#eaf1fc" stroke="#5f7fa8" stroke-width="3"/><text x="915" y="154" text-anchor="middle" font-size="15" font-weight="700">④ 전류 차단</text><text x="915" y="181" text-anchor="middle" font-size="13">반도체 꺼짐</text><text x="915" y="205" text-anchor="middle" font-size="13">갈바닉 절연</text>
+        </g>
+        <path d="M212 180H335M467 180H590M722 180H845" stroke="#52687a" stroke-width="4" marker-end="url(#arr261122b)"/>
+        <line x1="95" y1="400" x2="1000" y2="400" stroke="#6c7b84" stroke-width="2"/><line x1="95" y1="275" x2="95" y2="400" stroke="#6c7b84" stroke-width="2"/>
+        <text x="75" y="290" text-anchor="end" font-size="13">회로전류</text><path d="M95 300H405C460 300 470 315 520 315H660C720 315 760 395 860 400H1000" fill="none" stroke="#d34f3f" stroke-width="5"/>
+        <path d="M95 345H405C455 345 470 315 520 315H660C720 315 760 395 860 400" fill="none" stroke="#5865a8" stroke-width="4" stroke-dasharray="9 6"/>
+        <text x="220" y="325" font-size="13" fill="#b3382c">기계접점 전류</text><text x="500" y="345" font-size="13" fill="#4f58a0">반도체 분기 전류</text><text x="875" y="382" font-size="13">0A</text>
+        <line x1="405" y1="260" x2="405" y2="415" stroke="#b39536" stroke-dasharray="5 5"/><line x1="660" y1="260" x2="660" y2="415" stroke="#ce7667" stroke-dasharray="5 5"/><line x1="860" y1="260" x2="860" y2="415" stroke="#5f7fa8" stroke-dasharray="5 5"/>
+      </svg></div>
+      <p class="visualNote">공식자료가 공개한 역할분담을 순서도로 재구성했으며 단계별 시간값은 공개되지 않았습니다. 직접 제작한 설명도·실제 배치도 아님.</p>
+    </figure>
+
+    <h3>장점</h3>
+    <ul><li>반도체가 차단구간을 맡아 기계접점의 아크와 마모를 줄입니다.</li><li>기계접점이 정상전류를 흘려 순수 반도체 스위치의 상시 도통손실과 냉각부담을 낮춥니다.</li><li>한 장치가 양방향 전류를 개폐해 배터리 충전·방전과 회생부하 배선을 단순화합니다.</li><li>원격 24V DC 제어와 상태 LED를 사용해 제어반 밖에서 개폐상태를 확인할 수 있습니다.</li></ul>
+    <hr class="sectionDivider">
+    <h3>한계</h3>
+    <ul><li>반도체와 기계접점의 협조제어가 필요하므로 단순 접촉기보다 내부고장 진단과 예비품 전략이 복잡합니다.</li><li>공개자료에는 부하 인덕턴스별 개방시간, 잔류전압, 도통손실과 단락차단 능력이 제시되지 않았습니다.</li><li>15만 회 수명과 직류망 절감수치는 공급사 조건이므로 국내 온도·오염도·배선 인덕턴스에서 다시 측정해야 합니다.</li><li>콘택터는 퓨즈와 함께 사용하는 개폐장치이며, 단락보호장치의 차단성능을 대신하지 않습니다.</li></ul>
+
+    <h3>현장 적용</h3>
+    <p><b>공개 적용범위.</b> Siemens는 배터리 저장장치의 100kW 표준랙과 최대 375kW·300A·1,500V 고출력랙, 최대 1,000kW 급속충전설비, 선박과 산업용 직류 마이크로그리드를 대상으로 제시했습니다. SIRIUS 3QC1을 사용한 고객명과 운전시간은 이번 발표에 포함되지 않았습니다.</p>
+    <p><b>직류공장 사례.</b> Open Direct Current Alliance가 공개한 Schaltbau NExT Factory는 직류망을 보호구역으로 나누고 계측기·퓨즈·직류 콘택터를 조합해 운전합니다. 이 사례는 3QC1 설치실적이 아니라 고전압 직류망에서 콘택터가 맡는 구역분리와 원격개폐 위치를 보여주는 구조 참고사례입니다.</p>
+    <p><b>당사 공정·PC 제어와 연결해 볼 부분.</b> 회생형 서보, 배터리 시험기, 직류모선과 저장장치가 있는 일반 설비에서는 PC 제어기가 24V DC 개방명령과 상태접점을 기록할 수 있습니다. 첫 적용대상은 반복개폐가 많고 충·방전 방향이 바뀌며 정비 때 물리적 절연이 필요한 한 개 전력랙으로 제한합니다. 제어프로그램은 전류가 허용범위에 들어온 뒤 개방명령을 보내고, 전압·전류·접점상태의 공통시각 로그로 실제 차단순서를 확인합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261122c-title">
+      <figcaption><strong id="fig261122c-title">그림 3. 양방향 개폐시험은 전류·양단전압·온도를 같은 시각으로 잽니다</strong><span>배터리 모사전원과 회생부하 사이에 퓨즈와 3QC1을 배치합니다. 콘택터 양단전압, 회로전류, 접점상태와 표면온도를 공통 트리거로 기록합니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 1100 520" role="img" aria-labelledby="fig261122c-svg-title fig261122c-svg-desc">
+        <title id="fig261122c-svg-title">SIRIUS 3QC1 양방향 개폐시험 장비와 측정위치</title>
+        <desc id="fig261122c-svg-desc">왼쪽의 양방향 직류전원에서 퓨즈, SIRIUS 3QC1, 회생형 부하로 전력이 흐릅니다. 전류센서, 콘택터 양단 전압프로브, 열화상카메라, 24볼트 제어와 오실로스코프의 측정위치를 표시합니다.</desc>
+        <defs><marker id="arr261122c" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#52687a"/></marker></defs>
+        <rect x="30" y="165" width="180" height="130" rx="18" fill="#eaf1fc" stroke="#5f7fa8" stroke-width="3"/><text x="120" y="202" text-anchor="middle" font-size="17" font-weight="700">양방향 DC 전원</text><text x="120" y="232" text-anchor="middle" font-size="14">배터리 모사</text><text x="120" y="260" text-anchor="middle" font-size="14">0~1,500V</text>
+        <line x1="210" y1="230" x2="315" y2="230" stroke="#37474f" stroke-width="8" marker-end="url(#arr261122c)"/>
+        <rect x="315" y="190" width="90" height="80" rx="10" fill="#fff6e5" stroke="#b47d2b"/><text x="360" y="222" text-anchor="middle" font-size="15" font-weight="700">DC 퓨즈</text><text x="360" y="247" text-anchor="middle" font-size="12">단락보호</text>
+        <line x1="405" y1="230" x2="475" y2="230" stroke="#37474f" stroke-width="8"/>
+        <rect x="475" y="155" width="180" height="150" rx="16" fill="#e9f5ed" stroke="#4f8065" stroke-width="4"/><text x="565" y="194" text-anchor="middle" font-size="18" font-weight="700">SIRIUS 3QC1</text><text x="565" y="224" text-anchor="middle" font-size="14">300A 시험품</text><text x="565" y="252" text-anchor="middle" font-size="14">24V DC 제어</text><text x="565" y="280" text-anchor="middle" font-size="13">상태 LED·보조신호</text>
+        <line x1="655" y1="230" x2="760" y2="230" stroke="#37474f" stroke-width="8" marker-end="url(#arr261122c)"/>
+        <rect x="760" y="165" width="190" height="130" rx="18" fill="#f5f2fb" stroke="#7c6aa3" stroke-width="3"/><text x="855" y="202" text-anchor="middle" font-size="17" font-weight="700">회생형 부하</text><text x="855" y="232" text-anchor="middle" font-size="14">인버터·모터 모사</text><text x="855" y="260" text-anchor="middle" font-size="14">충전↔방전 전환</text>
+        <path d="M945 320H200" stroke="#5865a8" stroke-width="4" marker-end="url(#arr261122c)"/><text x="580" y="345" text-anchor="middle" font-size="14" fill="#4f58a0">반대방향 전류 시험</text>
+        <circle cx="440" cy="230" r="24" fill="#fff" stroke="#d34f3f" stroke-width="3"/><text x="440" y="235" text-anchor="middle" font-size="13" font-weight="700">I</text><text x="440" y="285" text-anchor="middle" font-size="12">전류센서</text>
+        <path d="M490 130V105H640V130" fill="none" stroke="#d34f3f" stroke-width="3"/><circle cx="490" cy="130" r="6" fill="#d34f3f"/><circle cx="640" cy="130" r="6" fill="#d34f3f"/><text x="565" y="92" text-anchor="middle" font-size="13" fill="#b3382c">양단전압 V</text>
+        <rect x="455" y="395" width="220" height="82" rx="12" fill="#fff" stroke="#52687a"/><text x="565" y="425" text-anchor="middle" font-size="16" font-weight="700">오실로스코프·PC 로그</text><text x="565" y="451" text-anchor="middle" font-size="13">전압·전류·명령·상태 공통시각</text>
+        <path d="M440 254V395M490 130L515 395M640 130L615 395M565 305V395" fill="none" stroke="#52687a" stroke-width="2" stroke-dasharray="6 5"/>
+        <path d="M700 90l45 28-45 28-45-28Z" fill="#fff8df" stroke="#b39536"/><text x="700" y="115" text-anchor="middle" font-size="12">열화상</text><text x="700" y="132" text-anchor="middle" font-size="12">카메라</text><path d="M680 145L625 175" stroke="#b39536" stroke-width="3" marker-end="url(#arr261122c)"/>
+        <rect x="45" y="395" width="300" height="84" rx="12" fill="#fff8df" stroke="#b39536"/><text x="195" y="422" text-anchor="middle" font-size="14" font-weight="700">제안 시험조건</text><text x="195" y="447" text-anchor="middle" font-size="13">300A 양방향 · 1천 회 반복</text><text x="195" y="468" text-anchor="middle" font-size="13">정격·유도부하·비상개방 분리</text>
+      </svg></div>
+      <p class="visualNote">300A와 1천 회는 초기 사전검증을 위한 제안조건입니다. 합격값은 공급사 시험성적서와 설비 위험분석 뒤 확정합니다. 직접 제작한 설명도·실제 배치도 아님.</p>
+    </figure>
+
+    <h3>사전검증 순서</h3>
+    <ol><li>한국지멘스에 300A·400A·500A·600A 모델별 IEC·UL 정격, 퓨즈 조합표, 개방시간과 도통손실 시험성적서를 요청합니다.</li><li>양방향 직류전원과 회생형 부하 사이에 퓨즈·3QC1·전류센서를 설치하고 정격전압의 10%부터 단계적으로 올립니다.</li><li>100A·200A·300A에서 충전방향과 방전방향을 각각 개방해 최대전류, 개방시간, 콘택터 양단 잔류전압과 아크광을 기록합니다.</li><li>부하 인덕턴스를 세 단계로 바꾸고 같은 시험을 반복해 전압상승과 개방시간의 95백분위·최댓값을 비교합니다.</li><li>주위온도 25°C와 60°C에서 1시간 통전한 뒤 단자·본체·제어부 온도상승과 정상상태 전압강하를 측정합니다.</li><li>300A 양방향 개폐를 1천 회 반복하며 개방시간, 전압강하와 표면온도의 증가추세를 확인합니다.</li><li>제어전원 상실, 센서단선과 반도체 고장모사를 분리해 퓨즈협조, 기계접점 개방과 PC 제어기의 고장상태 기록을 확인합니다.</li></ol>
+
+    <h3>관련 업체</h3>
+    <p><a href="https://www.siemens.com/ko-kr/" target="_blank" rel="noopener noreferrer"><b>한국지멘스</b></a>는 SIRIUS 콘택터와 SENTRON 직류보호기기를 공급합니다. <a href="https://www.siemens.com/ko-kr/contact/smart-infrastructure-service-south-korea/" target="_blank" rel="noopener noreferrer">스마트 인프라 고객지원</a>에서 콘택터·차단기 제품군, 정격, 퓨즈협조와 국내 출시일을 문의할 수 있습니다.</p>
+    <p><a href="https://odca.zvei.org/" target="_blank" rel="noopener noreferrer"><b>Open Direct Current Alliance</b></a>는 산업용 직류망의 보호구역, 표준화와 현장사례를 공개합니다. NExT Factory 자료는 직류 콘택터와 퓨즈를 구역보호에 배치할 때 필요한 시스템 FMEA와 계통운영 협의를 보여줍니다.</p>
+
+    <details class="termGuide"><summary>용어 설명</summary><dl>
+      <dt>DC · Direct Current</dt><dd>전류방향이 일정한 직류입니다.</dd>
+      <dt>AC · Alternating Current</dt><dd>전류방향이 주기적으로 바뀌며 영점을 지나는 교류입니다.</dd>
+      <dt>IEC · International Electrotechnical Commission</dt><dd>전기·전자 분야의 국제표준을 제정하는 국제전기기술위원회입니다.</dd>
+      <dt>UL · Underwriters Laboratories</dt><dd>북미 시장에서 사용하는 제품안전 시험·인증기관 명칭입니다.</dd>
+      <dt>LED · Light-Emitting Diode</dt><dd>콘택터의 운전·상태진단 정보를 빛으로 표시하는 발광다이오드입니다.</dd>
+      <dt>BESS · Battery Energy Storage System</dt><dd>배터리로 전력을 저장하고 충전·방전하는 에너지저장시스템입니다.</dd>
+      <dt>PV · Photovoltaic</dt><dd>태양광을 직류전력으로 변환하는 발전방식입니다.</dd>
+      <dt>PC · Personal Computer</dt><dd>개방명령과 전압·전류·상태신호를 공통시각으로 기록하는 범용 컴퓨터입니다.</dd>
+      <dt>FMEA · Failure Mode and Effects Analysis</dt><dd>부품과 시스템의 고장형태·영향·대책을 사전에 분석하는 방법입니다.</dd>
+      <dt>SIRIUS 3QC1</dt><dd>Siemens의 반도체·기계식 하이브리드 직류 콘택터 제품명입니다.</dd><dt>SENTRON</dt><dd>Siemens의 저압 배전·보호기기 제품군 이름입니다.</dd>
+      <dt>갈바닉 절연</dt><dd>전원과 부하 사이의 도전경로를 물리적으로 끊어 직류전류가 흐르지 않게 하는 상태입니다.</dd>
+    </dl></details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://press.siemens.com/global/en/pressrelease/siemens-launches-worlds-first-heavy-duty-direct-current-contactor-1500-v" target="_blank" rel="noopener noreferrer">Siemens, 1,500V·600A SIRIUS 3QC1 발표</a> · 2026-11-20</li>
+      <li><a href="https://www.siemens.com/en-us/products/sirius/3qc1-dc-contactor/" target="_blank" rel="noopener noreferrer">Siemens, SIRIUS 3QC1 구조·정격·적용범위</a> · 2026-11-22 확인</li>
+      <li><a href="https://www.siemens.com/en-gb/content/low-voltage-direct-current-lvdc/" target="_blank" rel="noopener noreferrer">Siemens, 저압 직류 포트폴리오와 산업용 직류망 사례</a> · 2026-11-22 확인</li>
+      <li><a href="https://press.siemens.com/global/en/pressrelease/siemens-new-direct-current-portfolio-enables-significant-energy-and-material-savings" target="_blank" rel="noopener noreferrer">Siemens, 반도체 차단기·고체스위치 직류 포트폴리오</a> · 2026-04-22</li>
+      <li><a href="https://odca.zvei.org/use-cases/next-factory/insights" target="_blank" rel="noopener noreferrer">Open Direct Current Alliance, NExT Factory 보호구역 사례</a> · 2026-11-22 확인</li>
+      <li><a href="https://www.siemens.com/ko-kr/contact/smart-infrastructure-service-south-korea/" target="_blank" rel="noopener noreferrer">한국지멘스 스마트 인프라 전기기기 문의</a> · 2026-11-22 확인</li>
+    </ol>
+    <p class="byline">작성자 김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+<details class="staticReport" id="static-261121">
   <summary><span class="staticDate">11.21</span><span class="staticTitle">PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트</span><span class="staticAxis">인공지능 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">Eigen Engineering Agent</span><span class="tag">TIA Portal</span><span class="tag">프로젝트 문맥</span><span class="tag">자기검증</span><span class="tag">장치 일괄설정</span></div><p>Siemens는 11월 18일 인도에서 Eigen Engineering Agent의 16개 고객 시범적용을 공개했습니다. 에이전트는 TIA Portal 프로젝트의 장치·논리·HMI 관계를 읽고 코드, 화면, 드라이브와 PROFINET 설정을 생성한 뒤 컴파일 오류와 프로젝트 제약을 다시 확인합니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -6411,6 +6561,7 @@
 reports.push({"id":"261119","date":"2026-11-19","title":"강화학습 제어와 소프트센서를 DCS 표준 기능으로 편입한 CENTUM R7.02","axis":"인공지능 제어","category":"DCS 내장형 자율제어","tags":["CENTUM R7.02","AI Control","AI Estimation","FKDPP","소프트센서"],"summary":"요꼬가와전기는 11월 19일 CENTUM R7.02를 출시해 강화학습 제어모델을 현장제어소의 표준 제어블록으로 실행하고, 품질값을 추정하는 소프트센서 결과와 기여변수를 기존 운전화면에 함께 표시하도록 했습니다.","discovery":"FKDPP 제어모델을 FCS 표준 블록에서 실행하고 ACS가 품질 추정과 기여도를 계산해 기존 HIS에 통합하는 DCS 내장형 AI 실행구조","why":"2023년 서비스는 학습모델을 전용 엣지 제어기에 설치했습니다. 11월 19일 출시판은 모델을 DCS 현장제어소의 표준 패키지 블록으로 옮기고 품질추정과 설명정보까지 같은 운전환경에 편입했습니다. 새 알고리즘이 아니라 실행위치와 운영도구가 바뀐 후속 변화를 선정했습니다.","study":"FKDPP 강화학습, FCS AI 제어블록, ACS 소프트센서, HIS 통합감시, 시뮬레이터 학습, 모델 제한운전, 추정오차와 제어주기 측정","companies":"한국요꼬가와전기는 CENTUM DCS, AI Control·AI Estimation의 국내 상담과 기술지원을 제공합니다.","poc":"기존 PID와 같은 생산조건에서 목표편차·밸브 이동량·에너지를 비교합니다. ACS 추정값은 동일 시료시각의 실험실 값과 맞춰 평균·최대·95백분위 오차를 계산하고, FCS는 최대주기·지터·주기초과를 기록합니다.","caution":"공개 내용: FKDPP 모델의 FCS 실행, 추정모델의 ACS 실행, HIS 통합감시와 35일 화학공장 실증. 현장 확인: 제어주기, CPU 부하, 모델 조작범위, 품질추정 오차와 국내 공급구성.","source_use":"11월 17일 발표와 11월 19일 출시 제품자료를 중심으로 2022년 실증, 2023년 공식채택, FKDPP 공식설명과 국내 문의창구를 대조","sourceCount":6,"weekly":{"topic":"DCS 내장형 자율제어","change":"AI 조작량을 외부 서버 대신 현장제어소가 계산합니다.","check":"외란 입력 때 주기초과와 품질추정 오차를 함께 잽니다."}});
 reports.push({"id":"261120","date":"2026-11-20","title":"작업 요구를 로봇 그리퍼 설계·검증·제조준비로 넘기는 에이전트형 엔지니어링","axis":"인공지능 제어","category":"에이전트형 설비 엔지니어링","tags":["Agentic AI","MCP","적층제조","로봇 그리퍼","가상검증"],"summary":"Siemens와 AGIBOT는 11월 19일 Formnext 2026에서 작업 대상과 동작을 문장으로 입력하면 AI 에이전트가 그리퍼 선택, 형상수정, 시뮬레이션, 로봇 인터페이스 검증과 적층제조 준비를 순서대로 실행하는 흐름을 공개했습니다.","discovery":"대상물과 작업설명을 설계변수로 바꾸고 MCP로 Designcenter·시뮬레이션·로봇 인터페이스 검증·적층제조 준비기능을 호출하는 에이전트형 엔지니어링","why":"11월 19일 TIA Portal 발표는 소프트웨어 갱신과 다중코어 실행이 중심이었습니다. Formnext 시연은 AI가 여러 엔지니어링 도구의 실제 설계산출물을 바꾸고 제조준비까지 전달하는 결합방식을 로봇 그리퍼로 공개했습니다. 최근 일주일간 반복된 에이전트형 자동화 가운데 작동과정이 가장 구체적인 후속 변화를 선정했습니다.","study":"MCP 도구호출, 작업조건 구조화, 그리퍼 유형선택, Designcenter 형상수정, 접촉·간섭 시뮬레이션, 로봇 장착검증, 적층제조와 후처리, 물리 파지시험","companies":"한국지멘스는 자동화·설계소프트웨어와 적층제조 디지털 흐름의 국내 상담을 제공하며, EOS와 AM Solutions는 적응형 생산셀의 적층제조와 후처리 기술을 제공합니다.","poc":"원통·직육면체·비대칭 대상물에서 수동설계품과 에이전트설계품의 개발시간, 파일수정, 설계·출력 치수편차, 파지력, 미끄럼, 반복위치오차와 100회 성공률을 같은 로봇 조건으로 비교합니다.","caution":"공개 내용: Formnext에서 그리퍼 선택·형상수정·가상검증·제조준비 흐름을 시연했고 에를랑겐 적응형 생산셀은 구축 중입니다. 현장 확인: 도구권한, 설계변수 제한, 시뮬레이션 오차, 출력치수와 파지 성공률.","source_use":"11월 16일 Siemens 발표와 11월 19일 Formnext 공식 시연일정을 중심으로 Siemens 적층제조 자료, EOS 적응형 생산사례와 한국지멘스 문의창구를 대조","sourceCount":6,"weekly":{"topic":"작업맞춤 그리퍼 자동설계","change":"작업문장이 설계·검증·제조준비 도구호출로 이어집니다.","check":"출력치수와 100회 파지 성공률을 수동설계품과 비교합니다."}});
 reports.push({"id":"261121","date":"2026-11-21","title":"PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트","axis":"인공지능 제어","category":"프로젝트 내장형 자동화 엔지니어링","tags":["Eigen Engineering Agent","TIA Portal","프로젝트 문맥","자기검증","장치 일괄설정"],"summary":"Siemens는 11월 18일 인도에서 Eigen Engineering Agent의 16개 고객 시범적용을 공개했습니다. 에이전트는 TIA Portal 프로젝트의 장치·논리·HMI 관계를 읽고 코드, 화면, 드라이브와 PROFINET 설정을 생성한 뒤 컴파일 오류와 프로젝트 제약을 다시 확인합니다.","discovery":"전기도면·장치목록과 TIA Portal의 FB·UDT·HMI 관계를 읽어 SCL·LAD, 화면, 드라이브·PROFINET 설정을 생성하고 컴파일 오류를 자기수정하는 프로젝트 내장형 에이전트","why":"11월 20일 리포트는 MCP로 기계설계·시뮬레이션·제조준비 도구를 연결했습니다. 11월 18일 Siemens 발표는 실제 자동화 프로젝트의 코드·HMI·장치설정·문서화가 함께 바뀌고, 인도 16개 고객과 두 고객사의 정량효과가 추가됐습니다. 최근 24시간에 더 큰 구조 변화가 없어 이번 주 반복 흐름의 구체적 후속을 선정했습니다.","study":"TIA Portal 프로젝트 문맥, FB·UDT 관계, SCL·LAD 생성, 컴파일 자기수정, WinCC Unified JavaScript, SINAMICS 일괄설정, PROFINET 토폴로지, 변경권한과 승인","companies":"한국지멘스는 TIA Portal·WinCC Unified·SINAMICS·PROFINET의 국내 기술지원과 교육을 제공하며, Pelican Rotoflex와 Z System Intelligent Controls는 공개 적용 고객사입니다.","poc":"모터 10대·I/O 40점·HMI 5화면 기준 프로젝트에서 장치·주소·태그 연결률, 컴파일 오류, 신호시험 통과율, 매개변수 일치율, 총시간과 수정횟수를 수동작업과 비교합니다.","caution":"공개 내용: 인도 16개 고객과 전 세계 19개국 100개 이상 시범적용, 두 고객사의 적용범위와 공급사 정량효과. 현장 확인: 국내 제공범위, 장치매핑 정확도, 안전코드 쓰기권한, 실제 I/O와 가상시험 일치율.","source_use":"11월 18일 Siemens India 공식발표를 중심으로 4월 글로벌 출시, 공식 기능목록, Automation Framework와 한국지멘스 기술지원 경로를 대조","sourceCount":6,"weekly":{"topic":"프로젝트 안의 자동화 설계 AI","change":"AI가 장치·논리·화면관계를 읽고 설정까지 생성합니다.","check":"장치매핑과 신호시험 통과율을 수동작업과 비교합니다."}});
+reports.push({"id":"261122","date":"2026-11-22","title":"반도체가 전류를 끊고 기계접점이 절연하는 1,500V 양방향 DC 콘택터","axis":"전기·제어","category":"고전압 DC 스위칭","tags":["SIRIUS 3QC1","1,500V DC","하이브리드 스위칭","양방향 전력","갈바닉 절연"],"summary":"Siemens는 11월 20일 반도체가 개폐전류를 처리하고 기계접점이 저손실 통전과 절연을 맡는 SIRIUS 3QC1을 발표했습니다. 제품은 최대 1,500V DC·600A를 양방향으로 개폐하며 공급사는 15만 회 이상의 수명을 제시했습니다.","discovery":"반도체가 직류전류를 아크 없이 끊고 기계접점이 저손실 통전과 갈바닉 절연을 맡아 1,500V·600A 양방향 전력흐름을 한 장치로 개폐하는 하이브리드 구조","why":"4월 반도체 차단기와 고체스위치는 보호와 고빈도 개폐가 중심이었습니다. 11월 20일 발표는 600A 주회로에서 저손실 통전·무아크 개폐·물리적 절연을 결합하고 충전·방전 양방향을 지원해 역할분담과 적용전력이 구체화됐습니다.","study":"직류 아크, 반도체 전류전환, 기계접점 절연, 양방향 개폐, 퓨즈협조, 개방시간, 잔류전압, 도통손실, 열화와 고장모드","companies":"한국지멘스는 SIRIUS 콘택터와 SENTRON 직류보호기기의 국내 상담을 제공하며 Open Direct Current Alliance는 직류공장 보호구역과 현장사례를 공개합니다.","poc":"양방향 직류전원·회생부하에서 100A·200A·300A 개방시험을 수행하고 개방시간, 양단 잔류전압, 아크광, 전압강하와 온도상승을 공통시각으로 측정합니다.","caution":"공개 내용: 최대 1,500V DC·600A, 15만 회 이상, 양방향, 24V DC 제어, -25~60°C. 현장 확인: 부하 인덕턴스별 개방시간, 도통손실, 퓨즈협조, 고장모드와 국내 출시시점.","source_use":"11월 20일 Siemens 공식발표와 제품페이지를 중심으로 4월 직류 포트폴리오, ODCA NExT Factory 사례와 한국지멘스 문의경로를 대조","sourceCount":6,"weekly":{"topic":"하이브리드 고전압 DC 콘택터","change":"반도체가 전류를 끊고 기계접점이 절연을 맡습니다.","check":"양방향 300A에서 아크·개방시간·온도상승을 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -6771,7 +6922,7 @@ reports.push({"id":"261121","date":"2026-11-21","title":"PLC·HMI·드라이브 
       261021:[15,15,15,12,12,8],261022:[15,16,15,13,13,8],261023:[16,16,15,13,13,8],261024:[15,16,16,13,13,8],
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
-      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8]
+      261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8],261122:[20,18,17,14,11,8]
     };
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
