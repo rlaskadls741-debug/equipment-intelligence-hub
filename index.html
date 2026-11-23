@@ -152,7 +152,136 @@
   <main class="staticFallback" id="staticFallback">
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
-<details class="staticReport" id="static-261123" open>
+
+<details class="staticReport" id="static-261124" open>
+  <summary><span class="staticDate">11.24</span><span class="staticTitle">PC 한 대가 검사·이송·안전을 묶는 XPlanar 분기형 최종검사 셀</span><span class="staticAxis">PC 제어</span></summary>
+  <div class="staticMeta"><div class="tags"><span class="tag">PC 기반 제어</span><span class="tag">XPlanar</span><span class="tag">최종검사</span><span class="tag">TwinCAT Vision</span><span class="tag">추적성</span></div><p>Beckhoff는 11월 18일 EtherCAT 단자 생산라인의 실제 최종검사를 축소한 시연기를 공개했습니다. 산업용 PC 한 대가 단자 식별, XPlanar 분기 이송, 기능시험·교정, LED 검사, 안전과 이력기록을 같은 시간기준으로 처리합니다.</p></div>
+  <article class="reportBody staticContent"><div class="newsArticle">
+    <header class="newsHeader">
+      <p class="newsKicker">분기형 PC 제어 최종검사 · 2026-11-24</p>
+      <h2>PC 한 대가 검사·이송·안전을 묶는 XPlanar 분기형 최종검사 셀</h2>
+      <p class="newsLead">Beckhoff는 2026년 11월 18일 SPS 2026 발표에서 자사 EtherCAT 단자 생산라인의 최종검사를 축소한 시연기를 공개했습니다. 산업용 PC와 TwinCAT이 단자 식별, XPlanar 이송, 기능시험·교정, LED 검사, TwinSAFE 안전, HMI와 시험이력을 한 실행환경에서 처리합니다.</p>
+    </header>
+
+    <section class="articleSummary" aria-label="오늘 리포트 요약">
+      <div><strong>오늘 전체 흐름</strong><p>11월 24일 개막한 SPS 2026의 PC 제어 발표는 기능을 추가하는 데서 끝나지 않습니다. 모션·비전·안전·측정의 시간과 제품 식별자를 한 제어축에 맞춰 검사 이력을 남기는 생산 적용이 전면에 나왔습니다.</p></div>
+      <div><strong>주요 기술</strong><p>XPlanar 무버가 Data Matrix로 식별된 단자를 필요한 검사·교정 공정으로 개별 이송합니다. TwinCAT Vision은 코드·위치·LED를 검사하고, TwinSAFE는 밀폐 설비의 안전상태를 관리하며, 산업용 PC는 공정값과 판정을 제품별로 묶습니다.</p></div>
+      <div><strong>선정 이유</strong><p>기존 PC 기반 제어 설명은 여러 기능을 한 런타임에서 실행한다는 구조가 중심이었습니다. 이번 발표는 실제 EtherCAT 단자 최종검사에서 제품별 분기 이송과 검사·교정·문서화를 결합한 적용구성을 공개했습니다.</p></div>
+    </section>
+
+    <h3>주요 내용</h3>
+    <p><b>확인된 사실.</b> Beckhoff가 11월 18일 공개한 시연기는 자사 생산시설에서 운용하는 EtherCAT 단자 최종검사의 축소형입니다. Data Matrix로 단자를 식별한 뒤 XPlanar 무버가 기능시험, 교정과 문서화에 필요한 공정으로 운반합니다. TwinCAT Vision은 식별·위치·LED 검사를 맡고 TwinSAFE는 밀폐 설비의 안전기능을 담당합니다.</p>
+    <p><b>공급사 주장.</b> Beckhoff는 산업용 PC, TwinCAT과 EtherCAT의 공통 시간기준이 별도 제어기·도구·통신경로를 연결하는 부담을 줄인다고 설명합니다. 공정과 시험데이터를 같은 시스템에서 사용할 수 있어 단자별 추적성을 확보한다고 제시했습니다.</p>
+    <p><b>작성자 해석.</b> 이번 사례의 기술적 변화는 장치를 한 PC에 모은 사실보다 제품 식별자를 이송경로, 영상판정, 기능시험값과 교정기록에 끝까지 유지하는 데 있습니다. 당사 검토에서는 판정 누락률, 경로 전환시간과 제품별 기록 완결률을 분리해 측정해야 합니다.</p>
+
+    <h3>기술 구조와 작동 과정</h3>
+    <p>투입부가 EtherCAT 단자의 Data Matrix를 읽으면 제어프로그램은 제품형식과 필요한 시험순서를 연결합니다. TwinCAT의 XPlanar 제어기능은 각 무버에 경로를 배정하고, 무버는 고정된 직렬 컨베이어를 따르지 않고 기능시험·교정·LED 검사 가운데 필요한 공정으로 이동합니다.</p>
+    <p>각 공정은 같은 산업용 PC의 시간기준으로 위치와 시험값을 기록합니다. TwinCAT Vision이 코드와 단자 위치를 확인하고 LED의 점등상태를 판정합니다. 기능시험과 교정 결과는 제품 식별자에 합쳐지며, HMI는 진행상태와 판정을 표시합니다. TwinSAFE는 도어와 정지조건을 감시해 작업영역을 보호합니다.</p>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261124a-title">
+      <figcaption><strong id="fig261124a-title">그림 1. 직렬 컨베이어를 제품별 분기 검사판으로 바꿉니다</strong><span>왼쪽은 모든 제품이 같은 순서로 세 공정을 통과하는 구조입니다. 오른쪽은 단자 코드를 읽은 뒤 XPlanar 무버가 필요한 시험만 골라 이동하고 마지막에 기록을 합칩니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 1120 620" role="img" aria-labelledby="fig261124a-svg-title fig261124a-svg-desc">
+        <title id="fig261124a-svg-title">고정 직렬 검사와 XPlanar 분기형 최종검사 비교</title>
+        <desc id="fig261124a-svg-desc">왼쪽 고정 컨베이어에서는 모든 단자가 기능시험, 교정, LED 검사를 같은 순서로 통과합니다. 오른쪽에서는 Data Matrix로 식별한 단자가 XPlanar 평면 위에서 필요한 검사소로 개별 이동하고 PC가 결과를 제품별 기록으로 합칩니다.</desc>
+        <defs><marker id="arr261124a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#405969"/></marker></defs>
+        <rect x="20" y="24" width="500" height="570" rx="24" fill="#fff6f1" stroke="#c99076"/>
+        <text x="48" y="64" font-size="22" font-weight="700" fill="#75432e">기존 · 고정 직렬 컨베이어</text>
+        <path d="M80 145H462V470H80Z" fill="none" stroke="#9a6c58" stroke-width="18" stroke-linejoin="round"/>
+        <g fill="#fff" stroke="#9a6c58" stroke-width="3"><rect x="52" y="112" width="118" height="76" rx="12"/><rect x="202" y="112" width="118" height="76" rx="12"/><rect x="352" y="112" width="118" height="76" rx="12"/></g>
+        <g font-size="15" font-weight="700" text-anchor="middle"><text x="111" y="143">기능시험</text><text x="111" y="166">모든 제품</text><text x="261" y="143">교정</text><text x="261" y="166">모든 제품</text><text x="411" y="143">LED 검사</text><text x="411" y="166">모든 제품</text></g>
+        <g fill="#f2c14e" stroke="#856b25" stroke-width="2"><rect x="105" y="245" width="46" height="46" rx="8"/><rect x="242" y="321" width="46" height="46" rx="8"/><rect x="381" y="413" width="46" height="46" rx="8"/></g>
+        <path d="M128 218v24M151 268h88M288 344h90" stroke="#405969" stroke-width="4" marker-end="url(#arr261124a)"/>
+        <rect x="88" y="510" width="364" height="54" rx="12" fill="#fff" stroke="#b37c64"/><text x="270" y="533" text-anchor="middle" font-size="14" font-weight="700">우회가 어려워 제품종류별 대기·빈 공정 발생</text><text x="270" y="553" text-anchor="middle" font-size="12">검사장비별 시간과 제품기록을 별도로 맞춤</text>
+
+        <rect x="600" y="24" width="500" height="570" rx="24" fill="#eef9f5" stroke="#5c9a82"/>
+        <text x="628" y="64" font-size="22" font-weight="700" fill="#205947">새 방식 · XPlanar 분기 검사판</text>
+        <rect x="632" y="92" width="436" height="374" rx="18" fill="#dceee8" stroke="#4e8e76" stroke-width="3"/>
+        <g stroke="#9ac4b4" stroke-width="1"><path d="M632 167h436M632 242h436M632 317h436M632 392h436"/><path d="M719 92v374M806 92v374M893 92v374M980 92v374"/></g>
+        <rect x="650" y="112" width="132" height="62" rx="12" fill="#fff" stroke="#4e8e76"/><text x="716" y="137" text-anchor="middle" font-size="14" font-weight="700">Data Matrix</text><text x="716" y="158" text-anchor="middle" font-size="12">제품·시험순서 식별</text>
+        <rect x="906" y="112" width="132" height="62" rx="12" fill="#fff" stroke="#4e8e76"/><text x="972" y="137" text-anchor="middle" font-size="14" font-weight="700">기능시험</text><text x="972" y="158" text-anchor="middle" font-size="12">전기 특성</text>
+        <rect x="650" y="360" width="132" height="62" rx="12" fill="#fff" stroke="#4e8e76"/><text x="716" y="385" text-anchor="middle" font-size="14" font-weight="700">LED 검사</text><text x="716" y="406" text-anchor="middle" font-size="12">TwinCAT Vision</text>
+        <rect x="906" y="360" width="132" height="62" rx="12" fill="#fff" stroke="#4e8e76"/><text x="972" y="385" text-anchor="middle" font-size="14" font-weight="700">교정</text><text x="972" y="406" text-anchor="middle" font-size="12">보정값 기록</text>
+        <g fill="#f2c14e" stroke="#856b25" stroke-width="2"><rect x="798" y="188" width="52" height="52" rx="9"/><rect x="836" y="286" width="52" height="52" rx="9"/></g>
+        <path d="M782 143C835 143 822 174 824 188M850 214C916 214 936 187 961 174" fill="none" stroke="#1683a2" stroke-width="5" marker-end="url(#arr261124a)"/>
+        <path d="M824 240C792 285 736 315 716 360" fill="none" stroke="#8f54a8" stroke-width="5" marker-end="url(#arr261124a)"/>
+        <path d="M862 338C885 356 918 371 906 388" fill="none" stroke="#d26c32" stroke-width="5" marker-end="url(#arr261124a)"/>
+        <rect x="660" y="492" width="380" height="72" rx="14" fill="#fff" stroke="#398068" stroke-width="2"/><text x="850" y="518" text-anchor="middle" font-size="15" font-weight="700">산업용 PC · TwinCAT · 공통 시간기준</text><text x="850" y="541" text-anchor="middle" font-size="13">제품 ID + 이동경로 + 시험값 + 영상판정 + 교정값</text>
+        <path d="M850 466v26" stroke="#405969" stroke-width="4" marker-end="url(#arr261124a)"/>
+      </svg></div>
+      <p class="visualNote">장치와 역할은 Beckhoff의 2026년 11월 18일 SPS 발표에 근거했습니다. XPlanar의 실제 타일 수와 검사소 위치는 공개되지 않아 공정 관계만 표현했습니다. 직접 제작한 설명도·실제 배치도 아님.</p>
+    </figure>
+
+    <h3>기존 방식과 달라진 점</h3>
+    <p>고정 컨베이어형 최종검사는 제품이 동일한 공정순서를 따르므로 일부 형식에 필요하지 않은 시험도 통과하거나 우회장치를 추가해야 합니다. 이송 제어기, 영상검사기와 시험장비가 서로 다른 시계를 쓰면 제품번호와 측정값을 상위 시스템에서 다시 맞춰야 합니다.</p>
+    <p>이번 구성은 XPlanar 무버가 제품마다 다른 경로를 선택하고 산업용 PC가 이송·비전·안전·시험기록을 같은 실행환경에서 처리합니다. XPlanar 공식 사양은 무버별 독립경로, 최대 3 m/s 이동과 반복정확도 5 μm 이하를 제시합니다. 현장시험에서는 속도보다 검사 위치 정착시간과 판정 재현성을 우선 측정합니다.</p>
+
+    <div class="prosCons">
+      <section><h4>장점</h4><ul><li>제품형식마다 필요한 검사소만 선택해 혼류생산의 빈 공정과 대기를 줄일 수 있습니다.</li><li>위치·영상·시험값이 한 PC의 시간기준을 사용해 제품별 이력 결합이 단순해집니다.</li><li>검사소를 추가할 때 고정 컨베이어의 기계식 분기장치보다 소프트웨어 경로를 먼저 변경할 수 있습니다.</li></ul></section>
+      <hr>
+      <section><h4>한계</h4><ul><li>XPlanar 타일·무버와 검사장비의 초기 구성이 고정 컨베이어보다 복잡하고 투자비 비교가 필요합니다.</li><li>PC 자원이나 공통 런타임의 장애가 이송·검사·화면에 동시에 영향을 줄 수 있어 자원분리와 복구시간을 측정해야 합니다.</li><li>공개 발표에는 실제 최종검사의 처리량, 불량검출률과 장기 가동률 수치가 포함되지 않았습니다.</li></ul></section>
+    </div>
+
+    <h3>현장 적용과 사전검증</h3>
+    <p>적용대상은 형식별 시험순서가 다르고 기능시험·교정·외관판정을 한 제품이 순차 또는 선택적으로 거치는 최종검사 공정입니다. 당사 공정·PC 제어 검토에서는 소형 시험셀에 식별기, 두 검사소와 우회경로를 구성해 제품형식별 경로표와 결과 스키마를 먼저 고정합니다.</p>
+    <ol>
+      <li>Data Matrix 1,000개를 정상·오염·중복 조건으로 읽고 제품 ID 오인식과 미인식 수를 기록합니다.</li>
+      <li>두 제품형식에 서로 다른 검사순서를 배정하고 10,000회 이송에서 잘못 진입한 검사소 수와 경로 전환시간을 측정합니다.</li>
+      <li>무버 정지 뒤 카메라 촬영시각과 위치값을 같은 로그에 저장하고 LED 판정 반복성, 정착시간과 위치편차를 비교합니다.</li>
+      <li>기능시험값·교정값·영상판정·경로이력을 제품 ID별로 조회해 필수항목 누락률 0%를 합격기준으로 둡니다.</li>
+      <li>PC 부하를 단계별로 높이고 제어주기 최대값, 영상 누락, HMI 지연과 안전정지 반응시간을 각각 기록합니다.</li>
+      <li>카메라·검사기·EtherCAT 통신을 차례로 끊어 제품 격리, 재시험경로와 기록 복구가 지정 절차대로 동작하는지 확인합니다.</li>
+    </ol>
+
+    <figure class="techVisual reportVisual" aria-labelledby="fig261124b-title">
+      <figcaption><strong id="fig261124b-title">그림 2. 합격 여부보다 먼저 네 지점의 시간과 제품 ID를 맞춥니다</strong><span>① 코드 판독, ② 무버 정착, ③ 시험값 취득, ④ 결과 저장에 같은 제품 ID와 시각이 남는지 확인합니다. 한 지점이라도 어긋나면 검사판정의 추적성이 끊깁니다.</span></figcaption>
+      <div class="techVisualScroll visualScroll"><svg viewBox="0 0 1080 430" role="img" aria-labelledby="fig261124b-svg-title fig261124b-svg-desc">
+        <title id="fig261124b-svg-title">XPlanar 최종검사 셀의 측정 위치 네 곳</title>
+        <desc id="fig261124b-svg-desc">Data Matrix 판독기, XPlanar 정착위치, 기능시험과 카메라 지점, 산업용 PC 결과저장 지점에 측정표시가 있으며 모든 로그에서 제품 ID와 시각을 대조합니다.</desc>
+        <defs><marker id="arr261124b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#405969"/></marker></defs>
+        <path d="M115 210H945" stroke="#9ab5aa" stroke-width="18" stroke-linecap="round"/>
+        <g fill="#fff" stroke="#477c68" stroke-width="3"><rect x="45" y="125" width="180" height="165" rx="18"/><rect x="300" y="125" width="180" height="165" rx="18"/><rect x="555" y="125" width="180" height="165" rx="18"/><rect x="810" y="125" width="225" height="165" rx="18"/></g>
+        <g font-size="17" font-weight="700" text-anchor="middle"><text x="135" y="164">① 코드 판독</text><text x="390" y="164">② 무버 정착</text><text x="645" y="164">③ 검사 취득</text><text x="922" y="164">④ PC 결과 저장</text></g>
+        <g font-size="13" text-anchor="middle"><text x="135" y="198">제품 ID · 판독시각</text><text x="135" y="222">오인식 · 미인식</text><text x="390" y="198">목표·실제 위치</text><text x="390" y="222">정착시간 · 편차</text><text x="645" y="198">시험값 · 영상판정</text><text x="645" y="222">취득시각 · 누락</text><text x="922" y="198">경로·시험·교정·영상</text><text x="922" y="222">필수항목 완결률</text></g>
+        <g fill="#f2c14e" stroke="#856b25" stroke-width="2"><circle cx="135" cy="260" r="15"/><circle cx="390" cy="260" r="15"/><circle cx="645" cy="260" r="15"/><circle cx="922" cy="260" r="15"/></g>
+        <path d="M225 210h72M480 210h72M735 210h72" stroke="#405969" stroke-width="4" marker-end="url(#arr261124b)"/>
+        <rect x="230" y="335" width="620" height="58" rx="16" fill="#edf7f3" stroke="#477c68"/><text x="540" y="360" text-anchor="middle" font-size="15" font-weight="700">대조키: 동일 제품 ID + 공통 시각 + 공정순서</text><text x="540" y="382" text-anchor="middle" font-size="13">합격기준 예: 필수 기록 누락률 0%, 잘못된 검사소 진입 0회</text>
+      </svg></div>
+      <p class="visualNote">측정항목은 공개된 식별·위치·LED 검사, 기능시험·교정·문서화 역할을 사전검증 순서로 재배치했습니다. 합격기준은 당사 시험용 제안값입니다. 직접 제작한 측정 위치도·실제 배치도 아님.</p>
+    </figure>
+
+    <h3>관련 업체와 접촉 경로</h3>
+    <p><a href="https://www.beckhoff.com/ko-kr/" target="_blank" rel="noopener noreferrer"><b>Beckhoff Automation Korea</b></a>는 산업용 PC, TwinCAT, EtherCAT, XPlanar, TwinCAT Vision과 TwinSAFE를 공급합니다. 국내 영업은 sales-kr@beckhoff.com, 기술지원은 support-kr@beckhoff.com을 통해 시험셀의 무버 수, 카메라 동기와 안전구성을 협의할 수 있습니다.</p>
+
+    <details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+      <li id="term-261124-1"><b>PC · Personal Computer</b><span>TwinCAT 실시간 제어, 영상검사, HMI와 시험기록을 실행하는 산업용 컴퓨터입니다.</span></li>
+      <li id="term-261124-2"><b>SPS · Smart Production Solutions</b><span>2026년 11월 24일부터 26일까지 독일 뉘른베르크에서 열린 산업자동화 전시회입니다.</span></li>
+      <li id="term-261124-3"><b>PLC · Programmable Logic Controller</b><span>설비의 순서와 입출력을 주기적으로 실행하는 프로그램 가능 제어기 기능입니다.</span></li>
+      <li id="term-261124-4"><b>HMI · Human-Machine Interface</b><span>운전자가 검사상태, 경보와 제품별 결과를 보는 사람-기계 화면입니다.</span></li>
+      <li id="term-261124-5"><b>IT · Information Technology</b><span>시험이력 저장, 조회와 상위 정보시스템을 다루는 정보기술 영역입니다.</span></li>
+      <li id="term-261124-6"><b>OT · Operational Technology</b><span>이송, 시험, 안전과 같은 실제 설비운전을 제어하는 운영기술 영역입니다.</span></li>
+      <li id="term-261124-7"><b>I/O · Input/Output</b><span>센서 신호를 받아들이고 검사기와 구동장치에 명령을 내보내는 입출력입니다.</span></li>
+      <li id="term-261124-8"><b>LED · Light-Emitting Diode</b><span>단자 상태를 빛으로 표시하며 TwinCAT Vision의 점등검사 대상이 되는 발광소자입니다.</span></li>
+      <li id="term-261124-9"><b>Data Matrix</b><span>작은 면적에 제품 식별정보를 담는 2차원 코드입니다.</span></li>
+      <li id="term-261124-10"><b>EtherCAT</b><span>Beckhoff가 개발한 실시간 산업용 통신기술의 제품명입니다.</span></li>
+      <li id="term-261124-11"><b>XPlanar</b><span>평면 타일 위에서 무버를 독립적으로 이동시키는 Beckhoff의 제품명입니다.</span></li>
+      <li id="term-261124-12"><b>TwinCAT</b><span>산업용 PC에서 제어·모션·비전·HMI 기능을 실행하는 Beckhoff의 제품명입니다.</span></li>
+      <li id="term-261124-13"><b>TwinCAT Vision</b><span>코드, 위치와 LED 영상을 제어주기와 연결해 처리하는 Beckhoff의 제품명입니다.</span></li>
+      <li id="term-261124-14"><b>TwinSAFE</b><span>도어와 비상정지 등 안전기능을 구성하는 Beckhoff의 제품명입니다.</span></li>
+    </ol></section></details>
+
+    <h3>공식 근거자료</h3>
+    <ol class="sourceList">
+      <li><a href="https://www.beckhoff.com/en-en/company/press/beckhoff-at-sps-2026-hall-7-booth-406-2026-11.html" target="_blank" rel="noopener noreferrer">Beckhoff, One machine. Many automation functions. One system.</a> · 2026-11-18</li>
+      <li><a href="https://www.beckhoff.com/en-gb/company/events-and-dates/beckhoff-live-interactive/" target="_blank" rel="noopener noreferrer">Beckhoff, Live + Interactive at SPS 2026</a> · 2026-11-24 확인</li>
+      <li><a href="https://www.beckhoff.com/en-en/products/motion/xplanar-planar-motor-system/" target="_blank" rel="noopener noreferrer">Beckhoff, XPlanar planar motor system</a> · 2026-11-18 확인</li>
+      <li><a href="https://www.beckhoff.com/ko-kr/company/global-presence/republic-of-korea.html" target="_blank" rel="noopener noreferrer">Beckhoff Automation 대한민국, 공식 연락처</a> · 2026-11-24 확인</li>
+    </ol>
+    <p class="articleByline">김남인 · 선행제어기술팀 미래기술파트</p>
+  </div></article>
+</details>
+
+
+<details class="staticReport" id="static-261123">
   <summary><span class="staticDate">11.23</span><span class="staticTitle">제어도구 네 종의 프로젝트·장치정보를 공통 데이터공간에 모으는 Automate 360</span><span class="staticAxis">PC 제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">Automate 360</span><span class="tag">공통 데이터공간</span><span class="tag">EcoStruxure Automation Expert</span><span class="tag">제어·컴퓨팅</span><span class="tag">점진적 현대화</span></div><p>슈나이더 일렉트릭은 11월 22일 Automate 360을 공개했습니다. 새 기반은 EcoStruxure Automation Expert와 기존 Control Expert·Process Expert·Machine Expert의 프로젝트, 장치, 라이선스, 협업도구와 사이버보안을 공통 데이터공간에서 관리합니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -6499,6 +6628,7 @@ reports.push({"id":"261120","date":"2026-11-20","title":"작업 요구를 로봇
 reports.push({"id":"261121","date":"2026-11-21","title":"PLC·HMI·드라이브 설정을 프로젝트 안에서 생성·검증하는 자동화 엔지니어링 에이전트","axis":"인공지능 제어","category":"프로젝트 내장형 자동화 엔지니어링","tags":["Eigen Engineering Agent","TIA Portal","프로젝트 문맥","자기검증","장치 일괄설정"],"summary":"Siemens는 11월 18일 인도에서 Eigen Engineering Agent의 16개 고객 시범적용을 공개했습니다. 에이전트는 TIA Portal 프로젝트의 장치·논리·HMI 관계를 읽고 코드, 화면, 드라이브와 PROFINET 설정을 생성한 뒤 컴파일 오류와 프로젝트 제약을 다시 확인합니다.","discovery":"전기도면·장치목록과 TIA Portal의 FB·UDT·HMI 관계를 읽어 SCL·LAD, 화면, 드라이브·PROFINET 설정을 생성하고 컴파일 오류를 자기수정하는 프로젝트 내장형 에이전트","why":"11월 20일 리포트는 MCP로 기계설계·시뮬레이션·제조준비 도구를 연결했습니다. 11월 18일 Siemens 발표는 실제 자동화 프로젝트의 코드·HMI·장치설정·문서화가 함께 바뀌고, 인도 16개 고객과 두 고객사의 정량효과가 추가됐습니다. 최근 24시간에 더 큰 구조 변화가 없어 이번 주 반복 흐름의 구체적 후속을 선정했습니다.","study":"TIA Portal 프로젝트 문맥, FB·UDT 관계, SCL·LAD 생성, 컴파일 자기수정, WinCC Unified JavaScript, SINAMICS 일괄설정, PROFINET 토폴로지, 변경권한과 승인","companies":"한국지멘스는 TIA Portal·WinCC Unified·SINAMICS·PROFINET의 국내 기술지원과 교육을 제공하며, Pelican Rotoflex와 Z System Intelligent Controls는 공개 적용 고객사입니다.","poc":"모터 10대·I/O 40점·HMI 5화면 기준 프로젝트에서 장치·주소·태그 연결률, 컴파일 오류, 신호시험 통과율, 매개변수 일치율, 총시간과 수정횟수를 수동작업과 비교합니다.","caution":"공개 내용: 인도 16개 고객과 전 세계 19개국 100개 이상 시범적용, 두 고객사의 적용범위와 공급사 정량효과. 현장 확인: 국내 제공범위, 장치매핑 정확도, 안전코드 쓰기권한, 실제 I/O와 가상시험 일치율.","source_use":"11월 18일 Siemens India 공식발표를 중심으로 4월 글로벌 출시, 공식 기능목록, Automation Framework와 한국지멘스 기술지원 경로를 대조","sourceCount":6,"weekly":{"topic":"프로젝트 안의 자동화 설계 AI","change":"AI가 장치·논리·화면관계를 읽고 설정까지 생성합니다.","check":"장치매핑과 신호시험 통과율을 수동작업과 비교합니다."}});
 reports.push({"id":"261122","date":"2026-11-22","title":"반도체가 전류를 끊고 기계접점이 절연하는 1,500V 양방향 DC 콘택터","axis":"전기·제어","category":"고전압 DC 스위칭","tags":["SIRIUS 3QC1","1,500V DC","하이브리드 스위칭","양방향 전력","갈바닉 절연"],"summary":"Siemens는 11월 20일 반도체가 개폐전류를 처리하고 기계접점이 저손실 통전과 절연을 맡는 SIRIUS 3QC1을 발표했습니다. 제품은 최대 1,500V DC·600A를 양방향으로 개폐하며 공급사는 15만 회 이상의 수명을 제시했습니다.","discovery":"반도체가 직류전류를 아크 없이 끊고 기계접점이 저손실 통전과 갈바닉 절연을 맡아 1,500V·600A 양방향 전력흐름을 한 장치로 개폐하는 하이브리드 구조","why":"4월 반도체 차단기와 고체스위치는 보호와 고빈도 개폐가 중심이었습니다. 11월 20일 발표는 600A 주회로에서 저손실 통전·무아크 개폐·물리적 절연을 결합하고 충전·방전 양방향을 지원해 역할분담과 적용전력이 구체화됐습니다.","study":"직류 아크, 반도체 전류전환, 기계접점 절연, 양방향 개폐, 퓨즈협조, 개방시간, 잔류전압, 도통손실, 열화와 고장모드","companies":"한국지멘스는 SIRIUS 콘택터와 SENTRON 직류보호기기의 국내 상담을 제공하며 Open Direct Current Alliance는 직류공장 보호구역과 현장사례를 공개합니다.","poc":"양방향 직류전원·회생부하에서 100A·200A·300A 개방시험을 수행하고 개방시간, 양단 잔류전압, 아크광, 전압강하와 온도상승을 공통시각으로 측정합니다.","caution":"공개 내용: 최대 1,500V DC·600A, 15만 회 이상, 양방향, 24V DC 제어, -25~60°C. 현장 확인: 부하 인덕턴스별 개방시간, 도통손실, 퓨즈협조, 고장모드와 국내 출시시점.","source_use":"11월 20일 Siemens 공식발표와 제품페이지를 중심으로 4월 직류 포트폴리오, ODCA NExT Factory 사례와 한국지멘스 문의경로를 대조","sourceCount":6,"weekly":{"topic":"하이브리드 고전압 DC 콘택터","change":"반도체가 전류를 끊고 기계접점이 절연을 맡습니다.","check":"양방향 300A에서 아크·개방시간·온도상승을 잽니다."}});
 reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의 프로젝트·장치정보를 공통 데이터공간에 모으는 Automate 360","axis":"PC 제어","category":"소프트웨어 정의 자동화 운영기반","tags":["Automate 360","공통 데이터공간","EcoStruxure Automation Expert","제어·컴퓨팅","점진적 현대화"],"summary":"슈나이더 일렉트릭은 11월 22일 Automate 360을 공개했습니다. 새 기반은 EcoStruxure Automation Expert와 기존 Control Expert·Process Expert·Machine Expert의 프로젝트, 장치, 라이선스, 협업도구와 사이버보안을 공통 데이터공간에서 관리합니다.","discovery":"Automation Expert와 기존 Control Expert·Process Expert·Machine Expert를 프로젝트·장치·라이선스·협업·사이버보안·공통 데이터공간으로 묶는 제어·컴퓨팅 상위 운영기반","why":"기존 Automation Expert는 제어 애플리케이션의 하드웨어 독립 실행이 중심이었습니다. 11월 22일 발표는 신규·기존 네 제어환경의 운영정보를 한 기반에서 관리해 단계별 전환을 다루는 상위층을 새로 제시했습니다.","study":"공통 데이터공간, 혼합 프로젝트, 장치식별, 라이선스와 권한, Soft dPAC, 개방형 API, 웹 기반 HMI, 온라인 변경, 고가용성, 장애복구","companies":"한국 슈나이더 일렉트릭은 Automate 360과 Automation Expert 지원범위를 상담하며 한국 HPE는 산업용 PC·가상 제어기의 고가용성 인프라를 협의할 수 있습니다.","poc":"기존 제어기와 산업용 PC의 Soft dPAC을 한 시험셀에 등록하고 장치일치율, 가져오기 성공률, 온라인 변경중단, 권한차단과 장애복구시간을 공통시각으로 측정합니다.","caution":"공개 내용: 지원도구 네 종, 공통 데이터공간, 프로젝트·장치·라이선스·협업·사이버보안 관리. 현장 확인: 지원버전, 변환범위, 온라인 변경중단, 고가용성 전환과 복구목표.","source_use":"11월 22일 슈나이더 일렉트릭 발표를 중심으로 한국 제품페이지, 콘로시·dhp 적용사례, HPE 현대화 서비스와 8월 브로슈어를 대조","sourceCount":6,"weekly":{"topic":"제어·컴퓨팅 통합 운영기반","change":"서로 다른 제어도구의 프로젝트·장치정보를 한곳에서 관리합니다.","check":"혼합 프로젝트의 장치일치율과 온라인 변경중단을 잽니다."}});
+    reports.push({"id":"261124","date":"2026-11-24","title":"PC 한 대가 검사·이송·안전을 묶는 XPlanar 분기형 최종검사 셀","axis":"PC 제어","category":"분기형 PC 제어 최종검사","tags":["PC 기반 제어","XPlanar","최종검사","TwinCAT Vision","추적성"],"summary":"Beckhoff는 EtherCAT 단자 생산라인의 실제 최종검사를 축소한 시연기를 공개했습니다. 산업용 PC 한 대가 단자 식별, XPlanar 분기 이송, 기능시험·교정, LED 검사, 안전과 이력기록을 같은 시간기준으로 처리합니다.","discovery":"제품별 XPlanar 분기 이송과 기능시험·교정·LED 검사·안전·문서화를 산업용 PC의 공통 시간기준으로 묶은 실제 최종검사 적용구성","why":"기존 발표가 PC 기반 제어의 기능통합을 설명했다면 11월 18일 발표는 EtherCAT 단자 생산의 실제 최종검사에서 제품별 분기경로와 검사이력을 결합한 구성을 공개했습니다.","study":"제품식별, XPlanar 경로배정, 위치정착, 기능시험, 교정, TwinCAT Vision, TwinSAFE, 공통 시간기준, 제품별 추적성, 장애복구","companies":"Beckhoff Automation Korea는 산업용 PC, TwinCAT, EtherCAT, XPlanar, TwinCAT Vision과 TwinSAFE의 시험구성을 국내에서 협의할 수 있습니다.","poc":"두 제품형식에 다른 검사순서를 배정하고 10,000회 이송에서 오진입, 정착시간, 영상판정, 기록누락과 장애복구를 같은 제품 ID로 측정합니다.","caution":"공개 내용: 실제 EtherCAT 단자 최종검사의 축소형 구조와 장치 역할. 현장 확인: 처리량, 정착시간, 불량검출률, 장기가동률과 PC 장애복구.","source_use":"11월 18일 Beckhoff 공식 발표를 중심으로 11월 24일 전시 일정, XPlanar 공식 사양과 한국 공식 접촉경로를 대조","sourceCount":4,"weekly":{"topic":"제품별 분기 최종검사","change":"제품마다 필요한 시험소만 골라 이동하고 기록을 한 PC에 묶습니다.","check":"오진입·정착시간·판정누락·기록완결률을 함께 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -6860,7 +6990,7 @@ reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
       261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8],261122:[20,18,17,14,11,8],261123:[19,18,17,14,11,8]
-    };
+    ,261124:[18,18,14,14,14,9]};
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
