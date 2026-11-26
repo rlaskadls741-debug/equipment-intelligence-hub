@@ -153,7 +153,137 @@
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
 
-<details class="staticReport" id="static-261126" open>
+<details class="staticReport" id="static-261127" open>
+<summary><span class="staticDate">11.27</span><span class="staticTitle">8코어·이중 필드버스·직결 I/O를 한 DIN레일 PC에 묶은 Beckhoff CX54x0</span><span class="staticAxis">전기·제어</span></summary>
+<div class="staticMeta"><div class="tags"><span class="tag">PC 제어</span><span class="tag">CX54x0</span><span class="tag">EtherCAT</span><span class="tag">제어반 축소</span><span class="tag">멀티코어</span></div><p>Beckhoff는 최대 8코어, 16기가바이트 메모리, 독립형 2.5기가비트/초 이더넷 2개와 시스템·필드버스 모듈 2개를 한 DIN레일 제어기에 넣은 CX54x0을 공개했습니다. EtherCAT 단자를 본체에 직접 붙여 제어·화면·통신을 한 팬리스 PC에 구성합니다.</p></div>
+<article class="reportBody staticContent"><div class="newsArticle">
+<header class="newsHeader"><p class="newsKicker">DIN레일 멀티코어 제어기 · 2026-11-27</p><h2>8코어·이중 필드버스·직결 I/O를 한 DIN레일 PC에 묶은 Beckhoff CX54x0</h2><p class="newsLead">Beckhoff는 2026년 11월 24일 SPS 2026에서 Intel Atom x7 기반 CX54x0 임베디드 PC를 공개했습니다. 기존 CX52x0의 최대 4코어·8기가바이트·시스템 모듈 1개 구성을 최대 8코어·16기가바이트·모듈 2개로 확장하고, 독립형 2.5기가비트/초 이더넷 2개와 EtherCAT 단자 직결구조를 같은 계열 크기에 담았습니다.</p></header>
+<section class="articleSummary" aria-label="오늘 리포트 요약">
+<div><strong>오늘 전체 흐름</strong><p>SPS 2026 마지막 날까지 PC 기반 제어는 제어·화면·현장통신·엣지 처리를 한 하드웨어에서 분리 실행하는 구조로 모였습니다. CX54x0은 이 구성을 DIN레일 제어반 크기로 옮긴 장치입니다.</p></div>
+<div><strong>주요 기술</strong><p>CX54x0은 2·4·8코어, 8·16기가바이트 메모리, 독립형 2.5기가비트/초 이더넷 2개, 시스템·필드버스 모듈 2개, EtherCAT·K-bus 단자 직결과 1초 정전보존 기능을 제공합니다.</p></div>
+<div><strong>선정 이유</strong><p>11월 26일 새 공식발표에서는 더 큰 구조변화를 찾지 못했습니다. 11월 24일 공개된 CX54x0은 기존 CX52x0보다 연산성능만 높인 장치가 아니라 확장모듈 수와 현장 I/O 경로를 함께 바꿔 제어반 구성 차이가 구체적입니다.</p></div>
+</section>
+
+<h3>주요 내용</h3>
+<p><b>확인된 사실.</b> CX54x0은 Intel Atom x7000RE 계열을 사용하며 2·4·8코어와 8·16기가바이트 메모리를 제공합니다. 기본 인터페이스는 독립형 2.5기가비트/초 이더넷 2개, USB 3.1 포트 4개, DisplayPort 1개와 주문형 다목적 인터페이스입니다. 왼쪽에는 시스템·필드버스 확장모듈을 최대 2개 붙이고, 오른쪽에는 EtherCAT 또는 K-bus 단자를 별도 커플러 없이 직접 연결합니다.</p>
+<p><b>공급사 설명.</b> Beckhoff는 동일한 계열 크기에서 제어 프로젝트를 여러 코어에 나누고 실시간 태스크와 화면을 함께 실행할 수 있다고 설명합니다. 회사는 EtherCAT과 TwinCAT 조합이 마이크로초 단위 제어에 대응한다고 밝히지만 CX54x0의 축 수·주기·화면부하별 실행시간 표는 공개하지 않았습니다.</p>
+<p><b>작성자 해석.</b> 이번 변화의 실무효과는 중앙처리장치 성능보다 제어반 구성에 있습니다. 제어 PC 옆의 필드버스 게이트웨이와 EtherCAT 커플러 일부를 본체 확장부와 직결 I/O로 흡수하고 제어·화면·데이터수집 태스크를 코어별로 나누면 부품수와 배선을 줄일 수 있습니다. 한 장치에 기능이 모일수록 장애영향범위가 넓어지므로 태스크 격리와 교체복구 절차가 설계조건이 됩니다.</p>
+
+<h3>기술 구조와 작동 과정</h3>
+<p>24 V 직류전원이 들어오면 CX54x0은 CFast 카드의 운영체제와 TwinCAT 프로젝트를 기동합니다. TwinCAT 실시간 커널은 PLC 논리, 모션과 EtherCAT 통신을 지정된 코어와 태스크 주기에 배치하고 남은 코어는 HMI와 데이터처리 프로그램에 할당할 수 있습니다. Windows 11, TwinCAT/BSD 또는 Beckhoff RT Linux를 선택해 제어전용 또는 제어·화면 결합형으로 구성합니다.</p>
+<p>내부 EtherCAT 마스터 포트는 오른쪽 I/O 전원단자를 통해 EtherCAT 단자로 이어집니다. K-bus 단자를 붙이면 본체가 단자방식을 자동으로 전환합니다. 독립형 이더넷 2개는 일반 IT 통신, 추가 EtherCAT 마스터 또는 케이블 이중화에 사용할 수 있습니다. 주문형 EtherCAT 슬레이브 인터페이스를 선택하면 여러 제어기를 한 EtherCAT 망에서 동기화할 수 있습니다.</p>
+<p>전원이 끊기면 내장 축전식 1초 UPS가 지속변수를 교체형 CFast 카드에 저장합니다. 현장에서는 카드를 예비 본체로 옮겨 운영체제·TwinCAT·사용자 프로젝트를 복구할 수 있습니다. 팬리스 방열과 영하 25도~영상 60도 동작범위는 제어반 내부의 연속운전을 대상으로 합니다.</p>
+
+<figure class="techVisual reportVisual" aria-labelledby="fig261127a-title"><figcaption><strong id="fig261127a-title">그림 1. CX52x0과 CX54x0의 제어반 구성을 나란히 비교합니다</strong><span>왼쪽은 최대 4코어·8기가바이트·확장모듈 1개인 CX52x0입니다. 오른쪽은 최대 8코어·16기가바이트·확장모듈 2개와 더 빠른 이더넷을 같은 계열 크기에 구성한 CX54x0입니다.</span></figcaption>
+<div class="techVisualScroll visualScroll"><svg viewBox="0 0 1120 610" role="img" aria-labelledby="fig261127a-svg-title fig261127a-svg-desc"><title id="fig261127a-svg-title">CX52x0과 CX54x0의 하드웨어 연결구조 비교</title><desc id="fig261127a-svg-desc">기존 CX52x0은 최대 4코어, 8기가바이트, 1기가비트 이더넷 두 개와 확장모듈 한 개를 제공합니다. CX54x0은 최대 8코어, 16기가바이트, 2.5기가비트 이더넷 두 개와 확장모듈 두 개를 제공하며 두 제품 모두 EtherCAT 단자를 직접 연결합니다.</desc>
+<defs><marker id="arr261127a" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#405969"/></marker></defs>
+<rect x="20" y="24" width="500" height="560" rx="24" fill="#fff6f1" stroke="#c99076"/><text x="50" y="66" font-size="22" font-weight="700" fill="#75432e">기존 · CX52x0</text>
+<rect x="220" y="120" width="230" height="285" rx="22" fill="#e9eef2" stroke="#667987" stroke-width="4"/><text x="335" y="162" text-anchor="middle" font-size="18" font-weight="700">DIN레일 PC</text>
+<rect x="70" y="180" width="120" height="120" rx="14" fill="#fff" stroke="#a76f58" stroke-width="3"/><text x="130" y="218" text-anchor="middle" font-size="14" font-weight="700">확장 1개</text><text x="130" y="250" text-anchor="middle" font-size="12">필드버스</text><path d="M192 240h24" stroke="#405969" stroke-width="4" marker-end="url(#arr261127a)"/>
+<g fill="#fff" stroke="#607987"><rect x="250" y="200" width="170" height="50" rx="10"/><rect x="250" y="270" width="170" height="50" rx="10"/><rect x="250" y="340" width="170" height="50" rx="10"/></g><text x="335" y="231" text-anchor="middle" font-size="13">최대 4코어 · 8기가바이트</text><text x="335" y="301" text-anchor="middle" font-size="13">이더넷 1기가비트/초 ×2</text><text x="335" y="371" text-anchor="middle" font-size="13">DVI-D · USB 3.0</text>
+<rect x="78" y="455" width="384" height="82" rx="16" fill="#fff" stroke="#a76f58"/><text x="270" y="488" text-anchor="middle" font-size="15" font-weight="700">EtherCAT·K-bus 단자 직결</text><text x="270" y="516" text-anchor="middle" font-size="13">추가 필드버스는 별도 장치 검토</text>
+<rect x="600" y="24" width="500" height="560" rx="24" fill="#eef9f7" stroke="#4c9b91"/><text x="630" y="66" font-size="22" font-weight="700" fill="#176c63">신형 · CX54x0</text>
+<rect x="825" y="120" width="230" height="285" rx="22" fill="#dff3ef" stroke="#297e74" stroke-width="4"/><text x="940" y="162" text-anchor="middle" font-size="18" font-weight="700">DIN레일 PC</text>
+<rect x="625" y="140" width="155" height="92" rx="14" fill="#fff" stroke="#25877a" stroke-width="3"/><rect x="625" y="260" width="155" height="92" rx="14" fill="#fff" stroke="#25877a" stroke-width="3"/><text x="702" y="178" text-anchor="middle" font-size="14" font-weight="700">확장모듈 1</text><text x="702" y="207" text-anchor="middle" font-size="12">예: PROFIBUS</text><text x="702" y="298" text-anchor="middle" font-size="14" font-weight="700">확장모듈 2</text><text x="702" y="327" text-anchor="middle" font-size="12">예: CAN</text><path d="M782 186h39M782 306h39" stroke="#405969" stroke-width="4" marker-end="url(#arr261127a)"/>
+<g fill="#fff" stroke="#25877a"><rect x="850" y="200" width="175" height="50" rx="10"/><rect x="850" y="270" width="175" height="50" rx="10"/><rect x="850" y="340" width="175" height="50" rx="10"/></g><text x="937" y="231" text-anchor="middle" font-size="13">최대 8코어 · 16기가바이트</text><text x="937" y="301" text-anchor="middle" font-size="13">이더넷 2.5기가비트/초 ×2</text><text x="937" y="371" text-anchor="middle" font-size="13">DisplayPort · USB 3.1</text>
+<rect x="660" y="455" width="384" height="82" rx="16" fill="#fff" stroke="#25877a"/><text x="852" y="488" text-anchor="middle" font-size="15" font-weight="700">EtherCAT·K-bus 단자 직결 유지</text><text x="852" y="516" text-anchor="middle" font-size="13">제어·화면·통신 태스크를 코어별 분리</text></svg></div>
+<p class="visualNote">코어·메모리·통신속도·확장모듈 수는 Beckhoff의 CX52x0·CX54x0 공식 제품자료를 대조했습니다. 장치 외형을 추정하지 않고 기능블록만 표시한 직접 제작 설명도·실제 제어반 배치도 아님.</p></figure>
+
+<h3>기존 방식과 달라진 점</h3>
+<p>CX52x0은 Intel Atom 계열 2·4코어, 4·8기가바이트 메모리, 독립형 1기가비트/초 이더넷 2개와 왼쪽 확장모듈 1개를 제공합니다. CX54x0은 최대 8코어와 16기가바이트로 늘리고 네트워크를 2.5기가비트/초로 바꾸며 확장모듈을 2개까지 허용합니다. 기존에도 EtherCAT 단자를 직접 연결했으므로 직결 I/O 자체는 신기능이 아닙니다. 이번 차이는 직결 I/O를 유지하면서 제어·화면·복수 필드버스·엣지 처리를 한 본체에 배치할 수 있는 자원과 포트가 늘어난 점입니다.</p>
+<p>기존에는 빠른 축 태스크가 화면·로그·게이트웨이 부하와 같은 중앙처리장치 자원을 두고 경쟁하거나 별도 PC로 분리됐습니다. CX54x0과 TwinCAT 3 조합은 실시간 제어태스크를 지정 코어에 두고 화면·데이터처리를 다른 코어로 분리합니다. 실제 주기보장은 코어 수가 아니라 태스크 우선순위, 통신부하와 열조건을 포함한 장비별 측정값으로 정해야 합니다.</p>
+
+<div class="prosCons"><section><h4>장점</h4><ul>
+<li>한 DIN레일 본체에 확장모듈 2개와 EtherCAT 단자를 붙여 별도 커플러·게이트웨이·배선을 줄일 수 있습니다.</li>
+<li>제어·모션·화면·데이터수집 태스크를 최대 8코어에 나누어 비실시간 부하가 제어주기에 미치는 영향을 낮출 수 있습니다.</li>
+<li>교체형 CFast 카드와 1초 UPS가 정전 직전 지속변수 저장과 예비 본체 복구절차를 단순화합니다.</li>
+<li>Windows 11, TwinCAT/BSD와 Beckhoff RT Linux 가운데 장비정책에 맞는 운영체제를 선택할 수 있습니다.</li>
+</ul></section><hr><section><h4>한계</h4><ul>
+<li>Beckhoff는 CX54x0을 적용한 고객 생산설비와 축 수·주기·온도별 성능측정값을 공개하지 않았습니다.</li>
+<li>제어·화면·통신이 한 본체에 모이면 본체나 운영체제 장애가 여러 기능을 동시에 멈출 수 있습니다.</li>
+<li>확장모듈과 포트 수가 늘어도 장비별 프로토콜, 케이블 이중화와 보안구역 설계는 별도로 필요합니다.</li>
+<li>영하 25도~영상 60도 정격은 본체 주변온도 기준이므로 밀폐 제어반의 내부온도를 실제 부하에서 측정해야 합니다.</li>
+</ul></section></div>
+
+<h3>현장 적용과 사전검증</h3>
+<p><b>공개 적용사례.</b> Beckhoff는 11월 24~26일 SPS 2026 부스와 공식 생중계에서 CX54x0을 동일 계열 크기의 고성능 제어기로 소개했습니다. 공개 적용범위는 일반 PLC, 다축 모션, 현대식 HMI와 엣지 처리이며 특정 고객 생산라인의 가동성과는 공개자료에 포함되지 않았습니다.</p>
+<p><b>당사 공정·PC 제어와 연결해 볼 부분.</b> 일반 제조설비에서 실시간 PLC·모션, 현장 HMI, 설비데이터 전처리와 서로 다른 필드버스를 한 DIN레일 PC에 배치할 때 비교대상이 됩니다. 적용판단은 기능통합 수보다 기존 제어주기 유지, 제어반 부품수 감소, 장애격리와 예비품 교체시간을 함께 측정해야 합니다.</p>
+<ol>
+<li><b>기준구성 고정.</b> 기존 제어기에서 1밀리초 제어태스크, EtherCAT I/O 수, HMI 화면수, 로그주기와 네트워크 사용량을 기록합니다.</li>
+<li><b>동일부하 이식.</b> CX54x0에 같은 제어논리와 I/O 구성을 넣고 실시간 태스크와 HMI·로그 태스크를 서로 다른 코어에 배치합니다.</li>
+<li><b>부하시험.</b> HMI 갱신과 로그저장을 최대로 실행한 상태에서 1천만 제어주기 동안 주기누락 0회, 최대지터가 기존 대비 20% 이내인지 확인합니다.</li>
+<li><b>통신시험.</b> 두 이더넷과 확장 필드버스에 정격 시험트래픽을 넣고 EtherCAT 프레임누락, I/O 갱신지연과 연결복구시간을 측정합니다.</li>
+<li><b>열시험.</b> 제어반 주변온도 25도·40도·55도에서 중앙처리장치 부하 80%를 8시간 유지하고 스로틀링, 태스크지터와 본체온도를 기록합니다.</li>
+<li><b>정전·복구시험.</b> 24 V 전원을 20회 차단해 1초 UPS의 지속변수 저장성공률 100%와 CFast 카드를 예비 본체로 옮긴 뒤 운전준비 시간을 확인합니다.</li>
+<li><b>변경승인.</b> 주기·온도·통신·복구값과 제거 가능한 커플러·게이트웨이·배선을 기존 제어반 부품목록과 비교해 양산구성을 결정합니다.</li>
+</ol>
+
+<figure class="techVisual reportVisual" aria-labelledby="fig261127b-title"><figcaption><strong id="fig261127b-title">그림 2. 제어주기·통신·열·정전보존을 같은 시험에서 측정합니다</strong><span>실시간 태스크와 HMI·로그를 코어그룹으로 나누고 EtherCAT I/O·필드버스·이더넷을 동시에 사용합니다. 전원과 온도조건을 바꾸면서 지터와 복구시간을 기록합니다.</span></figcaption>
+<div class="techVisualScroll visualScroll"><svg viewBox="0 0 1120 580" role="img" aria-labelledby="fig261127b-svg-title fig261127b-svg-desc"><title id="fig261127b-svg-title">CX54x0 사전검증 구성과 측정위치</title><desc id="fig261127b-svg-desc">전원시험기와 온도조건이 CX54x0에 연결됩니다. 제어기 코어는 실시간 제어와 화면·로그로 분리됩니다. EtherCAT I/O, 필드버스 두 개, 이더넷 부하를 동시에 연결하고 측정 PC가 주기지터, 통신복구, 온도와 데이터보존을 기록합니다.</desc>
+<defs><marker id="arr261127b" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#405969"/></marker></defs>
+<rect x="25" y="90" width="190" height="105" rx="18" fill="#fff4e8" stroke="#b27a39"/><text x="120" y="128" text-anchor="middle" font-size="16" font-weight="700">24 V 전원시험</text><text x="120" y="160" text-anchor="middle" font-size="13">20회 차단 · 저장확인</text>
+<rect x="25" y="270" width="190" height="105" rx="18" fill="#fff4e8" stroke="#b27a39"/><text x="120" y="308" text-anchor="middle" font-size="16" font-weight="700">온도·부하조건</text><text x="120" y="340" text-anchor="middle" font-size="13">25·40·55도 · 부하 80%</text>
+<rect x="310" y="45" width="400" height="410" rx="26" fill="#eef9f7" stroke="#278378" stroke-width="4"/><text x="510" y="85" text-anchor="middle" font-size="21" font-weight="700">CX54x0</text>
+<rect x="350" y="125" width="320" height="110" rx="18" fill="#fff" stroke="#278378"/><text x="510" y="160" text-anchor="middle" font-size="16" font-weight="700">실시간 코어그룹</text><text x="510" y="192" text-anchor="middle" font-size="13">PLC · 모션 · EtherCAT · 1밀리초</text><text x="510" y="216" text-anchor="middle" font-size="13">최대지터 · 주기누락</text>
+<rect x="350" y="275" width="320" height="110" rx="18" fill="#fff" stroke="#278378"/><text x="510" y="310" text-anchor="middle" font-size="16" font-weight="700">화면·로그 코어그룹</text><text x="510" y="342" text-anchor="middle" font-size="13">HMI 최대갱신 · 데이터저장</text><text x="510" y="366" text-anchor="middle" font-size="13">부하율 · 온도 · 스로틀링</text>
+<path d="M217 143h89M217 323h89" stroke="#405969" stroke-width="5" marker-end="url(#arr261127b)"/>
+<rect x="790" y="42" width="280" height="82" rx="16" fill="#edf4ff" stroke="#477aa8"/><text x="930" y="77" text-anchor="middle" font-size="16" font-weight="700">EtherCAT I/O·서보</text><text x="930" y="104" text-anchor="middle" font-size="13">프레임누락 · I/O 지연</text>
+<rect x="790" y="150" width="280" height="82" rx="16" fill="#edf4ff" stroke="#477aa8"/><text x="930" y="185" text-anchor="middle" font-size="16" font-weight="700">필드버스 모듈 2개</text><text x="930" y="212" text-anchor="middle" font-size="13">동시통신 · 복구시간</text>
+<rect x="790" y="258" width="280" height="82" rx="16" fill="#edf4ff" stroke="#477aa8"/><text x="930" y="293" text-anchor="middle" font-size="16" font-weight="700">2.5기가비트망 부하</text><text x="930" y="320" text-anchor="middle" font-size="13">80% 트래픽 · HMI 응답</text>
+<rect x="790" y="382" width="280" height="105" rx="16" fill="#fff8df" stroke="#aa8b2f"/><text x="930" y="418" text-anchor="middle" font-size="16" font-weight="700">공통 측정 PC</text><text x="930" y="448" text-anchor="middle" font-size="13">지터 · 온도 · 프레임 · 재기동</text><text x="930" y="472" text-anchor="middle" font-size="13">기존 제어기와 동일조건 비교</text>
+<path d="M712 150h74M712 220h74M712 320h74M712 410h74" stroke="#405969" stroke-width="5" marker-end="url(#arr261127b)"/></svg></div>
+<p class="visualNote">1밀리초 태스크, 1천만 주기, 80% 부하와 20회 전원차단은 비교시험 제안조건입니다. 제품 보증값이 아니며 기존 제어기와 동일조건에서 상대값을 판정합니다. 직접 제작한 측정 위치도·실제 시험설비 배치도 아님.</p></figure>
+
+<h3>관련 업체와 접촉 경로</h3>
+<p><a href="https://www.beckhoff.com/ko-kr/" target="_blank" rel="noopener noreferrer"><b>Beckhoff Automation Korea</b></a>는 산업용 PC, TwinCAT, EtherCAT I/O와 모션 제품을 국내에서 지원합니다. CX54x0 공급시기, 운영체제 선택, 코어별 태스크 설계와 필드버스 모듈 조합은 info-kr@beckhoff.com 또는 02-2107-3242로 문의할 수 있습니다.</p>
+
+<details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+<li id="term-261127-1"><b>PC · Personal Computer</b><span>제어논리, 화면과 데이터처리를 소프트웨어로 실행하는 범용 컴퓨터 구조입니다.</span></li>
+<li id="term-261127-2"><b>CPU · Central Processing Unit</b><span>제어태스크와 화면·데이터 프로그램의 명령을 실행하는 중앙처리장치입니다.</span></li>
+<li id="term-261127-3"><b>RAM · Random Access Memory</b><span>실행 중인 제어프로그램과 데이터를 임시 저장하는 주기억장치입니다.</span></li>
+<li id="term-261127-4"><b>PLC · Programmable Logic Controller</b><span>입출력 신호와 순서논리를 정해진 주기로 처리하는 산업용 제어기능입니다.</span></li>
+<li id="term-261127-5"><b>HMI · Human-Machine Interface</b><span>설비상태를 표시하고 작업자가 운전값을 입력하는 화면입니다.</span></li>
+<li id="term-261127-6"><b>I/O · Input/Output</b><span>센서 입력과 밸브·모터 등의 출력신호를 제어기와 주고받는 입출력입니다.</span></li>
+<li id="term-261127-7"><b>IT · Information Technology</b><span>상위 데이터망과 서버·업무시스템을 다루는 정보기술 영역입니다.</span></li>
+<li id="term-261127-8"><b>USB · Universal Serial Bus</b><span>저장장치와 주변기기를 연결하는 범용 직렬통신 포트입니다.</span></li>
+<li id="term-261127-9"><b>UPS · Uninterruptible Power Supply</b><span>전원차단 때 지속변수를 저장할 시간을 제공하는 무정전 전원기능입니다.</span></li>
+<li id="term-261127-10"><b>OCT · One Cable Technology</b><span>한 케이블로 전원과 통신을 전달하는 Beckhoff 연결기술이며 CX54x0 전원부가 대응합니다.</span></li>
+<li id="term-261127-11"><b>RT · Real-Time</b><span>정해진 시간 안에 제어연산을 끝내도록 실행시간을 관리하는 실시간 방식입니다.</span></li>
+<li id="term-261127-12"><b>BSD · Berkeley Software Distribution</b><span>TwinCAT/BSD의 기반이 되는 유닉스 계열 운영체제입니다.</span></li>
+<li id="term-261127-13"><b>EtherCAT · Ethernet for Control Automation Technology</b><span>서보와 I/O를 짧은 주기로 동기 제어하는 산업용 이더넷 통신입니다.</span></li>
+<li id="term-261127-14"><b>K-bus</b><span>Beckhoff 버스터미널을 연결하는 제품계열 전용 내부버스 이름입니다.</span></li>
+<li id="term-261127-15"><b>PROFIBUS · Process Field Bus</b><span>제어기와 현장장치를 연결하는 산업용 필드버스입니다.</span></li>
+<li id="term-261127-16"><b>CAN · Controller Area Network</b><span>장치 간 제어메시지를 우선순위에 따라 전달하는 직렬통신망입니다.</span></li>
+<li id="term-261127-17"><b>CFast</b><span>운영체제, TwinCAT 프로젝트와 지속변수를 저장하는 교체형 산업용 메모리카드 규격입니다.</span></li>
+<li id="term-261127-18"><b>SPS · Smart Production Solutions</b><span>2026년 11월 24~26일 독일 뉘른베르크에서 열린 산업자동화 전시회입니다.</span></li>
+<li id="term-261127-19"><b>CX54x0</b><span>최대 8코어와 필드버스 모듈 2개를 지원하는 Beckhoff 임베디드 PC 제품군입니다.</span></li>
+<li id="term-261127-20"><b>CX52x0</b><span>CX54x0과 차이를 비교하기 위해 사용한 이전 세대 Beckhoff 임베디드 PC 제품군입니다.</span></li>
+<li id="term-261127-21"><b>TwinCAT</b><span>PC에서 PLC·모션·I/O와 HMI를 실행하는 Beckhoff 자동화 소프트웨어 제품명입니다.</span></li>
+<li id="term-261127-22"><b>DisplayPort</b><span>제어기에서 외부 화면으로 영상신호를 보내는 디지털 영상 인터페이스 규격입니다.</span></li>
+<li id="term-261127-23"><b>Intel Atom x7·x7000RE</b><span>CX54x0에 사용되는 Intel의 저전력 산업용 중앙처리장치 제품명입니다.</span></li>
+<li id="term-261127-24"><b>Windows 11</b><span>CX54x0이 지원하는 Microsoft의 운영체제 제품명입니다.</span></li>
+<li id="term-261127-25"><b>Linux</b><span>Beckhoff RT Linux의 기반이 되는 개방형 운영체제 계열입니다.</span></li>
+<li id="term-261127-26"><b>DVI-D · Digital Visual Interface-Digital</b><span>CX52x0의 기존 디지털 영상출력 규격이며 CX54x0의 DisplayPort와 비교했습니다.</span></li>
+<li id="term-261127-27"><b>DIN · Deutsches Institut für Normung</b><span>제어반 안에서 장치를 고정하는 표준 금속레일 규격의 명칭입니다.</span></li>
+</ol></section></details>
+
+<h3>공식 근거자료</h3>
+<ol class="sourceList">
+<li><a href="https://www.beckhoff.com/en-gb/company/press/cx54x0-embedded-pc-series-2026-11.html" target="_blank" rel="noopener noreferrer">Beckhoff, Next-generation multi-core computing power on the DIN rail</a> · 2026-11-24</li>
+<li><a href="https://www.beckhoff.com/en-en/products/ipc/embedded-pcs/cx5400-intel-atom-r-x7/" target="_blank" rel="noopener noreferrer">Beckhoff, CX54x0 Embedded PC series</a> · 2026-11-27 확인</li>
+<li><a href="https://www.beckhoff.com/en-us/products/ipc/embedded-pcs/cx5200-intel-atom-r-x/" target="_blank" rel="noopener noreferrer">Beckhoff, CX52x0 Embedded PC series</a> · 2026-11-27 확인</li>
+<li><a href="https://infosys.beckhoff.com/content/1033/cx52x0/90183913079044296459.html" target="_blank" rel="noopener noreferrer">Beckhoff Information System, CX52x0 product overview</a> · 2026-11-27 확인</li>
+<li><a href="https://www.beckhoff.com/en-en/company/events-and-dates/beckhoff-live-interactive/" target="_blank" rel="noopener noreferrer">Beckhoff Live + Interactive at SPS 2026</a> · 2026-11-24~26</li>
+<li><a href="https://www.beckhoff.com/ko-kr/company/global-presence/republic-of-korea-geumcheon-seoul-headquarters.html" target="_blank" rel="noopener noreferrer">Beckhoff Automation Korea 본사 연락처</a> · 2026-11-27 확인</li>
+</ol>
+<p class="articleByline">김남인 · 선행제어기술팀 미래기술파트</p>
+</div></article></details>
+
+
+
+
+
+<details class="staticReport" id="static-261126">
   <summary><span class="staticDate">11.26</span><span class="staticTitle">외장센서·배터리 없이 자속·온도·진동 진단을 모터에 내장한 ABB Intelleqt</span><span class="staticAxis">전기·제어</span></summary>
   <div class="staticMeta"><div class="tags"><span class="tag">ABB Intelleqt</span><span class="tag">지능형 모터</span><span class="tag">에너지 하베스팅</span><span class="tag">엣지 진단</span><span class="tag">상태감시</span></div><p>ABB는 11월 24일 공극 자속·온도·진동 센서, 에너지 하베스팅과 엣지 진단을 제조단계에 내장한 Intelleqt 저압모터를 공개했습니다. 외장센서 설치와 배터리 교체 없이 첫 회전부터 모터 상태데이터를 생성합니다.</p></div>
   <article class="reportBody staticContent"><div class="newsArticle">
@@ -6898,6 +7028,7 @@ reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의
     reports.push({"id":"261124","date":"2026-11-24","title":"SPS 2026이 다시 꺼낸 XPlanar 분기검사, 200종을 3초 간격으로 처리","axis":"PC 제어","category":"분기형 PC 제어 최종검사","tags":["PC 기반 제어","XPlanar","최종검사","TwinCAT Vision","추적성"],"summary":"Beckhoff는 2021년부터 운용한 EtherCAT 단자 분기형 최종검사를 SPS 2026에 다시 전시했습니다. 2023년 공식 사례는 200종 이상을 교대당 약 1만 개, 평균 3초 간격으로 처리한다고 밝혔습니다.","discovery":"제품별 XPlanar 분기 이송과 기능시험·교정·LED 검사·안전·문서화를 산업용 PC의 공통 시간기준으로 묶은 실제 최종검사 적용구성","why":"2026년의 새 구조는 아니지만 11월 18일 최신 발표가 다시 대표사례로 채택했습니다. 2023년 공식 생산수치와 함께 PC 제어 통합의 반복 흐름과 실제 처리량을 확인할 수 있어 선정했습니다.","study":"제품식별, XPlanar 경로배정, 위치정착, 기능시험, 교정, TwinCAT Vision, TwinSAFE, 공통 시간기준, 제품별 추적성, 장애복구","companies":"Beckhoff Automation Korea는 산업용 PC, TwinCAT, EtherCAT, XPlanar, TwinCAT Vision과 TwinSAFE의 시험구성을 국내에서 협의할 수 있습니다.","poc":"두 제품형식에 다른 검사순서를 배정하고 10,000회 이송에서 오진입, 정착시간, 영상판정, 기록누락과 장애복구를 같은 제품 ID로 측정합니다.","caution":"공개 내용: 실제 EtherCAT 단자 최종검사의 축소형 구조와 장치 역할. 현장 확인: 처리량, 정착시간, 불량검출률, 장기가동률과 PC 장애복구.","source_use":"11월 18일 최신 발표와 11월 24일 전시 일정을 중심으로 2023년 생산수치, XPlanar 공식 사양과 한국 접촉경로를 대조","sourceCount":5,"weekly":{"topic":"제품별 분기 최종검사","change":"제품마다 필요한 시험소만 골라 이동하고 기록을 한 PC에 묶습니다.","check":"오진입·정착시간·판정누락·기록완결률을 함께 잽니다."}});
     reports.push({"id":"261125","date":"2026-11-25","title":"현장 AI를 PROFINET으로 PLC에 연결해 재학습·재배포까지 묶은 Industrial AI Suite","axis":"인공지능 제어","category":"현장 AI 폐쇄형 운영구조","tags":["Industrial AI Suite","Industrial Edge","PROFINET","현장 추론","모델 재배포"],"summary":"Siemens는 Industrial Edge의 AI 모델을 PROFINET으로 SIMATIC S7에 연결하고, 생산데이터로 모델을 온프레미스에서 재학습·검증·재배포하는 폐쇄형 운영구조를 발표했습니다.","discovery":"Industrial Edge 현장추론을 PROFINET으로 SIMATIC S7 제어에 연결하고 생산데이터 재학습·검증·재배포를 같은 모델 운영경로로 묶은 구조","why":"4월 공개판은 영상과 MES·제어기 데이터를 결합한 재학습이 중심이었습니다. 11월 24일 발표는 PROFINET 제어연결과 온프레미스 재학습·검증·재배포를 폐쇄형 운전주기로 명시했습니다.","study":"AI SDK 패키징, AI Asset Manager, AI Inference Server, Industrial Edge, PROFINET, PLC 유효성검사, 온프레미스 재학습, 단계적 배포, 롤백, 지연측정","companies":"한국지멘스 디지털 인더스트리는 Industrial Edge, SIMATIC S7, PROFINET과 현장 자동화 기술지원을 제공합니다.","poc":"고정 시험데이터와 PROFINET 부하조건에서 추론일치, 왕복지연, PLC 유효성검사, 통신단절 복귀, 모델 단계배포와 롤백시간을 측정합니다.","caution":"공개 내용: Edge 추론, PROFINET 제어연결, 온프레미스 재학습·검증·재배포 구조. 현장 확인: 추론 왕복지연, 제어주기, 모델전환과 복귀시간.","source_use":"11월 24일 Siemens SPS 공식발표를 중심으로 Industrial AI Suite 아키텍처, 4월 공개판과 한국 기술지원 경로를 대조","sourceCount":4,"weekly":{"topic":"현장 AI 재학습·재배포","change":"추론값을 PLC 제어에 연결하고 생산데이터로 모델을 다시 배포합니다.","check":"추론지연·유효값 차단·통신단절 복귀·롤백시간을 잽니다."}});
     reports.push({"id":"261126","date":"2026-11-26","title":"외장센서·배터리 없이 자속·온도·진동 진단을 모터에 내장한 ABB Intelleqt","axis":"전기·제어","category":"공장내장형 지능모터","tags":["ABB Intelleqt","지능형 모터","에너지 하베스팅","엣지 진단","상태감시"],"summary":"ABB는 공극 자속·온도·진동 센서, 에너지 하베스팅과 엣지 진단을 제조단계에 내장한 Intelleqt 저압모터를 공개했습니다. 외장센서와 배터리 없이 첫 회전부터 상태데이터를 생성합니다.","discovery":"공극 자속·온도·진동 센서, 에너지 하베스팅, 엣지 진단과 무선통신을 11~1,300 kW 저압모터 제조단계에 통합한 구조","why":"기존 Smart Sensor는 모터 외함에서 표면온도·진동을 배터리로 주기 측정했습니다. Intelleqt는 자속측정·자체발전·연속 엣지 진단을 모터 내부기능으로 바꿨습니다.","study":"공극 자속, 온도·진동, 에너지 하베스팅, 엣지 진단, LED 상태, MQTT, 데이터 소유권, 기준센서 비교, 오경보, 통신복구","companies":"ABB코리아는 저압모터, 드라이브와 디지털 상태감시를 지원하며 Intelleqt의 국내 출시와 공동검증 범위를 협의할 수 있습니다.","poc":"동일 부하에서 내장값과 기준센서값을 비교하고 정렬불량·불평형·냉각방해 조건의 경고선행시간, 오경보, 데이터누락과 복구시간을 측정합니다.","caution":"공개 내용: 11~1,300 kW 사양, 자속·온도·진동, 자체발전, 엣지진단과 무선연결. 현장 확인: 측정편차, 오경보·미검출, 내장기능 정비와 국내 출시.","source_use":"11월 24일 ABB 공식발표와 제품페이지·리플릿을 중심으로 기존 Smart Sensor 기술자료와 한국 고객센터를 대조","sourceCount":5,"weekly":{"topic":"센서·진단 내장 모터","change":"외장센서와 배터리 대신 모터가 자체발전해 상태를 연속 진단합니다.","check":"측정편차·경고선행시간·오경보·통신복구를 함께 잽니다."}});
+    reports.push({"id":"261127","date":"2026-11-27","title":"8코어·이중 필드버스·직결 I/O를 한 DIN레일 PC에 묶은 Beckhoff CX54x0","axis":"전기·제어","category":"DIN레일 멀티코어 제어기","tags":["PC제어","CX54x0","EtherCAT","제어반 축소","멀티코어"],"summary":"Beckhoff CX54x0은 최대 8코어·16기가바이트, 2.5기가비트/초 이더넷 2개, 필드버스 모듈 2개와 EtherCAT 단자 직결을 한 DIN레일 PC에 묶습니다.","discovery":"최대 8코어·16기가바이트, 이중 2.5기가비트 이더넷, 시스템·필드버스 모듈 2개와 EtherCAT·K-bus 단자 직결을 같은 계열 크기에 통합한 구조","why":"기존 CX52x0은 최대 4코어·8기가바이트·확장모듈 1개였습니다. CX54x0은 연산자원과 필드버스 확장을 함께 늘려 제어·화면·통신 통합범위를 바꿨습니다.","study":"멀티코어 태스크 분리, EtherCAT 직결, 이중 필드버스, 2.5기가비트 이더넷, 1초 UPS, CFast 교체복구, 제어주기 지터, 열부하","companies":"Beckhoff Automation Korea는 산업용 PC, TwinCAT, EtherCAT I/O와 모션 제품의 국내 영업·기술지원을 제공합니다.","poc":"1밀리초 태스크와 HMI·로그·통신 부하를 함께 실행해 1천만 주기의 지터·누락, 55도 열부하, 통신복구와 20회 정전저장을 기존 제어기와 비교합니다.","caution":"공개 내용: 하드웨어 사양, 직결 I/O, 코어분할과 지원 운영체제. 현장 확인: 실제 태스크주기, 온도, 장애영향범위와 예비본체 복구시간.","source_use":"11월 24일 Beckhoff 공식발표와 CX54x0 제품자료를 중심으로 CX52x0 사양, SPS 공개시연과 한국 기술지원 경로를 대조","sourceCount":6,"weekly":{"topic":"8코어 DIN레일 엣지 제어기","change":"제어·화면·통신을 한 팬리스 PC와 직결 I/O에 묶습니다.","check":"고부하에서 주기지터·온도·통신복구·데이터보존을 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -7259,7 +7390,7 @@ reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
       261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8],261122:[20,18,17,14,11,8],261123:[19,18,17,14,11,8]
-    ,261124:[18,18,12,14,14,9],261125:[19,18,15,14,14,9],261126:[19,18,16,13,14,9]};
+    ,261124:[18,18,12,14,14,9],261125:[19,18,15,14,14,9],261126:[19,18,16,13,14,9],261127:[18,17,15,14,12,8]};
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
