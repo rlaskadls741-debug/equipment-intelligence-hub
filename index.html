@@ -153,6 +153,150 @@
     <section class="staticIntro"><span>모바일 간편 보기</span><h1>설비 지능화 기술동향 리포트</h1><p>날짜별 기술 기사와 근거자료를 확인할 수 있습니다.</p></section>
 
 
+<details class="staticReport" id="static-261128" open>
+<summary><span class="staticDate">11.28</span><span class="staticTitle">결정론 제어와 컨테이너 앱을 한 IPC에 합친 Rockwell LogixEdge</span><span class="staticAxis">전기·제어</span></summary>
+<div class="staticMeta"><div class="tags"><span class="tag">PC 제어</span><span class="tag">LogixEdge</span><span class="tag">컨테이너</span><span class="tag">EtherNet/IP</span><span class="tag">제어반 축소</span></div><p>Rockwell Automation은 Logix 제어 엔진과 컨테이너형 HMI·분석 앱을 한 산업용 PC에 실행하는 LogixEdge를 SPS 2026에서 시연했습니다. 1기가비트/초 포트 2개를 제어와 워크로드에 각각 배정해 단일장치 통합과 통신경로 분담을 함께 설계했습니다.</p></div>
+<article class="reportBody staticContent"><div class="newsArticle">
+<header class="newsHeader"><p class="newsKicker">소프트웨어 정의 엣지 제어기 · 2026-11-28</p><h2>결정론 제어와 컨테이너 앱을 한 IPC에 합친 Rockwell LogixEdge</h2><p class="newsLead">Rockwell Automation은 2026년 11월 24~26일 독일 뉘른베르크 SPS 2026의 SOAP Factory에서 LogixEdge 통합제어와 엣지 컴퓨팅을 시연했습니다. LogixEdge는 결정론 Logix 제어, FactoryTalk Optix 화면과 제3자 컨테이너 앱을 한 IPC에서 실행하고, 전면 1기가비트/초 이더넷 포트 2개를 제어 엔진과 워크로드에 각각 배정합니다.</p></header>
+<section class="articleSummary" aria-label="오늘 리포트 요약">
+<div><strong>오늘 전체 흐름</strong><p>최근 24시간에 설비 제어구조를 바꿀 새 공식발표는 없었습니다. 최근 일주일의 SPS 공개내용에서는 전용 제어기와 엣지 PC를 따로 두던 구성을 한 산업용 PC의 제어 엔진과 컨테이너 워크로드로 합치는 흐름이 반복됐습니다.</p></div>
+<div><strong>주요 기술</strong><p>LogixEdge는 최대 35개 EtherNet/IP 노드, 5메가바이트 Logix 메모리, 보안 Linux 게스트를 포함한 120기가바이트 저장공간과 제어·워크로드 전용 1기가비트/초 포트를 제공합니다.</p></div>
+<div><strong>선정 이유</strong><p>11월 12일 제품 발표에 이어 11월 24~26일 SPS에서 통합제어 시연이 진행됐습니다. 단순한 PC 성능 변경이 아니라 결정론 제어와 갱신 가능한 컨테이너 앱을 같은 장치에 배치하고 네트워크 포트를 역할별로 나눈 구조변화가 확인됩니다.</p></div>
+</section>
+
+<h3>주요 내용</h3>
+<p><b>확인된 사실.</b> Rockwell Automation의 2026년 7월 제품자료는 LogixEdge를 Atom급 IPC에 내장 Logix 엔진과 개방형 워크로드 실행환경을 함께 넣은 장치로 정의합니다. 제어용 Logix 포트에는 EtherNet/IP 노드를 최대 35개 연결할 수 있습니다. 전면 1기가비트/초 포트 2개 중 하나는 Logix 제어 엔진이 사용하고 다른 하나는 컨테이너 워크로드가 사용합니다. Logix 메모리는 최대 5메가바이트이며 보안 Linux 게스트 운영체제를 포함한 저장공간은 120기가바이트입니다.</p>
+<p><b>공급사 설명.</b> Rockwell Automation은 FactoryTalk Optix, MTP 앱, FactoryTalk Remote Access, 사용자 웹서버와 제3자 워크로드를 Logix 제어와 함께 실행할 수 있다고 설명합니다. FactoryTalk Optix는 OPC UA, MQTT와 Modbus TCP를 통해 화면·데이터 모델·외부통신을 맡습니다. 공급사는 이 구성이 별도 엣지 장치와 추가 컴퓨팅 인프라를 줄이고 제어반 공간과 수명주기 관리공수를 낮춘다고 제시합니다.</p>
+<p><b>작성자 해석.</b> 실무 차이는 제어코드를 PC로 옮겼다는 데 있지 않습니다. 결정론 제어 엔진은 익숙한 Logix 도구체계를 유지하고, 화면·분석·웹서비스는 컨테이너 단위로 배포합니다. 두 워크로드가 하드웨어를 공유하면서도 전면 네트워크 포트를 역할별로 나누므로 기존 PLC와 IPC 사이의 외부 네트워크 홉 하나를 줄이고 제어 트래픽과 앱 트래픽의 물리 포트를 분담할 수 있습니다.</p>
+
+<h3>기술 구조와 작동 과정</h3>
+<ol>
+<li>POINT I/O, PointMax, Compact 5000 또는 FLEX 5000 원격 I/O가 제어용 EtherNet/IP 포트로 센서·구동기 데이터를 보냅니다.</li>
+<li>내장 Logix 엔진이 설정된 태스크 주기에 따라 입력을 읽고 순서·인터록·출력을 계산합니다.</li>
+<li>같은 IPC의 Linux 게스트가 FactoryTalk Optix 또는 사용자 컨테이너를 실행해 제어데이터를 화면·분석·외부시스템용 정보로 가공합니다.</li>
+<li>컨테이너 워크로드는 별도 1기가비트/초 포트를 통해 상위망과 통신합니다. 이 포트 분담은 제어 I/O 트래픽과 데이터 서비스 트래픽의 물리 경로를 구분합니다.</li>
+<li>운영자는 컨테이너 단위로 화면이나 분석기능을 배포·갱신합니다. 현장 시험에서는 앱 갱신·재시작 중에도 Logix 태스크의 마감시간과 출력상태가 유지되는지 측정해야 합니다.</li>
+</ol>
+
+<h3>기존 방식과 달라진 점</h3>
+<p>기존 구성은 PLC가 I/O와 인터록을 처리하고 별도 산업용 PC 또는 엣지 게이트웨이가 HMI·분석·웹서비스를 실행합니다. 두 장치는 이더넷 스위치와 태그 통신을 거치므로 하드웨어, 전원, 배선, 예비품과 패치 절차가 나뉩니다. LogixEdge는 이 기능을 한 IPC에 넣고 제어 엔진과 컨테이너 워크로드에 전용 전면 포트를 각각 배정합니다.</p>
+
+<figure class="reportVisual" aria-labelledby="visual-261128-1-title">
+<figcaption><strong id="visual-261128-1-title">별도 PLC·엣지 PC와 LogixEdge 단일 IPC 비교</strong><span>왼쪽은 PLC와 엣지 PC가 스위치와 태그 통신을 거치는 방식입니다. 오른쪽은 Logix 엔진과 Linux 컨테이너가 한 IPC에 있고 제어·워크로드 포트를 각각 사용하는 구조입니다. 직접 제작한 설명도·실제 배치도 아님.</span></figcaption>
+<div class="visualScroll"><svg viewBox="0 0 960 450" role="img" aria-labelledby="visual-261128-1-svg-title visual-261128-1-desc">
+<title id="visual-261128-1-svg-title">기존 PLC와 엣지 PC 분리구조, LogixEdge 통합구조 비교</title>
+<desc id="visual-261128-1-desc">기존 구조는 원격 I/O, PLC, 네트워크 스위치, 엣지 PC를 거칩니다. 새 구조는 원격 I/O가 LogixEdge의 제어용 포트로 연결되고 같은 장치의 컨테이너 워크로드는 별도 포트로 상위망에 연결됩니다.</desc>
+<defs><marker id="arr261128a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#35576d"/></marker></defs>
+<rect x="20" y="28" width="440" height="390" rx="18" fill="#f8fafc" stroke="#bcc9d3" stroke-width="2"/><text x="44" y="65" font-size="24" font-weight="800" fill="#0f2942">기존: 전용 장치 분리</text>
+<rect x="55" y="104" width="150" height="70" rx="12" fill="#eaf7f5" stroke="#168c80" stroke-width="2"/><text x="130" y="135" text-anchor="middle" font-size="17" font-weight="700">원격 I/O</text><text x="130" y="158" text-anchor="middle" font-size="13">센서·구동기</text>
+<rect x="268" y="104" width="150" height="70" rx="12" fill="#edf5fb" stroke="#2d6da3" stroke-width="2"/><text x="343" y="135" text-anchor="middle" font-size="17" font-weight="700">전용 PLC</text><text x="343" y="158" text-anchor="middle" font-size="13">결정론 제어</text>
+<rect x="268" y="220" width="150" height="60" rx="12" fill="#fff6e6" stroke="#a86d16" stroke-width="2"/><text x="343" y="257" text-anchor="middle" font-size="16" font-weight="700">이더넷 스위치</text>
+<rect x="268" y="326" width="150" height="70" rx="12" fill="#f3eefb" stroke="#70509a" stroke-width="2"/><text x="343" y="357" text-anchor="middle" font-size="17" font-weight="700">엣지 PC</text><text x="343" y="380" text-anchor="middle" font-size="13">HMI·분석·웹</text>
+<path d="M205 139H268M343 174V220M343 280V326" stroke="#35576d" stroke-width="5" marker-end="url(#arr261128a)"/><text x="54" y="219" font-size="14" fill="#526170">장치·전원·예비품 2세트</text><text x="54" y="244" font-size="14" fill="#526170">PLC↔PC 외부 통신 홉</text>
+<rect x="500" y="28" width="440" height="390" rx="18" fill="#f3faf8" stroke="#73b9ac" stroke-width="2"/><text x="524" y="65" font-size="24" font-weight="800" fill="#0f2942">새 방식: LogixEdge 한 IPC</text>
+<rect x="530" y="104" width="150" height="70" rx="12" fill="#eaf7f5" stroke="#168c80" stroke-width="2"/><text x="605" y="135" text-anchor="middle" font-size="17" font-weight="700">원격 I/O</text><text x="605" y="158" text-anchor="middle" font-size="13">최대 35노드</text>
+<rect x="728" y="92" width="180" height="120" rx="14" fill="#edf5fb" stroke="#2d6da3" stroke-width="2"/><text x="818" y="124" text-anchor="middle" font-size="17" font-weight="800">Logix 엔진</text><text x="818" y="151" text-anchor="middle" font-size="13">최대 5MB</text><text x="818" y="176" text-anchor="middle" font-size="13">제어용 1Gbps 포트</text>
+<rect x="728" y="252" width="180" height="120" rx="14" fill="#f3eefb" stroke="#70509a" stroke-width="2"/><text x="818" y="284" text-anchor="middle" font-size="17" font-weight="800">Linux·컨테이너</text><text x="818" y="311" text-anchor="middle" font-size="13">120GB 저장공간</text><text x="818" y="336" text-anchor="middle" font-size="13">워크로드용 1Gbps 포트</text>
+<path d="M680 139H728M818 212V252M908 312H930" stroke="#35576d" stroke-width="5" marker-end="url(#arr261128a)"/><text x="530" y="239" font-size="14" fill="#526170">한 하드웨어에 제어·앱 실행</text><text x="530" y="264" font-size="14" fill="#526170">네트워크 포트는 역할별 분담</text>
+</svg></div>
+<p class="visualNote">수치 근거: Rockwell Automation 제품자료 5900-PP001A-EN-P와 제품페이지. 최대 35개 EtherNet/IP 노드, Logix 메모리 5MB, 저장공간 120GB, 전면 1Gbps 포트 2개를 표시했습니다.</p>
+</figure>
+
+<h4>장점</h4>
+<ul>
+<li>PLC와 엣지 PC 사이의 별도 장치·전원·내부배선과 외부 태그 통신경로를 줄일 수 있습니다.</li>
+<li>화면·분석·웹서비스를 컨테이너 단위로 배포하므로 제어프로그램과 앱의 갱신주기를 나눌 수 있습니다.</li>
+<li>제어 엔진과 워크로드에 전면 포트를 하나씩 배정해 제어망과 상위 데이터망의 물리 연결점을 분담할 수 있습니다.</li>
+<li>FactoryTalk Optix와 OPC UA·MQTT·Modbus TCP 지원으로 현장데이터를 화면과 상위분석에 가까운 위치에서 처리할 수 있습니다.</li>
+</ul>
+<hr>
+<h4>한계</h4>
+<ul>
+<li>공개자료에는 컨테이너 CPU·메모리 상한, 태스크 주기별 최대 지터와 앱 재시작 중 제어연속성 수치가 없습니다.</li>
+<li>제어와 데이터 앱이 한 IPC에 모이므로 전원·저장장치·메인보드 장애가 두 기능에 동시에 영향을 줄 수 있습니다.</li>
+<li>35개 EtherNet/IP 노드와 5메가바이트 Logix 메모리는 대형 다축·대규모 공정에 적용하기 전에 태그·연결·메모리 산정이 필요합니다.</li>
+<li>SPS 공개내용은 SOAP Factory 시연구조입니다. 현장 합격판정에는 실제 I/O 수, 태스크 주기와 앱 부하를 넣은 장시간 측정값이 필요합니다.</li>
+</ul>
+
+<h3>현장 적용과 당사 공정·PC 제어 연결점</h3>
+<p><b>공개 적용사례.</b> Rockwell Automation은 SPS 2026 부스의 SOAP Factory에서 LogixEdge 통합제어와 엣지 컴퓨팅을 전시했습니다. 같은 전시환경에는 FactoryTalk Design Studio, Emulate3D, FactoryTalk Analytics와 여러 로봇 기술을 공통 제어환경에서 운전하는 유연생산 시연이 포함됐습니다. 공개자료는 특정 고객 양산라인의 생산량·불량률·정지시간 개선값을 제시하지 않았습니다.</p>
+<p><b>연결해 볼 부분.</b> 일반 조립·검사설비에서 순서제어와 안전연동은 Logix 태스크가 맡고, 설비화면·품질집계·웹 대시보드는 컨테이너가 맡는 구성을 비교할 수 있습니다. 기존 PLC와 산업용 PC 사이에 복제하던 태그, 스위치 포트와 전원부품이 얼마나 줄어드는지 산출하고, 통합장치 고장 때 제어와 화면이 함께 중단되는 위험을 예비본체 교체시간과 함께 평가해야 합니다.</p>
+
+<h3>사전검증 순서</h3>
+<ol>
+<li><b>기준구성 고정.</b> 기존 PLC와 별도 IPC에 동일한 I/O 목록, 1밀리초 주기제어, HMI 화면과 로그기능을 배치하고 평균·최대 주기지터, CPU 사용률과 네트워크 왕복시간을 기록합니다.</li>
+<li><b>기능이식.</b> 같은 제어논리를 LogixEdge Logix 엔진에 넣고 HMI·로그·웹기능을 Linux 컨테이너에 배치합니다. 35개 EtherNet/IP 노드 조건 또는 실제 목표노드 수에서 태그 갱신누락을 셉니다.</li>
+<li><b>자원부하.</b> 컨테이너 CPU·메모리·네트워크 부하를 0·50·80·95%로 올립니다. 각 단계에서 1천만 제어주기의 마감초과 횟수와 최대지터를 측정하며 합격기준은 마감초과 0회, 최대지터는 기존구성 대비 20% 이내 증가로 둡니다.</li>
+<li><b>갱신·재시작.</b> FactoryTalk Optix 또는 시험 컨테이너를 20회 갱신·재시작합니다. 측정기는 출력 전환, I/O 연결상태, Logix 태스크중단과 화면복구시간을 기록합니다.</li>
+<li><b>고장주입.</b> 워크로드 포트 단선, 컨테이너 비정상 종료, 저장공간 95% 사용과 전원 재인가를 각각 시험합니다. 제어출력 유지여부와 정상상태 복귀시간을 고장별로 분리해 기록합니다.</li>
+<li><b>운영성 비교.</b> 장치·전원·스위치 포트·배선 수, 프로젝트 백업크기, 예비품 교체시간과 패치절차를 기존 PLC·IPC 구성과 비교해 통합이 실제 정비시간을 줄이는지 판정합니다.</li>
+</ol>
+
+<figure class="reportVisual" aria-labelledby="visual-261128-2-title">
+<figcaption><strong id="visual-261128-2-title">제어주기와 컨테이너 장애를 함께 재는 시험 위치</strong><span>제어용 포트에는 원격 I/O와 주기 측정기를, 워크로드용 포트에는 부하발생기와 상위망 에뮬레이터를 연결합니다. 앱 갱신·포트 단선·전원 재인가 때 제어출력과 복구시간을 동시에 기록합니다. 직접 제작한 측정 위치도·실제 시험설비 배치도 아님.</span></figcaption>
+<div class="visualScroll"><svg viewBox="0 0 960 420" role="img" aria-labelledby="visual-261128-2-svg-title visual-261128-2-desc">
+<title id="visual-261128-2-svg-title">LogixEdge 사전검증 장비와 측정 위치</title>
+<desc id="visual-261128-2-desc">LogixEdge의 제어용 포트는 원격 I/O와 출력 측정기에 연결되고, 워크로드용 포트는 컨테이너 부하발생기와 상위망 에뮬레이터에 연결됩니다. 전원차단기와 측정 PC가 장애와 복구시간을 기록합니다.</desc>
+<defs><marker id="arr261128b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#35576d"/></marker></defs>
+<rect x="330" y="74" width="300" height="250" rx="20" fill="#f3faf8" stroke="#168c80" stroke-width="3"/><text x="480" y="111" text-anchor="middle" font-size="25" font-weight="800" fill="#0f2942">LogixEdge IPC</text>
+<rect x="360" y="138" width="110" height="100" rx="12" fill="#edf5fb" stroke="#2d6da3" stroke-width="2"/><text x="415" y="172" text-anchor="middle" font-size="16" font-weight="800">Logix 엔진</text><text x="415" y="198" text-anchor="middle" font-size="13">1ms 태스크</text><text x="415" y="221" text-anchor="middle" font-size="13">제어 포트</text>
+<rect x="490" y="138" width="110" height="100" rx="12" fill="#f3eefb" stroke="#70509a" stroke-width="2"/><text x="545" y="172" text-anchor="middle" font-size="16" font-weight="800">컨테이너</text><text x="545" y="198" text-anchor="middle" font-size="13">0~95% 부하</text><text x="545" y="221" text-anchor="middle" font-size="13">앱 포트</text>
+<rect x="35" y="70" width="200" height="80" rx="12" fill="#eaf7f5" stroke="#168c80" stroke-width="2"/><text x="135" y="103" text-anchor="middle" font-size="17" font-weight="800">원격 I/O·부하장치</text><text x="135" y="128" text-anchor="middle" font-size="13">최대 35노드 조건</text>
+<rect x="35" y="230" width="200" height="80" rx="12" fill="#fff6e6" stroke="#a86d16" stroke-width="2"/><text x="135" y="263" text-anchor="middle" font-size="17" font-weight="800">출력·주기 측정기</text><text x="135" y="288" text-anchor="middle" font-size="13">지터·누락·출력전환</text>
+<rect x="725" y="70" width="200" height="80" rx="12" fill="#f3eefb" stroke="#70509a" stroke-width="2"/><text x="825" y="103" text-anchor="middle" font-size="17" font-weight="800">컨테이너 부하발생기</text><text x="825" y="128" text-anchor="middle" font-size="13">CPU·메모리·망부하</text>
+<rect x="725" y="230" width="200" height="80" rx="12" fill="#edf5fb" stroke="#2d6da3" stroke-width="2"/><text x="825" y="263" text-anchor="middle" font-size="17" font-weight="800">측정 PC·상위망</text><text x="825" y="288" text-anchor="middle" font-size="13">로그·복구시간 기록</text>
+<rect x="360" y="350" width="240" height="50" rx="10" fill="#fff3f1" stroke="#b54a3a" stroke-width="2"/><text x="480" y="382" text-anchor="middle" font-size="16" font-weight="800">전원차단·앱재시작·포트단선</text>
+<path d="M235 110H360M235 270H360M600 110H725M600 270H725M480 324V350" stroke="#35576d" stroke-width="5" marker-end="url(#arr261128b)"/>
+</svg></div>
+<p class="visualNote">1밀리초 태스크, 0·50·80·95% 부하, 1천만 주기와 20회 재시작은 비교시험 제안조건입니다. 제품 보증값이 아니며 기존 PLC·IPC 구성과 동일한 I/O·화면·로그 조건에서 상대값을 판정합니다.</p>
+</figure>
+
+<h3>관련 업체와 접촉 경로</h3>
+<p><a href="https://www.rockwellautomation.com/ko-kr.html" target="_blank" rel="noopener noreferrer"><b>로크웰 오토메이션 코리아</b></a>는 Logix 제어기, FactoryTalk 소프트웨어와 산업네트워크 제품의 국내 영업·기술지원을 제공합니다. LogixEdge 국내 공급시기, 컨테이너 자원정책과 성능시험은 공식 홈페이지의 기술지원 센터를 통해 문의할 수 있습니다.</p>
+<p><a href="https://www.rockwellautomation.com/ko-kr/company/about-us/lists/authorizeddistributor.html" target="_blank" rel="noopener noreferrer"><b>Rockwell Automation 공인대리점</b></a>은 지역별 제품 공급과 기술상담을 제공합니다. 공식 채널영업 문의는 02-2188-4521과 yyoon@ra.rockwell.com으로 안내돼 있습니다.</p>
+
+<details class="articleDisclosure termsDisclosure"><summary>용어 설명</summary><section class="termNotes" aria-label="용어 설명"><ol>
+<li id="term-261128-1"><b>IPC · Industrial Personal Computer</b><span>제어, 화면과 데이터 앱을 산업환경에서 실행하도록 설계한 산업용 컴퓨터입니다.</span></li>
+<li id="term-261128-2"><b>PLC · Programmable Logic Controller</b><span>센서 입력, 순서논리와 구동기 출력을 정해진 주기에 처리하는 산업용 제어기입니다.</span></li>
+<li id="term-261128-3"><b>HMI · Human-Machine Interface</b><span>설비상태를 표시하고 작업자가 운전값을 입력하는 화면 기능입니다.</span></li>
+<li id="term-261128-4"><b>I/O · Input/Output</b><span>센서 입력과 밸브·모터 출력신호를 제어기와 주고받는 입출력입니다.</span></li>
+<li id="term-261128-5"><b>IT · Information Technology</b><span>서버, 업무시스템과 상위 데이터망을 관리하는 정보기술 영역입니다.</span></li>
+<li id="term-261128-6"><b>OT · Operational Technology</b><span>생산설비, 제어기와 산업통신을 운전하는 운영기술 영역입니다.</span></li>
+<li id="term-261128-7"><b>CPU · Central Processing Unit</b><span>제어태스크와 컨테이너 프로그램의 명령을 실행하는 중앙처리장치입니다.</span></li>
+<li id="term-261128-8"><b>OPC UA · Open Platform Communications Unified Architecture</b><span>장치와 소프트웨어가 구조화된 산업데이터를 안전하게 교환하는 통신규격입니다.</span></li>
+<li id="term-261128-9"><b>MQTT · Message Queuing Telemetry Transport</b><span>발행·구독 방식으로 설비데이터를 가볍게 전달하는 메시지 통신규격입니다.</span></li>
+<li id="term-261128-10"><b>IP · Internet Protocol</b><span>네트워크에서 장치 주소와 데이터 전달경로를 정하는 통신규칙입니다.</span></li>
+<li id="term-261128-11"><b>TCP · Transmission Control Protocol</b><span>데이터의 순서와 재전송을 관리해 신뢰성 있게 전달하는 전송규칙입니다.</span></li>
+<li id="term-261128-12"><b>MTP · Module Type Package</b><span>공정 모듈의 기능과 운전화면을 표준형식으로 기술해 상위시스템에 통합하는 방식입니다.</span></li>
+<li id="term-261128-13"><b>EtherNet/IP · Ethernet Industrial Protocol</b><span>표준 이더넷에서 제어기, 원격 I/O와 구동장치 데이터를 교환하는 산업통신입니다.</span></li>
+<li id="term-261128-14"><b>LogixEdge</b><span>Logix 제어 엔진과 컨테이너 워크로드를 한 IPC에 실행하는 Rockwell Automation 제품명입니다.</span></li>
+<li id="term-261128-15"><b>Logix</b><span>Rockwell Automation 제어 엔진과 프로그래밍 체계를 가리키는 제품계열명입니다.</span></li>
+<li id="term-261128-16"><b>FactoryTalk Optix</b><span>화면, 데이터 모델과 산업통신을 제공하는 Rockwell Automation 제품명입니다.</span></li>
+<li id="term-261128-17"><b>Linux</b><span>LogixEdge에서 컨테이너 워크로드를 실행하는 게스트 운영체제 계열명입니다.</span></li>
+<li id="term-261128-18"><b>컨테이너</b><span>앱과 필요한 구성요소를 묶어 다른 앱과 분리해 배포·실행하는 소프트웨어 단위입니다.</span></li>
+<li id="term-261128-19"><b>결정론 제어</b><span>입력처리와 출력계산을 정해진 마감시간 안에 반복하도록 실행시간을 관리하는 방식입니다.</span></li>
+<li id="term-261128-20"><b>SPS · Smart Production Solutions</b><span>2026년 11월 24~26일 독일 뉘른베르크에서 열린 산업자동화 전시회입니다.</span></li>
+<li id="term-261128-21"><b>SOAP Factory · Smart, Orchestrated, Autonomous Production Factory</b><span>Rockwell Automation이 SPS 2026에서 연결형 자율생산 기능을 묶어 시연한 전시환경 이름입니다.</span></li>
+<li id="term-261128-22"><b>PC · Personal Computer</b><span>운영체제 위에서 제어·화면·데이터 프로그램을 실행하는 범용 컴퓨터 구조입니다.</span></li>
+<li id="term-261128-23"><b>POINT I/O</b><span>EtherNet/IP에 연결하는 Rockwell Automation 원격 입출력 제품계열명입니다.</span></li>
+<li id="term-261128-24"><b>FLEX 5000</b><span>고속 제어용 EtherNet/IP 원격 입출력을 제공하는 Rockwell Automation 제품계열명입니다.</span></li>
+<li id="term-261128-25"><b>FactoryTalk Remote Access</b><span>원격에서 산업장치와 소프트웨어에 접속하도록 제공되는 Rockwell Automation 제품명입니다.</span></li>
+<li id="term-261128-26"><b>Modbus TCP · Modbus Transmission Control Protocol</b><span>이더넷의 TCP 연결을 사용해 장치 데이터와 명령을 교환하는 산업통신 방식입니다.</span></li>
+</ol></section></details>
+
+<h3>공식 근거자료</h3>
+<ol class="sourceList">
+<li><a href="https://www.rockwellautomation.com/en-pl/company/news/press-releases/rockwell-automation-at-sps-2026.html" target="_blank" rel="noopener noreferrer"><b>Rockwell Automation at SPS 2026: Path to Autonomy</b></a><span>2026-10-27 발표 · 2026-11-24~26 SPS 시연 · SOAP Factory와 LogixEdge 통합제어·엣지 컴퓨팅</span></li>
+<li><a href="https://www.rockwellautomation.com/en-mde/company/news/press-releases/Rockwell-Automation-Introduces-LogixEdge-Controllers-for-Software-Defined-Automation.html" target="_blank" rel="noopener noreferrer"><b>Rockwell Automation Introduces LogixEdge Controllers</b></a><span>2026-11-12 · 결정론 Logix 제어, 엣지 컴퓨팅과 컨테이너 앱의 단일 IPC 통합</span></li>
+<li><a href="https://www.rockwellautomation.com/en-us/products/hardware/programmable-controllers/logixedge-controllers.html" target="_blank" rel="noopener noreferrer"><b>LogixEdge Controllers 제품페이지</b></a><span>2026-11-28 확인 · 포트 분담, 지원 워크로드, 원격 I/O와 2026년 4분기 공급정보</span></li>
+<li><a href="https://literature.rockwellautomation.com/idc/groups/literature/documents/pp/5900-pp001_-en-p.pdf" target="_blank" rel="noopener noreferrer"><b>LogixEdge Controller Product Profile 5900-PP001A-EN-P</b></a><span>2026-07 · 35개 노드, 포트 2개, 5MB Logix 메모리, 120GB 저장공간</span></li>
+<li><a href="https://www.rockwellautomation.com/ko-kr/company/about-us/lists/authorizeddistributor.html" target="_blank" rel="noopener noreferrer"><b>Rockwell Automation 한국 공인대리점</b></a><span>2026-11-28 확인 · 국내 채널영업 문의와 지역별 공인 공급경로</span></li>
+</ol>
+<p class="reportAuthor">작성자 · 김남인, 선행제어기술팀 미래기술파트</p>
+</div></article></details>
+
+
+
 <details class="staticReport" id="static-261127" open>
 <summary><span class="staticDate">11.27</span><span class="staticTitle">8코어·이중 필드버스·직결 I/O를 한 DIN레일 PC에 묶은 Beckhoff CX54x0</span><span class="staticAxis">전기·제어</span></summary>
 <div class="staticMeta"><div class="tags"><span class="tag">PC 제어</span><span class="tag">CX54x0</span><span class="tag">EtherCAT</span><span class="tag">제어반 축소</span><span class="tag">멀티코어</span></div><p>Beckhoff는 최대 8코어, 16기가바이트 메모리, 독립형 2.5기가비트/초 이더넷 2개와 시스템·필드버스 모듈 2개를 한 DIN레일 제어기에 넣은 CX54x0을 공개했습니다. EtherCAT 단자를 본체에 직접 붙여 제어·화면·통신을 한 팬리스 PC에 구성합니다.</p></div>
@@ -7029,6 +7173,7 @@ reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의
     reports.push({"id":"261125","date":"2026-11-25","title":"현장 AI를 PROFINET으로 PLC에 연결해 재학습·재배포까지 묶은 Industrial AI Suite","axis":"인공지능 제어","category":"현장 AI 폐쇄형 운영구조","tags":["Industrial AI Suite","Industrial Edge","PROFINET","현장 추론","모델 재배포"],"summary":"Siemens는 Industrial Edge의 AI 모델을 PROFINET으로 SIMATIC S7에 연결하고, 생산데이터로 모델을 온프레미스에서 재학습·검증·재배포하는 폐쇄형 운영구조를 발표했습니다.","discovery":"Industrial Edge 현장추론을 PROFINET으로 SIMATIC S7 제어에 연결하고 생산데이터 재학습·검증·재배포를 같은 모델 운영경로로 묶은 구조","why":"4월 공개판은 영상과 MES·제어기 데이터를 결합한 재학습이 중심이었습니다. 11월 24일 발표는 PROFINET 제어연결과 온프레미스 재학습·검증·재배포를 폐쇄형 운전주기로 명시했습니다.","study":"AI SDK 패키징, AI Asset Manager, AI Inference Server, Industrial Edge, PROFINET, PLC 유효성검사, 온프레미스 재학습, 단계적 배포, 롤백, 지연측정","companies":"한국지멘스 디지털 인더스트리는 Industrial Edge, SIMATIC S7, PROFINET과 현장 자동화 기술지원을 제공합니다.","poc":"고정 시험데이터와 PROFINET 부하조건에서 추론일치, 왕복지연, PLC 유효성검사, 통신단절 복귀, 모델 단계배포와 롤백시간을 측정합니다.","caution":"공개 내용: Edge 추론, PROFINET 제어연결, 온프레미스 재학습·검증·재배포 구조. 현장 확인: 추론 왕복지연, 제어주기, 모델전환과 복귀시간.","source_use":"11월 24일 Siemens SPS 공식발표를 중심으로 Industrial AI Suite 아키텍처, 4월 공개판과 한국 기술지원 경로를 대조","sourceCount":4,"weekly":{"topic":"현장 AI 재학습·재배포","change":"추론값을 PLC 제어에 연결하고 생산데이터로 모델을 다시 배포합니다.","check":"추론지연·유효값 차단·통신단절 복귀·롤백시간을 잽니다."}});
     reports.push({"id":"261126","date":"2026-11-26","title":"외장센서·배터리 없이 자속·온도·진동 진단을 모터에 내장한 ABB Intelleqt","axis":"전기·제어","category":"공장내장형 지능모터","tags":["ABB Intelleqt","지능형 모터","에너지 하베스팅","엣지 진단","상태감시"],"summary":"ABB는 공극 자속·온도·진동 센서, 에너지 하베스팅과 엣지 진단을 제조단계에 내장한 Intelleqt 저압모터를 공개했습니다. 외장센서와 배터리 없이 첫 회전부터 상태데이터를 생성합니다.","discovery":"공극 자속·온도·진동 센서, 에너지 하베스팅, 엣지 진단과 무선통신을 11~1,300 kW 저압모터 제조단계에 통합한 구조","why":"기존 Smart Sensor는 모터 외함에서 표면온도·진동을 배터리로 주기 측정했습니다. Intelleqt는 자속측정·자체발전·연속 엣지 진단을 모터 내부기능으로 바꿨습니다.","study":"공극 자속, 온도·진동, 에너지 하베스팅, 엣지 진단, LED 상태, MQTT, 데이터 소유권, 기준센서 비교, 오경보, 통신복구","companies":"ABB코리아는 저압모터, 드라이브와 디지털 상태감시를 지원하며 Intelleqt의 국내 출시와 공동검증 범위를 협의할 수 있습니다.","poc":"동일 부하에서 내장값과 기준센서값을 비교하고 정렬불량·불평형·냉각방해 조건의 경고선행시간, 오경보, 데이터누락과 복구시간을 측정합니다.","caution":"공개 내용: 11~1,300 kW 사양, 자속·온도·진동, 자체발전, 엣지진단과 무선연결. 현장 확인: 측정편차, 오경보·미검출, 내장기능 정비와 국내 출시.","source_use":"11월 24일 ABB 공식발표와 제품페이지·리플릿을 중심으로 기존 Smart Sensor 기술자료와 한국 고객센터를 대조","sourceCount":5,"weekly":{"topic":"센서·진단 내장 모터","change":"외장센서와 배터리 대신 모터가 자체발전해 상태를 연속 진단합니다.","check":"측정편차·경고선행시간·오경보·통신복구를 함께 잽니다."}});
     reports.push({"id":"261127","date":"2026-11-27","title":"8코어·이중 필드버스·직결 I/O를 한 DIN레일 PC에 묶은 Beckhoff CX54x0","axis":"전기·제어","category":"DIN레일 멀티코어 제어기","tags":["PC제어","CX54x0","EtherCAT","제어반 축소","멀티코어"],"summary":"Beckhoff CX54x0은 최대 8코어·16기가바이트, 2.5기가비트/초 이더넷 2개, 필드버스 모듈 2개와 EtherCAT 단자 직결을 한 DIN레일 PC에 묶습니다.","discovery":"최대 8코어·16기가바이트, 이중 2.5기가비트 이더넷, 시스템·필드버스 모듈 2개와 EtherCAT·K-bus 단자 직결을 같은 계열 크기에 통합한 구조","why":"기존 CX52x0은 최대 4코어·8기가바이트·확장모듈 1개였습니다. CX54x0은 연산자원과 필드버스 확장을 함께 늘려 제어·화면·통신 통합범위를 바꿨습니다.","study":"멀티코어 태스크 분리, EtherCAT 직결, 이중 필드버스, 2.5기가비트 이더넷, 1초 UPS, CFast 교체복구, 제어주기 지터, 열부하","companies":"Beckhoff Automation Korea는 산업용 PC, TwinCAT, EtherCAT I/O와 모션 제품의 국내 영업·기술지원을 제공합니다.","poc":"1밀리초 태스크와 HMI·로그·통신 부하를 함께 실행해 1천만 주기의 지터·누락, 55도 열부하, 통신복구와 20회 정전저장을 기존 제어기와 비교합니다.","caution":"공개 내용: 하드웨어 사양, 직결 I/O, 코어분할과 지원 운영체제. 현장 확인: 실제 태스크주기, 온도, 장애영향범위와 예비본체 복구시간.","source_use":"11월 24일 Beckhoff 공식발표와 CX54x0 제품자료를 중심으로 CX52x0 사양, SPS 공개시연과 한국 기술지원 경로를 대조","sourceCount":6,"weekly":{"topic":"8코어 DIN레일 엣지 제어기","change":"제어·화면·통신을 한 팬리스 PC와 직결 I/O에 묶습니다.","check":"고부하에서 주기지터·온도·통신복구·데이터보존을 잽니다."}});
+    reports.push({"id":"261128","date":"2026-11-28","title":"결정론 제어와 컨테이너 앱을 한 IPC에 합친 Rockwell LogixEdge","axis":"전기·제어","category":"소프트웨어 정의 엣지 제어기","tags":["PC제어","LogixEdge","컨테이너","EtherNet/IP","제어반 축소"],"summary":"Rockwell LogixEdge는 결정론 Logix 제어, HMI와 컨테이너 앱을 한 IPC에 실행하고 1기가비트/초 포트 2개를 제어 엔진과 워크로드에 각각 배정합니다.","discovery":"결정론 Logix 제어와 컨테이너형 HMI·분석 앱을 단일 IPC에 실행하고 제어 엔진과 워크로드에 전용 1기가비트/초 포트를 각각 배정한 구조","why":"최근 24시간에 더 큰 공식 구조변화는 없었습니다. 11월 24~26일 SPS 시연은 11월 12일 발표 구조를 실제 통합제어 전시로 이어 35개 EtherNet/IP 노드와 포트 분담까지 비교할 수 있게 했습니다.","study":"결정론 제어, 컨테이너 워크로드, 제어·앱 포트 분담, Logix 메모리, Linux 게스트, HMI, OPC UA, MQTT, EtherNet/IP, 부하격리와 장애복구","companies":"로크웰 오토메이션 코리아는 Logix 제어기, FactoryTalk 소프트웨어와 공인대리점 기술지원을 국내에서 제공합니다.","poc":"1밀리초 제어태스크와 35개 노드 조건에서 컨테이너 부하를 0·50·80·95%로 바꾸고 1천만 주기의 지터·누락, 앱 재시작 때 출력연속성과 복구시간을 기존 PLC·IPC 구성과 비교합니다.","caution":"공개 내용: 단일 IPC 구조, 지원 워크로드, 포트·노드·메모리 사양과 SPS 시연. 현장 확인: 제어주기, 자원경합, 앱 갱신 중 출력연속성과 단일장치 장애영향.","source_use":"11월 24~26일 SPS 공식시연을 최신 근거로 삼고 11월 12일 발표, 제품페이지·제품자료와 국내 공인대리점 경로를 대조","sourceCount":5,"weekly":{"topic":"제어·컨테이너 통합 IPC","change":"별도 PLC와 엣지 PC를 한 장치의 제어·앱 영역으로 묶습니다.","check":"앱 부하·재시작 때 주기지터와 출력연속성을 잽니다."}});
     reports.sort((a,b)=>a.date.localeCompare(b.date));
     reports.splice(0,reports.findIndex(r=>r.date>='2026-09-14'));
     const weeklyNotes={
@@ -7390,7 +7535,7 @@ reports.push({"id":"261123","date":"2026-11-23","title":"제어도구 네 종의
       261025:[16,16,17,12,13,8],261026:[16,16,17,13,13,8],261027:[16,15,16,12,13,8],261028:[17,16,16,13,13,8],
       261029:[17,16,16,13,13,8],261030:[16,16,16,13,13,8],261031:[17,16,15,13,13,8],261101:[17,16,16,13,13,8],
       261102:[16,15,13,13,13,8],261103:[17,16,16,13,13,8],261104:[17,15,17,12,13,8],261105:[17,16,16,13,14,8],261106:[17,16,17,12,13,8],261107:[17,17,16,12,12,8],261108:[18,18,17,13,10,8],261109:[17,17,16,13,11,8],261110:[18,17,17,13,11,8],261111:[18,18,17,13,10,8],261112:[18,17,16,12,12,8],261113:[18,17,15,14,12,8],261114:[18,17,14,14,12,8],261115:[18,17,15,14,10,9],261116:[18,18,15,14,11,8],261117:[18,18,16,14,12,9],261118:[19,18,14,14,12,9],261119:[19,18,15,14,14,9],261120:[19,18,16,13,12,9],261121:[20,18,17,14,12,8],261122:[20,18,17,14,11,8],261123:[19,18,17,14,11,8]
-    ,261124:[18,18,12,14,14,9],261125:[19,18,15,14,14,9],261126:[19,18,16,13,14,9],261127:[18,17,15,14,12,8]};
+    ,261124:[18,18,12,14,14,9],261125:[19,18,15,14,14,9],261126:[19,18,16,13,14,9],261127:[18,17,15,14,12,8],261128:[18,17,15,14,12,8]};
     function drawEvaluation(){const rows=[...reports].sort((a,b)=>b.date.localeCompare(a.date)),grade=n=>n>=90?'A+':n>=85?'A':n>=80?'B+':n>=75?'B':n>=70?'C+':'C',totals=rows.map(r=>(evalScores[r.id]||[]).reduce((a,b)=>a+b,0));$('#evalRows').innerHTML=rows.map(r=>{const s=evalScores[r.id]||[0,0,0,0,0,0],total=s.reduce((a,b)=>a+b,0);return `<tr><td>${r.date.slice(2).replaceAll('-','.')}</td><td class="evalTitle">${r.title}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${total}</b></td><td><span class="evalGrade">${grade(total)}</span></td></tr>`}).join('');$('#evalCount').textContent=rows.length+'건';$('#evalAverage').textContent=(totals.reduce((a,b)=>a+b,0)/Math.max(totals.length,1)).toFixed(1)+'점';$('#evalHighest').textContent=Math.max(...totals,0)+'점'}
     function bindReaders(){$$('[data-read]').forEach(b=>b.onclick=()=>openReader(b.dataset.read))}
     function highlightRoot(root,term){if(!term)return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode,p=n.parentElement;if(n.nodeValue.trim()&&!['SCRIPT','STYLE','MARK'].includes(p?.tagName))nodes.push(n)}let hits=0;for(const n of nodes){if(hits>=250)break;const text=n.nodeValue,low=text.toLowerCase(),needle=term.toLowerCase();if(!low.includes(needle))continue;const frag=document.createDocumentFragment();let at=0;while(hits<250){const i=low.indexOf(needle,at);if(i<0)break;frag.append(text.slice(at,i));const mark=document.createElement('mark');mark.textContent=text.slice(i,i+term.length);frag.append(mark);at=i+term.length;hits++}frag.append(text.slice(at));n.replaceWith(frag)}}
